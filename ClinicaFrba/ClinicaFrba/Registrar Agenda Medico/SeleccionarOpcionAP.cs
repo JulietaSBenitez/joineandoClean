@@ -10,21 +10,22 @@ using System.Windows.Forms;
 
 namespace ClinicaFrba.RegistrarAgendaMedico
 {
-    public partial class BajaProfesional : Form
+    public partial class SeleccionarOpcionAP : Form
     {
-        public BajaProfesional()
+        public SeleccionarOpcionAP()
         {
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void SeleccionarOpcionAP_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void chMail_CheckedChanged(object sender, EventArgs e)
+        private void AgregarAgendaImagen_Click(object sender, EventArgs e)
         {
-
+            Form altaAgendaProfesional = new AltaAP();
+            altaAgendaProfesional.ShowDialog();
         }
     }
 }

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ClinicaFrba.Abm_Profesional
+namespace ClinicaFrba.PantallasPrincipales
 {
-    public partial class Form1 : Form
+    public partial class PantallaMedico : Form
     {
-        public Form1()
+        public PantallaMedico()
         {
             InitializeComponent();
         }

@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ClinicaFrba.RegistrarAgendaMedico
+namespace ClinicaFrba.PantallasPrincipales
 {
-    public partial class ModificarProfesional : Form
+    public partial class PantallaAdministrador : Form
     {
-        public ModificarProfesional()
+        public PantallaAdministrador()
         {
             InitializeComponent();
-        }
-
-        private void TipoDNIBox_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

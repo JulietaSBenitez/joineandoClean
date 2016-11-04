@@ -1,6 +1,6 @@
-﻿namespace ClinicaFrba.Abm_Profesional
+﻿namespace ClinicaFrba.PantallasPrincipales
 {
-    partial class AltaAP
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.

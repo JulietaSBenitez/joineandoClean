@@ -1,4 +1,4 @@
-﻿namespace ClinicaFrba.Abm_Profesional
+﻿namespace ClinicaFrba.RegistrarAgendaMedico
 {
     partial class AltaProfesional
     {

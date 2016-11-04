@@ -1,6 +1,6 @@
-﻿namespace ClinicaFrba.Registrar_Agenta_Medico
+﻿namespace ClinicaFrba.PantallasPrincipales
 {
-    partial class Form1
+    partial class PantallaMedico
     {
         /// <summary>
         /// Required designer variable.

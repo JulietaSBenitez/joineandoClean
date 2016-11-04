@@ -7,14 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicaFrba.src;
 
-namespace ClinicaFrba.Abm_Profesional
+namespace ClinicaFrba.RegistrarAgendaMedico
 {
     public partial class AltaAP : Form
     {
+
+        List<Especialidad> especialidades;
+
         public AltaAP()
         {
             InitializeComponent();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
