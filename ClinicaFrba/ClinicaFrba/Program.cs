@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClinicaFrba.DAO;
 using System.Data.SqlClient;
+using ClinicaFrba.src;
 
 namespace ClinicaFrba
 {
@@ -19,12 +20,18 @@ namespace ClinicaFrba
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-           //Application.Run(new AbmRol.AltaModificacionRol(Accion.Alta));
-           //Application.Run(new RegistrarAgendaMedico.SeleccionarOpcionAP());
-           SqlParameter parametro = new SqlParameter("@Numero", 1);
-           var resultado = QueryAdapterMaggie.ejecutarSP("TEST.Hola123", parametro);
-           System.Console.WriteLine(resultado.Rows[0][0]);
+            //Application.Run(new AbmRol.AltaModificacionRol(Accion.Alta));
+            //Application.Run(new RegistrarAgendaMedico.SeleccionarOpcionAP());
+
+            Especialidad especialidad = new Especialidad();
+            especialidad.ID = 0;
+            Medico medico = new Medico();
+            medico.ID = 0;
+            System.Console.WriteLine(especialidad.YaTieneAgenda(medico));
+
+
+
         }
-        
+
     }
 }

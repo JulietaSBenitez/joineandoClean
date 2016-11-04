@@ -81,24 +81,6 @@
       <DependentUpon>BajaAP.cs</DependentUpon>
     </Compile>
     <Compile Include="DAO\QueryAdapterMaggie.cs" />
-    <Compile Include="PantallasPrincipales\Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PantallasPrincipales\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PantallasPrincipales\PantallaAdministrador.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PantallasPrincipales\PantallaAdministrador.Designer.cs">
-      <DependentUpon>PantallaAdministrador.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PantallasPrincipales\PantallaMedico.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PantallasPrincipales\PantallaMedico.Designer.cs">
-      <DependentUpon>PantallaMedico.cs</DependentUpon>
-    </Compile>
     <Compile Include="Registrar Agenda Medico\AltaAP.cs">
       <SubType>Form</SubType>
     </Compile>

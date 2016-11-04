@@ -7,5 +7,7 @@ namespace ClinicaFrba.src
 {
     class Medico
     {
+
+        public int ID { get; set; }
     }
 }

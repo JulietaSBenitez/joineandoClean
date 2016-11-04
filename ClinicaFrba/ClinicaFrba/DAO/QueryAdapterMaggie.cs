@@ -24,14 +24,16 @@ namespace ClinicaFrba.DAO
             return conexion;
         }
 
-        public static DataTable ejecutarSP(string nombreStoredProcedure, params SqlParameter[] parametros){
+        public static DataTable ejecutarSP(string nombreStoredProcedure, params SqlParameter[] parametros)
+        {
 
             DataTable tabla = new DataTable();
             SqlConnection conexion = QueryAdapterMaggie.conexion();
-            SqlCommand storedProcedure = new SqlCommand(nombreStoredProcedure, conexion);
+            SqlCommand storedProcedure = new SqlCommand("JOINEANDO_ANDO." + nombreStoredProcedure, conexion);
             storedProcedure.CommandType = CommandType.StoredProcedure;
 
-            if (parametros != null) {
+            if (parametros != null)
+            {
                 storedProcedure.Parameters.AddRange(parametros.ToArray());
             }
 
