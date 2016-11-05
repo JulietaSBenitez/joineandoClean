@@ -39,7 +39,7 @@ namespace ClinicaFrba.AbmRol
             int.TryParse(p, out id);
            // MessageBox.Show(p);
             label4.Text = "Modificacion Rol";
-            InitializeComponent();
+           
 
             rol = DAO.DAORoles.propiedadesRol(id);
             textBox1.Text = rol.Rows[0]["Nombre"].ToString();
@@ -47,11 +47,11 @@ namespace ClinicaFrba.AbmRol
 
             if (rol.Rows[0]["habilitado"].ToString()=="True")
             {
-                habilitado.SelectedIndex = 1;
+                habilitado.SelectedIndex = 0;
             }
             else
             {
-                habilitado.SelectedIndex = 0;
+                habilitado.SelectedIndex = 1;
             }
 
             volcarFuncionabilidades();
@@ -60,7 +60,9 @@ namespace ClinicaFrba.AbmRol
             foreach (DataRow row in funcionabilidadesHabilitadas.Rows)
             {
                 //ACA FUNCA MAL
-                checkedListFuncionalidad.SetItemChecked(int.Parse(row["Funcionabilidad_id"].ToString()), true);
+
+                checkedListFuncionalidad.SetItemChecked(checkedListFuncionalidad.FindStringExact(row["Nombre"].ToString()), true);
+              //  checkedListFuncionalidad.SetItemChecked(, true);
             }
 
 
@@ -114,11 +116,11 @@ namespace ClinicaFrba.AbmRol
 
             if (accion == Accion.Modificacion)
             {
-                DAO.DAORoles.actualizarRol(id, textBox1.Text, habilitado.SelectedItem.ToString() == "Habilitado" ? true : false, funciones);
+                DAO.DAORoles.actualizarRol(id, textBox1.Text, habilitado.SelectedItem.ToString() == "Habilitado" ? false : true, funciones);
             }
             if (accion == Accion.Alta)
             {
-                DAO.DAORoles.altaRol(textBox1.Text, habilitado.SelectedItem.ToString() == "Habilitado" ? true : false, funciones);
+                DAO.DAORoles.altaRol(textBox1.Text, habilitado.SelectedItem.ToString() == "Habilitado" ? false : true, funciones);
     
             }
             this.Close();
