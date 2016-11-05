@@ -71,7 +71,7 @@ namespace ClinicaFrba.DAO
                 parameter.Value = !habilitado;
                 parameters.Add(parameter);
 
-                SQLHelper.SQLHelper_ExecuteNonQuery("actualizar_Rol", parameters);
+                SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.actualizar_Rol", parameters);
 
                 // Como barro un map?
                 foreach (KeyValuePair<int, bool> funcionabilidad in funciones)
@@ -88,8 +88,8 @@ namespace ClinicaFrba.DAO
                     parameter.Value = funcionabilidad.Key;
                     parameters.Add(parameter);
 
-                    if (funcionabilidad.Value == true) SQLHelper.SQLHelper_ExecuteNonQuery("alta_funcionabiliad_x_rol", parameters);
-                    else SQLHelper.SQLHelper_ExecuteNonQuery("baja_funcionablilida_x_rol", parameters);
+                    if (funcionabilidad.Value == true) SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.alta_funcionabiliad_x_rol", parameters);
+                    else SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.baja_funcionablilida_x_rol", parameters);
 
                 }
 
@@ -138,7 +138,7 @@ namespace ClinicaFrba.DAO
                 parameters.Add(parameter);
                 int id;
 
-                id = int.Parse((SQLHelper.SQLHelper_ExecuteScalar("alta_rol", parameters)).ToString());
+                id = int.Parse((SQLHelper.SQLHelper_ExecuteScalar("JOINEANDO_ANDO.alta_Rol", parameters)).ToString());
 
                 // Como barro un map?
                 foreach (KeyValuePair<int, bool> funcionabilidad in funciones)
@@ -155,8 +155,8 @@ namespace ClinicaFrba.DAO
                     parameter.Value = funcionabilidad.Key;
                     parameters.Add(parameter);
 
-                    if (funcionabilidad.Value == true) SQLHelper.SQLHelper_ExecuteNonQuery("alta_funcionabiliad_x_rol", parameters);
-                    else SQLHelper.SQLHelper_ExecuteNonQuery("baja_funcionablilida_x_rol", parameters);
+                    if (funcionabilidad.Value == true) SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.alta_funcionabiliad_x_rol", parameters);
+                    else SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.baja_funcionablilida_x_rol", parameters);
 
                 }
 
@@ -201,7 +201,7 @@ namespace ClinicaFrba.DAO
 
             try
             {
-                data = SQLHelper.SQLHelper_ExecuteReader("Seleccionar_Propiedades_Rol", parameters);
+                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.Seleccionar_Propiedades_Rol", parameters);
 
                 return data;
             }
@@ -238,7 +238,7 @@ namespace ClinicaFrba.DAO
 
             try
             {
-                SQLHelper.SQLHelper_ExecuteNonQuery("inHabilitar_Rol", parameters);
+                SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.inHabilitar_Rol", parameters);
                 SQLHelper.CommitTransction();
 
             }
@@ -302,7 +302,7 @@ namespace ClinicaFrba.DAO
 
             try
             {
-                data = SQLHelper.SQLHelper_ExecuteReader("seleccionar_funcionabilidades");
+                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.seleccionar_funcionabilidades");
                 return data;
             }
             catch (Exception ex)
@@ -371,7 +371,7 @@ namespace ClinicaFrba.DAO
 
             try
             {
-                data = SQLHelper.SQLHelper_ExecuteReader("filtro_rol", parameters);
+                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.filtro_rol", parameters);
 
                 return data;
             }
