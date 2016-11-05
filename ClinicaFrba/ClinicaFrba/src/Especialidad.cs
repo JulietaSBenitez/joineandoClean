@@ -9,10 +9,11 @@ using System.Data;
 
 namespace ClinicaFrba.src
 {
-    class Especialidad
+    public class Especialidad
     {
 
         public int ID { get; set; }
+        public String Nombre { get; set; }
 
         public Boolean YaTieneAgenda(Medico medico)
         {

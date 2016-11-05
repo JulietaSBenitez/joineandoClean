@@ -7,25 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicaFrba.src;
 
 namespace ClinicaFrba.RegistrarAgendaMedico
 {
     public partial class SeleccionarOpcionAP : Form
     {
-        public SeleccionarOpcionAP()
+
+        public Medico ModelObject { get; set; }
+
+        public SeleccionarOpcionAP(Medico medico)
         {
             InitializeComponent();
+            ModelObject = medico;
         }
 
         private void SeleccionarOpcionAP_Load(object sender, EventArgs e)
         {
-
         }
 
-        private void AgregarAgendaImagen_Click(object sender, EventArgs e)
+        public void AgregarAgendaImagen_Click(object sender, EventArgs e)
         {
-            Form altaAgendaProfesional = new AltaAP();
-            altaAgendaProfesional.ShowDialog();
+           Form altaAgendaProfesional = new AltaAP(ModelObject);
+           altaAgendaProfesional.ShowDialog();
         }
     }
 }

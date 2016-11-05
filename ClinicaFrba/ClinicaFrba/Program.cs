@@ -19,15 +19,8 @@ namespace ClinicaFrba
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            //Application.Run(new AbmRol.AltaModificacionRol(Accion.Alta));
-            //Application.Run(new RegistrarAgendaMedico.SeleccionarOpcionAP());
-
-            Especialidad especialidad = new Especialidad();
-            especialidad.ID = 0;
-            Medico medico = new Medico();
-            medico.ID = 0;
-            System.Console.WriteLine(especialidad.YaTieneAgenda(medico));
+            Medico jorge = new Medico { Especialidades = new List<Especialidad> { new Especialidad { Nombre = "Cirujano" } } };
+            Application.Run(new RegistrarAgendaMedico.SeleccionarOpcionAP(jorge));
 
 
 
