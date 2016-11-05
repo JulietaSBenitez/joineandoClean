@@ -31,9 +31,14 @@ GO
 		IF OBJECT_ID('JOINEANDO_ANDO.inHabilitar_Rol') IS NOT NULL
 	DROP PROCEDURE JOINEANDO_ANDO.inHabilitar_Rol
 
-	
+
 		IF OBJECT_ID('JOINEANDO_ANDO.filtro_rol') IS NOT NULL
 	DROP PROCEDURE JOINEANDO_ANDO.filtro_rol
+
+
+
+		IF OBJECT_ID('JOINEANDO_ANDO.listarRoles') IS NOT NULL
+	DROP PROCEDURE 	JOINEANDO_ANDO.listarRoles
 
 GO
 
@@ -87,6 +92,15 @@ CREATE procedure JOINEANDO_ANDO.Seleccionar_Propiedades_Rol
 As
 	Begin
 		Select * From [Rol] where Rol_id = @id
+	End
+
+
+GO
+CREATE procedure JOINEANDO_ANDO.listarRoles
+
+As
+	Begin
+		Select * From [Rol]
 	End
 
 
@@ -164,12 +178,13 @@ GO
 -- Stored Procedure
 CREATE PROCEDURE JOINEANDO_ANDO.validar_usuario
 @UserId nvarchar(50),
-@Pas nvarchar(50)
+@Pas varchar(50)
 
 AS
 BEGIN
 
-IF Exists (Select 1 from JOINEANDO_ANDO.Usuarios where Nombre_Usuario = @UserId and [contrasena] = @Pas and Habilitado = 1)
+
+IF Exists (Select 1 from JOINEANDO_ANDO.Usuarios where Nombre_Usuario = @UserId and [contrasena] = HASHBYTES('SHA2_256',@Pas) and Habilitado = 1)
 	BEGIN
 		select 'Ingreso OK' resultado, Usuario_id from JOINEANDO_ANDO.Usuarios where Nombre_Usuario = @UserId
 	END
@@ -232,11 +247,11 @@ SELECT
 	,'asd'
 	,'4/4/1988'
 	,NULL
-	,'nicogon'
-	,'1234'
+	,'admin'
+	,HASHBYTES('SHA2_256','w23e')
 	,1
 	,0
-	WHERE NOT EXISTs (SELECT * FROM JOINEANDO_ANDO.Usuarios WHERE Nombre_Usuario='nicogon')
+	WHERE NOT EXISTs (SELECT * FROM JOINEANDO_ANDO.Usuarios WHERE Nombre_Usuario='admin')
 
 
 
@@ -248,11 +263,11 @@ INSERT INTO [JOINEANDO_ANDO].Rol Select 'RolGroso',1  WHERE NOT EXISTS ( SELECT 
 INSERT INTO [JOINEANDO_ANDO].Rol Select 'RolPobre',1  WHERE NOT EXISTS ( SELECT * FROM [JOINEANDO_ANDO].Rol WHERE Nombre='RolPobre')
 
 
-INSERT INTO [JOINEANDO_ANDO].Usuario_Rol Select (SELECT top 1 Usuario_id FROM JOINEANDO_ANDO.Usuarios WHERE Nombre_Usuario='nicogon' ),(SELECT top 1 Rol_id FROM JOINEANDO_ANDO.Rol Where Nombre='RolGroso')  WHERE NOT EXISTS ( SELECT top 1 * FROM [JOINEANDO_ANDO].Usuario_Rol WHERE Usuario_id=(SELECT top 1 Usuario_id FROM JOINEANDO_ANDO.Usuarios WHERE Nombre_Usuario='nicogon' ) AND Rol_id=(SELECT top 1 Rol_id FROM JOINEANDO_ANDO.Rol Where Nombre='RolGroso'))
+INSERT INTO [JOINEANDO_ANDO].Usuario_Rol Select (SELECT top 1 Usuario_id FROM JOINEANDO_ANDO.Usuarios WHERE Nombre_Usuario='admin' ),(SELECT top 1 Rol_id FROM JOINEANDO_ANDO.Rol Where Nombre='RolGroso')  WHERE NOT EXISTS ( SELECT top 1 * FROM [JOINEANDO_ANDO].Usuario_Rol WHERE Usuario_id=(SELECT top 1 Usuario_id FROM JOINEANDO_ANDO.Usuarios WHERE Nombre_Usuario='admin' ) AND Rol_id=(SELECT top 1 Rol_id FROM JOINEANDO_ANDO.Rol Where Nombre='RolGroso'))
 
 
 
-INSERT INTO [JOINEANDO_ANDO].Usuario_Rol Select (SELECT top 1 Usuario_id FROM JOINEANDO_ANDO.Usuarios WHERE Nombre_Usuario='nicogon' ),(SELECT top 1 Rol_id FROM JOINEANDO_ANDO.Rol Where Nombre='RolPobre')  WHERE NOT EXISTS ( SELECT top 1 * FROM [JOINEANDO_ANDO].Usuario_Rol WHERE Usuario_id=(SELECT top 1 Usuario_id FROM JOINEANDO_ANDO.Usuarios WHERE Nombre_Usuario='nicogon' ) AND Rol_id=(SELECT top 1 Rol_id FROM JOINEANDO_ANDO.Rol Where Nombre='RolPobre'))
+INSERT INTO [JOINEANDO_ANDO].Usuario_Rol Select (SELECT top 1 Usuario_id FROM JOINEANDO_ANDO.Usuarios WHERE Nombre_Usuario='admin' ),(SELECT top 1 Rol_id FROM JOINEANDO_ANDO.Rol Where Nombre='RolPobre')  WHERE NOT EXISTS ( SELECT top 1 * FROM [JOINEANDO_ANDO].Usuario_Rol WHERE Usuario_id=(SELECT top 1 Usuario_id FROM JOINEANDO_ANDO.Usuarios WHERE Nombre_Usuario='admin' ) AND Rol_id=(SELECT top 1 Rol_id FROM JOINEANDO_ANDO.Rol Where Nombre='RolPobre'))
 
 
 

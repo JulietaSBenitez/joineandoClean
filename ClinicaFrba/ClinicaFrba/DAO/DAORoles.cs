@@ -24,7 +24,7 @@ namespace ClinicaFrba.DAO
 
             try
             {
-                data = SQLHelper.SQLHelper_ExecuteReader("listarRoles");
+                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.listarRoles");
                 return data;
             }
             catch (Exception ex)

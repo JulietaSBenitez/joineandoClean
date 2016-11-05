@@ -32,6 +32,8 @@ namespace ClinicaFrba.AbmRol
         public AltaModificacionRol(Accion accionparametro,String p)
         {
 
+            InitializeComponent();
+
             accion = accionparametro;
             // TODO: Complete member inialization
             int.TryParse(p, out id);
@@ -43,7 +45,7 @@ namespace ClinicaFrba.AbmRol
             textBox1.Text = rol.Rows[0]["Nombre"].ToString();
 
 
-            if (rol.Rows[0]["Inhabilitado"].ToString()=="True")
+            if (rol.Rows[0]["habilitado"].ToString()=="True")
             {
                 habilitado.SelectedIndex = 1;
             }
@@ -57,8 +59,8 @@ namespace ClinicaFrba.AbmRol
             funcionabilidadesHabilitadas = DAO.DAORoles.funcionabilidadesHabilitadasXRol(id);
             foreach (DataRow row in funcionabilidadesHabilitadas.Rows)
             {
-
-                checkedListFuncionalidad.SetItemChecked(int.Parse(row["Funcionabilidad_id"].ToString())-1, true);
+                //ACA FUNCA MAL
+                checkedListFuncionalidad.SetItemChecked(int.Parse(row["Funcionabilidad_id"].ToString()), true);
             }
 
 

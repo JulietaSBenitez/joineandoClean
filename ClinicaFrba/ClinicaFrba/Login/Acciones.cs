@@ -46,6 +46,13 @@ namespace ClinicaFrba.Login
                 case "Crear Rol":
                     new AbmRol.AltaModificacionRol(Accion.Alta).ShowDialog();
                     break;
+                case "Eliminar Rol":
+                    new AbmRol.ListadoRoles(Accion.Baja).ShowDialog();
+                    break;
+                case "Modificar Rol":
+                    new AbmRol.ListadoRoles(Accion.Modificacion).ShowDialog();
+                    break;
+                    
 
 
             
