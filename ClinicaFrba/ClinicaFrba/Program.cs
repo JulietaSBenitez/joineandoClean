@@ -19,9 +19,15 @@ namespace ClinicaFrba
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            Application.Run(new Login.Login());
+            
+            /*
+            
+            
             Medico jorge = new Medico { Especialidades = new List<Especialidad> { new Especialidad { Nombre = "Cirujano" } } };
             Application.Run(new RegistrarAgendaMedico.SeleccionarOpcionAP(jorge));
-
+*/
 
 
         }

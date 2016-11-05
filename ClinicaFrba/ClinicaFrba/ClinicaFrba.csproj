@@ -80,7 +80,20 @@
     <Compile Include="Abm Profesional\BajaAP.Designer.cs">
       <DependentUpon>BajaAP.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\DAOLogin.cs" />
     <Compile Include="DAO\QueryAdapterMaggie.cs" />
+    <Compile Include="Login\Acciones.cs" />
+    <Compile Include="Login\Acciones.Designer.cs">
+      <DependentUpon>Acciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Login.cs" />
+    <Compile Include="Login\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\SeleccionarRol.cs" />
+    <Compile Include="Login\SeleccionarRol.Designer.cs">
+      <DependentUpon>SeleccionarRol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registrar Agenda Medico\AltaAP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +181,15 @@
     <EmbeddedResource Include="Abm Planes\Planes.resx">
       <DependentUpon>Planes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login\Acciones.resx">
+      <DependentUpon>Acciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\SeleccionarRol.resx">
+      <DependentUpon>SeleccionarRol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Registrar Agenda Medico\AltaAP.resx">
       <DependentUpon>AltaAP.cs</DependentUpon>
     </EmbeddedResource>
@@ -217,7 +239,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
