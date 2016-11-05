@@ -35,5 +35,7 @@ namespace ClinicaFrba.Properties {
                 this["conector"] = value;
             }
         }
+
+        public string GD2C2016ConnectionString { get; set; }
     }
 }

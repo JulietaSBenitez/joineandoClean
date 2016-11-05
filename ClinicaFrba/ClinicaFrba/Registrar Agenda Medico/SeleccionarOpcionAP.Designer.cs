@@ -1,6 +1,6 @@
-﻿namespace ClinicaFrba.Abm_Profesional
+﻿namespace ClinicaFrba.RegistrarAgendaMedico
 {
-    partial class Form1
+    partial class SeleccionarOpcionAP
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeleccionarOpcionAP));
             this.label1 = new System.Windows.Forms.Label();
             this.VolverAgendaBoton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -36,11 +36,12 @@
             this.ModificarAgendaLabel = new System.Windows.Forms.Label();
             this.SeleccionarOpcionAgendaLabel = new System.Windows.Forms.Label();
             this.AgregarAgendaImagen = new System.Windows.Forms.PictureBox();
-            this.EliminarAgendaImagen = new System.Windows.Forms.PictureBox();
             this.ModificarAgendaImagen = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AgregarAgendaImagen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EliminarAgendaImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ModificarAgendaImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -57,7 +58,7 @@
             // VolverAgendaBoton
             // 
             this.VolverAgendaBoton.BackColor = System.Drawing.Color.IndianRed;
-            this.VolverAgendaBoton.Location = new System.Drawing.Point(602, 308);
+            this.VolverAgendaBoton.Location = new System.Drawing.Point(624, 303);
             this.VolverAgendaBoton.Name = "VolverAgendaBoton";
             this.VolverAgendaBoton.Size = new System.Drawing.Size(85, 34);
             this.VolverAgendaBoton.TabIndex = 17;
@@ -76,7 +77,7 @@
             // EliminarAgendaLabel
             // 
             this.EliminarAgendaLabel.AutoSize = true;
-            this.EliminarAgendaLabel.Location = new System.Drawing.Point(283, 221);
+            this.EliminarAgendaLabel.Location = new System.Drawing.Point(288, 221);
             this.EliminarAgendaLabel.Name = "EliminarAgendaLabel";
             this.EliminarAgendaLabel.Size = new System.Drawing.Size(138, 13);
             this.EliminarAgendaLabel.TabIndex = 15;
@@ -109,15 +110,7 @@
             this.AgregarAgendaImagen.Size = new System.Drawing.Size(161, 156);
             this.AgregarAgendaImagen.TabIndex = 12;
             this.AgregarAgendaImagen.TabStop = false;
-            // 
-            // EliminarAgendaImagen
-            // 
-            this.EliminarAgendaImagen.Image = ((System.Drawing.Image)(resources.GetObject("EliminarAgendaImagen.Image")));
-            this.EliminarAgendaImagen.Location = new System.Drawing.Point(269, 78);
-            this.EliminarAgendaImagen.Name = "EliminarAgendaImagen";
-            this.EliminarAgendaImagen.Size = new System.Drawing.Size(161, 156);
-            this.EliminarAgendaImagen.TabIndex = 11;
-            this.EliminarAgendaImagen.TabStop = false;
+            this.AgregarAgendaImagen.Click += new System.EventHandler(this.AgregarAgendaImagen_Click);
             // 
             // ModificarAgendaImagen
             // 
@@ -128,11 +121,32 @@
             this.ModificarAgendaImagen.TabIndex = 10;
             this.ModificarAgendaImagen.TabStop = false;
             // 
-            // Form1
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(274, 78);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(161, 156);
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(271, 237);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(169, 13);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Funcionalidad No Disponible";
+            // 
+            // SeleccionarOpcionAP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 349);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.VolverAgendaBoton);
             this.Controls.Add(this.label4);
@@ -140,14 +154,15 @@
             this.Controls.Add(this.ModificarAgendaLabel);
             this.Controls.Add(this.SeleccionarOpcionAgendaLabel);
             this.Controls.Add(this.AgregarAgendaImagen);
-            this.Controls.Add(this.EliminarAgendaImagen);
             this.Controls.Add(this.ModificarAgendaImagen);
+            this.Controls.Add(this.pictureBox1);
             this.MaximizeBox = false;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "SeleccionarOpcionAP";
+            this.Text = "Seleccionar Opcion Agenda Profesional";
+            this.Load += new System.EventHandler(this.SeleccionarOpcionAP_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AgregarAgendaImagen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EliminarAgendaImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ModificarAgendaImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,7 +177,8 @@
         private System.Windows.Forms.Label ModificarAgendaLabel;
         private System.Windows.Forms.Label SeleccionarOpcionAgendaLabel;
         private System.Windows.Forms.PictureBox AgregarAgendaImagen;
-        private System.Windows.Forms.PictureBox EliminarAgendaImagen;
         private System.Windows.Forms.PictureBox ModificarAgendaImagen;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label2;
     }
 }

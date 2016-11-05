@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicaFrba.DAO;
+using System.Data.SqlClient;
+using ClinicaFrba.src;
 
 namespace ClinicaFrba
 {
@@ -16,9 +19,12 @@ namespace ClinicaFrba
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Medico jorge = new Medico { Especialidades = new List<Especialidad> { new Especialidad { Nombre = "Cirujano" } } };
+            Application.Run(new RegistrarAgendaMedico.SeleccionarOpcionAP(jorge));
 
-           // Application.Run(new AbmRol.AltaModificacionRol(Accion.Alta));
-           Application.Run(new AbmRol.ListadoRoles(Accion.Baja));
+
+
         }
+
     }
 }
