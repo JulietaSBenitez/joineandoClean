@@ -21,5 +21,33 @@ namespace ClinicaFrba.Login
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int resultado;
+
+            resultado  = DAO.DAOLogin.login(textBox1.Text, textBox2.Text);
+
+            if (resultado > 0)
+            {
+                this.Hide();
+                new SeleccionarRol(resultado).ShowDialog();
+            }
+
+            if (resultado == 0)
+            {
+                MessageBox.Show("Usuario o contrasena invalida", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+       
+            }
+
+            if (resultado == -1)
+            {
+                MessageBox.Show("Usuario Bloqueado", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
+
+           
+        }
     }
 }

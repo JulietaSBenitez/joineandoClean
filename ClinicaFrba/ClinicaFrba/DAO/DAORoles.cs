@@ -10,11 +10,12 @@ namespace ClinicaFrba.DAO
 {
     class DAORoles
     {
-       // private List<SqlParameter> parameters = null;
+        // private List<SqlParameter> parameters = null;
         //private SqlParameter parameter = null;
         private bool result = false;
 
-        public static DataTable listarRoles() {
+        public static DataTable listarRoles()
+        {
 
 
             DataTable data = new DataTable();
@@ -39,13 +40,14 @@ namespace ClinicaFrba.DAO
 
             //datosqlconect conecta
             //sqlcoecto execprdatatablwe pr listarRoles
-           // return new DataTable();
+            // return new DataTable();
 
-        
+
         }
 
 
-        public static void actualizarRol(int id, string nombre, bool habilitado, Dictionary<int, Boolean> funciones) {
+        public static void actualizarRol(int id, string nombre, bool habilitado, Dictionary<int, Boolean> funciones)
+        {
 
 
             SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
@@ -71,8 +73,9 @@ namespace ClinicaFrba.DAO
 
                 SQLHelper.SQLHelper_ExecuteNonQuery("actualizar_Rol", parameters);
 
-               // Como barro un map?
-               foreach(KeyValuePair<int,bool> funcionabilidad in funciones){
+                // Como barro un map?
+                foreach (KeyValuePair<int, bool> funcionabilidad in funciones)
+                {
 
 
                     parameters.Clear();
@@ -91,8 +94,8 @@ namespace ClinicaFrba.DAO
                 }
 
 
-              
-       
+
+
             }
             catch (Exception ex)
             {
@@ -106,7 +109,7 @@ namespace ClinicaFrba.DAO
             }
 
 
-        
+
         }
 
 
@@ -124,7 +127,7 @@ namespace ClinicaFrba.DAO
             try
             {
 
-          
+
 
                 parameter = new SqlParameter("@nombre", SqlDbType.NVarChar, 50);
                 parameter.Value = nombre;
@@ -134,8 +137,8 @@ namespace ClinicaFrba.DAO
                 parameter.Value = !habilitado;
                 parameters.Add(parameter);
                 int id;
-                
-                id= int.Parse((SQLHelper.SQLHelper_ExecuteScalar("alta_rol", parameters)).ToString());
+
+                id = int.Parse((SQLHelper.SQLHelper_ExecuteScalar("alta_rol", parameters)).ToString());
 
                 // Como barro un map?
                 foreach (KeyValuePair<int, bool> funcionabilidad in funciones)
@@ -235,9 +238,9 @@ namespace ClinicaFrba.DAO
 
             try
             {
-               SQLHelper.SQLHelper_ExecuteNonQuery("inHabilitar_Rol", parameters);
-               SQLHelper.CommitTransction();
-               
+                SQLHelper.SQLHelper_ExecuteNonQuery("inHabilitar_Rol", parameters);
+                SQLHelper.CommitTransction();
+
             }
             catch (Exception ex)
             {
@@ -252,7 +255,8 @@ namespace ClinicaFrba.DAO
         }
 
 
-        public static DataTable funcionabilidadesHabilitadasXRol(int id) {
+        public static DataTable funcionabilidadesHabilitadasXRol(int id)
+        {
 
 
             DataTable data = new DataTable();
@@ -264,14 +268,14 @@ namespace ClinicaFrba.DAO
             parameter = new SqlParameter("@id", SqlDbType.Int);
             parameter.Value = id;
 
-           
+
             parameters.Add(parameter);
 
 
-            
+
             try
             {
-                data = SQLHelper.SQLHelper_ExecuteReader("Seleccionar_Funcionabilidades_x_Rol", parameters);
+                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.Seleccionar_Funcionabilidades_x_Rol", parameters);
 
                 return data;
             }
@@ -284,10 +288,10 @@ namespace ClinicaFrba.DAO
             {
                 SQLHelper.ClearObjects();
             }
-        
+
         }
-  
-        
+
+
         public static DataTable listarFuncionalidades()
         {
 
@@ -327,8 +331,8 @@ namespace ClinicaFrba.DAO
             DataTable data = new DataTable();
             SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
             SQLHelper.CreateObjects(true);
-            
-           
+
+
 
 
             List<SqlParameter> parameters = new List<SqlParameter>();
@@ -339,7 +343,7 @@ namespace ClinicaFrba.DAO
 
             if (funcionabilidad != -1)
             {
-                Console.WriteLine("funcion"+funcionabilidad);
+                Console.WriteLine("funcion" + funcionabilidad);
                 parameter = new SqlParameter("@idfuncionabilidad", SqlDbType.Int);
                 parameter.Value = funcionabilidad;
                 parameters.Add(parameter);
@@ -357,7 +361,7 @@ namespace ClinicaFrba.DAO
             {
                 parameter = new SqlParameter("@habilitado", SqlDbType.Bit);
                 parameter.Value = 0;
-               parameters.Add(parameter);
+                parameters.Add(parameter);
             }
 
 
@@ -367,8 +371,8 @@ namespace ClinicaFrba.DAO
 
             try
             {
-                data = SQLHelper.SQLHelper_ExecuteReader("filtro_rol",parameters);
-               
+                data = SQLHelper.SQLHelper_ExecuteReader("filtro_rol", parameters);
+
                 return data;
             }
             catch (Exception ex)
@@ -378,7 +382,7 @@ namespace ClinicaFrba.DAO
             }
             finally
             {
-               SQLHelper.ClearObjects();
+                SQLHelper.ClearObjects();
             }
 
 

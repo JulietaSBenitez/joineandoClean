@@ -82,6 +82,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Acciones";
             this.Text = "Seleccionar Accion";
+            this.Load += new System.EventHandler(this.Acciones_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -43,6 +43,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -51,6 +52,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(193, 26);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "nicogon";
             // 
             // textBox2
             // 
@@ -59,6 +61,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(193, 26);
             this.textBox2.TabIndex = 2;
+            this.textBox2.Text = "1234";
             // 
             // label1
             // 

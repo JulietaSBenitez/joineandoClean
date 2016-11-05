@@ -12,9 +12,32 @@ namespace ClinicaFrba.Login
 {
     public partial class Acciones : Form
     {
+        DataTable funcionabilidades;
         public Acciones()
         {
             InitializeComponent();
+        }
+
+        public Acciones(int rol_id )
+        {
+            InitializeComponent();
+            funcionabilidades= DAO.DAORoles.funcionabilidadesHabilitadasXRol(rol_id);
+
+                foreach (DataRow row in funcionabilidades.Rows)
+            {
+
+                comboBox1.Items.Add(row["Nombre"].ToString());
+                comboBox1.SelectedIndex = 0;
+                    
+                 
+            }
+
+        }
+
+
+        private void Acciones_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
