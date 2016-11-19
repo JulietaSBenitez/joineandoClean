@@ -61,7 +61,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             }
         }
 
-        private void CargarTodosLosComboBoxInicio2( ) {
+        private void CargarTodosLosComboBoxInicio( ) {
 
             // Acá quiero hacer algo asi: 
             //comboBoxListInicio.forEach[unComboBox | CargarComboBoxRangoInicio(unComboBox, 7, 20)]
