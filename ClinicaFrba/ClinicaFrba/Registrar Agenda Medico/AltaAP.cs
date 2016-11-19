@@ -14,9 +14,9 @@ namespace ClinicaFrba.RegistrarAgendaMedico
     public partial class AltaAP : Form
     {
 
-            List<ComboBox> comboBoxListInicio = new List<ComboBox>();
-            List<ComboBox> comboBoxListFin = new List<ComboBox>();
-            List<CheckBox> checkBoxDias = new List<CheckBox>();
+        List<ComboBox> comboBoxListInicio = new List<ComboBox>();
+        List<ComboBox> comboBoxListFin = new List<ComboBox>();
+        List<CheckBox> checkBoxDias = new List<CheckBox>();
 
 
         public AltaAP(Medico medico)
@@ -169,10 +169,18 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             else
             {
                 //if (checkBoxDias.All<Checked == false>)
-
+                if (LunesAgendaCB.Checked == false &&
+                    MartesAgendaCB.Checked == false &&
+                    MiercolesAgendaCB.Checked == false &&
+                    JuevesAgendaCB.Checked == false &&
+                    ViernesAgendaCB.Checked == false &&
+                    SabadoAgendaCB.Checked == false)
                 {
+
                     MessageBox.Show("Seleccione uno o más días para poder continuar.");
                 }
+
+
 
                 //validarQueNoExistanOtrasAgendasEnEseHorario.
                 //ValidarQueNoSeTrabajeMasDe48HorasSemanales.
