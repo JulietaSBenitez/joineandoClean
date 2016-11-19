@@ -14,13 +14,16 @@ namespace ClinicaFrba.RegistrarAgendaMedico
     public partial class AltaAP : Form
     {
 
+            List<ComboBox> comboBoxListInicio = new List<ComboBox>();
+            List<ComboBox> comboBoxListFin = new List<ComboBox>();
+            List<CheckBox> checkBoxDias = new List<CheckBox>();
+
+
         public AltaAP(Medico medico)
         {
             InitializeComponent();
             comboBox1.DataSource = medico.EspecialidadesSinAgenda();
             comboBox1.DisplayMember = "Nombre";
-            List<ComboBox> comboBoxListInicio = new List<ComboBox>();
-            List<ComboBox> comboBoxListFin = new List<ComboBox>();
             comboBoxListInicio.Add(comboBoxInicioLunes);
             comboBoxListInicio.Add(comboBoxInicioMartes);
             comboBoxListInicio.Add(comboBoxInicioMiercoles);
@@ -31,6 +34,12 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             comboBoxListFin.Add(comboBoxFinMiercoles);
             comboBoxListFin.Add(comboBoxFinJueves);
             comboBoxListFin.Add(comboBoxFinViernes);
+            checkBoxDias.Add(LunesAgendaCB);
+            checkBoxDias.Add(MartesAgendaCB);
+            checkBoxDias.Add(MiercolesAgendaCB);
+            checkBoxDias.Add(JuevesAgendaCB);
+            checkBoxDias.Add(ViernesAgendaCB);
+            checkBoxDias.Add(SabadoAgendaCB);
 
         }
 
@@ -38,13 +47,13 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         private void CargarComboBoxRangoInicio(ComboBox comboBox, int horaInicio, int horaFin)
         {
             DateTime time;
-            for ( int i = horaInicio; i <= horaFin; i++ )
+            for (int i = horaInicio; i <= horaFin; i++)
             {
                 time = new DateTime(1, 1, 1, i, 0, 0, 0);
                 comboBox.Items.Add(time.ToString("HH:mm"));
                 time = new DateTime(1, 1, 1, i, 30, 0, 0);
                 comboBox.Items.Add(time.ToString("HH:mm"));
-   
+
             }
         }
 
@@ -61,10 +70,10 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             }
         }
 
-        private void CargarTodosLosComboBoxInicio( ) {
+        private void CargarTodosLosComboBoxInicio()
+        {
 
-            // Acá quiero hacer algo asi: 
-            //comboBoxListInicio.forEach[unComboBox | CargarComboBoxRangoInicio(unComboBox, 7, 20)]
+            //comboBoxListFin.ForEach(CargarComboBoxRangoInicio(comboBox, 7, 20));
 
             CargarComboBoxRangoFin(comboBoxInicioSabado, 10, 15);
 
@@ -76,13 +85,12 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             comboBoxInicioSabado.Enabled = false;
         }
 
-        private void CargarTodosLosComboBoxFin(){
+        private void CargarTodosLosComboBoxFin()
+        {
 
-            // Acá quiero hacer algo asi: 
-            //comboBoxListFin.forEach[unComboBox | unComboBox.CargarComboBoxRangoFin(unComboBox, 7, 20)]
-
+            //comboBoxListFin.ForEach(CargarComboBoxRangoFin(comboBox, 7, 20));
             CargarComboBoxRangoFin(comboBoxFinSabado, 10, 15);
-            
+
             comboBoxFinLunes.Enabled = false;
             comboBoxFinMartes.Enabled = false;
             comboBoxFinMiercoles.Enabled = false;
@@ -152,14 +160,28 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
-            //validarQueNoExistanOtrasAgendasEnEseHorario.
-            //ValidarQueNoSeTrabajeMasDe48HorasSemanales.
-        }
+            if (comboBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Seleccione una especialidad para poder continuar");
+            }
+            else
+            {
+                //if (checkBoxDias.All<Checked == false>)
+
+                {
+                    MessageBox.Show("Seleccione uno o más días para poder continuar.");
+                }
+
+                //validarQueNoExistanOtrasAgendasEnEseHorario.
+                //ValidarQueNoSeTrabajeMasDe48HorasSemanales.
+                //Validar que Inicio no sea después de fin
+                //Validar que no deje ningun checkbox sin llenar
+            }
 
 
 
         }
-
-        }
+    }
+}
