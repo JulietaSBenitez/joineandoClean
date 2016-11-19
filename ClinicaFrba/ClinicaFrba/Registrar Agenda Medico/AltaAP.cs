@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClinicaFrba.src;
-using System.Globalization;
 
 namespace ClinicaFrba.RegistrarAgendaMedico
 {
@@ -97,9 +96,64 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             this.Close();
         }
 
+        private void LunesAgendaCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (LunesAgendaCB.Checked == true)
+            {
+                comboBoxInicioLunes.Enabled = true;
+                comboBoxFinLunes.Enabled = true;
+            }
+        }
+
+        private void MartesAgendaCB_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (MartesAgendaCB.Checked == true)
+            {
+                comboBoxInicioMartes.Enabled = true;
+                comboBoxFinMartes.Enabled = true;
+            }
+
+        }
+
+        private void MiercolesAgendaCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (MiercolesAgendaCB.Checked == true)
+            {
+                comboBoxInicioMiercoles.Enabled = true;
+                comboBoxFinMiercoles.Enabled = true;
+            }
+        }
+
+        private void JuevesAgendaCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (JuevesAgendaCB.Checked == true)
+            {
+                comboBoxInicioJueves.Enabled = true;
+                comboBoxFinJueves.Enabled = true;
+            }
+        }
+
+        private void ViernesAgendaCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ViernesAgendaCB.Checked == true)
+            {
+                comboBoxInicioViernes.Enabled = true;
+                comboBoxFinViernes.Enabled = true;
+            }
+        }
+
+        private void SabadoAgendaCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SabadoAgendaCB.Checked == true)
+            {
+                comboBoxInicioSabado.Enabled = true;
+                comboBoxFinSabado.Enabled = true;
+            }
+        }
+
+
 
         }
 
         }
-
-    }
