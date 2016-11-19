@@ -76,7 +76,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             comboBoxInicioSabado.Enabled = false;
         }
 
-        private void CargarTodosLosComboBoxInicio(){
+        private void CargarTodosLosComboBoxFin(){
 
             // Acá quiero hacer algo asi: 
             //comboBoxListFin.forEach[unComboBox | unComboBox.CargarComboBoxRangoFin(unComboBox, 7, 20)]
@@ -150,6 +150,12 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 comboBoxInicioSabado.Enabled = true;
                 comboBoxFinSabado.Enabled = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //validarQueNoExistanOtrasAgendasEnEseHorario.
+            //ValidarQueNoSeTrabajeMasDe48HorasSemanales.
         }
 
 
