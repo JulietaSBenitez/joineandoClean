@@ -44,18 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abm Afiliado\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Abm Afiliado\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Abm Afiliado\Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Abm Afiliado\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Abm Especialidades Medicas\EspecialidadesMedicas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,12 +177,6 @@
     <Compile Include="src\Dia.cs" />
     <Compile Include="src\Especialidad.cs" />
     <Compile Include="src\Medico.cs" />
-    <EmbeddedResource Include="Abm Afiliado\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Abm Afiliado\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Abm Especialidades Medicas\EspecialidadesMedicas.resx">
       <DependentUpon>EspecialidadesMedicas.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +242,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Abm Afiliado\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
