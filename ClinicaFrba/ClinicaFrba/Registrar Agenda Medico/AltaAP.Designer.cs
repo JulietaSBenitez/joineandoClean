@@ -33,12 +33,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.SabadoAgendaCB = new System.Windows.Forms.CheckBox();
-            this.ViernesAgendaCB = new System.Windows.Forms.CheckBox();
-            this.JuevesAgendaCB = new System.Windows.Forms.CheckBox();
-            this.MiercolesAgendaCB = new System.Windows.Forms.CheckBox();
-            this.MartesAgendaCB = new System.Windows.Forms.CheckBox();
-            this.LunesAgendaCB = new System.Windows.Forms.CheckBox();
+            this.sabadoAgendaCB = new System.Windows.Forms.CheckBox();
+            this.viernesAgendaCB = new System.Windows.Forms.CheckBox();
+            this.juevesAgendaCB = new System.Windows.Forms.CheckBox();
+            this.miercolesAgendaCB = new System.Windows.Forms.CheckBox();
+            this.martesAgendaCB = new System.Windows.Forms.CheckBox();
+            this.lunesAgendaCB = new System.Windows.Forms.CheckBox();
             this.comboBoxFinSabado = new System.Windows.Forms.ComboBox();
             this.comboBoxInicioSabado = new System.Windows.Forms.ComboBox();
             this.comboBoxInicioViernes = new System.Windows.Forms.ComboBox();
@@ -52,7 +52,7 @@
             this.comboBoxFinMiercoles = new System.Windows.Forms.ComboBox();
             this.comboBoxInicioLunes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.especialidadesAgendaCB = new System.Windows.Forms.ComboBox();
             this.EspecialidadLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,12 +67,12 @@
             this.asd.Controls.Add(this.button1);
             this.asd.Controls.Add(this.label3);
             this.asd.Controls.Add(this.label2);
-            this.asd.Controls.Add(this.SabadoAgendaCB);
-            this.asd.Controls.Add(this.ViernesAgendaCB);
-            this.asd.Controls.Add(this.JuevesAgendaCB);
-            this.asd.Controls.Add(this.MiercolesAgendaCB);
-            this.asd.Controls.Add(this.MartesAgendaCB);
-            this.asd.Controls.Add(this.LunesAgendaCB);
+            this.asd.Controls.Add(this.sabadoAgendaCB);
+            this.asd.Controls.Add(this.viernesAgendaCB);
+            this.asd.Controls.Add(this.juevesAgendaCB);
+            this.asd.Controls.Add(this.miercolesAgendaCB);
+            this.asd.Controls.Add(this.martesAgendaCB);
+            this.asd.Controls.Add(this.lunesAgendaCB);
             this.asd.Controls.Add(this.comboBoxFinSabado);
             this.asd.Controls.Add(this.comboBoxInicioSabado);
             this.asd.Controls.Add(this.comboBoxInicioViernes);
@@ -86,7 +86,7 @@
             this.asd.Controls.Add(this.comboBoxFinMiercoles);
             this.asd.Controls.Add(this.comboBoxInicioLunes);
             this.asd.Controls.Add(this.label1);
-            this.asd.Controls.Add(this.comboBox1);
+            this.asd.Controls.Add(this.especialidadesAgendaCB);
             this.asd.Controls.Add(this.EspecialidadLabel);
             this.asd.Location = new System.Drawing.Point(13, 13);
             this.asd.Name = "asd";
@@ -136,71 +136,71 @@
             this.label2.TabIndex = 21;
             this.label2.Text = "Inicio Rango";
             // 
-            // SabadoAgendaCB
+            // sabadoAgendaCB
             // 
-            this.SabadoAgendaCB.AutoSize = true;
-            this.SabadoAgendaCB.Location = new System.Drawing.Point(28, 273);
-            this.SabadoAgendaCB.Name = "SabadoAgendaCB";
-            this.SabadoAgendaCB.Size = new System.Drawing.Size(63, 17);
-            this.SabadoAgendaCB.TabIndex = 20;
-            this.SabadoAgendaCB.Text = "Sábado";
-            this.SabadoAgendaCB.UseVisualStyleBackColor = true;
-            this.SabadoAgendaCB.CheckedChanged += new System.EventHandler(this.SabadoAgendaCB_CheckedChanged);
+            this.sabadoAgendaCB.AutoSize = true;
+            this.sabadoAgendaCB.Location = new System.Drawing.Point(28, 273);
+            this.sabadoAgendaCB.Name = "sabadoAgendaCB";
+            this.sabadoAgendaCB.Size = new System.Drawing.Size(63, 17);
+            this.sabadoAgendaCB.TabIndex = 20;
+            this.sabadoAgendaCB.Text = "Sábado";
+            this.sabadoAgendaCB.UseVisualStyleBackColor = true;
+            this.sabadoAgendaCB.CheckedChanged += new System.EventHandler(this.SabadoAgendaCB_CheckedChanged);
             // 
-            // ViernesAgendaCB
+            // viernesAgendaCB
             // 
-            this.ViernesAgendaCB.AutoSize = true;
-            this.ViernesAgendaCB.Location = new System.Drawing.Point(28, 246);
-            this.ViernesAgendaCB.Name = "ViernesAgendaCB";
-            this.ViernesAgendaCB.Size = new System.Drawing.Size(61, 17);
-            this.ViernesAgendaCB.TabIndex = 19;
-            this.ViernesAgendaCB.Text = "Viernes";
-            this.ViernesAgendaCB.UseVisualStyleBackColor = true;
-            this.ViernesAgendaCB.CheckedChanged += new System.EventHandler(this.ViernesAgendaCB_CheckedChanged);
+            this.viernesAgendaCB.AutoSize = true;
+            this.viernesAgendaCB.Location = new System.Drawing.Point(28, 246);
+            this.viernesAgendaCB.Name = "viernesAgendaCB";
+            this.viernesAgendaCB.Size = new System.Drawing.Size(61, 17);
+            this.viernesAgendaCB.TabIndex = 19;
+            this.viernesAgendaCB.Text = "Viernes";
+            this.viernesAgendaCB.UseVisualStyleBackColor = true;
+            this.viernesAgendaCB.CheckedChanged += new System.EventHandler(this.ViernesAgendaCB_CheckedChanged);
             // 
-            // JuevesAgendaCB
+            // juevesAgendaCB
             // 
-            this.JuevesAgendaCB.AutoSize = true;
-            this.JuevesAgendaCB.Location = new System.Drawing.Point(28, 219);
-            this.JuevesAgendaCB.Name = "JuevesAgendaCB";
-            this.JuevesAgendaCB.Size = new System.Drawing.Size(60, 17);
-            this.JuevesAgendaCB.TabIndex = 18;
-            this.JuevesAgendaCB.Text = "Jueves";
-            this.JuevesAgendaCB.UseVisualStyleBackColor = true;
-            this.JuevesAgendaCB.CheckedChanged += new System.EventHandler(this.JuevesAgendaCB_CheckedChanged);
+            this.juevesAgendaCB.AutoSize = true;
+            this.juevesAgendaCB.Location = new System.Drawing.Point(28, 219);
+            this.juevesAgendaCB.Name = "juevesAgendaCB";
+            this.juevesAgendaCB.Size = new System.Drawing.Size(60, 17);
+            this.juevesAgendaCB.TabIndex = 18;
+            this.juevesAgendaCB.Text = "Jueves";
+            this.juevesAgendaCB.UseVisualStyleBackColor = true;
+            this.juevesAgendaCB.CheckedChanged += new System.EventHandler(this.JuevesAgendaCB_CheckedChanged);
             // 
-            // MiercolesAgendaCB
+            // miercolesAgendaCB
             // 
-            this.MiercolesAgendaCB.AutoSize = true;
-            this.MiercolesAgendaCB.Location = new System.Drawing.Point(28, 192);
-            this.MiercolesAgendaCB.Name = "MiercolesAgendaCB";
-            this.MiercolesAgendaCB.Size = new System.Drawing.Size(71, 17);
-            this.MiercolesAgendaCB.TabIndex = 17;
-            this.MiercolesAgendaCB.Text = "Miércoles";
-            this.MiercolesAgendaCB.UseVisualStyleBackColor = true;
-            this.MiercolesAgendaCB.CheckedChanged += new System.EventHandler(this.MiercolesAgendaCB_CheckedChanged);
+            this.miercolesAgendaCB.AutoSize = true;
+            this.miercolesAgendaCB.Location = new System.Drawing.Point(28, 192);
+            this.miercolesAgendaCB.Name = "miercolesAgendaCB";
+            this.miercolesAgendaCB.Size = new System.Drawing.Size(71, 17);
+            this.miercolesAgendaCB.TabIndex = 17;
+            this.miercolesAgendaCB.Text = "Miércoles";
+            this.miercolesAgendaCB.UseVisualStyleBackColor = true;
+            this.miercolesAgendaCB.CheckedChanged += new System.EventHandler(this.MiercolesAgendaCB_CheckedChanged);
             // 
-            // MartesAgendaCB
+            // martesAgendaCB
             // 
-            this.MartesAgendaCB.AutoSize = true;
-            this.MartesAgendaCB.Location = new System.Drawing.Point(28, 165);
-            this.MartesAgendaCB.Name = "MartesAgendaCB";
-            this.MartesAgendaCB.Size = new System.Drawing.Size(58, 17);
-            this.MartesAgendaCB.TabIndex = 16;
-            this.MartesAgendaCB.Text = "Martes";
-            this.MartesAgendaCB.UseVisualStyleBackColor = true;
-            this.MartesAgendaCB.CheckedChanged += new System.EventHandler(this.MartesAgendaCB_CheckedChanged);
+            this.martesAgendaCB.AutoSize = true;
+            this.martesAgendaCB.Location = new System.Drawing.Point(28, 165);
+            this.martesAgendaCB.Name = "martesAgendaCB";
+            this.martesAgendaCB.Size = new System.Drawing.Size(58, 17);
+            this.martesAgendaCB.TabIndex = 16;
+            this.martesAgendaCB.Text = "Martes";
+            this.martesAgendaCB.UseVisualStyleBackColor = true;
+            this.martesAgendaCB.CheckedChanged += new System.EventHandler(this.MartesAgendaCB_CheckedChanged);
             // 
-            // LunesAgendaCB
+            // lunesAgendaCB
             // 
-            this.LunesAgendaCB.AutoSize = true;
-            this.LunesAgendaCB.Location = new System.Drawing.Point(28, 137);
-            this.LunesAgendaCB.Name = "LunesAgendaCB";
-            this.LunesAgendaCB.Size = new System.Drawing.Size(55, 17);
-            this.LunesAgendaCB.TabIndex = 15;
-            this.LunesAgendaCB.Text = "Lunes";
-            this.LunesAgendaCB.UseVisualStyleBackColor = true;
-            this.LunesAgendaCB.CheckedChanged += new System.EventHandler(this.LunesAgendaCB_CheckedChanged);
+            this.lunesAgendaCB.AutoSize = true;
+            this.lunesAgendaCB.Location = new System.Drawing.Point(28, 137);
+            this.lunesAgendaCB.Name = "lunesAgendaCB";
+            this.lunesAgendaCB.Size = new System.Drawing.Size(55, 17);
+            this.lunesAgendaCB.TabIndex = 15;
+            this.lunesAgendaCB.Text = "Lunes";
+            this.lunesAgendaCB.UseVisualStyleBackColor = true;
+            this.lunesAgendaCB.CheckedChanged += new System.EventHandler(this.LunesAgendaCB_CheckedChanged);
             // 
             // comboBoxFinSabado
             // 
@@ -308,13 +308,13 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Seleccione Día";
             // 
-            // comboBox1
+            // especialidadesAgendaCB
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(159, 41);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(266, 21);
-            this.comboBox1.TabIndex = 1;
+            this.especialidadesAgendaCB.FormattingEnabled = true;
+            this.especialidadesAgendaCB.Location = new System.Drawing.Point(159, 41);
+            this.especialidadesAgendaCB.Name = "especialidadesAgendaCB";
+            this.especialidadesAgendaCB.Size = new System.Drawing.Size(266, 21);
+            this.especialidadesAgendaCB.TabIndex = 1;
             // 
             // EspecialidadLabel
             // 
@@ -366,19 +366,19 @@
 
         private System.Windows.Forms.GroupBox asd;
         private System.Windows.Forms.Label EspecialidadLabel;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox especialidadesAgendaCB;
         private System.Windows.Forms.ComboBox comboBoxInicioLunes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button botonVolverAgenda;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox SabadoAgendaCB;
-        private System.Windows.Forms.CheckBox ViernesAgendaCB;
-        private System.Windows.Forms.CheckBox JuevesAgendaCB;
-        private System.Windows.Forms.CheckBox MiercolesAgendaCB;
-        private System.Windows.Forms.CheckBox MartesAgendaCB;
-        private System.Windows.Forms.CheckBox LunesAgendaCB;
+        private System.Windows.Forms.CheckBox sabadoAgendaCB;
+        private System.Windows.Forms.CheckBox viernesAgendaCB;
+        private System.Windows.Forms.CheckBox juevesAgendaCB;
+        private System.Windows.Forms.CheckBox miercolesAgendaCB;
+        private System.Windows.Forms.CheckBox martesAgendaCB;
+        private System.Windows.Forms.CheckBox lunesAgendaCB;
         private System.Windows.Forms.ComboBox comboBoxFinSabado;
         private System.Windows.Forms.ComboBox comboBoxInicioSabado;
         private System.Windows.Forms.ComboBox comboBoxInicioViernes;

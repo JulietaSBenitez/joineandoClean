@@ -14,89 +14,70 @@ namespace ClinicaFrba.RegistrarAgendaMedico
     public partial class AltaAP : Form
     {
 
-        List<ComboBox> comboBoxListInicio = new List<ComboBox>();
-        List<ComboBox> comboBoxListFin = new List<ComboBox>();
-        List<CheckBox> checkBoxDias = new List<CheckBox>();
+        List<ComboBox> ComboBoxSemana = new List<ComboBox>();
+        List<ComboBox> ComboBoxSabado = new List<ComboBox>();
+        List<CheckBox> CheckBoxDias = new List<CheckBox>();
+        List<ValidacionBooleana<AltaAP>> validaciones = new List<ValidacionBooleana<AltaAP>>();
 
 
         public AltaAP(Medico medico)
         {
             InitializeComponent();
-            comboBox1.DataSource = medico.EspecialidadesSinAgenda();
-            comboBox1.DisplayMember = "Nombre";
-            comboBoxListInicio.Add(comboBoxInicioLunes);
-            comboBoxListInicio.Add(comboBoxInicioMartes);
-            comboBoxListInicio.Add(comboBoxInicioMiercoles);
-            comboBoxListInicio.Add(comboBoxInicioJueves);
-            comboBoxListInicio.Add(comboBoxInicioViernes);
-            comboBoxListFin.Add(comboBoxFinLunes);
-            comboBoxListFin.Add(comboBoxFinMartes);
-            comboBoxListFin.Add(comboBoxFinMiercoles);
-            comboBoxListFin.Add(comboBoxFinJueves);
-            comboBoxListFin.Add(comboBoxFinViernes);
-            checkBoxDias.Add(LunesAgendaCB);
-            checkBoxDias.Add(MartesAgendaCB);
-            checkBoxDias.Add(MiercolesAgendaCB);
-            checkBoxDias.Add(JuevesAgendaCB);
-            checkBoxDias.Add(ViernesAgendaCB);
-            checkBoxDias.Add(SabadoAgendaCB);
+
+            especialidadesAgendaCB.DataSource = medico.EspecialidadesSinAgenda();
+            especialidadesAgendaCB.DisplayMember = "Nombre";
+
+            ComboBoxSemana.Add(comboBoxInicioLunes);
+            ComboBoxSemana.Add(comboBoxInicioMartes);
+            ComboBoxSemana.Add(comboBoxInicioMiercoles);
+            ComboBoxSemana.Add(comboBoxInicioJueves);
+            ComboBoxSemana.Add(comboBoxInicioViernes);
+
+            ComboBoxSemana.Add(comboBoxFinLunes);
+            ComboBoxSemana.Add(comboBoxFinMartes);
+            ComboBoxSemana.Add(comboBoxFinMiercoles);
+            ComboBoxSemana.Add(comboBoxFinJueves);
+            ComboBoxSemana.Add(comboBoxFinViernes);
+
+            CheckBoxDias.Add(lunesAgendaCB);
+            CheckBoxDias.Add(martesAgendaCB);
+            CheckBoxDias.Add(miercolesAgendaCB);
+            CheckBoxDias.Add(juevesAgendaCB);
+            CheckBoxDias.Add(viernesAgendaCB);
+            CheckBoxDias.Add(sabadoAgendaCB);
+
+            validaciones.Add(new ValidacionBooleana<AltaAP>(
+               (controlador => controlador.EspecialidadSeleccionada()),
+               "No se ha seleccionado ninguna especialidad."));
+
+            validaciones.Add(new ValidacionBooleana<AltaAP>(
+                (controlador => controlador.AlgunDiaSeleccionado()),
+                "No se ha seleccionado ningun día."));
 
         }
 
 
-        private void CargarComboBoxRangoInicio(ComboBox comboBox, int horaInicio, int horaFin)
+        private List<TimeSpan> RangoHorario(TimeSpan horaInicio, TimeSpan horaFin)
         {
-            DateTime time;
-            for (int i = horaInicio; i <= horaFin; i++)
+            List<TimeSpan> horarios = new List<TimeSpan>();
+            TimeSpan horario = horaInicio;
+
+            while (horario <= horaFin)
             {
-                time = new DateTime(1, 1, 1, i, 0, 0, 0);
-                comboBox.Items.Add(time.ToString("HH:mm"));
-                time = new DateTime(1, 1, 1, i, 30, 0, 0);
-                comboBox.Items.Add(time.ToString("HH:mm"));
-
+                horarios.Add(horario);
+                horario = horario.Add(new TimeSpan(0, 30, 0));
             }
+
+            return horarios;
         }
 
-        private void CargarComboBoxRangoFin(ComboBox comboBox, int horaInicio, int horaFin)
-        {
-            DateTime time;
-            for (int i = horaInicio; i <= horaFin; i++)
-            {
-                time = new DateTime(1, 1, 1, i, 30, 0, 0);
-                comboBox.Items.Add(time.ToString("HH:mm"));
-                time = new DateTime(1, 1, 1, i + 1, 0, 0, 0);
-                comboBox.Items.Add(time.ToString("HH:mm"));
-
-            }
-        }
-
-        private void CargarTodosLosComboBoxInicio()
+        private void InicializarComboboxes()
         {
 
-            //comboBoxListFin.ForEach(CargarComboBoxRangoInicio(comboBox, 7, 20));
-
-            CargarComboBoxRangoFin(comboBoxInicioSabado, 10, 15);
-
-            comboBoxInicioLunes.Enabled = false;
-            comboBoxInicioMartes.Enabled = false;
-            comboBoxInicioMiercoles.Enabled = false;
-            comboBoxInicioJueves.Enabled = false;
-            comboBoxInicioViernes.Enabled = false;
-            comboBoxInicioSabado.Enabled = false;
-        }
-
-        private void CargarTodosLosComboBoxFin()
-        {
-
-            //comboBoxListFin.ForEach(CargarComboBoxRangoFin(comboBox, 7, 20));
-            CargarComboBoxRangoFin(comboBoxFinSabado, 10, 15);
-
-            comboBoxFinLunes.Enabled = false;
-            comboBoxFinMartes.Enabled = false;
-            comboBoxFinMiercoles.Enabled = false;
-            comboBoxFinJueves.Enabled = false;
-            comboBoxFinViernes.Enabled = false;
-            comboBoxFinSabado.Enabled = false;
+            ComboBoxSemana.ForEach(comboBox => comboBox.DataSource = RangoHorario(new TimeSpan(7, 0, 0), new TimeSpan(20, 0, 0)));
+            ComboBoxSabado.ForEach(comboBox => comboBox.DataSource = RangoHorario(new TimeSpan(10, 0, 0), new TimeSpan(15, 0, 0)));
+            ComboBoxSemana.ForEach(comboBox => comboBox.Enabled = false);
+            ComboBoxSabado.ForEach(comboBox => comboBox.Enabled = false);
         }
 
         private void botonVolverAgenda_Click(object sender, EventArgs e)
@@ -106,7 +87,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         private void LunesAgendaCB_CheckedChanged(object sender, EventArgs e)
         {
-            if (LunesAgendaCB.Checked == true)
+            if (lunesAgendaCB.Checked)
             {
                 comboBoxInicioLunes.Enabled = true;
                 comboBoxFinLunes.Enabled = true;
@@ -116,7 +97,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         private void MartesAgendaCB_CheckedChanged(object sender, EventArgs e)
         {
 
-            if (MartesAgendaCB.Checked == true)
+            if (martesAgendaCB.Checked)
             {
                 comboBoxInicioMartes.Enabled = true;
                 comboBoxFinMartes.Enabled = true;
@@ -126,7 +107,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         private void MiercolesAgendaCB_CheckedChanged(object sender, EventArgs e)
         {
-            if (MiercolesAgendaCB.Checked == true)
+            if (miercolesAgendaCB.Checked)
             {
                 comboBoxInicioMiercoles.Enabled = true;
                 comboBoxFinMiercoles.Enabled = true;
@@ -135,7 +116,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         private void JuevesAgendaCB_CheckedChanged(object sender, EventArgs e)
         {
-            if (JuevesAgendaCB.Checked == true)
+            if (juevesAgendaCB.Checked)
             {
                 comboBoxInicioJueves.Enabled = true;
                 comboBoxFinJueves.Enabled = true;
@@ -144,7 +125,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         private void ViernesAgendaCB_CheckedChanged(object sender, EventArgs e)
         {
-            if (ViernesAgendaCB.Checked == true)
+            if (viernesAgendaCB.Checked)
             {
                 comboBoxInicioViernes.Enabled = true;
                 comboBoxFinViernes.Enabled = true;
@@ -153,7 +134,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         private void SabadoAgendaCB_CheckedChanged(object sender, EventArgs e)
         {
-            if (SabadoAgendaCB.Checked == true)
+            if (sabadoAgendaCB.Checked)
             {
                 comboBoxInicioSabado.Enabled = true;
                 comboBoxFinSabado.Enabled = true;
@@ -162,34 +143,35 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         public void button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem == null)
+            if (validaciones.All(validacion => validacion.SeCumple(this)))
             {
-                MessageBox.Show("Seleccione una especialidad para poder continuar");
+                //Está todo ok
             }
             else
             {
-                //if (checkBoxDias.All<Checked == false>)
-                if (LunesAgendaCB.Checked == false &&
-                    MartesAgendaCB.Checked == false &&
-                    MiercolesAgendaCB.Checked == false &&
-                    JuevesAgendaCB.Checked == false &&
-                    ViernesAgendaCB.Checked == false &&
-                    SabadoAgendaCB.Checked == false)
-                {
+                ValidacionBooleana<AltaAP> validacionQueNoSeCumple = 
+                    validaciones.Find(validacion => validacion.NoSeCumple(this));
+                MessageBox.Show(validacionQueNoSeCumple.MensajeError(), "¡A wild error appeared!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    MessageBox.Show("Seleccione uno o más días para poder continuar.");
-                }
-
-
-
-                //validarQueNoExistanOtrasAgendasEnEseHorario.
-                //ValidarQueNoSeTrabajeMasDe48HorasSemanales.
-                //Validar que Inicio no sea después de fin
-                //Validar que no deje ningun checkbox sin llenar
             }
 
-
+                 //validarQueNoExistanOtrasAgendasEnEseHorario.
+                 //ValidarQueNoSeTrabajeMasDe48HorasSemanales.
+                 //Validar que no deje ningun checkbox sin llenar
 
         }
+
+        public bool EspecialidadSeleccionada()
+        {
+            return especialidadesAgendaCB.SelectedItem != null;
+        }
+
+        public bool AlgunDiaSeleccionado() {
+            return CheckBoxDias.Any(checkBox => checkBox.Checked);
+        }
+
+        public bool HoraInicioEsMenorQuehoraFin() { 
+         return true}
     }
 }
