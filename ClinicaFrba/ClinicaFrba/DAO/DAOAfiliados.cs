@@ -10,6 +10,64 @@ namespace ClinicaFrba.DAO
 {
     class DAOAfiliados
     {
+        public static DataTable tiposDeSexo()
+        {
+            DataTable data = new DataTable();
+            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
+            SQLHelper.CreateObjects(true);
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Clear();
+            SqlParameter parameter;
+
+            try
+            {
+                // parameter = new SqlParameter("@UserId", SqlDbType.Int);
+                //  parameter.Value = userId;
+                //  parameters.Add(parameter);
+                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.listado_sexo", parameters);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                SQLHelper.RollBackTransction();
+                throw ex;
+            }
+            finally
+            {
+                SQLHelper.ClearObjects();
+            }
+        }
+
+
+        public static DataTable tiposDePlanes()
+        {
+            DataTable data = new DataTable();
+            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
+            SQLHelper.CreateObjects(true);
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Clear();
+            SqlParameter parameter;
+
+            try
+            {
+                // parameter = new SqlParameter("@UserId", SqlDbType.Int);
+                //  parameter.Value = userId;
+                //  parameters.Add(parameter);
+                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.listado_planes", parameters);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                SQLHelper.RollBackTransction();
+                throw ex;
+            }
+            finally
+            {
+                SQLHelper.ClearObjects();
+            }
+        }
+
+
 
         public static DataTable tiposDeDocumentos()
         {
