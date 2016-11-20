@@ -185,6 +185,7 @@
     <Compile Include="Registro Resultado\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\ValidacionBooleana.cs" />
     <Compile Include="src\Dia.cs" />
     <Compile Include="src\Especialidad.cs" />
     <Compile Include="src\Medico.cs" />

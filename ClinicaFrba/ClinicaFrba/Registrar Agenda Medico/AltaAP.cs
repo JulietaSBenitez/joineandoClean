@@ -14,37 +14,25 @@ namespace ClinicaFrba.RegistrarAgendaMedico
     public partial class AltaAP : Form
     {
 
-        List<ComboBox> ComboBoxSemana = new List<ComboBox>();
-        List<ComboBox> ComboBoxSabado = new List<ComboBox>();
-        List<CheckBox> CheckBoxDias = new List<CheckBox>();
-        List<ValidacionBooleana<AltaAP>> validaciones = new List<ValidacionBooleana<AltaAP>>();
-
+        private List<ValidacionBooleana<AltaAP>> validaciones = new List<ValidacionBooleana<AltaAP>>();
+        private Dictionary<CheckBox, Tuple<ComboBox, ComboBox>> widgets = new Dictionary<CheckBox, Tuple<ComboBox, ComboBox>>();
 
         public AltaAP(Medico medico)
         {
             InitializeComponent();
 
+            widgets.Add(lunesAgendaCB, new Tuple<ComboBox, ComboBox>(comboBoxInicioLunes, comboBoxFinLunes));
+            widgets.Add(martesAgendaCB, new Tuple<ComboBox, ComboBox>(comboBoxInicioMartes, comboBoxFinMartes));
+            widgets.Add(miercolesAgendaCB, new Tuple<ComboBox, ComboBox>(comboBoxInicioMiercoles, comboBoxFinMiercoles));
+            widgets.Add(juevesAgendaCB, new Tuple<ComboBox, ComboBox>(comboBoxInicioJueves, comboBoxFinJueves));
+            widgets.Add(viernesAgendaCB, new Tuple<ComboBox, ComboBox>(comboBoxInicioViernes, comboBoxFinViernes));
+            widgets.Add(sabadoAgendaCB, new Tuple<ComboBox, ComboBox>(comboBoxInicioSabado, comboBoxFinSabado));
+
+
             especialidadesAgendaCB.DataSource = medico.EspecialidadesSinAgenda();
             especialidadesAgendaCB.DisplayMember = "Nombre";
 
-            ComboBoxSemana.Add(comboBoxInicioLunes);
-            ComboBoxSemana.Add(comboBoxInicioMartes);
-            ComboBoxSemana.Add(comboBoxInicioMiercoles);
-            ComboBoxSemana.Add(comboBoxInicioJueves);
-            ComboBoxSemana.Add(comboBoxInicioViernes);
-
-            ComboBoxSemana.Add(comboBoxFinLunes);
-            ComboBoxSemana.Add(comboBoxFinMartes);
-            ComboBoxSemana.Add(comboBoxFinMiercoles);
-            ComboBoxSemana.Add(comboBoxFinJueves);
-            ComboBoxSemana.Add(comboBoxFinViernes);
-
-            CheckBoxDias.Add(lunesAgendaCB);
-            CheckBoxDias.Add(martesAgendaCB);
-            CheckBoxDias.Add(miercolesAgendaCB);
-            CheckBoxDias.Add(juevesAgendaCB);
-            CheckBoxDias.Add(viernesAgendaCB);
-            CheckBoxDias.Add(sabadoAgendaCB);
+            InicializarComboboxes();
 
             validaciones.Add(new ValidacionBooleana<AltaAP>(
                (controlador => controlador.EspecialidadSeleccionada()),
@@ -53,6 +41,10 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             validaciones.Add(new ValidacionBooleana<AltaAP>(
                 (controlador => controlador.AlgunDiaSeleccionado()),
                 "No se ha seleccionado ningun día."));
+
+            validaciones.Add(new ValidacionBooleana<AltaAP>(
+                (controlador => controlador.HoraInicioEsMenorQuehoraFin()),
+                "El horario de inicio es mayor o igual al horario de fin."));
 
         }
 
@@ -74,10 +66,9 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         private void InicializarComboboxes()
         {
 
-            ComboBoxSemana.ForEach(comboBox => comboBox.DataSource = RangoHorario(new TimeSpan(7, 0, 0), new TimeSpan(20, 0, 0)));
-            ComboBoxSabado.ForEach(comboBox => comboBox.DataSource = RangoHorario(new TimeSpan(10, 0, 0), new TimeSpan(15, 0, 0)));
-            ComboBoxSemana.ForEach(comboBox => comboBox.Enabled = false);
-            ComboBoxSabado.ForEach(comboBox => comboBox.Enabled = false);
+            ComboboxesSemana().ForEach(comboBox => comboBox.DataSource = RangoHorario(new TimeSpan(7, 0, 0), new TimeSpan(20, 0, 0)));
+            ComboboxesSabado().ForEach(comboBox => comboBox.DataSource = RangoHorario(new TimeSpan(10, 0, 0), new TimeSpan(15, 0, 0)));
+            Comboboxes().ForEach(comboBox => comboBox.Enabled = false);
         }
 
         private void botonVolverAgenda_Click(object sender, EventArgs e)
@@ -92,6 +83,12 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 comboBoxInicioLunes.Enabled = true;
                 comboBoxFinLunes.Enabled = true;
             }
+            else
+            {
+
+                comboBoxInicioLunes.Enabled = false;
+                comboBoxFinLunes.Enabled = false;
+            }
         }
 
         private void MartesAgendaCB_CheckedChanged(object sender, EventArgs e)
@@ -101,6 +98,12 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             {
                 comboBoxInicioMartes.Enabled = true;
                 comboBoxFinMartes.Enabled = true;
+            }
+            else
+            {
+
+                comboBoxInicioMartes.Enabled = false;
+                comboBoxFinMartes.Enabled = false;
             }
 
         }
@@ -112,6 +115,12 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 comboBoxInicioMiercoles.Enabled = true;
                 comboBoxFinMiercoles.Enabled = true;
             }
+            else
+            {
+
+                comboBoxInicioMiercoles.Enabled = false;
+                comboBoxFinMiercoles.Enabled = false;
+            }
         }
 
         private void JuevesAgendaCB_CheckedChanged(object sender, EventArgs e)
@@ -120,6 +129,12 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             {
                 comboBoxInicioJueves.Enabled = true;
                 comboBoxFinJueves.Enabled = true;
+            }
+            else
+            {
+
+                comboBoxInicioJueves.Enabled = false;
+                comboBoxFinJueves.Enabled = false;
             }
         }
 
@@ -130,6 +145,12 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 comboBoxInicioViernes.Enabled = true;
                 comboBoxFinViernes.Enabled = true;
             }
+            else
+            {
+
+                comboBoxInicioViernes.Enabled = false;
+                comboBoxFinViernes.Enabled = false;
+            }
         }
 
         private void SabadoAgendaCB_CheckedChanged(object sender, EventArgs e)
@@ -138,6 +159,12 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             {
                 comboBoxInicioSabado.Enabled = true;
                 comboBoxFinSabado.Enabled = true;
+            }
+            else
+            {
+
+                comboBoxInicioSabado.Enabled = false;
+                comboBoxFinSabado.Enabled = false;
             }
         }
 
@@ -149,16 +176,15 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             }
             else
             {
-                ValidacionBooleana<AltaAP> validacionQueNoSeCumple = 
+                ValidacionBooleana<AltaAP> validacionQueNoSeCumple =
                     validaciones.Find(validacion => validacion.NoSeCumple(this));
                 MessageBox.Show(validacionQueNoSeCumple.MensajeError(), "¡A wild error appeared!",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 
-                 //validarQueNoExistanOtrasAgendasEnEseHorario.
-                 //ValidarQueNoSeTrabajeMasDe48HorasSemanales.
-                 //Validar que no deje ningun checkbox sin llenar
+            //validarQueNoExistanOtrasAgendasEnEseHorario.
+            //ValidarQueNoSeTrabajeMasDe48HorasSemanales.
 
         }
 
@@ -167,11 +193,51 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             return especialidadesAgendaCB.SelectedItem != null;
         }
 
-        public bool AlgunDiaSeleccionado() {
-            return CheckBoxDias.Any(checkBox => checkBox.Checked);
+        public bool AlgunDiaSeleccionado()
+        {
+            return widgets.Keys.Any(checkBox => checkBox.Checked);
         }
 
-        public bool HoraInicioEsMenorQuehoraFin() { 
-         return true}
+        public bool HoraInicioEsMenorQuehoraFin()
+        {
+
+            return horasDeCheckboxSeleccionados().All(tupla => tupla.Item1 < tupla.Item2);
+        }
+
+        private List<Tuple<TimeSpan, TimeSpan>> horasDeCheckboxSeleccionados()
+        {
+            return widgets
+                .Where(par => par.Key.Checked)
+                .Select(par => par.Value)
+                .Select(tupla => new Tuple<TimeSpan, TimeSpan>((TimeSpan)tupla.Item1.SelectedItem, (TimeSpan)tupla.Item2.SelectedItem))
+                .ToList();
+        }
+
+        private List<ComboBox> Comboboxes()
+        {
+            return widgets
+                  .Select(par => par.Value)
+                  .Select(tupla => new List<ComboBox>() { tupla.Item1, tupla.Item2 })
+                  .SelectMany(lista => lista)
+                  .ToList();
+        }
+
+        private List<ComboBox> ComboboxesSemana()
+        {
+            return widgets
+                  .Select(par => par.Value)
+                  .Select(tupla => new List<ComboBox>() { tupla.Item1, tupla.Item2 })
+                  .Take(5)
+                  .SelectMany(lista => lista)
+                  .ToList();
+        }
+
+        private List<ComboBox> ComboboxesSabado()
+        {
+            return widgets
+                  .Select(par => par.Value)
+                  .Select(tupla => new List<ComboBox>() { tupla.Item1, tupla.Item2 })
+                  .Last();
+        }
     }
 }
