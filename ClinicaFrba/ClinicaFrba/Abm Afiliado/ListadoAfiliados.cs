@@ -16,5 +16,10 @@ namespace ClinicaFrba.Abm_Afiliado
         {
             InitializeComponent();
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
