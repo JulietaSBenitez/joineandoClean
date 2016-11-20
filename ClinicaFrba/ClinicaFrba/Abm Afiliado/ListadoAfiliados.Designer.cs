@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.numerodocumento = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.apellido = new System.Windows.Forms.TextBox();
+            this.nombre = new System.Windows.Forms.TextBox();
             this.btnlimpiar = new System.Windows.Forms.Button();
             this.btnfiltrar = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.tiposDeDocumentos = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tablaRoles = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaRoles)).BeginInit();
+            this.tablaAfiliados = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaAfiliados)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -51,13 +51,13 @@
             this.label4.TabIndex = 21;
             this.label4.Text = "Numero";
             // 
-            // textBox3
+            // numerodocumento
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(393, 40);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(171, 22);
-            this.textBox3.TabIndex = 20;
+            this.numerodocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numerodocumento.Location = new System.Drawing.Point(393, 40);
+            this.numerodocumento.Name = "numerodocumento";
+            this.numerodocumento.Size = new System.Drawing.Size(171, 22);
+            this.numerodocumento.TabIndex = 20;
             // 
             // label3
             // 
@@ -69,21 +69,21 @@
             this.label3.TabIndex = 19;
             this.label3.Text = "Apellido";
             // 
-            // textBox2
+            // apellido
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(310, 12);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(254, 22);
-            this.textBox2.TabIndex = 18;
+            this.apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.apellido.Location = new System.Drawing.Point(310, 12);
+            this.apellido.Name = "apellido";
+            this.apellido.Size = new System.Drawing.Size(254, 22);
+            this.apellido.TabIndex = 18;
             // 
-            // textBox1
+            // nombre
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(75, 11);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(153, 22);
-            this.textBox1.TabIndex = 17;
+            this.nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nombre.Location = new System.Drawing.Point(75, 11);
+            this.nombre.Name = "nombre";
+            this.nombre.Size = new System.Drawing.Size(153, 22);
+            this.nombre.TabIndex = 17;
             // 
             // btnlimpiar
             // 
@@ -93,6 +93,7 @@
             this.btnlimpiar.TabIndex = 16;
             this.btnlimpiar.Text = "Limpiar";
             this.btnlimpiar.UseVisualStyleBackColor = true;
+            this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
             // 
             // btnfiltrar
             // 
@@ -102,17 +103,18 @@
             this.btnfiltrar.TabIndex = 15;
             this.btnfiltrar.Text = "Filtrar";
             this.btnfiltrar.UseVisualStyleBackColor = true;
+            this.btnfiltrar.Click += new System.EventHandler(this.btnfiltrar_Click);
             // 
-            // comboBox2
+            // tiposDeDocumentos
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.tiposDeDocumentos.FormattingEnabled = true;
+            this.tiposDeDocumentos.Items.AddRange(new object[] {
             "Habilitado",
             "Inhabilitado"});
-            this.comboBox2.Location = new System.Drawing.Point(128, 38);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(155, 21);
-            this.comboBox2.TabIndex = 14;
+            this.tiposDeDocumentos.Location = new System.Drawing.Point(128, 38);
+            this.tiposDeDocumentos.Name = "tiposDeDocumentos";
+            this.tiposDeDocumentos.Size = new System.Drawing.Size(155, 21);
+            this.tiposDeDocumentos.TabIndex = 14;
             // 
             // label2
             // 
@@ -133,41 +135,41 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Nombre";
             // 
-            // tablaRoles
+            // tablaAfiliados
             // 
-            this.tablaRoles.AllowUserToAddRows = false;
-            this.tablaRoles.AllowUserToDeleteRows = false;
-            this.tablaRoles.AllowUserToResizeColumns = false;
-            this.tablaRoles.AllowUserToResizeRows = false;
-            this.tablaRoles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.tablaRoles.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.tablaRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaRoles.Location = new System.Drawing.Point(11, 113);
-            this.tablaRoles.Name = "tablaRoles";
-            this.tablaRoles.ReadOnly = true;
-            this.tablaRoles.Size = new System.Drawing.Size(563, 195);
-            this.tablaRoles.TabIndex = 12;
+            this.tablaAfiliados.AllowUserToAddRows = false;
+            this.tablaAfiliados.AllowUserToDeleteRows = false;
+            this.tablaAfiliados.AllowUserToResizeColumns = false;
+            this.tablaAfiliados.AllowUserToResizeRows = false;
+            this.tablaAfiliados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.tablaAfiliados.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.tablaAfiliados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaAfiliados.Location = new System.Drawing.Point(11, 113);
+            this.tablaAfiliados.Name = "tablaAfiliados";
+            this.tablaAfiliados.ReadOnly = true;
+            this.tablaAfiliados.Size = new System.Drawing.Size(563, 195);
+            this.tablaAfiliados.TabIndex = 12;
             // 
-            // Form2
+            // ListadoAfiliados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 323);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.numerodocumento);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.apellido);
+            this.Controls.Add(this.nombre);
             this.Controls.Add(this.btnlimpiar);
             this.Controls.Add(this.btnfiltrar);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.tiposDeDocumentos);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tablaRoles);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Controls.Add(this.tablaAfiliados);
+            this.Name = "ListadoAfiliados";
+            this.Text = "Listado Afiliados";
             this.Load += new System.EventHandler(this.Form2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.tablaRoles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaAfiliados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,15 +178,15 @@
         #endregion
 
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox numerodocumento;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox apellido;
+        private System.Windows.Forms.TextBox nombre;
         private System.Windows.Forms.Button btnlimpiar;
         private System.Windows.Forms.Button btnfiltrar;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox tiposDeDocumentos;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView tablaRoles;
+        private System.Windows.Forms.DataGridView tablaAfiliados;
     }
 }
