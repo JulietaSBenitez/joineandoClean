@@ -149,6 +149,7 @@
             this.tablaAfiliados.ReadOnly = true;
             this.tablaAfiliados.Size = new System.Drawing.Size(563, 195);
             this.tablaAfiliados.TabIndex = 12;
+            this.tablaAfiliados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaAfiliados_CellContentClick_1);
             // 
             // ListadoAfiliados
             // 

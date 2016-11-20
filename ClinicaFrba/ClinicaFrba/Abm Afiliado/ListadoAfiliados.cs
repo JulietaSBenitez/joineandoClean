@@ -30,6 +30,7 @@ namespace ClinicaFrba.Abm_Afiliado
             tablaAfiliados.DataSource = DAO.DAOAfiliados.filtroAfiliados();
             tiposDeDocumentos.DataSource = DAO.DAOAfiliados.tiposDeDocumentos();
             tiposDeDocumentos.DisplayMember = "Tipo";
+            AgregarBoton();
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -49,5 +50,43 @@ namespace ClinicaFrba.Abm_Afiliado
             nombre.Text = "";
             tiposDeDocumentos.SelectedIndex = 0;
         }
+
+        private void AgregarBoton()
+        {
+            DataGridViewButtonColumn btnColum = new DataGridViewButtonColumn();
+            btnColum.Name = "Seleccionar";
+            btnColum.Text = "Seleccionar";
+            btnColum.UseColumnTextForButtonValue = true;
+            tablaAfiliados.Columns.Insert(13, btnColum);
+
+        }
+
+        private void tablaAfiliados_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+            if (Accion.Baja == accion)
+            {
+
+                DialogResult dialogResult = MessageBox.Show("Esta seguro?", "Esta seguro que quiere inhabilitar este rol?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+               //     DAO.DAORoles.inHabilitarRol(int.Parse(tablaRoles.Rows[e.RowIndex].Cells[1].Value.ToString()));
+                }
+
+            }
+            if (Accion.Modificacion == accion)
+            {
+           //     new AltaModificacionRol(Accion.Modificacion, tablaRoles.Rows[e.RowIndex].Cells[1].Value.ToString()).ShowDialog();
+                DialogResult dialogResult = MessageBox.Show("modificame esta","", MessageBoxButtons.YesNo);
+              
+            }
+            this.Close();
+        }
+
+    
+
+
+
     }
 }
