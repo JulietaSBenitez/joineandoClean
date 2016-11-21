@@ -10,6 +10,82 @@ namespace ClinicaFrba.DAO
 {
     class DAOAfiliados
     {
+
+        /*
+        @direccion nvarchar(255),
+@telefono numeric(18,0),
+@email nvarchar(255),
+@estadoCivil nvarchar(255),
+@familiaresACargo int,
+@plan nvarchar(255),
+@numero_afiliado int
+         * */
+        public static void actualizarAfiliado(String direccion, String telefono, String email, String estadoCivil, String familiaresACargo, String plan, String numeroAfiliado)
+        {
+
+            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
+            SQLHelper.CreateObjects(true);
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Clear();
+            SqlParameter parameter;
+
+            try
+            {
+
+                parameter = new SqlParameter("@direccion", SqlDbType.NVarChar, 255);
+                parameter.Value = direccion;
+                parameters.Add(parameter);
+
+                parameter = new SqlParameter("@telefono", SqlDbType.BigInt);
+                parameter.Value = long.Parse(telefono);
+                parameters.Add(parameter);
+
+
+                parameter = new SqlParameter("@plan", SqlDbType.NVarChar, 255);
+                parameter.Value = plan;
+                parameters.Add(parameter);
+
+                parameter = new SqlParameter("@numero_afiliado", SqlDbType.BigInt);
+                parameter.Value = int.Parse(numeroAfiliado);
+                parameters.Add(parameter);
+
+
+
+                parameter = new SqlParameter("@email", SqlDbType.NVarChar, 255);
+                parameter.Value = email;
+                parameters.Add(parameter);
+
+                parameter = new SqlParameter("@estadoCivil", SqlDbType.NVarChar, 255);
+                parameter.Value = estadoCivil;
+                parameters.Add(parameter);
+
+                parameter = new SqlParameter("@familiaresACargo", SqlDbType.Int);
+                parameter.Value = int.Parse(familiaresACargo);
+                parameters.Add(parameter);
+
+
+
+
+
+
+                SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.actualizar_paciente", parameters);
+             
+
+            }
+            catch (Exception ex)
+            {
+                SQLHelper.RollBackTransction();
+                throw ex;
+            }
+            finally
+            {
+                SQLHelper.CommitTransction();
+                SQLHelper.ClearObjects();
+            }
+
+        }
+
+
         public static DataTable tiposDeSexo()
         {
             DataTable data = new DataTable();
