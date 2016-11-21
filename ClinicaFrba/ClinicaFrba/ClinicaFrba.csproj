@@ -50,6 +50,12 @@
     <Compile Include="Abm Afiliado\AltaModificacionAfiliados.Designer.cs">
       <DependentUpon>AltaModificacionAfiliados.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Afiliado\HistorialCambiosPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\HistorialCambiosPlan.Designer.cs">
+      <DependentUpon>HistorialCambiosPlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Afiliado\ListadoAfiliados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     <Compile Include="src\Medico.cs" />
     <EmbeddedResource Include="Abm Afiliado\AltaModificacionAfiliados.resx">
       <DependentUpon>AltaModificacionAfiliados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\HistorialCambiosPlan.resx">
+      <DependentUpon>HistorialCambiosPlan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Afiliado\ListadoAfiliados.resx">
       <DependentUpon>ListadoAfiliados.cs</DependentUpon>

@@ -55,6 +55,9 @@
             this.familiaresacargo = new System.Windows.Forms.TextBox();
             this.estadoCivil = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.botonHistorial = new System.Windows.Forms.Button();
+            this.razont = new System.Windows.Forms.Label();
+            this.razon = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // tipo
@@ -125,7 +128,7 @@
             // 
             // BotonGuardarRol
             // 
-            this.BotonGuardarRol.Location = new System.Drawing.Point(410, 283);
+            this.BotonGuardarRol.Location = new System.Drawing.Point(410, 313);
             this.BotonGuardarRol.Name = "BotonGuardarRol";
             this.BotonGuardarRol.Size = new System.Drawing.Size(98, 38);
             this.BotonGuardarRol.TabIndex = 18;
@@ -135,12 +138,13 @@
             // 
             // BotonLimpiarRoles
             // 
-            this.BotonLimpiarRoles.Location = new System.Drawing.Point(18, 283);
+            this.BotonLimpiarRoles.Location = new System.Drawing.Point(18, 313);
             this.BotonLimpiarRoles.Name = "BotonLimpiarRoles";
             this.BotonLimpiarRoles.Size = new System.Drawing.Size(95, 38);
             this.BotonLimpiarRoles.TabIndex = 17;
             this.BotonLimpiarRoles.Text = "Limpiar";
             this.BotonLimpiarRoles.UseVisualStyleBackColor = true;
+            this.BotonLimpiarRoles.Click += new System.EventHandler(this.BotonLimpiarRoles_Click);
             // 
             // label1
             // 
@@ -253,10 +257,11 @@
             // plan
             // 
             this.plan.FormattingEnabled = true;
-            this.plan.Location = new System.Drawing.Point(56, 250);
+            this.plan.Location = new System.Drawing.Point(55, 252);
             this.plan.Name = "plan";
-            this.plan.Size = new System.Drawing.Size(452, 21);
+            this.plan.Size = new System.Drawing.Size(315, 21);
             this.plan.TabIndex = 37;
+            this.plan.SelectedIndexChanged += new System.EventHandler(this.plan_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -311,11 +316,44 @@
             this.label13.TabIndex = 40;
             this.label13.Text = "Estado Civil";
             // 
+            // botonHistorial
+            // 
+            this.botonHistorial.Location = new System.Drawing.Point(379, 245);
+            this.botonHistorial.Name = "botonHistorial";
+            this.botonHistorial.Size = new System.Drawing.Size(128, 28);
+            this.botonHistorial.TabIndex = 42;
+            this.botonHistorial.Text = "Ver historial de cambios";
+            this.botonHistorial.UseVisualStyleBackColor = true;
+            this.botonHistorial.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // razont
+            // 
+            this.razont.AutoSize = true;
+            this.razont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.razont.Location = new System.Drawing.Point(12, 282);
+            this.razont.Name = "razont";
+            this.razont.Size = new System.Drawing.Size(124, 16);
+            this.razont.TabIndex = 44;
+            this.razont.Text = "Razon cambio plan";
+            this.razont.Visible = false;
+            // 
+            // razon
+            // 
+            this.razon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.razon.Location = new System.Drawing.Point(142, 279);
+            this.razon.Name = "razon";
+            this.razon.Size = new System.Drawing.Size(365, 22);
+            this.razon.TabIndex = 43;
+            this.razon.Visible = false;
+            // 
             // AltaModificacionAfiliados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(541, 333);
+            this.ClientSize = new System.Drawing.Size(541, 359);
+            this.Controls.Add(this.razont);
+            this.Controls.Add(this.razon);
+            this.Controls.Add(this.botonHistorial);
             this.Controls.Add(this.estadoCivil);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -380,5 +418,8 @@
         private System.Windows.Forms.TextBox familiaresacargo;
         private System.Windows.Forms.ComboBox estadoCivil;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button botonHistorial;
+        private System.Windows.Forms.Label razont;
+        private System.Windows.Forms.TextBox razon;
     }
 }

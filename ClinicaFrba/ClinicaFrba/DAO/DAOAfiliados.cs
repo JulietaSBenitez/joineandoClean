@@ -126,7 +126,7 @@ namespace ClinicaFrba.DAO
 
 
 
-        public static void actualizarAfiliado(String direccion, String telefono, String email, String estadoCivil, String familiaresACargo, String plan, String numeroAfiliado)
+        public static void actualizarAfiliado(String direccion, String telefono, String email, String estadoCivil, String familiaresACargo, String plan, String numeroAfiliado, String razon="")
         {
 
             SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
@@ -164,6 +164,14 @@ namespace ClinicaFrba.DAO
                 parameter = new SqlParameter("@estadoCivil", SqlDbType.NVarChar, 255);
                 parameter.Value = estadoCivil;
                 parameters.Add(parameter);
+
+
+                if (razon != "") {
+                    parameter = new SqlParameter("@razon", SqlDbType.NVarChar, 255);
+                    parameter.Value = razon;
+                    parameters.Add(parameter);
+                
+                }
 
                 parameter = new SqlParameter("@familiaresACargo", SqlDbType.Int);
                 parameter.Value = int.Parse(familiaresACargo);
@@ -258,6 +266,35 @@ namespace ClinicaFrba.DAO
                 SQLHelper.ClearObjects();
             }
         }
+
+        public static DataTable listarCambios(string numero_afiliado)
+        {
+            DataTable data = new DataTable();
+            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
+            SQLHelper.CreateObjects(true);
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Clear();
+            SqlParameter parameter;
+
+            try
+            {
+                 parameter = new SqlParameter("@numero_afiliado", SqlDbType.BigInt);
+                  parameter.Value = long.Parse(numero_afiliado);
+                  parameters.Add(parameter);
+                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.listar_cambios", parameters);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                SQLHelper.RollBackTransction();
+                throw ex;
+            }
+            finally
+            {
+                SQLHelper.ClearObjects();
+            }
+        }
+
 
 
         public static DataTable tiposDePlanes()

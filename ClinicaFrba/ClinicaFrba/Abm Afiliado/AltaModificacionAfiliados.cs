@@ -17,7 +17,7 @@ namespace ClinicaFrba.Abm_Afiliado
         private string numeroAfiliado;
         private int raiz;
         private int sub;
-
+        private string plann;
         public AltaModificacionAfiliados()
         {
             InitializeComponent();
@@ -33,7 +33,9 @@ namespace ClinicaFrba.Abm_Afiliado
             tipo.DataSource = DAO.DAOAfiliados.tiposDeDocumentos();
             tipo.DisplayMember = "Tipo";
             plan.DataSource = DAO.DAOAfiliados.tiposDePlanes();
-            plan.DisplayMember = "Nombre";
+            plan.DisplayMember = "Nombre"; 
+            botonHistorial.Enabled = false;
+
 
         }
 
@@ -59,7 +61,8 @@ namespace ClinicaFrba.Abm_Afiliado
             email.Text= datos.Cells["email"].Value.ToString();
             direccion.Text = datos.Cells["Direccion"].Value.ToString();
             sexo.Text = datos.Cells["Sexo"].Value.ToString();
-            plan.Text = datos.Cells["Plan"].Value.ToString();
+            plann = datos.Cells["Plan"].Value.ToString();
+            plan.Text = plann;
             familiaresacargo.Text = datos.Cells["Familiares a cargo"].Value.ToString();
             estadoCivil.Text = datos.Cells["Estado Civil"].Value.ToString();
             numeroAfiliado = datos.Cells["Numero de Afiliado"].Value.ToString();
@@ -87,6 +90,7 @@ namespace ClinicaFrba.Abm_Afiliado
             plan.DisplayMember = "Nombre";
             familiaresacargo.Text = "0";
             familiaresacargo.Enabled = false;
+            botonHistorial.Enabled = false;
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -103,7 +107,7 @@ namespace ClinicaFrba.Abm_Afiliado
         {
             if (accion == Accion.Modificacion) {
 
-            DAO.DAOAfiliados.actualizarAfiliado(direccion.Text,telefono.Text,email.Text,estadoCivil.Text,familiaresacargo.Text,plan.Text, numeroAfiliado);
+            DAO.DAOAfiliados.actualizarAfiliado(direccion.Text,telefono.Text,email.Text,estadoCivil.Text,familiaresacargo.Text,plan.Text, numeroAfiliado,razon.Text);
             }
             if (accion == Accion.Alta)
             {
@@ -133,6 +137,38 @@ namespace ClinicaFrba.Abm_Afiliado
 
             }
             this.Close();
+        }
+
+        private void BotonLimpiarRoles_Click(object sender, EventArgs e)
+        {
+            if (accion != Accion.Modificacion) {
+                nombre.Text = "";
+                apellido.Text = "";
+                tipo.SelectedIndex = 0;
+                sexo.SelectedIndex = 2;
+                numerodocumento.Text = "";
+                fechanac.Text = "";      
+            }
+            direccion.Text = "";
+            telefono.Text = "";
+            estadoCivil.SelectedIndex = 0;
+            familiaresacargo.Text = "";
+            plan.SelectedIndex = 0;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+          
+            new HistorialCambiosPlan(numeroAfiliado).ShowDialog();
+        }
+
+        private void plan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (accion == Accion.Modificacion && plan.Text != plann)
+            {
+                razon.Visible = true; razont.Visible = true;
+            }
+            else { razon.Visible = false; razont.Visible = false; }
         }
     }
 }
