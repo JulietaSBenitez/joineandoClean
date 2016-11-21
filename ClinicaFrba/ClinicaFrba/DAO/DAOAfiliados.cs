@@ -192,6 +192,45 @@ namespace ClinicaFrba.DAO
         }
 
 
+
+
+        public static void bajaAfiliado(String numeroAfiliado)
+        {
+
+            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
+            SQLHelper.CreateObjects(true);
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Clear();
+            SqlParameter parameter;
+
+            try
+            {
+
+                parameter = new SqlParameter("@numeroAfiliado", SqlDbType.BigInt);
+                parameter.Value = long.Parse(numeroAfiliado);
+                parameters.Add(parameter);
+
+
+                SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.baja_paciente", parameters);
+
+
+            }
+            catch (Exception ex)
+            {
+                SQLHelper.RollBackTransction();
+                throw ex;
+            }
+            finally
+            {
+                SQLHelper.CommitTransction();
+                SQLHelper.ClearObjects();
+            }
+
+        }
+
+
+
+
         public static DataTable tiposDeSexo()
         {
             DataTable data = new DataTable();

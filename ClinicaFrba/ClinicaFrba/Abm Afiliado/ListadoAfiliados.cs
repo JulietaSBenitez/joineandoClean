@@ -68,10 +68,10 @@ namespace ClinicaFrba.Abm_Afiliado
             if (Accion.Baja == accion)
             {
 
-                DialogResult dialogResult = MessageBox.Show("Esta seguro?", "Esta seguro que quiere inhabilitar este rol?", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Esta seguro?", "Esta seguro que quiere dar de baja este afiliado?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-               //     DAO.DAORoles.inHabilitarRol(int.Parse(tablaRoles.Rows[e.RowIndex].Cells[1].Value.ToString()));
+                    DAO.DAOAfiliados.bajaAfiliado(tablaAfiliados.Rows[e.RowIndex].Cells["Numero de Afiliado"].Value.ToString());
                 }
 
             }
