@@ -239,5 +239,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                   .Select(tupla => new List<ComboBox>() { tupla.Item1, tupla.Item2 })
                   .Last();
         }
+
+
     }
 }

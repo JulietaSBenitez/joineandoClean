@@ -46,5 +46,20 @@ namespace ClinicaFrba.DAO
 
         }
 
+        public static bool ejecutarSPBooleano(string nombreStoredProcedure, params SqlParameter[] parametros) {
+
+            DataTable tabla = ejecutarSP(nombreStoredProcedure, parametros);
+            return Convert.ToBoolean(tabla.Rows[0][0]);
+        
+        }
+
+        public static int ejecutarSPEntero(string nombreStoredProcedure, params SqlParameter[] parametros)
+        {
+
+            DataTable tabla = ejecutarSP(nombreStoredProcedure, parametros);
+            return Convert.ToInt32(tabla.Rows[0][0]);
+
+        }
+
     }
 }
