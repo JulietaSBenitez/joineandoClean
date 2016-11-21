@@ -19,8 +19,8 @@ namespace ClinicaFrba.src
         {
             SqlParameter idMedico = new SqlParameter("@Medico_ID", medico.ID);
             SqlParameter idEspecialidad = new SqlParameter("@Especialidad_ID", ID);
-            DataTable dataTable = QueryAdapterMaggie.ejecutarSP("ESPECIALIDADMedicoPoseeAgenda", idMedico, idEspecialidad);
-            return Convert.ToBoolean(dataTable.Rows[0][0]);
+            return QueryAdapterMaggie.ejecutarSPBooleano("ESPECIALIDADMedicoPoseeAgenda", idMedico, idEspecialidad);
+            
         }
 
 

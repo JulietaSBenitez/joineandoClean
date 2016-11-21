@@ -9,8 +9,5 @@ namespace ClinicaFrba.src
     class Agenda
     {
 
-        public int CantidadDeHorasTrabajadas() { 
-            return 2}
-
     }
 }

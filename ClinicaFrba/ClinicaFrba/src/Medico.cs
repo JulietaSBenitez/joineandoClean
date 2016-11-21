@@ -12,7 +12,6 @@ namespace ClinicaFrba.src
     {
         public int ID { get; set; }
         public List<Especialidad> Especialidades { get; set; }
-        public List<Agenda> Agendas { get; set; }
 
         public List<Especialidad> EspecialidadesSinAgenda()
         {
@@ -24,7 +23,9 @@ namespace ClinicaFrba.src
             return CantidadDeHorasTrabajadas() > 48;
         }
 
-        public int CantidadDeHorasTrabajadas() { 
-            return Agendas.Sum(agenda => agenda.CantidadDeHorasTrabajadas())}
+        public int CantidadDeHorasTrabajadas() {
+            SqlParameter idMedico = new SqlParameter("@Medico_id", ID);
+            return QueryAdapterMaggie.ejecutarSPEntero("MEDICOHorasSemanales", idMedico);
+            }
     }
 }
