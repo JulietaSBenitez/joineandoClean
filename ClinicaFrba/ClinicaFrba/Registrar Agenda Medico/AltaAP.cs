@@ -46,6 +46,10 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 (controlador => controlador.HoraInicioEsMenorQuehoraFin()),
                 "El horario de inicio es mayor o igual al horario de fin."));
 
+            validaciones.Add(new ValidacionBooleana<AltaAP>(
+                (controlador => medico.CantidadDeHorasTrabajadas().Add(controlador.TiempoDeLaAgenda()) <= new TimeSpan(48,0,0)),
+                "Lo lamentamos, pero con estas horas usted ya estaría trabajando 48hs. ¡Vaya a descansar! Sus pacientes se lo agradecerán."));
+
         }
 
 
@@ -184,7 +188,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             }
 
             //validarQueNoExistanOtrasAgendasEnEseHorario.
-            //ValidarQueNoSeTrabajeMasDe48HorasSemanales.
 
         }
 
@@ -201,10 +204,10 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         public bool HoraInicioEsMenorQuehoraFin()
         {
 
-            return horasDeCheckboxSeleccionados().All(tupla => tupla.Item1 < tupla.Item2);
+            return HorasDeCheckboxSeleccionados().All(tupla => tupla.Item1 < tupla.Item2);
         }
 
-        private List<Tuple<TimeSpan, TimeSpan>> horasDeCheckboxSeleccionados()
+        private List<Tuple<TimeSpan, TimeSpan>> HorasDeCheckboxSeleccionados()
         {
             return widgets
                 .Where(par => par.Key.Checked)
@@ -238,6 +241,13 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                   .Select(par => par.Value)
                   .Select(tupla => new List<ComboBox>() { tupla.Item1, tupla.Item2 })
                   .Last();
+        }
+
+        private TimeSpan TiempoDeLaAgenda(){
+            return
+                HorasDeCheckboxSeleccionados()
+                .Select(tupla => tupla.Item2 - tupla.Item1)
+                .Aggregate((time, otherTime) => time + otherTime);
         }
 
 
