@@ -26,6 +26,13 @@ namespace ClinicaFrba.Abm_Afiliado
             InitializeComponent();
             // TODO: Complete member initialization
             this.accion = accion;
+            sexo.DataSource = DAO.DAOAfiliados.tiposDeSexo();
+            sexo.DisplayMember = "Descripcion";
+            tipo.DataSource = DAO.DAOAfiliados.tiposDeDocumentos();
+            tipo.DisplayMember = "Tipo";
+            plan.DataSource = DAO.DAOAfiliados.tiposDePlanes();
+            plan.DisplayMember = "Nombre";
+
         }
 
         public AltaModificacionAfiliados(Accion accion, DataGridViewRow datos)

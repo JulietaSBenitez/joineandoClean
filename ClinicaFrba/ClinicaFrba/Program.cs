@@ -21,7 +21,7 @@ namespace ClinicaFrba
             Application.SetCompatibleTextRenderingDefault(false);
 
             //Application.Run(new Login.Login());
-        Application.Run(new Abm_Afiliado.ListadoAfiliados(Accion.Modificacion));
+        Application.Run(new Abm_Afiliado.AltaModificacionAfiliados(Accion.Alta));
           //  Medico jorge = new Medico { Especialidades = new List<Especialidad> { new Especialidad { Nombre = "Cirujano" } } };
         //    Application.Run(new RegistrarAgendaMedico.SeleccionarOpcionAP(jorge));
 
