@@ -9,6 +9,53 @@ namespace ClinicaFrba.DAO
 {
     class DAOBonos
     {
+        /*
+        JOINEANDO_ANDO.compra_bono
+@numeroAfiliado int,
+@cantidad int
+        */
+
+
+        public static void compraBono(String numeroAfiliado, String cantidad)
+        {
+
+            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
+            SQLHelper.CreateObjects(true);
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Clear();
+            SqlParameter parameter;
+
+            try
+            {
+
+
+
+                parameter = new SqlParameter("@cantidad", SqlDbType.Int);
+                parameter.Value = int.Parse(cantidad);
+                parameters.Add(parameter);
+
+
+                parameter = new SqlParameter("@numeroAfiliado", SqlDbType.Int);
+                parameter.Value = int.Parse(numeroAfiliado);
+                parameters.Add(parameter);
+
+
+                SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.compra_bono", parameters);
+
+
+            }
+            catch (Exception ex)
+            {
+                SQLHelper.RollBackTransction();
+                throw ex;
+            }
+            finally
+            {
+                SQLHelper.CommitTransction();
+                SQLHelper.ClearObjects();
+            }
+
+        }
 
 
 

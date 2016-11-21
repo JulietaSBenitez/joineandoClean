@@ -12,12 +12,15 @@ namespace ClinicaFrba.Compra_Bono
 {
     public partial class PantallaDosCompraBono : Form
     {
+        string numeroAfiliado;
         public PantallaDosCompraBono(DataGridViewRow datos)
         {
 
             InitializeComponent();
             nombret.Text += datos.Cells["Nombre"].Value.ToString() + " " + datos.Cells["Apellido"].Value.ToString();
-            numeroafiliadot.Text += datos.Cells["Numero de Afiliado"].Value.ToString();
+            numeroAfiliado = datos.Cells["Numero de Afiliado"].Value.ToString();
+            numeroafiliadot.Text += numeroAfiliado;
+
             preciobono.Text = DAO.DAOBonos.precioBono(datos.Cells["Plan"].Value.ToString());
             
         }
@@ -40,5 +43,10 @@ namespace ClinicaFrba.Compra_Bono
             
           
                   }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DAO.DAOBonos.compraBono(numeroAfiliado, cantidad.Text);
+        }
     }
 }
