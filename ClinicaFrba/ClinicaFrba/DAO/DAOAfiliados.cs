@@ -28,12 +28,9 @@ namespace ClinicaFrba.DAO
  @plan nvarchar(255) = ''
          * */
 
+        
 
-
-
-
-
-        public static void crearAfiliado(String direccion, String telefono, String email, String estadoCivil, String familiaresACargo, String plan, String numeroAfiliado)
+        public static int crearAfiliado(String nombre, String apellido, String tipo, String numeroDocumento, String direccion, String sexo, String telefono, String email, String fechanac, String estadoCivil, String familiaresACargo,String plan,int raiz = 0, int sub = 0)
         {
 
             SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
@@ -44,6 +41,31 @@ namespace ClinicaFrba.DAO
 
             try
             {
+
+
+                parameter = new SqlParameter("@fechanac", SqlDbType.DateTime, 255);
+                parameter.Value = fechanac;
+                parameters.Add(parameter);
+
+                parameter = new SqlParameter("@nombre", SqlDbType.NVarChar, 255);
+                parameter.Value = nombre;
+                parameters.Add(parameter);
+
+                parameter = new SqlParameter("@apellido", SqlDbType.NVarChar, 255);
+                parameter.Value = apellido;
+                parameters.Add(parameter);
+
+                parameter = new SqlParameter("@tipo", SqlDbType.NVarChar, 255);
+                parameter.Value = tipo;
+                parameters.Add(parameter);
+
+                parameter = new SqlParameter("@sexo", SqlDbType.NVarChar, 255);
+                parameter.Value = sexo;
+                parameters.Add(parameter);
+
+                parameter = new SqlParameter("@numeroDocumento", SqlDbType.BigInt);
+                parameter.Value = long.Parse(numeroDocumento);
+                parameters.Add(parameter);
 
                 parameter = new SqlParameter("@direccion", SqlDbType.NVarChar, 255);
                 parameter.Value = direccion;
@@ -58,13 +80,19 @@ namespace ClinicaFrba.DAO
                 parameter.Value = plan;
                 parameters.Add(parameter);
 
-                parameter = new SqlParameter("@numero_afiliado", SqlDbType.BigInt);
-                parameter.Value = int.Parse(numeroAfiliado);
-                parameters.Add(parameter);
-
-
-
-                parameter = new SqlParameter("@email", SqlDbType.NVarChar, 255);
+                if (raiz != 0)
+                {
+                    parameter = new SqlParameter("@raiz", SqlDbType.BigInt);
+                    parameter.Value = raiz;
+                    parameters.Add(parameter);
+                }
+                if (sub != 0)
+                {
+                    parameter = new SqlParameter("@sub", SqlDbType.BigInt);
+                    parameter.Value = sub;
+                    parameters.Add(parameter);
+                }
+                parameter = new SqlParameter("@mail", SqlDbType.NVarChar, 255);
                 parameter.Value = email;
                 parameters.Add(parameter);
 
@@ -72,16 +100,11 @@ namespace ClinicaFrba.DAO
                 parameter.Value = estadoCivil;
                 parameters.Add(parameter);
 
-                parameter = new SqlParameter("@familiaresACargo", SqlDbType.Int);
+                parameter = new SqlParameter("@familiares", SqlDbType.Int);
                 parameter.Value = int.Parse(familiaresACargo);
                 parameters.Add(parameter);
 
-
-
-
-
-
-                SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.actualizar_paciente", parameters);
+                return int.Parse(SQLHelper.SQLHelper_ExecuteScalar("JOINEANDO_ANDO.crear_paciente", parameters).ToString());
 
 
             }

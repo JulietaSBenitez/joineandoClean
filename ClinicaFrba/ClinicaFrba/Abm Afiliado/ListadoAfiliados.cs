@@ -78,6 +78,7 @@ namespace ClinicaFrba.Abm_Afiliado
             if (Accion.Modificacion == accion)
             {
                new AltaModificacionAfiliados(Accion.Modificacion, tablaAfiliados.Rows[e.RowIndex]).ShowDialog();
+
                // DialogResult dialogResult = MessageBox.Show("modificame esta","", MessageBoxButtons.YesNo);
              // v
             }

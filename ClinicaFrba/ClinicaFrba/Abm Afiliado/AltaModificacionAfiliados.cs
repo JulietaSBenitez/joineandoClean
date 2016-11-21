@@ -15,6 +15,8 @@ namespace ClinicaFrba.Abm_Afiliado
         private Accion accion;
         private DataGridViewRow dataGridViewRow;
         private string numeroAfiliado;
+        private int raiz;
+        private int sub;
 
         public AltaModificacionAfiliados()
         {
@@ -69,6 +71,24 @@ namespace ClinicaFrba.Abm_Afiliado
             
         }
 
+        public AltaModificacionAfiliados(Accion accion, int raiz, int sub)
+        {
+            InitializeComponent();
+            // TODO: Complete member initialization
+            this.accion = accion;
+            this.raiz = raiz;
+            this.sub = sub;
+            this.accion = accion;
+            sexo.DataSource = DAO.DAOAfiliados.tiposDeSexo();
+            sexo.DisplayMember = "Descripcion";
+            tipo.DataSource = DAO.DAOAfiliados.tiposDeDocumentos();
+            tipo.DisplayMember = "Tipo";
+            plan.DataSource = DAO.DAOAfiliados.tiposDePlanes();
+            plan.DisplayMember = "Nombre";
+            familiaresacargo.Text = "0";
+            familiaresacargo.Enabled = false;
+        }
+
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
@@ -84,6 +104,33 @@ namespace ClinicaFrba.Abm_Afiliado
             if (accion == Accion.Modificacion) {
 
             DAO.DAOAfiliados.actualizarAfiliado(direccion.Text,telefono.Text,email.Text,estadoCivil.Text,familiaresacargo.Text,plan.Text, numeroAfiliado);
+            }
+            if (accion == Accion.Alta)
+            {
+                int numeroAfiliado = DAO.DAOAfiliados.crearAfiliado(nombre.Text, apellido.Text, tipo.Text, numerodocumento.Text, direccion.Text, sexo.Text, telefono.Text, email.Text, fechanac.Text, estadoCivil.Text, familiaresacargo.Text, plan.Text);
+
+
+                //Ver que pregunte solo si es casado o bla
+                DialogResult dialogResult = MessageBox.Show("Desea asociar a su conyugue?", "Pregunta", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    new Abm_Afiliado.AltaModificacionAfiliados(Accion.AltaMin,numeroAfiliado-1,2).ShowDialog();
+                }
+
+                //Ver que pregunte solo si es casado o bla
+                DialogResult dialogResult2 = MessageBox.Show("Desea asociar a sus familiares a cargo?", "Pregunta", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {int i;
+                   for(i=0;i<int.Parse(familiaresacargo.Text);i++){
+                       new Abm_Afiliado.AltaModificacionAfiliados(Accion.AltaMin, numeroAfiliado - 1, 3 + i).ShowDialog();
+                   }
+                }
+
+            }
+            if (accion == Accion.AltaMin)
+            {
+                int numeroAfiliado = DAO.DAOAfiliados.crearAfiliado(nombre.Text, apellido.Text, tipo.Text, numerodocumento.Text, direccion.Text, sexo.Text, telefono.Text, email.Text, fechanac.Text, estadoCivil.Text, familiaresacargo.Text, plan.Text,raiz,sub);
+
             }
             this.Close();
         }
