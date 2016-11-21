@@ -18,14 +18,13 @@ namespace ClinicaFrba.src
             return Especialidades.FindAll(especialidad => !especialidad.YaTieneAgenda(this));
         }
 
-        public bool TrabajaMasDe48Horas()
-        {
-            return CantidadDeHorasTrabajadas() > 48;
-        }
 
-        public int CantidadDeHorasTrabajadas() {
+        public TimeSpan CantidadDeHorasTrabajadas()
+        {
             SqlParameter idMedico = new SqlParameter("@Medico_id", ID);
-            return QueryAdapterMaggie.ejecutarSPEntero("MEDICOHorasSemanales", idMedico);
-            }
+            DataTable table = QueryAdapterMaggie.ejecutarSP("MEDICOHorasSemanales", idMedico);
+            return new TimeSpan(Convert.ToInt32(table.Rows[0][0]), Convert.ToInt32(table.Rows[0][1]), 0);
+
+        }
     }
 }
