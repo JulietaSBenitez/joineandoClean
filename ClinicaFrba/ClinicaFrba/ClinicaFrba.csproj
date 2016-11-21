@@ -56,6 +56,18 @@
     <Compile Include="Abm Afiliado\HistorialCambiosPlan.Designer.cs">
       <DependentUpon>HistorialCambiosPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Afiliado\ListadoAfiliadosBaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\ListadoAfiliadosBaja.Designer.cs">
+      <DependentUpon>ListadoAfiliadosBaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Afiliado\ListadoAfiliadosModificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\ListadoAfiliadosModificacion.Designer.cs">
+      <DependentUpon>ListadoAfiliadosModificacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Afiliado\ListadoAfiliados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +103,12 @@
     </Compile>
     <Compile Include="Abm Profesional\BajaAP.Designer.cs">
       <DependentUpon>BajaAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Compra Bono\BusquedaAfiliado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compra Bono\BusquedaAfiliado.Designer.cs">
+      <DependentUpon>BusquedaAfiliado.cs</DependentUpon>
     </Compile>
     <Compile Include="DAO\DAOAfiliados.cs" />
     <Compile Include="DAO\DAOLogin.cs" />
@@ -157,12 +175,6 @@
     </Compile>
     <Compile Include="Funcionalidad.cs" />
     <Compile Include="Enum.cs" />
-    <Compile Include="Compra Bono\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Compra Bono\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="DAO\DAORoles.cs" />
     <Compile Include="DAO\SQLConnector.cs" />
     <Compile Include="Listados\Form1.cs">
@@ -205,11 +217,20 @@
     <EmbeddedResource Include="Abm Afiliado\ListadoAfiliados.resx">
       <DependentUpon>ListadoAfiliados.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\ListadoAfiliadosBaja.resx">
+      <DependentUpon>ListadoAfiliadosBaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\ListadoAfiliadosModificacion.resx">
+      <DependentUpon>ListadoAfiliadosModificacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Especialidades Medicas\EspecialidadesMedicas.resx">
       <DependentUpon>EspecialidadesMedicas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Planes\Planes.resx">
       <DependentUpon>Planes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compra Bono\BusquedaAfiliado.resx">
+      <DependentUpon>BusquedaAfiliado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\Acciones.resx">
       <DependentUpon>Acciones.cs</DependentUpon>

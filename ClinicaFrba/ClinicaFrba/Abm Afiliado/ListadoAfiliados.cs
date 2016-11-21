@@ -18,6 +18,10 @@ namespace ClinicaFrba.Abm_Afiliado
         public ListadoAfiliados()
         {
             InitializeComponent();
+            tablaAfiliados.DataSource = DAO.DAOAfiliados.filtroAfiliados();
+            tiposDeDocumentos.DataSource = DAO.DAOAfiliados.tiposDeDocumentos();
+            tiposDeDocumentos.DisplayMember = "Tipo";
+            AgregarBoton();
         }
 
         public ListadoAfiliados(Accion accion)
@@ -27,17 +31,9 @@ namespace ClinicaFrba.Abm_Afiliado
             this.accion = accion;
             //tiposDeDocumentos
 
-            tablaAfiliados.DataSource = DAO.DAOAfiliados.filtroAfiliados();
-            tiposDeDocumentos.DataSource = DAO.DAOAfiliados.tiposDeDocumentos();
-            tiposDeDocumentos.DisplayMember = "Tipo";
-            AgregarBoton();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
-
+    
         private void btnfiltrar_Click(object sender, EventArgs e)
         {
             tablaAfiliados.DataSource = DAO.DAOAfiliados.filtroAfiliados(nombre.Text,apellido.Text,tiposDeDocumentos.Text,numerodocumento.Text);
@@ -57,10 +53,10 @@ namespace ClinicaFrba.Abm_Afiliado
             btnColum.Name = "Seleccionar";
             btnColum.Text = "Seleccionar";
             btnColum.UseColumnTextForButtonValue = true;
-            tablaAfiliados.Columns.Insert(13, btnColum);
+            tablaAfiliados.Columns.Insert(0, btnColum);
 
         }
-
+        /*
         private void tablaAfiliados_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -81,6 +77,13 @@ namespace ClinicaFrba.Abm_Afiliado
 
             }
             this.Close();
+        }
+         * 
+         * */
+
+        private void ListadoAfiliados_Load(object sender, EventArgs e)
+        {
+
         }
 
     
