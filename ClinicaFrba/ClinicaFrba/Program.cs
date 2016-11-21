@@ -23,8 +23,8 @@ namespace ClinicaFrba
             //Application.Run(new Login.Login());
 
   //    Application.Run(new Abm_Afiliado.a);
-           Application.Run(new Abm_Afiliado.ListadoAfiliadosModificacion());
-       //     Application.Run(new Compra_Bono.BusquedaAfiliado());
+    //       Application.Run(new Abm_Afiliado.ListadoAfiliadosModificacion());
+            Application.Run(new Compra_Bono.BusquedaAfiliado());
             
 
           //  Medico jorge = new Medico { Especialidades = new List<Especialidad> { new Especialidad { Nombre = "Cirujano" } } };

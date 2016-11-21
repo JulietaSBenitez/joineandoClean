@@ -25,7 +25,10 @@ namespace ClinicaFrba.Compra_Bono
         }
         private void tablaAfiliados_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Esta seguro?", "Esta seguro que quiere dar de baja este afiliado?", MessageBoxButtons.YesNo);
+
+            new PantallaDosCompraBono(tablaAfiliados.Rows[e.RowIndex]).ShowDialog();
+
+            //DialogResult dialogResult = MessageBox.Show("Esta seguro?", "Esta seguro que quiere dar de baja este afiliado?", MessageBoxButtons.YesNo);
             
         }
     }
