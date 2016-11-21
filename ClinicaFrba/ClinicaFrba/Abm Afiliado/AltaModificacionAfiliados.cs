@@ -14,6 +14,7 @@ namespace ClinicaFrba.Abm_Afiliado
     {
         private Accion accion;
         private DataGridViewRow dataGridViewRow;
+        private string numeroAfiliado;
 
         public AltaModificacionAfiliados()
         {
@@ -42,7 +43,7 @@ namespace ClinicaFrba.Abm_Afiliado
 
             nombre.Text = datos.Cells["Nombre"].Value.ToString();
             apellido.Text = datos.Cells["Apellido"].Value.ToString();
-            fechanac.Value = DateTime.Parse( datos.Cells["Fecha Nacimiento"].Value.ToString());
+            fechanac.Value = DateTime.ParseExact(datos.Cells["Fecha Nacimiento"].Value.ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             tipo.Text = datos.Cells["Tipo"].Value.ToString();
             numerodocumento.Text = datos.Cells["Numero_documento"].Value.ToString();
             telefono.Text = datos.Cells["Telefono"].Value.ToString();
@@ -52,7 +53,13 @@ namespace ClinicaFrba.Abm_Afiliado
             plan.Text = datos.Cells["Plan"].Value.ToString();
             familiaresacargo.Text = datos.Cells["Familiares a cargo"].Value.ToString();
             estadoCivil.Text = datos.Cells["Estado Civil"].Value.ToString();
-
+            numeroAfiliado = datos.Cells["Numero de Afiliado"].Value.ToString();
+            nombre.Enabled = false;
+            apellido.Enabled = false;
+            numerodocumento.Enabled = false;
+            tipo.Enabled = false;
+            sexo.Enabled = false;
+            
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -63,6 +70,15 @@ namespace ClinicaFrba.Abm_Afiliado
         private void AltaModificacionAfiliados_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void BotonGuardarRol_Click(object sender, EventArgs e)
+        {
+            if (accion == Accion.Modificacion) {
+
+            DAO.DAOAfiliados.actualizarAfiliado(direccion.Text,telefono.Text,email.Text,estadoCivil.Text,familiaresacargo.Text,plan.Text, numeroAfiliado);
+            }
+            this.Close();
         }
     }
 }

@@ -131,6 +131,7 @@
             this.BotonGuardarRol.TabIndex = 18;
             this.BotonGuardarRol.Text = "Guardar";
             this.BotonGuardarRol.UseVisualStyleBackColor = true;
+            this.BotonGuardarRol.Click += new System.EventHandler(this.BotonGuardarRol_Click);
             // 
             // BotonLimpiarRoles
             // 
