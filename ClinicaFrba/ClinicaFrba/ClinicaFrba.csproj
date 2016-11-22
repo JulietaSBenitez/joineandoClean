@@ -106,6 +106,12 @@
     <Compile Include="Abm Profesional\BajaAP.Designer.cs">
       <DependentUpon>BajaAP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cancelar Atencion\CancelarTurnoProfesional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarTurnoProfesional.Designer.cs">
+      <DependentUpon>CancelarTurnoProfesional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Compra Bono\BusquedaAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoAfiliado.resx">
       <DependentUpon>CancelarTurnoAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoProfesional.resx">
+      <DependentUpon>CancelarTurnoProfesional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Compra Bono\BusquedaAfiliado.resx">
       <DependentUpon>BusquedaAfiliado.cs</DependentUpon>

@@ -49,7 +49,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(498, 237);
+            this.label1.Location = new System.Drawing.Point(502, 261);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 13);
             this.label1.TabIndex = 18;
@@ -68,7 +68,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(55, 221);
+            this.label4.Location = new System.Drawing.Point(55, 245);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(139, 13);
             this.label4.TabIndex = 16;
@@ -77,7 +77,7 @@
             // EliminarAgendaLabel
             // 
             this.EliminarAgendaLabel.AutoSize = true;
-            this.EliminarAgendaLabel.Location = new System.Drawing.Point(288, 221);
+            this.EliminarAgendaLabel.Location = new System.Drawing.Point(288, 245);
             this.EliminarAgendaLabel.Name = "EliminarAgendaLabel";
             this.EliminarAgendaLabel.Size = new System.Drawing.Size(138, 13);
             this.EliminarAgendaLabel.TabIndex = 15;
@@ -86,7 +86,7 @@
             // ModificarAgendaLabel
             // 
             this.ModificarAgendaLabel.AutoSize = true;
-            this.ModificarAgendaLabel.Location = new System.Drawing.Point(508, 221);
+            this.ModificarAgendaLabel.Location = new System.Drawing.Point(512, 245);
             this.ModificarAgendaLabel.Name = "ModificarAgendaLabel";
             this.ModificarAgendaLabel.Size = new System.Drawing.Size(145, 13);
             this.ModificarAgendaLabel.TabIndex = 14;
@@ -105,7 +105,7 @@
             // AgregarAgendaImagen
             // 
             this.AgregarAgendaImagen.Image = ((System.Drawing.Image)(resources.GetObject("AgregarAgendaImagen.Image")));
-            this.AgregarAgendaImagen.Location = new System.Drawing.Point(44, 78);
+            this.AgregarAgendaImagen.Location = new System.Drawing.Point(44, 88);
             this.AgregarAgendaImagen.Name = "AgregarAgendaImagen";
             this.AgregarAgendaImagen.Size = new System.Drawing.Size(161, 156);
             this.AgregarAgendaImagen.TabIndex = 12;
@@ -115,7 +115,7 @@
             // ModificarAgendaImagen
             // 
             this.ModificarAgendaImagen.Image = ((System.Drawing.Image)(resources.GetObject("ModificarAgendaImagen.Image")));
-            this.ModificarAgendaImagen.Location = new System.Drawing.Point(501, 78);
+            this.ModificarAgendaImagen.Location = new System.Drawing.Point(501, 88);
             this.ModificarAgendaImagen.Name = "ModificarAgendaImagen";
             this.ModificarAgendaImagen.Size = new System.Drawing.Size(161, 156);
             this.ModificarAgendaImagen.TabIndex = 10;
@@ -124,7 +124,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(274, 78);
+            this.pictureBox1.Location = new System.Drawing.Point(274, 88);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(161, 156);
             this.pictureBox1.TabIndex = 19;
@@ -135,7 +135,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(271, 237);
+            this.label2.Location = new System.Drawing.Point(271, 261);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(169, 13);
             this.label2.TabIndex = 20;
