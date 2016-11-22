@@ -16,5 +16,10 @@ namespace ClinicaFrba.Registro_Llegada
         {
             InitializeComponent();
         }
+
+        private void BusquedaTurno_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
