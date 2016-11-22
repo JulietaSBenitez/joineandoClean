@@ -182,11 +182,11 @@
     <Compile Include="AbmRol\ListadoRoles.Designer.cs">
       <DependentUpon>ListadoRoles.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cancelar Atencion\Form1.cs">
+    <Compile Include="Cancelar Atencion\CancelarTurnoAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cancelar Atencion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Cancelar Atencion\CancelarTurnoAfiliado.Designer.cs">
+      <DependentUpon>CancelarTurnoAfiliado.cs</DependentUpon>
     </Compile>
     <Compile Include="Funcionalidad.cs" />
     <Compile Include="Enum.cs" />
@@ -248,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Planes\Planes.resx">
       <DependentUpon>Planes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoAfiliado.resx">
+      <DependentUpon>CancelarTurnoAfiliado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Compra Bono\BusquedaAfiliado.resx">
       <DependentUpon>BusquedaAfiliado.cs</DependentUpon>
