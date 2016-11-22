@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace ClinicaFrba.Registro_Llegada
 {
-    public partial class Form1 : Form
+    public partial class BusquedaTurno : Form
     {
-        public Form1()
+        public BusquedaTurno()
         {
             InitializeComponent();
+        }
+
+        private void BusquedaTurno_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
