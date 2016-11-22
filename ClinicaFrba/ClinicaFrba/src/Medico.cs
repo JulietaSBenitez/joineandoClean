@@ -26,5 +26,12 @@ namespace ClinicaFrba.src
             return new TimeSpan(Convert.ToInt32(table.Rows[0][0]), Convert.ToInt32(table.Rows[0][1]), 0);
 
         }
+
+        /*public TimeSpan HorariosDeAgendas() {
+            SqlParameter idMedico = new SqlParameter("@Medico_id", ID);
+            DataTable table = QueryAdapterMaggie.ejecutarSPBooleano("MEDICONoColicionanSusAgendas", idMedico);
+            return */
+        }
+
     }
 }

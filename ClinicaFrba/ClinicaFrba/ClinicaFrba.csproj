@@ -214,7 +214,6 @@
     </Compile>
     <Compile Include="src\Agenda.cs" />
     <Compile Include="src\ValidacionBooleana.cs" />
-    <Compile Include="src\Dia.cs" />
     <Compile Include="src\Especialidad.cs" />
     <Compile Include="src\Medico.cs" />
     <EmbeddedResource Include="Abm Afiliado\AltaModificacionAfiliados.resx">
