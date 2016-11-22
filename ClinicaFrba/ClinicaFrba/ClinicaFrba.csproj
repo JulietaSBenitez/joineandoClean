@@ -112,6 +112,12 @@
     <Compile Include="Cancelar Atencion\CancelarTurnoProfesional.Designer.cs">
       <DependentUpon>CancelarTurnoProfesional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cancelar Atencion\CancelarTurnoProfesionalDia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarTurnoProfesionalDia.Designer.cs">
+      <DependentUpon>CancelarTurnoProfesionalDia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cancelar Atencion\CancelarTurnoTipoRazon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoProfesional.resx">
       <DependentUpon>CancelarTurnoProfesional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoProfesionalDia.resx">
+      <DependentUpon>CancelarTurnoProfesionalDia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoProfesionalHorario.resx">
       <DependentUpon>CancelarTurnoProfesionalHorario.cs</DependentUpon>
