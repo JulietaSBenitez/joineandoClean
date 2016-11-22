@@ -30,15 +30,20 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // btnfiltrar
+            // 
+            this.btnfiltrar.Click += new System.EventHandler(this.btnfiltrar_Click);
+            // 
+            // RegistroDeLlegada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(580, 308);
+            this.Name = "RegistroDeLlegada";
+            this.Text = "Registro de llegada";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

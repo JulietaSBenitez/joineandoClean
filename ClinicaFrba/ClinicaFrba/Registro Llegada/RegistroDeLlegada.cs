@@ -21,5 +21,10 @@ namespace ClinicaFrba.Registro_Llegada
         {
 
         }
+
+        private void btnfiltrar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
