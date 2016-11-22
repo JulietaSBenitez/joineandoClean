@@ -142,6 +142,7 @@
     <Compile Include="Compra Bono\PantallaDosCompraBono.Designer.cs">
       <DependentUpon>PantallaDosCompraBono.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\DAOTurnos.cs" />
     <Compile Include="DAO\DAOAfiliados.cs" />
     <Compile Include="DAO\DAOBonos.cs" />
     <Compile Include="DAO\DAOLogin.cs" />

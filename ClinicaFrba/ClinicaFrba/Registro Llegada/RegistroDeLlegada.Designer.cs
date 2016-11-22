@@ -30,15 +30,11 @@
         {
             this.SuspendLayout();
             // 
-            // btnfiltrar
-            // 
-            this.btnfiltrar.Click += new System.EventHandler(this.btnfiltrar_Click);
-            // 
             // RegistroDeLlegada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 308);
+            this.ClientSize = new System.Drawing.Size(766, 309);
             this.Name = "RegistroDeLlegada";
             this.Text = "Registro de llegada";
             this.Load += new System.EventHandler(this.Form1_Load);
