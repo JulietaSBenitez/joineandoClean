@@ -106,6 +106,30 @@
     <Compile Include="Abm Profesional\BajaAP.Designer.cs">
       <DependentUpon>BajaAP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cancelar Atencion\CancelarTurnoProfesional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarTurnoProfesional.Designer.cs">
+      <DependentUpon>CancelarTurnoProfesional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarTurnoProfesionalDia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarTurnoProfesionalDia.Designer.cs">
+      <DependentUpon>CancelarTurnoProfesionalDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarTurnoTipoRazon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarTurnoTipoRazon.Designer.cs">
+      <DependentUpon>CancelarTurnoTipoRazon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarTurnoProfesionalHorario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarTurnoProfesionalHorario.Designer.cs">
+      <DependentUpon>CancelarTurnoProfesionalHorario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Compra Bono\BusquedaAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +164,12 @@
     </Compile>
     <Compile Include="Login\SeleccionarRol.Designer.cs">
       <DependentUpon>SeleccionarRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedir Turno\Selección de Día y Horario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedir Turno\Selección de Día y Horario.Designer.cs">
+      <DependentUpon>Selección de Día y Horario.cs</DependentUpon>
     </Compile>
     <Compile Include="Registrar Agenda Medico\AltaAP.cs">
       <SubType>Form</SubType>
@@ -177,11 +207,11 @@
     <Compile Include="AbmRol\ListadoRoles.Designer.cs">
       <DependentUpon>ListadoRoles.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cancelar Atencion\Form1.cs">
+    <Compile Include="Cancelar Atencion\CancelarTurnoAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cancelar Atencion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Cancelar Atencion\CancelarTurnoAfiliado.Designer.cs">
+      <DependentUpon>CancelarTurnoAfiliado.cs</DependentUpon>
     </Compile>
     <Compile Include="Funcionalidad.cs" />
     <Compile Include="Enum.cs" />
@@ -193,11 +223,11 @@
     <Compile Include="Listados\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pedir Turno\Form1.cs">
+    <Compile Include="Pedir Turno\AltaTurno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pedir Turno\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Pedir Turno\AltaTurno.Designer.cs">
+      <DependentUpon>AltaTurno.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,7 +251,6 @@
     </Compile>
     <Compile Include="src\Agenda.cs" />
     <Compile Include="src\ValidacionBooleana.cs" />
-    <Compile Include="src\Dia.cs" />
     <Compile Include="src\Especialidad.cs" />
     <Compile Include="src\Medico.cs" />
     <EmbeddedResource Include="Abm Afiliado\AltaModificacionAfiliados.resx">
@@ -245,6 +274,21 @@
     <EmbeddedResource Include="Abm Planes\Planes.resx">
       <DependentUpon>Planes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoAfiliado.resx">
+      <DependentUpon>CancelarTurnoAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoProfesional.resx">
+      <DependentUpon>CancelarTurnoProfesional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoProfesionalDia.resx">
+      <DependentUpon>CancelarTurnoProfesionalDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoProfesionalHorario.resx">
+      <DependentUpon>CancelarTurnoProfesionalHorario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoTipoRazon.resx">
+      <DependentUpon>CancelarTurnoTipoRazon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Compra Bono\BusquedaAfiliado.resx">
       <DependentUpon>BusquedaAfiliado.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,6 +303,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login\SeleccionarRol.resx">
       <DependentUpon>SeleccionarRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedir Turno\AltaTurno.resx">
+      <DependentUpon>AltaTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedir Turno\Selección de Día y Horario.resx">
+      <DependentUpon>Selección de Día y Horario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrar Agenda Medico\AltaAP.resx">
       <DependentUpon>AltaAP.cs</DependentUpon>

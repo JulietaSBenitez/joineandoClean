@@ -50,6 +50,8 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 (controlador => medico.CantidadDeHorasTrabajadas().Add(controlador.TiempoDeLaAgenda()) <= new TimeSpan(48,0,0)),
                 "Lo lamentamos, pero con estas horas usted ya estaría trabajando 48hs. ¡Vaya a descansar! Sus pacientes se lo agradecerán."));
 
+            
+
         }
 
 
