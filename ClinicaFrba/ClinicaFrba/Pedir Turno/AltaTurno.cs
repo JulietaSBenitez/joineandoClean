@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace ClinicaFrba.Pedir_Turno
 {
-    public partial class Form1 : Form
+    public partial class AltaTurno : Form
     {
-        public Form1()
+        public AltaTurno()
         {
             InitializeComponent();
         }
+
+        private void ContinuarButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
