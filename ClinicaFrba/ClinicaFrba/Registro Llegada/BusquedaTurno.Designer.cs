@@ -1,6 +1,6 @@
 ﻿namespace ClinicaFrba.Registro_Llegada
 {
-    partial class Form1
+    partial class BusquedaTurno
     {
         /// <summary>
         /// Required designer variable.
