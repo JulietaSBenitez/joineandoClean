@@ -33,12 +33,17 @@ namespace ClinicaFrba.Registro_Llegada
             if (cantidadBonos == 0)
             {
                 DialogResult dialogResult = MessageBox.Show("ERROR: No posee bonos disponibles para efectuar la consulta medica", "Bonos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              
                 //CREAR CONSULTA MEDICA
             }
             else
             {
                 DialogResult dialogResult = MessageBox.Show("Le quedan un total de: " + (cantidadBonos - 1).ToString() + " bonos disponibles para proximas consultas", "Bonos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // ((?)) pedirle a batman ayuda
+                horario.CustomFormat = "MM/dd/yyyy hh:mm";
+              //  medico.Text = horario.Text;
+                DAO.DAOTurnos.confirmarPresencia(tablaTurnos.Rows[e.RowIndex].Cells["Numero de Turno"].Value.ToString(), tablaTurnos.Rows[e.RowIndex].Cells["Numero Afiliado"].Value.ToString(), horario.Text);
+                horario.CustomFormat = "dd/MM/yyyy hh:mm";
             }
      
         

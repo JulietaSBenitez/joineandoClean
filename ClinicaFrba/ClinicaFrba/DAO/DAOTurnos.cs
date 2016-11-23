@@ -12,6 +12,53 @@ namespace ClinicaFrba.DAO
     {
 
 
+        public static void confirmarPresencia(string turno, string numeroAfiliado, string horario)
+        {
+
+
+            DataTable data = new DataTable();
+            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
+            SQLHelper.CreateObjects(true);
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Clear();
+            SqlParameter parameter;
+
+
+            parameter = new SqlParameter("@turno", SqlDbType.Int);
+            parameter.Value = int.Parse(turno);
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("@numeroAfiliado", SqlDbType.Int);
+            parameter.Value = int.Parse(numeroAfiliado);
+            parameters.Add(parameter);
+
+
+            parameter = new SqlParameter("@horario", SqlDbType.NVarChar,255);
+            parameter.Value = horario;
+            parameters.Add(parameter);
+
+
+
+            try
+            {
+                SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.confirmar_presencia", parameters);
+                SQLHelper.CommitTransction();
+
+            }
+            catch (Exception ex)
+            {
+                SQLHelper.RollBackTransction();
+                    throw ex;
+            }
+            finally
+            {
+                SQLHelper.ClearObjects();
+            }
+
+        }
+
+
+
         public static int bonosDisponibles(String numeroAfiliado)
         {
 
@@ -81,7 +128,7 @@ namespace ClinicaFrba.DAO
            
 
                 data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.listado_registro_atencion", parameters);
-                return data;
+                return data;    
             }
             catch (Exception ex)
             {
