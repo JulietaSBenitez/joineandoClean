@@ -96,7 +96,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 comboBoxFinLunes.Enabled = false;
             }
         }
-
         private void MartesAgendaCB_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -113,7 +112,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             }
 
         }
-
         private void MiercolesAgendaCB_CheckedChanged(object sender, EventArgs e)
         {
             if (miercolesAgendaCB.Checked)
@@ -128,7 +126,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 comboBoxFinMiercoles.Enabled = false;
             }
         }
-
         private void JuevesAgendaCB_CheckedChanged(object sender, EventArgs e)
         {
             if (juevesAgendaCB.Checked)
@@ -143,7 +140,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 comboBoxFinJueves.Enabled = false;
             }
         }
-
         private void ViernesAgendaCB_CheckedChanged(object sender, EventArgs e)
         {
             if (viernesAgendaCB.Checked)
@@ -158,7 +154,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 comboBoxFinViernes.Enabled = false;
             }
         }
-
         private void SabadoAgendaCB_CheckedChanged(object sender, EventArgs e)
         {
             if (sabadoAgendaCB.Checked)
@@ -226,7 +221,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                   .SelectMany(lista => lista)
                   .ToList();
         }
-
         private List<ComboBox> ComboboxesSemana()
         {
             return widgets
@@ -236,7 +230,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                   .SelectMany(lista => lista)
                   .ToList();
         }
-
         private List<ComboBox> ComboboxesSabado()
         {
             return widgets
@@ -251,6 +244,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 .Select(tupla => tupla.Item2 - tupla.Item1)
                 .Aggregate((time, otherTime) => time + otherTime);
         }
+
 
 
     }

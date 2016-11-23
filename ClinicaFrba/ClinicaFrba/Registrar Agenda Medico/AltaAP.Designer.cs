@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.asd = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.botonVolverAgenda = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,8 +56,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.especialidadesAgendaCB = new System.Windows.Forms.ComboBox();
             this.EspecialidadLabel = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.asd.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,6 +94,28 @@
             this.asd.TabIndex = 0;
             this.asd.TabStop = false;
             this.asd.Text = "Complete los campos para crear un nueva agenda:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(431, 42);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(13, 17);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "*";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(25, 65);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(403, 12);
+            this.label4.TabIndex = 25;
+            this.label4.Text = " * Si no aparece especialidad alguna es porque ya tiene una agenda para todas sus" +
+    " especialidades.";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // botonVolverAgenda
             // 
@@ -325,28 +347,6 @@
             this.EspecialidadLabel.Size = new System.Drawing.Size(92, 17);
             this.EspecialidadLabel.TabIndex = 0;
             this.EspecialidadLabel.Text = "Especialidad:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(25, 65);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(403, 12);
-            this.label4.TabIndex = 25;
-            this.label4.Text = " * Si no aparece especialidad alguna es porque ya tiene una agenda para todas sus" +
-    " especialidades.";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(431, 42);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(13, 17);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "*";
             // 
             // AltaAP
             // 

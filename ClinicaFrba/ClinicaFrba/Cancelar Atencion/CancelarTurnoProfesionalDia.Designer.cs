@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.VolverButton = new System.Windows.Forms.Button();
+            this.CancelarTurnosButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.CancelarTurnosButton = new System.Windows.Forms.Button();
-            this.VolverButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +47,25 @@
             this.groupBox1.Size = new System.Drawing.Size(332, 312);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // VolverButton
+            // 
+            this.VolverButton.BackColor = System.Drawing.Color.IndianRed;
+            this.VolverButton.Location = new System.Drawing.Point(217, 271);
+            this.VolverButton.Name = "VolverButton";
+            this.VolverButton.Size = new System.Drawing.Size(105, 30);
+            this.VolverButton.TabIndex = 9;
+            this.VolverButton.Text = "Volver";
+            this.VolverButton.UseVisualStyleBackColor = false;
+            // 
+            // CancelarTurnosButton
+            // 
+            this.CancelarTurnosButton.Location = new System.Drawing.Point(98, 271);
+            this.CancelarTurnosButton.Name = "CancelarTurnosButton";
+            this.CancelarTurnosButton.Size = new System.Drawing.Size(105, 30);
+            this.CancelarTurnosButton.TabIndex = 1;
+            this.CancelarTurnosButton.Text = "Cancelar Turno/s";
+            this.CancelarTurnosButton.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -63,25 +82,6 @@
             this.monthCalendar1.Location = new System.Drawing.Point(67, 56);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 7;
-            // 
-            // CancelarTurnosButton
-            // 
-            this.CancelarTurnosButton.Location = new System.Drawing.Point(98, 271);
-            this.CancelarTurnosButton.Name = "CancelarTurnosButton";
-            this.CancelarTurnosButton.Size = new System.Drawing.Size(105, 30);
-            this.CancelarTurnosButton.TabIndex = 1;
-            this.CancelarTurnosButton.Text = "Cancelar Turnos";
-            this.CancelarTurnosButton.UseVisualStyleBackColor = true;
-            // 
-            // VolverButton
-            // 
-            this.VolverButton.BackColor = System.Drawing.Color.IndianRed;
-            this.VolverButton.Location = new System.Drawing.Point(217, 271);
-            this.VolverButton.Name = "VolverButton";
-            this.VolverButton.Size = new System.Drawing.Size(105, 30);
-            this.VolverButton.TabIndex = 9;
-            this.VolverButton.Text = "Volver";
-            this.VolverButton.UseVisualStyleBackColor = false;
             // 
             // CancelarTurnoProfesionalDia
             // 

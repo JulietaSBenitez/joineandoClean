@@ -1,4 +1,6 @@
-﻿namespace ClinicaFrba.Pedir_Turno
+﻿using ClinicaFrba.src;
+
+namespace ClinicaFrba.Pedir_Turno
 {
     partial class AltaTurno
     {
@@ -29,12 +31,12 @@
         private void InitializeComponent()
         {
             this.SeleccionarEspecialidadGP = new System.Windows.Forms.GroupBox();
-            this.EspecialidadMedicaText = new System.Windows.Forms.Label();
-            this.EspecialidadMedicaCB = new System.Windows.Forms.ComboBox();
-            this.ProfesionalText = new System.Windows.Forms.Label();
-            this.ProfesionalCB = new System.Windows.Forms.ComboBox();
-            this.CancelarButton = new System.Windows.Forms.Button();
             this.ContinuarButton = new System.Windows.Forms.Button();
+            this.CancelarButton = new System.Windows.Forms.Button();
+            this.ProfesionalCB = new System.Windows.Forms.ComboBox();
+            this.ProfesionalText = new System.Windows.Forms.Label();
+            this.EspecialidadMedicaCB = new System.Windows.Forms.ComboBox();
+            this.EspecialidadMedicaText = new System.Windows.Forms.Label();
             this.SeleccionarEspecialidadGP.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,41 +56,15 @@
             this.SeleccionarEspecialidadGP.TabStop = false;
             this.SeleccionarEspecialidadGP.Text = "Complete los campos a continuación:";
             // 
-            // EspecialidadMedicaText
+            // ContinuarButton
             // 
-            this.EspecialidadMedicaText.AutoSize = true;
-            this.EspecialidadMedicaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EspecialidadMedicaText.Location = new System.Drawing.Point(173, 38);
-            this.EspecialidadMedicaText.Name = "EspecialidadMedicaText";
-            this.EspecialidadMedicaText.Size = new System.Drawing.Size(154, 20);
-            this.EspecialidadMedicaText.TabIndex = 0;
-            this.EspecialidadMedicaText.Text = "Especialidad Medica";
-            // 
-            // EspecialidadMedicaCB
-            // 
-            this.EspecialidadMedicaCB.FormattingEnabled = true;
-            this.EspecialidadMedicaCB.Location = new System.Drawing.Point(53, 71);
-            this.EspecialidadMedicaCB.Name = "EspecialidadMedicaCB";
-            this.EspecialidadMedicaCB.Size = new System.Drawing.Size(376, 24);
-            this.EspecialidadMedicaCB.TabIndex = 1;
-            // 
-            // ProfesionalText
-            // 
-            this.ProfesionalText.AutoSize = true;
-            this.ProfesionalText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProfesionalText.Location = new System.Drawing.Point(205, 147);
-            this.ProfesionalText.Name = "ProfesionalText";
-            this.ProfesionalText.Size = new System.Drawing.Size(88, 20);
-            this.ProfesionalText.TabIndex = 2;
-            this.ProfesionalText.Text = "Profesional";
-            // 
-            // ProfesionalCB
-            // 
-            this.ProfesionalCB.FormattingEnabled = true;
-            this.ProfesionalCB.Location = new System.Drawing.Point(53, 180);
-            this.ProfesionalCB.Name = "ProfesionalCB";
-            this.ProfesionalCB.Size = new System.Drawing.Size(376, 24);
-            this.ProfesionalCB.TabIndex = 3;
+            this.ContinuarButton.Location = new System.Drawing.Point(300, 246);
+            this.ContinuarButton.Name = "ContinuarButton";
+            this.ContinuarButton.Size = new System.Drawing.Size(84, 32);
+            this.ContinuarButton.TabIndex = 5;
+            this.ContinuarButton.Text = "Continuar";
+            this.ContinuarButton.UseVisualStyleBackColor = true;
+            this.ContinuarButton.Click += new System.EventHandler(this.ContinuarButton_Click);
             // 
             // CancelarButton
             // 
@@ -100,15 +76,42 @@
             this.CancelarButton.Text = "Cancelar";
             this.CancelarButton.UseVisualStyleBackColor = false;
             // 
-            // ContinuarButton
+            // ProfesionalCB
             // 
-            this.ContinuarButton.Location = new System.Drawing.Point(300, 246);
-            this.ContinuarButton.Name = "ContinuarButton";
-            this.ContinuarButton.Size = new System.Drawing.Size(84, 32);
-            this.ContinuarButton.TabIndex = 5;
-            this.ContinuarButton.Text = "Continuar";
-            this.ContinuarButton.UseVisualStyleBackColor = true;
-            this.ContinuarButton.Click += new System.EventHandler(this.ContinuarButton_Click);
+            this.ProfesionalCB.FormattingEnabled = true;
+            this.ProfesionalCB.Location = new System.Drawing.Point(53, 180);
+            this.ProfesionalCB.Name = "ProfesionalCB";
+            this.ProfesionalCB.Size = new System.Drawing.Size(376, 24);
+            this.ProfesionalCB.TabIndex = 3;
+            // 
+            // ProfesionalText
+            // 
+            this.ProfesionalText.AutoSize = true;
+            this.ProfesionalText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProfesionalText.Location = new System.Drawing.Point(205, 147);
+            this.ProfesionalText.Name = "ProfesionalText";
+            this.ProfesionalText.Size = new System.Drawing.Size(88, 20);
+            this.ProfesionalText.TabIndex = 2;
+            this.ProfesionalText.Text = "Profesional";
+            // 
+            // EspecialidadMedicaCB
+            // 
+            this.EspecialidadMedicaCB.FormattingEnabled = true;
+            this.EspecialidadMedicaCB.Location = new System.Drawing.Point(53, 71);
+            this.EspecialidadMedicaCB.Name = "EspecialidadMedicaCB";
+            this.EspecialidadMedicaCB.Size = new System.Drawing.Size(376, 24);
+            this.EspecialidadMedicaCB.TabIndex = 1;
+            this.EspecialidadMedicaCB.SelectedIndexChanged += new System.EventHandler(this.EspecialidadMedicaCB_SelectedIndexChanged);
+            // 
+            // EspecialidadMedicaText
+            // 
+            this.EspecialidadMedicaText.AutoSize = true;
+            this.EspecialidadMedicaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EspecialidadMedicaText.Location = new System.Drawing.Point(173, 38);
+            this.EspecialidadMedicaText.Name = "EspecialidadMedicaText";
+            this.EspecialidadMedicaText.Size = new System.Drawing.Size(154, 20);
+            this.EspecialidadMedicaText.TabIndex = 0;
+            this.EspecialidadMedicaText.Text = "Especialidad Medica";
             // 
             // AltaTurno
             // 
@@ -134,5 +137,7 @@
         private System.Windows.Forms.ComboBox ProfesionalCB;
         private System.Windows.Forms.Label ProfesionalText;
         private System.Windows.Forms.ComboBox EspecialidadMedicaCB;
+
+        public System.EventHandler FormTurnos_Load { get; set; }
     }
 }

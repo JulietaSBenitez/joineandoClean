@@ -25,15 +25,12 @@ namespace ClinicaFrba
   //    Application.Run(new Abm_Afiliado.a);
     //       Application.Run(new Abm_Afiliado.ListadoAfiliadosModificacion());
        //     Application.Run(new Compra_Bono.BusquedaAfiliado());
-                 Application.Run(new Registro_Llegada.RegistroDeLlegada());
+                 //Application.Run(new Registro_Llegada.RegistroDeLlegada());
             
 
-          //  Medico jorge = new Medico { Especialidades = new List<Especialidad> { new Especialidad { Nombre = "Cirujano" } } };
-        //    Application.Run(new RegistrarAgendaMedico.SeleccionarOpcionAP(jorge));
+            //Medico jorge = new Medico { ID = 10000,  };
+            Application.Run(new Pedir_Turno.AltaTurno());
 
-       
-    //        Medico jorge = new Medico { Especialidades = new List<Especialidad> { new Especialidad { Nombre = "Cirujano" } } };
-//           Application.Run(new RegistrarAgendaMedico.SeleccionarOpcionAP(jorge));
 
 
         }

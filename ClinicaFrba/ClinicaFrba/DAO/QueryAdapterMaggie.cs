@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using ClinicaFrba.Properties;
 using System.Data;
+using ClinicaFrba.src;
 
 namespace ClinicaFrba.DAO
 {
@@ -24,7 +25,7 @@ namespace ClinicaFrba.DAO
             return conexion;
         }
 
-        public static DataTable ejecutarSP(string nombreStoredProcedure, params SqlParameter[] parametros)
+        public static List<DataRow> ejecutarSP(string nombreStoredProcedure, params SqlParameter[] parametros)
         {
 
             DataTable tabla = new DataTable();
@@ -41,23 +42,24 @@ namespace ClinicaFrba.DAO
 
             adaptador.Fill(tabla);
 
-            return tabla;
+            return tabla.AsEnumerable().ToList();
 
 
         }
 
-        public static bool ejecutarSPBooleano(string nombreStoredProcedure, params SqlParameter[] parametros) {
+        public static bool ejecutarSPBooleano(string nombreStoredProcedure, params SqlParameter[] parametros)
+        {
 
-            DataTable tabla = ejecutarSP(nombreStoredProcedure, parametros);
-            return Convert.ToBoolean(tabla.Rows[0][0]);
-        
+            List<DataRow> filas = ejecutarSP(nombreStoredProcedure, parametros);
+            return Convert.ToBoolean(filas.First()[0]);
+
         }
 
         public static int ejecutarSPEntero(string nombreStoredProcedure, params SqlParameter[] parametros)
         {
 
-            DataTable tabla = ejecutarSP(nombreStoredProcedure, parametros);
-            return Convert.ToInt32(tabla.Rows[0][0]);
+            List<DataRow> filas = ejecutarSP(nombreStoredProcedure, parametros);
+            return Convert.ToInt32(filas.First()[0]);
 
         }
 
