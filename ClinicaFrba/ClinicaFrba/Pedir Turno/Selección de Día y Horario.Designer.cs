@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.TurnosDisponiblesGB = new System.Windows.Forms.GroupBox();
+            this.VolverButton = new System.Windows.Forms.Button();
+            this.ConfirmarTurnoButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.TurnosDisponibles = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.ConfirmarTurnoButton = new System.Windows.Forms.Button();
-            this.VolverButton = new System.Windows.Forms.Button();
             this.TurnosDisponiblesGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TurnosDisponibles)).BeginInit();
             this.SuspendLayout();
@@ -54,6 +54,26 @@
             this.TurnosDisponiblesGB.TabIndex = 0;
             this.TurnosDisponiblesGB.TabStop = false;
             this.TurnosDisponiblesGB.Text = "Turnos Disponibles:";
+            // 
+            // VolverButton
+            // 
+            this.VolverButton.BackColor = System.Drawing.Color.IndianRed;
+            this.VolverButton.Location = new System.Drawing.Point(339, 269);
+            this.VolverButton.Name = "VolverButton";
+            this.VolverButton.Size = new System.Drawing.Size(127, 30);
+            this.VolverButton.TabIndex = 7;
+            this.VolverButton.Text = "Volver";
+            this.VolverButton.UseVisualStyleBackColor = false;
+            this.VolverButton.Click += new System.EventHandler(this.VolverButton_Click);
+            // 
+            // ConfirmarTurnoButton
+            // 
+            this.ConfirmarTurnoButton.Location = new System.Drawing.Point(197, 269);
+            this.ConfirmarTurnoButton.Name = "ConfirmarTurnoButton";
+            this.ConfirmarTurnoButton.Size = new System.Drawing.Size(127, 30);
+            this.ConfirmarTurnoButton.TabIndex = 6;
+            this.ConfirmarTurnoButton.Text = "Confirmar Turno";
+            this.ConfirmarTurnoButton.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -94,25 +114,6 @@
             this.monthCalendar1.Location = new System.Drawing.Point(36, 71);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 0;
-            // 
-            // ConfirmarTurnoButton
-            // 
-            this.ConfirmarTurnoButton.Location = new System.Drawing.Point(197, 269);
-            this.ConfirmarTurnoButton.Name = "ConfirmarTurnoButton";
-            this.ConfirmarTurnoButton.Size = new System.Drawing.Size(127, 30);
-            this.ConfirmarTurnoButton.TabIndex = 6;
-            this.ConfirmarTurnoButton.Text = "Confirmar Turno";
-            this.ConfirmarTurnoButton.UseVisualStyleBackColor = true;
-            // 
-            // VolverButton
-            // 
-            this.VolverButton.BackColor = System.Drawing.Color.IndianRed;
-            this.VolverButton.Location = new System.Drawing.Point(339, 269);
-            this.VolverButton.Name = "VolverButton";
-            this.VolverButton.Size = new System.Drawing.Size(127, 30);
-            this.VolverButton.TabIndex = 7;
-            this.VolverButton.Text = "Volver";
-            this.VolverButton.UseVisualStyleBackColor = false;
             // 
             // Selección_de_Día_y_Horario
             // 

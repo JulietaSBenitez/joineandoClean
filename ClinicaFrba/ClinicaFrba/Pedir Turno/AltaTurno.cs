@@ -46,7 +46,8 @@ namespace ClinicaFrba.Pedir_Turno
             if (validaciones.All(validacion => validacion.SeCumple(this)))
             {
                 this.Hide();
-                Selección_de_Día_y_Horario seleccion = new Selección_de_Día_y_Horario();
+                Selección_de_Día_y_Horario seleccion = new Selección_de_Día_y_Horario((Especialidad) EspecialidadMedicaCB.SelectedItem,
+                                                                                      (Medico) ProfesionalCB.SelectedItem);
                 seleccion.ShowDialog();
                 Close();
             }
@@ -56,7 +57,6 @@ namespace ClinicaFrba.Pedir_Turno
                     validaciones.Find(validacion => validacion.NoSeCumple(this));
                 MessageBox.Show(validacionQueNoSeCumple.MensajeError(), "¡A wild error appeared!",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
 
         }
