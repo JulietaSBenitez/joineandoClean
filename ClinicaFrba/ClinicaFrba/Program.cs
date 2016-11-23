@@ -25,11 +25,11 @@ namespace ClinicaFrba
   //    Application.Run(new Abm_Afiliado.a);
     //       Application.Run(new Abm_Afiliado.ListadoAfiliadosModificacion());
        //     Application.Run(new Compra_Bono.BusquedaAfiliado());
-                 //Application.Run(new Registro_Llegada.RegistroDeLlegada());
+                 Application.Run(new Registro_Llegada.RegistroDeLlegada());
             
 
             //Medico jorge = new Medico { ID = 10000,  };
-            Application.Run(new Pedir_Turno.AltaTurno());
+           // Application.Run(new Pedir_Turno.AltaTurno());
 
 
 

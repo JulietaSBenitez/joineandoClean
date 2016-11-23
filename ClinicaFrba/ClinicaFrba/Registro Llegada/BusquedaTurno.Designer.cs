@@ -49,10 +49,13 @@
             // 
             // tablaTurnos
             // 
+            this.tablaTurnos.AllowUserToAddRows = false;
+            this.tablaTurnos.AllowUserToDeleteRows = false;
             this.tablaTurnos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaTurnos.Location = new System.Drawing.Point(12, 135);
             this.tablaTurnos.Name = "tablaTurnos";
+            this.tablaTurnos.ReadOnly = true;
             this.tablaTurnos.Size = new System.Drawing.Size(737, 159);
             this.tablaTurnos.TabIndex = 0;
             // 
@@ -133,7 +136,7 @@
             // numeroAfiliado
             // 
             this.numeroAfiliado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroAfiliado.Location = new System.Drawing.Point(442, 33);
+            this.numeroAfiliado.Location = new System.Drawing.Point(441, 33);
             this.numeroAfiliado.Name = "numeroAfiliado";
             this.numeroAfiliado.Size = new System.Drawing.Size(141, 22);
             this.numeroAfiliado.TabIndex = 34;
@@ -224,7 +227,7 @@
         public System.Windows.Forms.TextBox numeroTurno;
         public System.Windows.Forms.Label label7;
         public System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker horario;
-        private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.DateTimePicker horario;
+        public System.Windows.Forms.Timer timer1;
     }
 }

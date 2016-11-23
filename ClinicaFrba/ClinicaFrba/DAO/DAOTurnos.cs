@@ -51,8 +51,10 @@ namespace ClinicaFrba.DAO
 
 
 
+
+
         //PONER LOS FILTROS BIEN
-             public static DataTable filtroAfiliados(string nombre = "", string apellido = "", string tipo = "", string numeroDocumento = "")
+             public static DataTable filtroAfiliados(String medico="",String especialidad="",String numeroTurno="",String numeroAfiliado = "",String hora="")
         {
             DataTable data = new DataTable();
             SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
@@ -64,31 +66,19 @@ namespace ClinicaFrba.DAO
             try
             {
 
-                if (nombre != "") {
-                    parameter = new SqlParameter("@nombre", SqlDbType.NVarChar,255);
-                    parameter.Value = nombre;
+                if (medico != "") {
+                    parameter = new SqlParameter("@medico", SqlDbType.NVarChar,255);
+                    parameter.Value = medico;
                     parameters.Add(parameter); 
                 }
-                if (apellido != "")
-                {
-                    parameter = new SqlParameter("@apellido", SqlDbType.NVarChar, 255);
-                    parameter.Value = apellido;
-                    parameters.Add(parameter);
-                }
-                if (tipo != "")
-                {
-                    parameter = new SqlParameter("@tipo", SqlDbType.NVarChar, 255);
-                    parameter.Value = tipo;
-                    parameters.Add(parameter);
-                }
 
-                if (numeroDocumento != "")
+                if (especialidad != "")
                 {
-                    parameter = new SqlParameter("@numerodocumento", SqlDbType.NVarChar, 255);
-                    parameter.Value = numeroDocumento;
+                    parameter = new SqlParameter("@especialidad", SqlDbType.NVarChar, 255);
+                    parameter.Value = especialidad;
                     parameters.Add(parameter);
                 }
-
+           
 
                 data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.listado_registro_atencion", parameters);
                 return data;
@@ -103,6 +93,47 @@ namespace ClinicaFrba.DAO
                 SQLHelper.ClearObjects();
             }
         }
+
+
+
+
+
+             //PONER LOS FILTROS BIEN
+             public static DataTable listadoEspecialidades()
+             {
+                 DataTable data = new DataTable();
+                 SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
+                 SQLHelper.CreateObjects(true);
+                 List<SqlParameter> parameters = new List<SqlParameter>();
+                 parameters.Clear();
+                 SqlParameter parameter;
+
+                 try
+                 {
+
+                    
+
+                     data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.listado_especialidades", parameters);
+                    data.Rows.Add(data.NewRow());
+                     return data;
+                 }
+                 catch (Exception ex)
+                 {
+                     SQLHelper.RollBackTransction();
+                     throw ex;
+                 }
+                 finally
+                 {
+                     SQLHelper.ClearObjects();
+                 }
+             }
+
+
+
+
+
+
+
 
     }
 }

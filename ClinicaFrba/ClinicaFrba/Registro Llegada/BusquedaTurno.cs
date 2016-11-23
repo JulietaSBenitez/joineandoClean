@@ -16,7 +16,12 @@ namespace ClinicaFrba.Registro_Llegada
         {
             InitializeComponent();
             horario.Format = DateTimePickerFormat.Custom;
-            horario.CustomFormat = "dd/MM/yyyy hh:mm";  
+            horario.CustomFormat = "dd/MM/yyyy hh:mm";
+            especialidad.DataSource = DAO.DAOTurnos.listadoEspecialidades();
+            especialidad.DisplayMember = "Nombre_Especialidad";
+            especialidad.SelectedIndex = (especialidad.Items).Count-1;
+
+            //especialidad.Text = "";
         }
 
         private void BusquedaTurno_Load(object sender, EventArgs e)

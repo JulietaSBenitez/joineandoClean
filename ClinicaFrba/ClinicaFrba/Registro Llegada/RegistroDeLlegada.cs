@@ -49,9 +49,10 @@ namespace ClinicaFrba.Registro_Llegada
             
         }
 
-        private void btnfiltrar_Click(object sender, EventArgs e)
-        {
 
+        private void btnfiltrar_Click_1(object sender, EventArgs e)
+        {
+            tablaTurnos.DataSource = DAO.DAOTurnos.filtroAfiliados(medico.Text,especialidad.Text,numeroTurno.Text,numeroAfiliado.Text,horario.Text);
         }
     }
 }
