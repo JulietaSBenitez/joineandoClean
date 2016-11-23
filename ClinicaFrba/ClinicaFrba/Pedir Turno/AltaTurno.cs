@@ -19,41 +19,61 @@ namespace ClinicaFrba.Pedir_Turno
         List<Especialidad> Especialidades = new List<Especialidad>();
         List<Medico> TodosLosMedicos = new List<Medico>();
         List<Medico> MedicosEspecialidadSeleccionada = new List<Medico>();
+        private List<ValidacionBooleana<AltaTurno>> validaciones = new List<ValidacionBooleana<AltaTurno>>();
 
         public AltaTurno()
         {
-
             InitializeComponent();
             Especialidades = Especialidad.All();
 
             EspecialidadMedicaCB.DataSource = Especialidades;
             EspecialidadMedicaCB.DisplayMember = "Nombre";
 
-            TodosLosMedicos = Medico.All();           
+            TodosLosMedicos = Medico.All();
 
             ProfesionalCB.Enabled = false;
             ProfesionalCB.DataSource = MedicosEspecialidadSeleccionada;
             ProfesionalCB.DisplayMember = "Nombre";
 
-
+            validaciones.Add(new ValidacionBooleana<AltaTurno>(
+               (controlador => controlador.ProfesionalSeleccionado()),
+               "No se ha seleccionado ningun profesional."));
         }
 
         private void ContinuarButton_Click(object sender, EventArgs e)
         {
 
-        }
+            if (validaciones.All(validacion => validacion.SeCumple(this)))
+            {
+                this.Hide();
+                Selección_de_Día_y_Horario seleccion = new Selección_de_Día_y_Horario();
+                seleccion.ShowDialog();
+                Close();
+            }
+            else
+            {
+                ValidacionBooleana<AltaTurno> validacionQueNoSeCumple =
+                    validaciones.Find(validacion => validacion.NoSeCumple(this));
+                MessageBox.Show(validacionQueNoSeCumple.MensajeError(), "¡A wild error appeared!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
+
+        }
         private void EspecialidadMedicaCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Especialidad especialidadSeleccionada = (Especialidad) EspecialidadMedicaCB.SelectedItem;
+            Especialidad especialidadSeleccionada = (Especialidad)EspecialidadMedicaCB.SelectedItem;
 
             MedicosEspecialidadSeleccionada = TodosLosMedicos
                 .Where(medico => medico.EsEspecialistaEn(especialidadSeleccionada)).ToList();
 
             ProfesionalCB.DataSource = MedicosEspecialidadSeleccionada;
-
             ProfesionalCB.Enabled = true;
         }
 
+        private bool ProfesionalSeleccionado()
+        {
+            return ProfesionalCB.SelectedItem != null;
+        }
     }
 }

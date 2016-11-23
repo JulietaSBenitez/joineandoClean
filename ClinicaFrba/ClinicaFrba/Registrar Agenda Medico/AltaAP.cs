@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using ClinicaFrba.src;
 
 namespace ClinicaFrba.RegistrarAgendaMedico
@@ -16,10 +17,13 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         private List<ValidacionBooleana<AltaAP>> validaciones = new List<ValidacionBooleana<AltaAP>>();
         private Dictionary<CheckBox, Tuple<ComboBox, ComboBox>> widgets = new Dictionary<CheckBox, Tuple<ComboBox, ComboBox>>();
+        public Medico ModelObject { get; set; }
 
         public AltaAP(Medico medico)
         {
             InitializeComponent();
+
+            ModelObject = medico;
 
             widgets.Add(lunesAgendaCB, new Tuple<ComboBox, ComboBox>(comboBoxInicioLunes, comboBoxFinLunes));
             widgets.Add(martesAgendaCB, new Tuple<ComboBox, ComboBox>(comboBoxInicioMartes, comboBoxFinMartes));
@@ -50,10 +54,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 (controlador => medico.CantidadDeHorasTrabajadas().Add(controlador.TiempoDeLaAgenda()) <= new TimeSpan(48,0,0)),
                 "Lo lamentamos, pero con estas horas usted ya estaría trabajando 48hs. ¡Vaya a descansar! Sus pacientes se lo agradecerán."));
 
-            
-
         }
-
 
         private List<TimeSpan> RangoHorario(TimeSpan horaInicio, TimeSpan horaFin)
         {
@@ -79,6 +80,8 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         private void botonVolverAgenda_Click(object sender, EventArgs e)
         {
+            SeleccionarOpcionAP seleccion = new SeleccionarOpcionAP(ModelObject);
+            seleccion.ShowDialog();
             this.Close();
         }
 
@@ -192,12 +195,10 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         {
             return especialidadesAgendaCB.SelectedItem != null;
         }
-
         public bool AlgunDiaSeleccionado()
         {
             return widgets.Keys.Any(checkBox => checkBox.Checked);
         }
-
         public bool HoraInicioEsMenorQuehoraFin()
         {
 
