@@ -37,15 +37,19 @@ namespace ClinicaFrba.Pedir_Turno
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            if (CalendarioTurnos.SelectionEnd != null) {
-                SqlParameter idMedico = new SqlParameter("@Medico_id", ModelObjectM.ID);
-                SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", ModelObjectE.ID);
-                SqlParameter diaSemana = new SqlParameter("@Dia_Semana", CalendarioTurnos.SelectionRange.Start.DayOfWeek);
-                List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("TURNODisponibilidadHoraria", idMedico, idEspecialidad, diaSemana);
-                //Acá debería devolver una lista de turnos, pero todavía no tengo eso definido.
-            
+            if (CalendarioTurnos.SelectionEnd != null)
+            {
 
             }
+        }
+
+        private void ObtenerTurnos()
+        {
+            SqlParameter idMedico = new SqlParameter("@Medico_id", ModelObjectM.ID);
+            SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", ModelObjectE.ID);
+            SqlParameter diaSemana = new SqlParameter("@Dia_Semana", CalendarioTurnos.SelectionRange.Start.DayOfWeek);
+            List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("TURNOHorarios", idMedico, idEspecialidad, diaSemana);
+            //Acá debería devolver una lista de turnos, pero todavía no tengo eso definido.
         }
 
     }

@@ -28,13 +28,11 @@ namespace ClinicaFrba.src
             List<DataRow> filas =  QueryAdapterMaggie.ejecutarSP("ESPECIALIDADEspecialidadesMedico", idMedico);
             return Especialidad.Parse(filas);
         }
-
         public static List<Especialidad> All()
         {
             List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("ESPECIALIDADTodas");
             return Especialidad.Parse(filas);          
         }
-
         private static List<Especialidad> Parse(List<DataRow> filas)
         {
             List<Especialidad> especialidades = new List<Especialidad>();

@@ -176,7 +176,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         {
             if (validaciones.All(validacion => validacion.SeCumple(this)))
             {
-                //Está todo ok
+                //Está todo ok. Acá tengo que cargar una nueva agenda.
             }
             else
             {
