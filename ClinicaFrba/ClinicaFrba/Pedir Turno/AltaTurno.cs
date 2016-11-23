@@ -17,8 +17,8 @@ namespace ClinicaFrba.Pedir_Turno
     public partial class AltaTurno : Form
     {
         List<Especialidad> Especialidades = new List<Especialidad>();
-        BindingList<Medico> TodosLosMedicos = new BindingList<Medico>();
-        BindingList<Medico> MedicosEspecialidadSeleccionada = new BindingList<Medico>();
+        List<Medico> TodosLosMedicos = new List<Medico>();
+        List<Medico> MedicosEspecialidadSeleccionada = new List<Medico>();
 
         public AltaTurno()
         {
@@ -29,12 +29,10 @@ namespace ClinicaFrba.Pedir_Turno
             EspecialidadMedicaCB.DataSource = Especialidades;
             EspecialidadMedicaCB.DisplayMember = "Nombre";
 
-            TodosLosMedicos = new BindingList<Medico>(Medico.All());
-            BindingSource dataSet = new BindingSource();
-            dataSet.DataSource = MedicosEspecialidadSeleccionada;
+            TodosLosMedicos = Medico.All();           
 
             ProfesionalCB.Enabled = false;
-            ProfesionalCB.DataSource = dataSet;
+            ProfesionalCB.DataSource = MedicosEspecialidadSeleccionada;
             ProfesionalCB.DisplayMember = "Nombre";
 
 
@@ -48,8 +46,12 @@ namespace ClinicaFrba.Pedir_Turno
         private void EspecialidadMedicaCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             Especialidad especialidadSeleccionada = (Especialidad) EspecialidadMedicaCB.SelectedItem;
+
             MedicosEspecialidadSeleccionada = TodosLosMedicos
-                .Where(medico => medico.EsEspecialistaEn(especialidadSeleccionada));
+                .Where(medico => medico.EsEspecialistaEn(especialidadSeleccionada)).ToList();
+
+            ProfesionalCB.DataSource = MedicosEspecialidadSeleccionada;
+
             ProfesionalCB.Enabled = true;
         }
 
