@@ -22,7 +22,6 @@ namespace ClinicaFrba.src
         {
             return Lambda(objeto);
         }
-
         public bool NoSeCumple(T objeto)
         {
             return !SeCumple(objeto);
