@@ -34,7 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TurnosDisponibles = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.CalendarioTurnos = new System.Windows.Forms.MonthCalendar();
             this.TurnosDisponiblesGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TurnosDisponibles)).BeginInit();
             this.SuspendLayout();
@@ -46,7 +46,7 @@
             this.TurnosDisponiblesGB.Controls.Add(this.label2);
             this.TurnosDisponiblesGB.Controls.Add(this.TurnosDisponibles);
             this.TurnosDisponiblesGB.Controls.Add(this.label1);
-            this.TurnosDisponiblesGB.Controls.Add(this.monthCalendar1);
+            this.TurnosDisponiblesGB.Controls.Add(this.CalendarioTurnos);
             this.TurnosDisponiblesGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TurnosDisponiblesGB.Location = new System.Drawing.Point(13, 13);
             this.TurnosDisponiblesGB.Name = "TurnosDisponiblesGB";
@@ -109,11 +109,12 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Seleccione Día";
             // 
-            // monthCalendar1
+            // CalendarioTurnos
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(36, 71);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 0;
+            this.CalendarioTurnos.Location = new System.Drawing.Point(36, 71);
+            this.CalendarioTurnos.Name = "CalendarioTurnos";
+            this.CalendarioTurnos.TabIndex = 0;
+            this.CalendarioTurnos.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
             // Selección_de_Día_y_Horario
             // 
@@ -136,7 +137,7 @@
         private System.Windows.Forms.GroupBox TurnosDisponiblesGB;
         private System.Windows.Forms.DataGridView TurnosDisponibles;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.MonthCalendar CalendarioTurnos;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button VolverButton;
         private System.Windows.Forms.Button ConfirmarTurnoButton;
