@@ -30,21 +30,23 @@ namespace ClinicaFrba.Pedir_Turno
             ModelObjectM = medico;
 
             CalendarioTurnos.MaxSelectionCount = 1;
+            CalendarioTurnos.TodayDate = Properties.Settings.Default.fecha;
+            CalendarioTurnos.SelectionStart = CalendarioTurnos.TodayDate;
 
             RefrescarDGV(new List<TimeSpan>() { new TimeSpan(10, 0, 0), 
                                                 new TimeSpan(10, 30, 0) });
 
             validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
-            (controlador => !controlador.DiaSeleccionado()),
+            (controlador => controlador.DiaSeleccionado()),
             "No se ha seleccionado ningún día."));
 
             validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
-            (controlador => !controlador.HorarioSeleccionado()),
-            "No se ha seleccionado ningún horario."));
+            (controlador => controlador.DiaSeleccionadoEsMayorQueElDiaActual()),
+            "El día seleccionado es menor al actual."));
 
             validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
-            (controlador => !controlador.DiaSeleccionado()),
-            "El día seleccionado es menor al actual."));
+            (controlador => controlador.HorarioSeleccionado()),
+            "No se ha seleccionado ningún horario."));
 
         }
 
@@ -125,13 +127,13 @@ namespace ClinicaFrba.Pedir_Turno
         private bool HorarioSeleccionado()
         {
 
-            return TurnosDisponiblesDGW.SelectedCells != null;
+            return TurnosDisponiblesDGW.SelectedCells.Count != 0;
 
         }
         private bool DiaSeleccionadoEsMayorQueElDiaActual()
         {
 
-            return CalendarioTurnos.SelectionRange.Start > DateTime.Today;
+            return CalendarioTurnos.SelectionRange.Start >= Properties.Settings.Default.fecha;
 
         }
 

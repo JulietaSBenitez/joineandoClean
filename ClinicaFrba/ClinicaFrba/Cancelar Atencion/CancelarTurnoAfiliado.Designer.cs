@@ -29,24 +29,26 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.NombreProfesionalTB = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.CancelarButton = new System.Windows.Forms.Button();
+            this.ListadoDGV = new System.Windows.Forms.DataGridView();
+            this.ListadoTurnosLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.TurnosDisponibles = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.ListadoTurnosLabel = new System.Windows.Forms.Label();
-            this.ListadoDGV = new System.Windows.Forms.DataGridView();
-            this.CancelarButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.NombreProfesionalTB = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.FiltrarButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TurnosDisponibles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListadoDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TurnosDisponibles)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.FiltrarButton);
             this.groupBox1.Controls.Add(this.CancelarButton);
             this.groupBox1.Controls.Add(this.ListadoDGV);
             this.groupBox1.Controls.Add(this.ListadoTurnosLabel);
@@ -66,45 +68,45 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleccione el turno a eliminar:";
             // 
-            // label1
+            // CancelarButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nombre del Profesional:";
+            this.CancelarButton.BackColor = System.Drawing.Color.IndianRed;
+            this.CancelarButton.Location = new System.Drawing.Point(390, 500);
+            this.CancelarButton.Name = "CancelarButton";
+            this.CancelarButton.Size = new System.Drawing.Size(87, 31);
+            this.CancelarButton.TabIndex = 11;
+            this.CancelarButton.Text = "Volver";
+            this.CancelarButton.UseVisualStyleBackColor = false;
             // 
-            // NombreProfesionalTB
+            // ListadoDGV
             // 
-            this.NombreProfesionalTB.Location = new System.Drawing.Point(208, 35);
-            this.NombreProfesionalTB.Name = "NombreProfesionalTB";
-            this.NombreProfesionalTB.Size = new System.Drawing.Size(240, 22);
-            this.NombreProfesionalTB.TabIndex = 1;
+            this.ListadoDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListadoDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.ListadoDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListadoDGV.Location = new System.Drawing.Point(22, 368);
+            this.ListadoDGV.MultiSelect = false;
+            this.ListadoDGV.Name = "ListadoDGV";
+            this.ListadoDGV.ReadOnly = true;
+            this.ListadoDGV.Size = new System.Drawing.Size(438, 125);
+            this.ListadoDGV.TabIndex = 10;
             // 
-            // label2
+            // ListadoTurnosLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 78);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(167, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Especialidad Profesional:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(208, 73);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 22);
-            this.textBox1.TabIndex = 3;
+            this.ListadoTurnosLabel.AutoSize = true;
+            this.ListadoTurnosLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListadoTurnosLabel.Location = new System.Drawing.Point(173, 347);
+            this.ListadoTurnosLabel.Name = "ListadoTurnosLabel";
+            this.ListadoTurnosLabel.Size = new System.Drawing.Size(150, 18);
+            this.ListadoTurnosLabel.TabIndex = 9;
+            this.ListadoTurnosLabel.Text = "Listado de sus turnos";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(313, 117);
+            this.label3.Location = new System.Drawing.Point(325, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 18);
             this.label3.TabIndex = 8;
@@ -117,7 +119,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TurnosDisponibles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.TurnosDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TurnosDisponibles.Location = new System.Drawing.Point(316, 147);
+            this.TurnosDisponibles.Location = new System.Drawing.Point(328, 126);
             this.TurnosDisponibles.MultiSelect = false;
             this.TurnosDisponibles.Name = "TurnosDisponibles";
             this.TurnosDisponibles.ReadOnly = true;
@@ -128,7 +130,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(65, 117);
+            this.label4.Location = new System.Drawing.Point(65, 101);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 18);
             this.label4.TabIndex = 6;
@@ -136,43 +138,53 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(22, 147);
+            this.monthCalendar1.Location = new System.Drawing.Point(22, 126);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 5;
             // 
-            // ListadoTurnosLabel
+            // textBox1
             // 
-            this.ListadoTurnosLabel.AutoSize = true;
-            this.ListadoTurnosLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListadoTurnosLabel.Location = new System.Drawing.Point(160, 333);
-            this.ListadoTurnosLabel.Name = "ListadoTurnosLabel";
-            this.ListadoTurnosLabel.Size = new System.Drawing.Size(150, 18);
-            this.ListadoTurnosLabel.TabIndex = 9;
-            this.ListadoTurnosLabel.Text = "Listado de sus turnos";
+            this.textBox1.Location = new System.Drawing.Point(208, 64);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(240, 22);
+            this.textBox1.TabIndex = 3;
             // 
-            // ListadoDGV
+            // label2
             // 
-            this.ListadoDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListadoDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.ListadoDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListadoDGV.Location = new System.Drawing.Point(28, 364);
-            this.ListadoDGV.MultiSelect = false;
-            this.ListadoDGV.Name = "ListadoDGV";
-            this.ListadoDGV.ReadOnly = true;
-            this.ListadoDGV.Size = new System.Drawing.Size(426, 125);
-            this.ListadoDGV.TabIndex = 10;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(19, 69);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(167, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Especialidad Profesional:";
             // 
-            // CancelarButton
+            // NombreProfesionalTB
             // 
-            this.CancelarButton.BackColor = System.Drawing.Color.IndianRed;
-            this.CancelarButton.Location = new System.Drawing.Point(390, 497);
-            this.CancelarButton.Name = "CancelarButton";
-            this.CancelarButton.Size = new System.Drawing.Size(87, 31);
-            this.CancelarButton.TabIndex = 11;
-            this.CancelarButton.Text = "Volver";
-            this.CancelarButton.UseVisualStyleBackColor = false;
+            this.NombreProfesionalTB.Location = new System.Drawing.Point(208, 26);
+            this.NombreProfesionalTB.Name = "NombreProfesionalTB";
+            this.NombreProfesionalTB.Size = new System.Drawing.Size(240, 22);
+            this.NombreProfesionalTB.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(19, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nombre del Profesional:";
+            // 
+            // FiltrarButton
+            // 
+            this.FiltrarButton.BackColor = System.Drawing.Color.DarkOrange;
+            this.FiltrarButton.Location = new System.Drawing.Point(132, 300);
+            this.FiltrarButton.Name = "FiltrarButton";
+            this.FiltrarButton.Size = new System.Drawing.Size(230, 29);
+            this.FiltrarButton.TabIndex = 5;
+            this.FiltrarButton.Text = "Buscar Turnos";
+            this.FiltrarButton.UseVisualStyleBackColor = false;
             // 
             // CancelarTurnoAfiliado
             // 
@@ -185,8 +197,8 @@
             this.Text = "Cancelación de Turno";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TurnosDisponibles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListadoDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TurnosDisponibles)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -205,5 +217,6 @@
         private System.Windows.Forms.DataGridView TurnosDisponibles;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Button FiltrarButton;
     }
 }
