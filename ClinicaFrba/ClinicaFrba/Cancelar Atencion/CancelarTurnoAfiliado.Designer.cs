@@ -35,7 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.TurnosDisponibles = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.CalendarioTurnos = new System.Windows.Forms.MonthCalendar();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.NombreProfesionalTB = new System.Windows.Forms.TextBox();
@@ -55,7 +55,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.TurnosDisponibles);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.monthCalendar1);
+            this.groupBox1.Controls.Add(this.CalendarioTurnos);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.NombreProfesionalTB);
@@ -136,11 +136,11 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Seleccione Día";
             // 
-            // monthCalendar1
+            // CalendarioTurnos
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(22, 126);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 5;
+            this.CalendarioTurnos.Location = new System.Drawing.Point(22, 126);
+            this.CalendarioTurnos.Name = "CalendarioTurnos";
+            this.CalendarioTurnos.TabIndex = 5;
             // 
             // textBox1
             // 
@@ -216,7 +216,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView TurnosDisponibles;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.MonthCalendar CalendarioTurnos;
         private System.Windows.Forms.Button FiltrarButton;
     }
 }
