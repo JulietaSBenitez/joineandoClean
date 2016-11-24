@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.EspecialidadMedicaCB = new System.Windows.Forms.ComboBox();
+            this.apellido = new System.Windows.Forms.Label();
+            this.FiltrarButton = new System.Windows.Forms.Button();
             this.CancelarButton = new System.Windows.Forms.Button();
             this.ListadoDGV = new System.Windows.Forms.DataGridView();
             this.ListadoTurnosLabel = new System.Windows.Forms.Label();
@@ -36,11 +39,10 @@
             this.TurnosDisponibles = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.CalendarioTurnos = new System.Windows.Forms.MonthCalendar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ApellidoProfesionalTB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.NombreProfesionalTB = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.FiltrarButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadoDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnosDisponibles)).BeginInit();
@@ -48,6 +50,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.EspecialidadMedicaCB);
+            this.groupBox1.Controls.Add(this.apellido);
             this.groupBox1.Controls.Add(this.FiltrarButton);
             this.groupBox1.Controls.Add(this.CancelarButton);
             this.groupBox1.Controls.Add(this.ListadoDGV);
@@ -56,7 +60,7 @@
             this.groupBox1.Controls.Add(this.TurnosDisponibles);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.CalendarioTurnos);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.ApellidoProfesionalTB);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.NombreProfesionalTB);
             this.groupBox1.Controls.Add(this.label1);
@@ -67,6 +71,36 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleccione el turno a eliminar:";
+            // 
+            // EspecialidadMedicaCB
+            // 
+            this.EspecialidadMedicaCB.FormattingEnabled = true;
+            this.EspecialidadMedicaCB.Location = new System.Drawing.Point(208, 81);
+            this.EspecialidadMedicaCB.Name = "EspecialidadMedicaCB";
+            this.EspecialidadMedicaCB.Size = new System.Drawing.Size(240, 24);
+            this.EspecialidadMedicaCB.TabIndex = 16;
+            this.EspecialidadMedicaCB.SelectedIndexChanged += new System.EventHandler(this.EspecialidadCB_SelectedIndexChanged);
+            // 
+            // apellido
+            // 
+            this.apellido.AutoSize = true;
+            this.apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.apellido.Location = new System.Drawing.Point(19, 60);
+            this.apellido.Name = "apellido";
+            this.apellido.Size = new System.Drawing.Size(160, 17);
+            this.apellido.TabIndex = 15;
+            this.apellido.Text = "Apellido del Profesional:";
+            // 
+            // FiltrarButton
+            // 
+            this.FiltrarButton.BackColor = System.Drawing.Color.DarkOrange;
+            this.FiltrarButton.Location = new System.Drawing.Point(132, 312);
+            this.FiltrarButton.Name = "FiltrarButton";
+            this.FiltrarButton.Size = new System.Drawing.Size(230, 29);
+            this.FiltrarButton.TabIndex = 5;
+            this.FiltrarButton.Text = "Buscar Turnos";
+            this.FiltrarButton.UseVisualStyleBackColor = false;
+            this.FiltrarButton.Click += new System.EventHandler(this.FiltrarButton_Click);
             // 
             // CancelarButton
             // 
@@ -106,7 +140,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(325, 101);
+            this.label3.Location = new System.Drawing.Point(325, 117);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 18);
             this.label3.TabIndex = 8;
@@ -119,7 +153,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TurnosDisponibles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.TurnosDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TurnosDisponibles.Location = new System.Drawing.Point(328, 126);
+            this.TurnosDisponibles.Location = new System.Drawing.Point(328, 142);
             this.TurnosDisponibles.MultiSelect = false;
             this.TurnosDisponibles.Name = "TurnosDisponibles";
             this.TurnosDisponibles.ReadOnly = true;
@@ -130,7 +164,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(65, 101);
+            this.label4.Location = new System.Drawing.Point(65, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 18);
             this.label4.TabIndex = 6;
@@ -138,22 +172,22 @@
             // 
             // CalendarioTurnos
             // 
-            this.CalendarioTurnos.Location = new System.Drawing.Point(22, 126);
+            this.CalendarioTurnos.Location = new System.Drawing.Point(22, 142);
             this.CalendarioTurnos.Name = "CalendarioTurnos";
             this.CalendarioTurnos.TabIndex = 5;
             // 
-            // textBox1
+            // ApellidoProfesionalTB
             // 
-            this.textBox1.Location = new System.Drawing.Point(208, 64);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 22);
-            this.textBox1.TabIndex = 3;
+            this.ApellidoProfesionalTB.Location = new System.Drawing.Point(208, 55);
+            this.ApellidoProfesionalTB.Name = "ApellidoProfesionalTB";
+            this.ApellidoProfesionalTB.Size = new System.Drawing.Size(240, 22);
+            this.ApellidoProfesionalTB.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 69);
+            this.label2.Location = new System.Drawing.Point(19, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(167, 17);
             this.label2.TabIndex = 2;
@@ -161,7 +195,7 @@
             // 
             // NombreProfesionalTB
             // 
-            this.NombreProfesionalTB.Location = new System.Drawing.Point(208, 26);
+            this.NombreProfesionalTB.Location = new System.Drawing.Point(208, 27);
             this.NombreProfesionalTB.Name = "NombreProfesionalTB";
             this.NombreProfesionalTB.Size = new System.Drawing.Size(240, 22);
             this.NombreProfesionalTB.TabIndex = 1;
@@ -170,21 +204,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 29);
+            this.label1.Location = new System.Drawing.Point(19, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(160, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre del Profesional:";
-            // 
-            // FiltrarButton
-            // 
-            this.FiltrarButton.BackColor = System.Drawing.Color.DarkOrange;
-            this.FiltrarButton.Location = new System.Drawing.Point(132, 300);
-            this.FiltrarButton.Name = "FiltrarButton";
-            this.FiltrarButton.Size = new System.Drawing.Size(230, 29);
-            this.FiltrarButton.TabIndex = 5;
-            this.FiltrarButton.Text = "Buscar Turnos";
-            this.FiltrarButton.UseVisualStyleBackColor = false;
             // 
             // CancelarTurnoAfiliado
             // 
@@ -206,7 +230,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox ApellidoProfesionalTB;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox NombreProfesionalTB;
         private System.Windows.Forms.Label label1;
@@ -218,5 +242,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MonthCalendar CalendarioTurnos;
         private System.Windows.Forms.Button FiltrarButton;
+        private System.Windows.Forms.Label ApellidoProfesional;
+        private System.Windows.Forms.Label apellido;
+        private System.Windows.Forms.ComboBox EspecialidadMedicaCB;
     }
 }

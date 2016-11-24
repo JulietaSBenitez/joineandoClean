@@ -20,15 +20,9 @@ namespace ClinicaFrba.Pedir_Turno
         List<Medico> TodosLosMedicos = new List<Medico>();
         List<Medico> MedicosEspecialidadSeleccionada = new List<Medico>();
         private List<ValidacionBooleana<AltaTurno>> validaciones = new List<ValidacionBooleana<AltaTurno>>();
-        private Persona persona;
 
         public AltaTurno(int persona_id)
         {
-
-
-            persona = null; 
-            //ESTE NULL DE ARRIBA Y EL COSTRUCROR
-            ///TE CAMBIE ESTO PARA QUE NO ROMPA MUFIIINN
 
             InitializeComponent();
             Especialidades = Especialidad.All();

@@ -90,10 +90,6 @@ namespace ClinicaFrba.AbmRol
             this.Close();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
