@@ -43,18 +43,75 @@ namespace ClinicaFrba.Login
         private void button1_Click(object sender, EventArgs e)
         {
             switch (comboBox1.Text) { 
-                case "Crear Rol":
+
+         /*           Select 'Alta Rol
+Select 'Modificacion Rol'
+Select 'Baja Rol'
+Select 'Alta Afiliado'
+Select 'Modificacion Afiliado'
+Select 'Baja Afiliado'
+Select 'Alta Agenda Profesional'
+Select 'Compra bonos'
+Select 'Pedido turnos'
+Select 'Cancerlar turnos'
+Select 'Registo de llegada'
+Select 'Registo de resultados'
+Select 'Listado Estadistico'
+    */
+
+                case "Alta Rol":
                     new AbmRol.AltaModificacionRol(Accion.Alta).ShowDialog();
                     break;
-                case "Eliminar Rol":
+                case "Baja Rol":
                     new AbmRol.ListadoRoles(Accion.Baja).ShowDialog();
                     break;
-                case "Modificar Rol":
+                case "Modificacion Rol":
                     new AbmRol.ListadoRoles(Accion.Modificacion).ShowDialog();
                     break;
-                    
+                
+                case "Alta Afiliado":
+                    new Abm_Afiliado.AltaModificacionAfiliados(Accion.Alta).ShowDialog();
+                    break;
+
+                case "Modificacion Afiliado":
+                    new Abm_Afiliado.ListadoAfiliadosModificacion().ShowDialog();
+                    break;
 
 
+                case "Baja Afiliado":
+                    new Abm_Afiliado.ListadoAfiliadosBaja().ShowDialog();
+                    break;
+
+
+                case "Alta Agenda Profesional":
+                  //?
+                    break;
+
+
+                case "Compra bonos":
+                    new Compra_Bono.BusquedaAfiliado().ShowDialog();
+                    break;
+
+
+                case "Pedido turnos":
+                  //?
+                    //new Pedir_Turno.AltaTurno(
+                    break;
+
+                case "Cancerlar turnos":
+                  //?
+                    break;
+
+                case "Registo de llegada":
+                    new Registro_Llegada.RegistroDeLlegada().ShowDialog();
+                    break;
+
+                case "Registo de resultados":
+                    new Registro_Resultado.BusquedaResultado().ShowDialog();
+                    break;
+                case "Listado Estadistico":
+                    //
+                    break;
             
             
             
