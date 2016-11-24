@@ -19,38 +19,86 @@ namespace ClinicaFrba.Pedir_Turno
 
         public Medico ModelObjectM { get; set; }
         public Especialidad ModelObjectE { get; set; }
+        public List<TimeSpan> _Turnos;
 
         public Selección_de_Día_y_Horario(Especialidad especialidad, Medico medico)
         {
             InitializeComponent();
+
             ModelObjectE = especialidad;
             ModelObjectM = medico;
+            
+
+            CalendarioTurnos.MaxSelectionCount = 1;
+
+            _Turnos = new List<TimeSpan>() { new TimeSpan(10, 0, 0), new TimeSpan(10, 30, 0) };
+
+            TurnosDisponiblesDGW.DataSource = _Turnos.Select(timespan => new { Horarios = timespan.ToString() }).ToList();
+
         }
 
         private void VolverButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            AltaTurno seleccion = new AltaTurno();
-            seleccion.ShowDialog();
             Close();
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            if (CalendarioTurnos.SelectionEnd != null)
-            {
-
-            }
+            Turnos();
         }
 
-        private void ObtenerTurnos()
+        private void Turnos()
         {
             SqlParameter idMedico = new SqlParameter("@Medico_id", ModelObjectM.ID);
             SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", ModelObjectE.ID);
-            SqlParameter diaSemana = new SqlParameter("@Dia_Semana", CalendarioTurnos.SelectionRange.Start.DayOfWeek);
+            SqlParameter diaSemana = new SqlParameter("@Dia_Semana", DiaDeLaSemana());
             List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("TURNOHorarios", idMedico, idEspecialidad, diaSemana);
-            //Acá debería devolver una lista de turnos, pero todavía no tengo eso definido.
+            _Turnos.Clear();
+
+            foreach (DataRow fila in filas) {
+
+                _Turnos = RangoHorario.Rango(TimeSpan.Parse((string) fila["Inicio_Horario"]), TimeSpan.Parse((string)fila["Fin_Horario"]));
+            
+            }
+
+            TurnosDisponiblesDGW.DataSource = _Turnos;
         }
+
+        private int DiaDeLaSemana()
+        {
+
+            switch (CalendarioTurnos.SelectionRange.Start.DayOfWeek)
+            {
+
+                case DayOfWeek.Monday:
+                    return 1;
+
+                case DayOfWeek.Tuesday:
+                    return 2;
+
+                case DayOfWeek.Wednesday:
+                    return 3;
+
+                case DayOfWeek.Thursday:
+                    return 4;
+
+                case DayOfWeek.Friday:
+                    return 5;
+
+                case DayOfWeek.Saturday:
+                    return 6;
+
+                default:
+                    return 0;
+
+            }
+
+
+        }
+
+
+
+
 
     }
 }

@@ -56,25 +56,12 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         }
 
-        private List<TimeSpan> RangoHorario(TimeSpan horaInicio, TimeSpan horaFin)
-        {
-            List<TimeSpan> horarios = new List<TimeSpan>();
-            TimeSpan horario = horaInicio;
-
-            while (horario <= horaFin)
-            {
-                horarios.Add(horario);
-                horario = horario.Add(new TimeSpan(0, 30, 0));
-            }
-
-            return horarios;
-        }
 
         private void InicializarComboboxes()
         {
 
-            ComboboxesSemana().ForEach(comboBox => comboBox.DataSource = RangoHorario(new TimeSpan(7, 0, 0), new TimeSpan(20, 0, 0)));
-            ComboboxesSabado().ForEach(comboBox => comboBox.DataSource = RangoHorario(new TimeSpan(10, 0, 0), new TimeSpan(15, 0, 0)));
+            ComboboxesSemana().ForEach(comboBox => comboBox.DataSource = RangoHorario.Rango(new TimeSpan(7, 0, 0), new TimeSpan(20, 0, 0)));
+            ComboboxesSabado().ForEach(comboBox => comboBox.DataSource = RangoHorario.Rango(new TimeSpan(10, 0, 0), new TimeSpan(15, 0, 0)));
             Comboboxes().ForEach(comboBox => comboBox.Enabled = false);
         }
 

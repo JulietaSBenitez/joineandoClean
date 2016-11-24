@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClinicaFrba.DAO;
 using System.Data.SqlClient;
+
 using ClinicaFrba.src;
 
 namespace ClinicaFrba
@@ -25,7 +26,9 @@ namespace ClinicaFrba
             //Application.Run(new Abm_Afiliado.a);
             //Application.Run(new Abm_Afiliado.ListadoAfiliadosModificacion());
             //Application.Run(new Compra_Bono.BusquedaAfiliado());
-            Application.Run(new Pedir_Turno.AltaTurno());
+
+            Medico medico = Medico.All().First();
+            Application.Run(new Pedir_Turno.AltaTurno(medico));
 
 
 

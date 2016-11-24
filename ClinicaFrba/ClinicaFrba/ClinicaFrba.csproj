@@ -249,7 +249,8 @@
     <Compile Include="Registro Resultado\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Agenda.cs" />
+    <Compile Include="src\Persona.cs" />
+    <Compile Include="src\RangoHorario.cs" />
     <Compile Include="src\ValidacionBooleana.cs" />
     <Compile Include="src\Especialidad.cs" />
     <Compile Include="src\Medico.cs" />

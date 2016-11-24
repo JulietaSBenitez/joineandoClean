@@ -8,7 +8,7 @@ using ClinicaFrba.DAO;
 
 namespace ClinicaFrba.src
 {
-    public class Medico
+    public class Medico : Persona
     {
         public int ID { get; set; }
         public String Nombre { get; set; }            

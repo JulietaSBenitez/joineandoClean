@@ -32,11 +32,11 @@
             this.VolverButton = new System.Windows.Forms.Button();
             this.ConfirmarTurnoButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.TurnosDisponibles = new System.Windows.Forms.DataGridView();
+            this.TurnosDisponiblesDGW = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.CalendarioTurnos = new System.Windows.Forms.MonthCalendar();
             this.TurnosDisponiblesGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TurnosDisponibles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TurnosDisponiblesDGW)).BeginInit();
             this.SuspendLayout();
             // 
             // TurnosDisponiblesGB
@@ -44,7 +44,7 @@
             this.TurnosDisponiblesGB.Controls.Add(this.VolverButton);
             this.TurnosDisponiblesGB.Controls.Add(this.ConfirmarTurnoButton);
             this.TurnosDisponiblesGB.Controls.Add(this.label2);
-            this.TurnosDisponiblesGB.Controls.Add(this.TurnosDisponibles);
+            this.TurnosDisponiblesGB.Controls.Add(this.TurnosDisponiblesDGW);
             this.TurnosDisponiblesGB.Controls.Add(this.label1);
             this.TurnosDisponiblesGB.Controls.Add(this.CalendarioTurnos);
             this.TurnosDisponiblesGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -85,19 +85,19 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Seleccione Horario";
             // 
-            // TurnosDisponibles
+            // TurnosDisponiblesDGW
             // 
-            this.TurnosDisponibles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TurnosDisponiblesDGW.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TurnosDisponibles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.TurnosDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TurnosDisponibles.Location = new System.Drawing.Point(319, 71);
-            this.TurnosDisponibles.MultiSelect = false;
-            this.TurnosDisponibles.Name = "TurnosDisponibles";
-            this.TurnosDisponibles.ReadOnly = true;
-            this.TurnosDisponibles.Size = new System.Drawing.Size(132, 162);
-            this.TurnosDisponibles.TabIndex = 3;
+            this.TurnosDisponiblesDGW.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.TurnosDisponiblesDGW.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TurnosDisponiblesDGW.Location = new System.Drawing.Point(319, 71);
+            this.TurnosDisponiblesDGW.MultiSelect = false;
+            this.TurnosDisponiblesDGW.Name = "TurnosDisponiblesDGW";
+            this.TurnosDisponiblesDGW.ReadOnly = true;
+            this.TurnosDisponiblesDGW.Size = new System.Drawing.Size(132, 162);
+            this.TurnosDisponiblesDGW.TabIndex = 3;
             // 
             // label1
             // 
@@ -127,7 +127,7 @@
             this.Text = "Selección_de_Día_y_Horario";
             this.TurnosDisponiblesGB.ResumeLayout(false);
             this.TurnosDisponiblesGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TurnosDisponibles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TurnosDisponiblesDGW)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -135,7 +135,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox TurnosDisponiblesGB;
-        private System.Windows.Forms.DataGridView TurnosDisponibles;
+        private System.Windows.Forms.DataGridView TurnosDisponiblesDGW;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MonthCalendar CalendarioTurnos;
         private System.Windows.Forms.Label label2;
