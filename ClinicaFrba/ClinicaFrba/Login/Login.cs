@@ -27,7 +27,7 @@ namespace ClinicaFrba.Login
             int resultado;
 
             resultado  = DAO.DAOLogin.login(textBox1.Text, textBox2.Text);
-            MessageBox.Show(resultado.ToString(), "Registro de resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          //  MessageBox.Show(resultado.ToString(), "Registro de resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
             if (resultado > 0)
             {
