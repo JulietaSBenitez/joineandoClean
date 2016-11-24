@@ -15,6 +15,11 @@ namespace ClinicaFrba.Cancelar_Atencion
         public CancelarTurnoAfiliado()
         {
             InitializeComponent();
+
+            CalendarioTurnos.MaxSelectionCount = 1;
+            CalendarioTurnos.TodayDate = Properties.Settings.Default.fecha;
+            CalendarioTurnos.SelectionStart = CalendarioTurnos.TodayDate;
+
         }
     }
 }
