@@ -142,6 +142,7 @@
     <Compile Include="Compra Bono\PantallaDosCompraBono.Designer.cs">
       <DependentUpon>PantallaDosCompraBono.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\DAOResultados.cs" />
     <Compile Include="DAO\DAOTurnos.cs" />
     <Compile Include="DAO\DAOAfiliados.cs" />
     <Compile Include="DAO\DAOBonos.cs" />
@@ -243,11 +244,17 @@
     <Compile Include="Registro Llegada\RegistroDeLlegada.Designer.cs">
       <DependentUpon>RegistroDeLlegada.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registro Resultado\Form1.cs">
+    <Compile Include="Registro Resultado\BusquedaResultado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Resultado\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Registro Resultado\BusquedaResultado.Designer.cs">
+      <DependentUpon>BusquedaResultado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro Resultado\RegistroDeResultado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro Resultado\RegistroDeResultado.Designer.cs">
+      <DependentUpon>RegistroDeResultado.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Persona.cs" />
     <Compile Include="src\RangoHorario.cs" />
@@ -352,6 +359,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registro Llegada\RegistroDeLlegada.resx">
       <DependentUpon>RegistroDeLlegada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Resultado\BusquedaResultado.resx">
+      <DependentUpon>BusquedaResultado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Resultado\RegistroDeResultado.resx">
+      <DependentUpon>RegistroDeResultado.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
