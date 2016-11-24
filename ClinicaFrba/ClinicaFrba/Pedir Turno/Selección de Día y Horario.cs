@@ -19,7 +19,7 @@ namespace ClinicaFrba.Pedir_Turno
 
         public Medico ModelObjectM { get; set; }
         public Especialidad ModelObjectE { get; set; }
-        public List<TimeSpan> _Turnos;
+        public List<TimeSpan> _Turnos = new List<TimeSpan>();
 
         public Selección_de_Día_y_Horario(Especialidad especialidad, Medico medico)
         {
@@ -27,13 +27,12 @@ namespace ClinicaFrba.Pedir_Turno
 
             ModelObjectE = especialidad;
             ModelObjectM = medico;
-            
 
             CalendarioTurnos.MaxSelectionCount = 1;
 
-            _Turnos = new List<TimeSpan>() { new TimeSpan(10, 0, 0), new TimeSpan(10, 30, 0) };
 
-            TurnosDisponiblesDGW.DataSource = _Turnos.Select(timespan => new { Horarios = timespan.ToString() }).ToList();
+            RefrescarDGV(new List<TimeSpan>() { new TimeSpan(10, 0, 0), 
+                                                new TimeSpan(10, 30, 0) });
 
         }
 
@@ -61,7 +60,7 @@ namespace ClinicaFrba.Pedir_Turno
             
             }
 
-            TurnosDisponiblesDGW.DataSource = _Turnos;
+            RefrescarDGV(_Turnos);
         }
 
         private int DiaDeLaSemana()
@@ -95,6 +94,12 @@ namespace ClinicaFrba.Pedir_Turno
 
 
         }
+
+        private void RefrescarDGV(List<TimeSpan> valoresNuevos) {
+
+            TurnosDisponiblesDGW.DataSource = valoresNuevos.Select(timespan => new { Horarios = timespan.ToString() }).ToList();
+        }
+
 
 
 
