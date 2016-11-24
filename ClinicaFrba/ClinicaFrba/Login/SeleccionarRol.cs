@@ -31,6 +31,12 @@ namespace ClinicaFrba.Login
                     
                  
             }
+            if (comboBox1.Items.Count == 1) {
+                DataRow[] row = roles.Select("Nombre='" + comboBox1.Text + "'");
+                new Acciones(int.Parse(row[0]["Rol_id"].ToString())).ShowDialog();
+                this.Hide();
+            
+            }
 
 
         }
