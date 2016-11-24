@@ -12,14 +12,16 @@ namespace ClinicaFrba.Login
 {
     public partial class Acciones : Form
     {
+        int user_id;
         DataTable funcionabilidades;
         public Acciones()
         {
             InitializeComponent();
         }
 
-        public Acciones(int rol_id )
+        public Acciones(int rol_id,int user )
         {
+            user_id = user;
             InitializeComponent();
             funcionabilidades= DAO.DAORoles.funcionabilidadesHabilitadasXRol(rol_id);
 
@@ -96,6 +98,8 @@ Select 'Listado Estadistico'
                 case "Pedido turnos":
                   //?
                     //new Pedir_Turno.AltaTurno(
+                    new Pedir_Turno.AltaTurno(user_id);
+                   // GZC9D6
                     break;
 
                 case "Cancerlar turnos":
