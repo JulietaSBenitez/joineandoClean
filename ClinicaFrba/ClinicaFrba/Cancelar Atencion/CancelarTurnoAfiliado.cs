@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 using ClinicaFrba.src;
 
@@ -15,36 +16,73 @@ namespace ClinicaFrba.Cancelar_Atencion
     public partial class CancelarTurnoAfiliado : Form
     {
 
-        String NombreProfesional;
-        String ApellidoProfesional2;
-        List<Especialidad> Especialidades = new List<Especialidad>();
+        private bool ClickearonLimpiar = true;
 
         public CancelarTurnoAfiliado()
         {
             InitializeComponent();
 
-            Especialidades = Especialidad.All();
-
             CalendarioTurnos.MaxSelectionCount = 1;
             CalendarioTurnos.TodayDate = Properties.Settings.Default.fecha;
             CalendarioTurnos.SelectionStart = CalendarioTurnos.TodayDate;
 
-            NombreProfesionalTB.SelectedText = NombreProfesional;
-            ApellidoProfesionalTB.SelectedText = ApellidoProfesional2;
-
-            EspecialidadMedicaCB.DataSource = Especialidades;
+            List<Especialidad> especialidades = Especialidad.All();
+            especialidades.Insert(0, new Especialidad("Todas", null));
+            EspecialidadMedicaCB.DataSource = especialidades;
             EspecialidadMedicaCB.DisplayMember = "Nombre";
 
         }
 
         private void FiltrarButton_Click(object sender, EventArgs e)
         {
-            TurnosDisponibles.Columns.Clear();
-        }
+            Buscar();
 
+        }
         private void EspecialidadCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
+
+        private string NombreProfesional()
+        {
+
+            return NombreProfesionalTB.SelectedText.NullIfEmpty();
+        }
+        private string ApellidoProfesional()
+        {
+
+            return ApellidoProfesionalTB.SelectedText.NullIfEmpty();
+        }
+        private DateTime? Dia()
+        {
+
+            if (ClickearonLimpiar)
+            {
+
+                return null;
+
+            }
+            else
+            {
+
+                return CalendarioTurnos.SelectionStart;
+            }
+
+        }
+
+        private void LimpiarDiaButton_Click(object sender, EventArgs e)
+        {
+            ClickearonLimpiar = true;
+        }
+
+        private void CalendarioTurnos_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            ClickearonLimpiar = false;
+        }
+
+        private void Buscar() { 
+        }
+
+
     }
 }

@@ -256,6 +256,7 @@
     <Compile Include="Registro Resultado\RegistroDeResultado.Designer.cs">
       <DependentUpon>RegistroDeResultado.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Extensiones.cs" />
     <Compile Include="src\Persona.cs" />
     <Compile Include="src\RangoHorario.cs" />
     <Compile Include="src\ValidacionBooleana.cs" />
