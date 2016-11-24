@@ -35,8 +35,16 @@ namespace ClinicaFrba.Pedir_Turno
                                                 new TimeSpan(10, 30, 0) });
 
             validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
+            (controlador => !controlador.DiaSeleccionado()),
+            "No se ha seleccionado ningún día."));
+
+            validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
             (controlador => !controlador.HorarioSeleccionado()),
-            "No se ha seleccionado ningun horario."));
+            "No se ha seleccionado ningún horario."));
+
+            validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
+            (controlador => !controlador.DiaSeleccionado()),
+            "El día seleccionado es menor al actual."));
 
         }
 
@@ -62,7 +70,7 @@ namespace ClinicaFrba.Pedir_Turno
         {
 
             TurnosDisponiblesDGW.DataSource = valoresNuevos.Select(timespan => new { Horarios = timespan.ToString() }).ToList();
-            
+
         }
 
         private int DiaDeLaSemana()
@@ -97,7 +105,8 @@ namespace ClinicaFrba.Pedir_Turno
 
         }
 
-        private bool EstaOcupado(DataGridViewRow fila) {
+        private bool EstaOcupado(DataGridViewRow fila)
+        {
 
             dynamic horario = fila.DataBoundItem;
             SqlParameter horarioTurno = new SqlParameter("@Horario", horario.Horarios);
@@ -108,10 +117,21 @@ namespace ClinicaFrba.Pedir_Turno
 
 
         }
+        private bool DiaSeleccionado(){
+
+            return CalendarioTurnos.SelectionRange.Start != null;
+
+        }
         private bool HorarioSeleccionado()
         {
 
             return TurnosDisponiblesDGW.SelectedCells != null;
+
+        }
+        private bool DiaSeleccionadoEsMayorQueElDiaActual()
+        {
+
+            return CalendarioTurnos.SelectionRange.Start > DateTime.Today;
 
         }
 
