@@ -22,10 +22,14 @@ namespace ClinicaFrba.Pedir_Turno
         private List<ValidacionBooleana<AltaTurno>> validaciones = new List<ValidacionBooleana<AltaTurno>>();
         private Persona persona;
 
-        public AltaTurno(Persona _persona)
+        public AltaTurno(int persona_id)
         {
 
-            persona = _persona;
+
+            persona = null; 
+            //ESTE NULL DE ARRIBA Y EL COSTRUCROR
+            ///TE CAMBIE ESTO PARA QUE NO ROMPA MUFIIINN
+
             InitializeComponent();
             Especialidades = Especialidad.All();
 
@@ -78,6 +82,11 @@ namespace ClinicaFrba.Pedir_Turno
         private bool ProfesionalSeleccionado()
         {
             return ProfesionalCB.SelectedItem != null;
+        }
+
+        private void AltaTurno_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

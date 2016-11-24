@@ -122,6 +122,7 @@ namespace ClinicaFrba.Pedir_Turno
             this.MaximizeBox = false;
             this.Name = "AltaTurno";
             this.Text = "Selección de Médico y Especialidad";
+            this.Load += new System.EventHandler(this.AltaTurno_Load);
             this.SeleccionarEspecialidadGP.ResumeLayout(false);
             this.SeleccionarEspecialidadGP.PerformLayout();
             this.ResumeLayout(false);
