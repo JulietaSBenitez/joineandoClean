@@ -30,7 +30,6 @@ namespace ClinicaFrba.Pedir_Turno
 
             CalendarioTurnos.MaxSelectionCount = 1;
 
-
             RefrescarDGV(new List<TimeSpan>() { new TimeSpan(10, 0, 0), 
                                                 new TimeSpan(10, 30, 0) });
 
@@ -54,13 +53,21 @@ namespace ClinicaFrba.Pedir_Turno
             List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("TURNOHorarios", idMedico, idEspecialidad, diaSemana);
             _Turnos.Clear();
 
-            foreach (DataRow fila in filas) {
+            foreach (DataRow fila in filas)
+            {
 
-                _Turnos = RangoHorario.Rango(TimeSpan.Parse((string) fila["Inicio_Horario"]), TimeSpan.Parse((string)fila["Fin_Horario"]));
-            
+                _Turnos = RangoHorario.Rango(TimeSpan.Parse((string)fila["Inicio_Horario"]), TimeSpan.Parse((string)fila["Fin_Horario"]));
+
             }
 
             RefrescarDGV(_Turnos);
+        }
+
+        private void RefrescarDGV(List<TimeSpan> valoresNuevos)
+        {
+
+            TurnosDisponiblesDGW.DataSource = valoresNuevos.Select(timespan => new { Horarios = timespan.ToString() }).ToList();
+            
         }
 
         private int DiaDeLaSemana()
@@ -95,11 +102,35 @@ namespace ClinicaFrba.Pedir_Turno
 
         }
 
-        private void RefrescarDGV(List<TimeSpan> valoresNuevos) {
+        private bool EstaOcupado(DataGridViewRow fila) {
 
-            TurnosDisponiblesDGW.DataSource = valoresNuevos.Select(timespan => new { Horarios = timespan.ToString() }).ToList();
+            dynamic horario = fila.DataBoundItem;
+            SqlParameter horarioTurno = new SqlParameter("@Horario", horario.Horarios);
+            SqlParameter idMedico = new SqlParameter("@Medico_id", ModelObjectM.ID);
+            SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", ModelObjectE.ID);
+            SqlParameter diaSeleccionado = new SqlParameter("@Dia_seleccionado", CalendarioTurnos.SelectionRange.Start.Date);
+            return QueryAdapterMaggie.ejecutarSPBooleano("TURNOEstaDisponible", horarioTurno, idMedico, idEspecialidad, diaSeleccionado);
+
+
         }
 
+        private void TurnosDisponiblesDGW_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRow fila = TurnosDisponiblesDGW.Rows[e.RowIndex];
+            if (EstaOcupado(fila))
+            {
+                fila.DefaultCellStyle.BackColor = Color.Red;
+            }
+            else
+            {
+                fila.DefaultCellStyle.BackColor = Color.Green;
+            }
+        }
+
+        private void TurnosDisponiblesDGW_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            TurnosDisponiblesDGW.ClearSelection();
+        }
 
 
 

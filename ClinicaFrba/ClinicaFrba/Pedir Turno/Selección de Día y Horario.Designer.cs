@@ -98,6 +98,8 @@
             this.TurnosDisponiblesDGW.ReadOnly = true;
             this.TurnosDisponiblesDGW.Size = new System.Drawing.Size(132, 162);
             this.TurnosDisponiblesDGW.TabIndex = 3;
+            this.TurnosDisponiblesDGW.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.TurnosDisponiblesDGW_CellFormatting);
+            this.TurnosDisponiblesDGW.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.TurnosDisponiblesDGW_DataBindingComplete);
             // 
             // label1
             // 
