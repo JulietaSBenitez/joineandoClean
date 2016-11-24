@@ -64,7 +64,9 @@ namespace ClinicaFrba.Registro_Resultado
            // int paciente = DAO.DAOTurnos.bonosDisponibles();
 
             new Registro_Resultado.RegistroDeResultado(tablaTurnos.Rows[e.RowIndex].Cells["Nombre Paciente"].Value.ToString(), tablaTurnos.Rows[e.RowIndex].Cells["Id Paciente"].Value.ToString(), tablaTurnos.Rows[e.RowIndex].Cells["Consulta_Medica_id"].Value.ToString()).ShowDialog();
-
+            horario.CustomFormat = "MM/dd/yyyy";
+            tablaTurnos.DataSource = DAO.DAOResultados.filtroAfiliados(medicoId, numeroAfiliado.Text, horario.Text, numeroTurno.Text);
+            horario.CustomFormat = "dd/MM/yyyy";
         }
 
 

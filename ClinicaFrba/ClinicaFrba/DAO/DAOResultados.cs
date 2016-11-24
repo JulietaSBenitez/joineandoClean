@@ -13,7 +13,7 @@ namespace ClinicaFrba.DAO
 
 
 
-        public static void guardarResultado(String paciente_id, String consulta_id,String enfermedad, String diagnostico, List<String> sintomas)
+        public static void guardarResultado(String paciente_id, String consulta_id,String enfermedad, String diagnostico, List<String> sintomas,String horario)
         {
 
             SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
@@ -35,6 +35,10 @@ namespace ClinicaFrba.DAO
 
                 parameter = new SqlParameter("@enfermedad", SqlDbType.NChar,255);
                 parameter.Value = enfermedad;
+                parameters.Add(parameter);
+
+                parameter = new SqlParameter("@horario", SqlDbType.NChar, 255);
+                parameter.Value = horario;
                 parameters.Add(parameter);
 
                 parameter = new SqlParameter("@diagnostico", SqlDbType.NChar,255);

@@ -21,8 +21,9 @@ namespace ClinicaFrba.Registro_Resultado
             consulta_id = laconsulta;
             nnombre.Text = "Paciente: " + elnombre;
             paciente_id = paciente;
-
-
+            horario.Format = DateTimePickerFormat.Custom;
+            horario.CustomFormat = "dd/MM/yyyy hh:mm";
+          
             
          
         }
@@ -49,9 +50,12 @@ namespace ClinicaFrba.Registro_Resultado
             if (sintomas.Items.Count == 0 || enfermedad.Text == "" || diagnostico.Text == "") {
                 MessageBox.Show("Por favor complete todos los items de el registro de resultados", "Registro de resultados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else {
-                DAO.DAOResultados.guardarResultado(paciente_id, consulta_id, enfermedad.Text, diagnostico.Text, sintomas.Items.Cast<string>().ToList());
+                horario.CustomFormat = "MM/dd/yyyy hh:mm";
+                DAO.DAOResultados.guardarResultado(paciente_id, consulta_id, enfermedad.Text, diagnostico.Text, sintomas.Items.Cast<string>().ToList(),horario.Text);
+                horario.CustomFormat = "dd/MM/yyyy hh:mm";
                 MessageBox.Show("Diagnostico cargado con exito", "Registro de resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-           
+                this.Close();
+
             }
         }
     }
