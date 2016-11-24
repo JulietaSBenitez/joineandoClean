@@ -74,6 +74,7 @@
             this.ConfirmarTurnoButton.TabIndex = 6;
             this.ConfirmarTurnoButton.Text = "Confirmar Turno";
             this.ConfirmarTurnoButton.UseVisualStyleBackColor = true;
+            this.ConfirmarTurnoButton.Click += new System.EventHandler(this.ConfirmarTurnoButton_Click);
             // 
             // label2
             // 

@@ -20,6 +20,7 @@ namespace ClinicaFrba.Pedir_Turno
         public Medico ModelObjectM { get; set; }
         public Especialidad ModelObjectE { get; set; }
         public List<TimeSpan> _Turnos = new List<TimeSpan>();
+        private List<ValidacionBooleana<Selección_de_Día_y_Horario>> validaciones = new List<ValidacionBooleana<Selección_de_Día_y_Horario>>();
 
         public Selección_de_Día_y_Horario(Especialidad especialidad, Medico medico)
         {
@@ -33,16 +34,10 @@ namespace ClinicaFrba.Pedir_Turno
             RefrescarDGV(new List<TimeSpan>() { new TimeSpan(10, 0, 0), 
                                                 new TimeSpan(10, 30, 0) });
 
-        }
+            validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
+            (controlador => !controlador.HorarioSeleccionado()),
+            "No se ha seleccionado ningun horario."));
 
-        private void VolverButton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            Turnos();
         }
 
         private void Turnos()
@@ -113,6 +108,12 @@ namespace ClinicaFrba.Pedir_Turno
 
 
         }
+        private bool HorarioSeleccionado()
+        {
+
+            return TurnosDisponiblesDGW.SelectedCells != null;
+
+        }
 
         private void TurnosDisponiblesDGW_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -126,14 +127,33 @@ namespace ClinicaFrba.Pedir_Turno
                 fila.DefaultCellStyle.BackColor = Color.Green;
             }
         }
-
         private void TurnosDisponiblesDGW_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             TurnosDisponiblesDGW.ClearSelection();
         }
+        private void VolverButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            Turnos();
+        }
+        private void ConfirmarTurnoButton_Click(object sender, EventArgs e)
+        {
+            if (validaciones.All(validacion => validacion.SeCumple(this)))
+            {
+                //TODO: Se crea exitosamente.
 
-
-
+            }
+            else
+            {
+                ValidacionBooleana<Selección_de_Día_y_Horario> validacionQueNoSeCumple =
+                    validaciones.Find(validacion => validacion.NoSeCumple(this));
+                MessageBox.Show(validacionQueNoSeCumple.MensajeError(), "¡A wild error appeared!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
     }

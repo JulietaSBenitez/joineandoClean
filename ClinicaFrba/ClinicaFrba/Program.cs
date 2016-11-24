@@ -22,11 +22,11 @@ namespace ClinicaFrba
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Registro_Llegada.RegistroDeLlegada());
 
-            Application.Run(new Login.Login());
+            //Application.Run(new Login.Login());
             //Application.Run(new Abm_Afiliado.a);
             //Application.Run(new Abm_Afiliado.ListadoAfiliadosModificacion());
             //Application.Run(new Compra_Bono.BusquedaAfiliado());
-           // Application.Run(new Registro_Resultado.BusquedaResultado(10011));
+            Application.Run(new Registro_Resultado.BusquedaResultado(10011));
         //    Medico medico = Medico.All().First();
      //       Application.Run(new Pedir_Turno.AltaTurno(medico));
 
