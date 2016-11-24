@@ -26,6 +26,8 @@ namespace ClinicaFrba.Registro_Resultado
             this.medicoId = medicoId;
             horario.Format = DateTimePickerFormat.Custom;
             horario.CustomFormat = "dd/MM/yyyy";
+            horario.Value = Properties.Settings.Default.fecha;
+
             tablaTurnos.DataSource = DAO.DAOResultados.filtroAfiliados(medicoId);
 
             tablaTurnos.Columns["Id Paciente"].Visible = false; 

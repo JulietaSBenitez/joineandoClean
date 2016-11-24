@@ -78,13 +78,40 @@ Select 'Listado Estadistico'
                     break;
 
 
-                case "Modificacion Afiliado":
-                    new Abm_Afiliado.ListadoAfiliadosModificacion().ShowDialog();
+                case "Baja Afiliado":
+                    new Abm_Afiliado.ListadoAfiliadosBaja().ShowDialog();
                     break;
 
 
+                case "Alta Agenda Profesional":
+                  //?
+                    break;
 
 
+                case "Compra bonos":
+                    new Compra_Bono.BusquedaAfiliado().ShowDialog();
+                    break;
+
+
+                case "Pedido turnos":
+                  //?
+                    //new Pedir_Turno.AltaTurno(
+                    break;
+
+                case "Cancerlar turnos":
+                  //?
+                    break;
+
+                case "Registo de llegada":
+                    new Registro_Llegada.RegistroDeLlegada().ShowDialog();
+                    break;
+
+                case "Registo de resultados":
+                    new Registro_Resultado.BusquedaResultado().ShowDialog();
+                    break;
+                case "Listado Estadistico":
+                    //
+                    break;
             
             
             
