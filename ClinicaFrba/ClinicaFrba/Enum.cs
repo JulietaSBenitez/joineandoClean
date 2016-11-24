@@ -14,6 +14,12 @@ namespace ClinicaFrba
         Modificacion = 3,
         AltaMin = 4,
     }
+    public enum Rol
+    {
+       
+        Paciente = 1,
+        Medico = 2,
+    }
     class Enum
     {
     }
