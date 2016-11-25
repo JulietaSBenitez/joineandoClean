@@ -13,5 +13,6 @@ namespace ClinicaFrba.src
             if (string.IsNullOrWhiteSpace(value)) { return null; }
             return value;
         }
+
     }
 }
