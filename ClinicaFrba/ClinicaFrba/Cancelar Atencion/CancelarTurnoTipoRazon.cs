@@ -12,9 +12,21 @@ namespace ClinicaFrba.Cancelar_Atencion
 {
     public partial class CancelarTurnoTipoRazon : Form
     {
-        public CancelarTurnoTipoRazon()
+
+        int PersonaID;
+
+        public CancelarTurnoTipoRazon(int id_persona)
         {
             InitializeComponent();
+
+            PersonaID = id_persona;
+        }
+
+        private void VolverBoton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form cancelarTurno = new CancelarTurnoAfiliado(PersonaID);
+            cancelarTurno.ShowDialog();
         }
     }
 }

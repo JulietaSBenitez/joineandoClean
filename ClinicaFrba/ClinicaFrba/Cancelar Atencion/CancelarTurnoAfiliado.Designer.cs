@@ -202,7 +202,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 553);
             this.Controls.Add(this.groupBox1);
-            this.MaximizeBox = false;
             this.Name = "CancelarTurnoAfiliado";
             this.Text = "Cancelación de Turno";
             this.groupBox1.ResumeLayout(false);

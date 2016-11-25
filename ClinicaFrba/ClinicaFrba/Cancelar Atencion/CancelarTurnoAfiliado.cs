@@ -146,7 +146,7 @@ namespace ClinicaFrba.Cancelar_Atencion
         private void ListadoDGV_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.Hide();
-            Form cancelarTurno = new CancelarTurnoTipoRazon();
+            Form cancelarTurno = new CancelarTurnoTipoRazon(PersonaID);
             cancelarTurno.ShowDialog();
         }
 
