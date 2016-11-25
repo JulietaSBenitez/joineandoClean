@@ -62,6 +62,5 @@ namespace ClinicaFrba.DAO
             return Convert.ToInt32(filas.First()[0]);
 
         }
-
     }
 }

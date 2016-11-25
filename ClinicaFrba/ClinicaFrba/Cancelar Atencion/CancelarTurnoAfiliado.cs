@@ -91,7 +91,14 @@ namespace ClinicaFrba.Cancelar_Atencion
             SqlParameter idPersona = new SqlParameter("@Persona_id", PersonaID);
             List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("PERSONATurnos", nombre, apellido, dia, idEspecialidad, idPersona);
 
-            ListadoDGV.DataSource = filas;
+            DataTable dataTable = new DataTable();
+
+            foreach (DataRow fila in filas)
+            {
+                dataTable.ImportRow(fila);
+            }
+
+            ListadoDGV.DataSource = dataTable;
 
 
         }
