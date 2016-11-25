@@ -13,10 +13,10 @@ namespace ClinicaFrba.src
     public class Especialidad
     {
 
-        public int ID { get; set; }
+        public int? ID { get; set; }
         public String Nombre { get; set; }
 
-        public Especialidad(string nombre, int id)
+        public Especialidad(string nombre, int? id)
         {
             Nombre = nombre;
             ID = id;
@@ -31,7 +31,8 @@ namespace ClinicaFrba.src
         public static List<Especialidad> All()
         {
             List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("ESPECIALIDADTodas");
-            return Especialidad.Parse(filas);          
+            return Especialidad.Parse(filas).OrderBy(especialidad => especialidad.Nombre).ToList();
+        
         }
         private static List<Especialidad> Parse(List<DataRow> filas)
         {

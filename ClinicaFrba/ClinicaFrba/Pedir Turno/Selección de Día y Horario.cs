@@ -143,6 +143,7 @@ namespace ClinicaFrba.Pedir_Turno
             if (EstaOcupado(fila))
             {
                 fila.DefaultCellStyle.BackColor = Color.Red;
+                fila.ReadOnly.ToString();
             }
             else
             {
@@ -176,6 +177,7 @@ namespace ClinicaFrba.Pedir_Turno
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
     }

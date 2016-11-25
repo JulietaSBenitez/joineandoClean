@@ -112,23 +112,11 @@
     <Compile Include="Cancelar Atencion\CancelarTurnoProfesional.Designer.cs">
       <DependentUpon>CancelarTurnoProfesional.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cancelar Atencion\CancelarTurnoProfesionalDia.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cancelar Atencion\CancelarTurnoProfesionalDia.Designer.cs">
-      <DependentUpon>CancelarTurnoProfesionalDia.cs</DependentUpon>
-    </Compile>
     <Compile Include="Cancelar Atencion\CancelarTurnoTipoRazon.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Cancelar Atencion\CancelarTurnoTipoRazon.Designer.cs">
       <DependentUpon>CancelarTurnoTipoRazon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Cancelar Atencion\CancelarTurnoProfesionalHorario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cancelar Atencion\CancelarTurnoProfesionalHorario.Designer.cs">
-      <DependentUpon>CancelarTurnoProfesionalHorario.cs</DependentUpon>
     </Compile>
     <Compile Include="Compra Bono\BusquedaAfiliado.cs">
       <SubType>Form</SubType>
@@ -256,6 +244,7 @@
     <Compile Include="Registro Resultado\RegistroDeResultado.Designer.cs">
       <DependentUpon>RegistroDeResultado.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Extensiones.cs" />
     <Compile Include="src\Persona.cs" />
     <Compile Include="src\RangoHorario.cs" />
     <Compile Include="src\ValidacionBooleana.cs" />
@@ -287,12 +276,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoProfesional.resx">
       <DependentUpon>CancelarTurnoProfesional.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoProfesionalDia.resx">
-      <DependentUpon>CancelarTurnoProfesionalDia.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoProfesionalHorario.resx">
-      <DependentUpon>CancelarTurnoProfesionalHorario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cancelar Atencion\CancelarTurnoTipoRazon.resx">
       <DependentUpon>CancelarTurnoTipoRazon.cs</DependentUpon>
