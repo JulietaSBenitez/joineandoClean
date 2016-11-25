@@ -35,6 +35,8 @@ namespace ClinicaFrba.Cancelar_Atencion
 
             PersonaID = id_persona;
 
+            AgregarBoton();
+
         }
 
         private void FiltrarButton_Click(object sender, EventArgs e)
@@ -80,9 +82,13 @@ namespace ClinicaFrba.Cancelar_Atencion
         {
             ClickearonLimpiar = true;
         }
+        private void CalendarioTurnos_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            ClickearonLimpiar = false;
+        }
 
-
-        private void Buscar() {
+        private void Buscar()
+        {
 
             SqlParameter nombre = new SqlParameter("@Nombre", NombreProfesional());
             SqlParameter apellido = new SqlParameter("@Apellido", ApellidoProfesional());
@@ -102,10 +108,14 @@ namespace ClinicaFrba.Cancelar_Atencion
 
 
         }
-
-        private void CalendarioTurnos_DateChanged(object sender, DateRangeEventArgs e)
+        private void AgregarBoton()
         {
-            ClickearonLimpiar = false;
+            DataGridViewButtonColumn btnColum = new DataGridViewButtonColumn();
+            btnColum.Name = "Eliminar";
+            btnColum.Text = "Eliminar";
+            btnColum.UseColumnTextForButtonValue = true;
+            ListadoDGV.Columns.Insert(0, btnColum);
+
         }
 
 
