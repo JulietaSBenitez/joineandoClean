@@ -64,7 +64,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(483, 536);
+            this.groupBox1.Size = new System.Drawing.Size(590, 536);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleccione el turno a eliminar:";
@@ -73,7 +73,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 60);
+            this.label3.Location = new System.Drawing.Point(78, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(160, 17);
             this.label3.TabIndex = 18;
@@ -82,9 +82,9 @@
             // LimpiarDiaButton
             // 
             this.LimpiarDiaButton.BackColor = System.Drawing.Color.SaddleBrown;
-            this.LimpiarDiaButton.Location = new System.Drawing.Point(226, 179);
+            this.LimpiarDiaButton.Location = new System.Drawing.Point(313, 183);
             this.LimpiarDiaButton.Name = "LimpiarDiaButton";
-            this.LimpiarDiaButton.Size = new System.Drawing.Size(230, 29);
+            this.LimpiarDiaButton.Size = new System.Drawing.Size(230, 43);
             this.LimpiarDiaButton.TabIndex = 17;
             this.LimpiarDiaButton.Text = "Limpiar Día";
             this.LimpiarDiaButton.UseVisualStyleBackColor = false;
@@ -93,18 +93,18 @@
             // EspecialidadMedicaCB
             // 
             this.EspecialidadMedicaCB.FormattingEnabled = true;
-            this.EspecialidadMedicaCB.Location = new System.Drawing.Point(208, 81);
+            this.EspecialidadMedicaCB.Location = new System.Drawing.Point(267, 85);
             this.EspecialidadMedicaCB.Name = "EspecialidadMedicaCB";
-            this.EspecialidadMedicaCB.Size = new System.Drawing.Size(240, 24);
+            this.EspecialidadMedicaCB.Size = new System.Drawing.Size(276, 24);
             this.EspecialidadMedicaCB.TabIndex = 16;
             this.EspecialidadMedicaCB.SelectedIndexChanged += new System.EventHandler(this.EspecialidadCB_SelectedIndexChanged);
             // 
             // FiltrarButton
             // 
             this.FiltrarButton.BackColor = System.Drawing.Color.DarkOrange;
-            this.FiltrarButton.Location = new System.Drawing.Point(226, 228);
+            this.FiltrarButton.Location = new System.Drawing.Point(313, 251);
             this.FiltrarButton.Name = "FiltrarButton";
-            this.FiltrarButton.Size = new System.Drawing.Size(230, 29);
+            this.FiltrarButton.Size = new System.Drawing.Size(230, 43);
             this.FiltrarButton.TabIndex = 5;
             this.FiltrarButton.Text = "Buscar Turnos";
             this.FiltrarButton.UseVisualStyleBackColor = false;
@@ -113,7 +113,7 @@
             // CancelarButton
             // 
             this.CancelarButton.BackColor = System.Drawing.Color.IndianRed;
-            this.CancelarButton.Location = new System.Drawing.Point(390, 500);
+            this.CancelarButton.Location = new System.Drawing.Point(492, 499);
             this.CancelarButton.Name = "CancelarButton";
             this.CancelarButton.Size = new System.Drawing.Size(87, 31);
             this.CancelarButton.TabIndex = 11;
@@ -127,11 +127,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ListadoDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.ListadoDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListadoDGV.Location = new System.Drawing.Point(22, 360);
+            this.ListadoDGV.Location = new System.Drawing.Point(22, 365);
             this.ListadoDGV.MultiSelect = false;
             this.ListadoDGV.Name = "ListadoDGV";
             this.ListadoDGV.ReadOnly = true;
-            this.ListadoDGV.Size = new System.Drawing.Size(438, 125);
+            this.ListadoDGV.Size = new System.Drawing.Size(545, 125);
             this.ListadoDGV.TabIndex = 10;
             this.ListadoDGV.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadoDGV_CellContentDoubleClick);
             // 
@@ -139,7 +139,7 @@
             // 
             this.ListadoTurnosLabel.AutoSize = true;
             this.ListadoTurnosLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListadoTurnosLabel.Location = new System.Drawing.Point(173, 329);
+            this.ListadoTurnosLabel.Location = new System.Drawing.Point(224, 344);
             this.ListadoTurnosLabel.Name = "ListadoTurnosLabel";
             this.ListadoTurnosLabel.Size = new System.Drawing.Size(150, 18);
             this.ListadoTurnosLabel.TabIndex = 9;
@@ -149,7 +149,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(65, 117);
+            this.label4.Location = new System.Drawing.Point(107, 133);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 18);
             this.label4.TabIndex = 6;
@@ -157,23 +157,23 @@
             // 
             // CalendarioTurnos
             // 
-            this.CalendarioTurnos.Location = new System.Drawing.Point(22, 142);
+            this.CalendarioTurnos.Location = new System.Drawing.Point(64, 157);
             this.CalendarioTurnos.Name = "CalendarioTurnos";
             this.CalendarioTurnos.TabIndex = 5;
             this.CalendarioTurnos.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.CalendarioTurnos_DateChanged);
             // 
             // ApellidoProfesionalTB
             // 
-            this.ApellidoProfesionalTB.Location = new System.Drawing.Point(208, 55);
+            this.ApellidoProfesionalTB.Location = new System.Drawing.Point(267, 59);
             this.ApellidoProfesionalTB.Name = "ApellidoProfesionalTB";
-            this.ApellidoProfesionalTB.Size = new System.Drawing.Size(240, 22);
+            this.ApellidoProfesionalTB.Size = new System.Drawing.Size(276, 22);
             this.ApellidoProfesionalTB.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 88);
+            this.label2.Location = new System.Drawing.Point(78, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(167, 17);
             this.label2.TabIndex = 2;
@@ -181,16 +181,16 @@
             // 
             // NombreProfesionalTB
             // 
-            this.NombreProfesionalTB.Location = new System.Drawing.Point(208, 27);
+            this.NombreProfesionalTB.Location = new System.Drawing.Point(267, 31);
             this.NombreProfesionalTB.Name = "NombreProfesionalTB";
-            this.NombreProfesionalTB.Size = new System.Drawing.Size(240, 22);
+            this.NombreProfesionalTB.Size = new System.Drawing.Size(276, 22);
             this.NombreProfesionalTB.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(19, 32);
+            this.label1.Location = new System.Drawing.Point(78, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(160, 17);
             this.label1.TabIndex = 0;
@@ -200,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(508, 553);
+            this.ClientSize = new System.Drawing.Size(615, 553);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.Name = "CancelarTurnoAfiliado";
