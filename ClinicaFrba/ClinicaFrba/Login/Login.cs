@@ -31,7 +31,7 @@ namespace ClinicaFrba.Login
             
             if (resultado > 0)
             {
-                this.Hide();
+               // this.Hide();
                 new SeleccionarRol(resultado).ShowDialog();
             }
 
