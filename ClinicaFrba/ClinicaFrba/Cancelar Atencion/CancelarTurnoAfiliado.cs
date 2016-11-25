@@ -19,6 +19,8 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private List<ValidacionBooleana<CancelarTurnoAfiliado>> validaciones = new List<ValidacionBooleana<CancelarTurnoAfiliado>>();
         private bool ClickearonLimpiar;
+        private DataRow FilaSeleccionada;
+
         int PersonaID;
 
         public CancelarTurnoAfiliado(int id_persona)
@@ -41,7 +43,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
             validaciones.Add(new ValidacionBooleana<CancelarTurnoAfiliado>(
             (controlador => controlador.FaltaMasDeUnDiaParaElTurno()),
-            "No se ha especificado una razón para cancelar el turno."));
+            "Lo sentimos, no puede cancelar turnos a los que les falten menos de un día."));
 
         }
 
@@ -144,8 +146,12 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private bool FaltaMasDeUnDiaParaElTurno() {
 
-            return true;
-            //Como obtengo el id del turno que seleccione?
+            DateTime dia = (DateTime) FilaSeleccionada["Dia"];
+            DateTime horario = (DateTime)FilaSeleccionada["Horario"];
+
+            DateTime turno = dia + new TimeSpan(horario.Hour, horario.Minute, 0);
+
+            return turno.Subtract(Properties.Settings.Default.fecha).TotalHours > 24;
         
         }
 
@@ -161,6 +167,7 @@ namespace ClinicaFrba.Cancelar_Atencion
         {
             if (validaciones.All(validacion => validacion.SeCumple(this)))
             {
+
                 this.Hide();
                 Form cancelarTurno = new CancelarTurnoTipoRazon(PersonaID);
                 cancelarTurno.ShowDialog();
@@ -175,6 +182,11 @@ namespace ClinicaFrba.Cancelar_Atencion
             }
 
 
+        }
+
+        private void ListadoDGV_SelectionChanged(object sender, EventArgs e)
+        {
+            FilaSeleccionada = (DataRow) ListadoDGV.SelectedRows[0].DataBoundItem;
         }
     }
 }

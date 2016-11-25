@@ -134,6 +134,7 @@
             this.ListadoDGV.Size = new System.Drawing.Size(545, 125);
             this.ListadoDGV.TabIndex = 10;
             this.ListadoDGV.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadoDGV_CellContentDoubleClick);
+            this.ListadoDGV.SelectionChanged += new System.EventHandler(this.ListadoDGV_SelectionChanged);
             // 
             // ListadoTurnosLabel
             // 
