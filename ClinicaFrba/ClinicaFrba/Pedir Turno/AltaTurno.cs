@@ -78,9 +78,5 @@ namespace ClinicaFrba.Pedir_Turno
             return ProfesionalCB.SelectedItem != null;
         }
 
-        private void AltaTurno_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

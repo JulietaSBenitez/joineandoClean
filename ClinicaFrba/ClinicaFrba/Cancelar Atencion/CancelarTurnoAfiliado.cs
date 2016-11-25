@@ -49,7 +49,6 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private string NombreProfesional()
         {
-
             return NombreProfesionalTB.SelectedText.NullIfEmpty();
         }
         private string ApellidoProfesional()
@@ -92,7 +91,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             SqlParameter idPersona = new SqlParameter("@Persona_id", PersonaID);
             List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("PERSONATurnos", nombre, apellido, dia, idEspecialidad, idPersona);
 
-            
+            ListadoDGV.DataSource = filas;
 
 
         }
