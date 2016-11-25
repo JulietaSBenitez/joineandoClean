@@ -15,7 +15,7 @@ namespace ClinicaFrba.Registro_Llegada
         public RegistroDeLlegada()
         {
             InitializeComponent();
-            tablaTurnos.DataSource = DAO.DAOTurnos.filtroAfiliados();
+            tablaTurnos.DataSource = DAO.DAOTurnos.filtroAfiliados(horario.Value);
             AgregarBoton();
             this.tablaTurnos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clicktabla);
           
@@ -42,7 +42,7 @@ namespace ClinicaFrba.Registro_Llegada
                 // ((?)) pedirle a batman ayuda
                 horario.CustomFormat = "MM/dd/yyyy hh:mm";
               //  medico.Text = horario.Text;
-                DAO.DAOTurnos.confirmarPresencia(tablaTurnos.Rows[e.RowIndex].Cells["Numero de Turno"].Value.ToString(), tablaTurnos.Rows[e.RowIndex].Cells["Numero Afiliado"].Value.ToString(), horario.Text);
+                DAO.DAOTurnos.confirmarPresencia(tablaTurnos.Rows[e.RowIndex].Cells["Numero de Turno"].Value.ToString(), tablaTurnos.Rows[e.RowIndex].Cells["Numero Afiliado"].Value.ToString(), horario.Value);
                 horario.CustomFormat = "dd/MM/yyyy hh:mm";
             }
      
@@ -57,7 +57,7 @@ namespace ClinicaFrba.Registro_Llegada
 
         private void btnfiltrar_Click_1(object sender, EventArgs e)
         {
-            tablaTurnos.DataSource = DAO.DAOTurnos.filtroAfiliados(medico.Text,especialidad.Text,numeroTurno.Text,numeroAfiliado.Text,horario.Text);
+            tablaTurnos.DataSource = DAO.DAOTurnos.filtroAfiliados(horario.Value,medico.Text,especialidad.Text,numeroTurno.Text,numeroAfiliado.Text);
         }
     }
 }

@@ -26,9 +26,9 @@ namespace ClinicaFrba.Registro_Resultado
             this.medicoId = medicoId;
             horario.Format = DateTimePickerFormat.Custom;
             horario.CustomFormat = "dd/MM/yyyy";
-            horario.Value = Properties.Settings.Default.fecha;
+           // horario.Value = Properties.Settings.Default.fecha;
 
-            tablaTurnos.DataSource = DAO.DAOResultados.filtroAfiliados(medicoId);
+            tablaTurnos.DataSource = DAO.DAOResultados.filtroAfiliados(medicoId,horario.Value);
 
             tablaTurnos.Columns["Id Paciente"].Visible = false; 
             tablaTurnos.Columns["Consulta_Medica_id"].Visible = false;
@@ -45,7 +45,7 @@ namespace ClinicaFrba.Registro_Resultado
         private void btnfiltrar_Click(object sender, EventArgs e)
         {
             horario.CustomFormat = "MM/dd/yyyy";
-            tablaTurnos.DataSource = DAO.DAOResultados.filtroAfiliados(medicoId,numeroAfiliado.Text,horario.Text,numeroTurno.Text);
+            tablaTurnos.DataSource = DAO.DAOResultados.filtroAfiliados(medicoId, horario.Value,numeroAfiliado.Text, numeroTurno.Text);
             horario.CustomFormat = "dd/MM/yyyy";
         }
 
@@ -67,7 +67,7 @@ namespace ClinicaFrba.Registro_Resultado
 
             new Registro_Resultado.RegistroDeResultado(tablaTurnos.Rows[e.RowIndex].Cells["Nombre Paciente"].Value.ToString(), tablaTurnos.Rows[e.RowIndex].Cells["Id Paciente"].Value.ToString(), tablaTurnos.Rows[e.RowIndex].Cells["Consulta_Medica_id"].Value.ToString()).ShowDialog();
             horario.CustomFormat = "MM/dd/yyyy";
-            tablaTurnos.DataSource = DAO.DAOResultados.filtroAfiliados(medicoId, numeroAfiliado.Text, horario.Text, numeroTurno.Text);
+            tablaTurnos.DataSource = DAO.DAOResultados.filtroAfiliados(medicoId,horario.Value, numeroAfiliado.Text, numeroTurno.Text);
             horario.CustomFormat = "dd/MM/yyyy";
         }
 

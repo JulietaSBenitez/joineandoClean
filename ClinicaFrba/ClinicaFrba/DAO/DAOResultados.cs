@@ -13,7 +13,7 @@ namespace ClinicaFrba.DAO
 
 
 
-        public static void guardarResultado(String paciente_id, String consulta_id,String enfermedad, String diagnostico, List<String> sintomas,String horario)
+        public static void guardarResultado(String paciente_id, String consulta_id,String enfermedad, String diagnostico, List<String> sintomas,DateTime horario)
         {
 
             SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
@@ -37,7 +37,7 @@ namespace ClinicaFrba.DAO
                 parameter.Value = enfermedad;
                 parameters.Add(parameter);
 
-                parameter = new SqlParameter("@horario", SqlDbType.NChar, 255);
+                parameter = new SqlParameter("@horario", SqlDbType.DateTime, 255);
                 parameter.Value = horario;
                 parameters.Add(parameter);
 
@@ -84,7 +84,7 @@ namespace ClinicaFrba.DAO
 
 
         //PONER LOS FILTROS BIEN
-        public static DataTable filtroAfiliados(int medico,String numeroAfiliado = "", String hora = "",String turno="")
+        public static DataTable filtroAfiliados(int medico, DateTime hora,String numeroAfiliado = "",String turno="")
         {
             DataTable data = new DataTable();
             SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
@@ -102,12 +102,10 @@ namespace ClinicaFrba.DAO
                     parameters.Add(parameter);
                 
 
-                if (hora != "")
-                {
-                    parameter = new SqlParameter("@fecha", SqlDbType.NVarChar, 255);
+                    parameter = new SqlParameter("@fecha", SqlDbType.DateTime);
                     parameter.Value = hora;
                     parameters.Add(parameter);
-                }
+           
                 if (turno != "")
                 {
                     parameter = new SqlParameter("@numeroTurno", SqlDbType.Int);

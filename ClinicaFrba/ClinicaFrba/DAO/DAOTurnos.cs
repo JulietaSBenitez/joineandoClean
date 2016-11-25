@@ -12,7 +12,7 @@ namespace ClinicaFrba.DAO
     {
 
 
-        public static void confirmarPresencia(string turno, string numeroAfiliado, string horario)
+        public static void confirmarPresencia(string turno, string numeroAfiliado, DateTime horario)
         {
 
 
@@ -33,7 +33,7 @@ namespace ClinicaFrba.DAO
             parameters.Add(parameter);
 
 
-            parameter = new SqlParameter("@horario", SqlDbType.NVarChar,255);
+            parameter = new SqlParameter("@horario", SqlDbType.DateTime);
             parameter.Value = horario;
             parameters.Add(parameter);
 
@@ -101,7 +101,7 @@ namespace ClinicaFrba.DAO
 
 
         //PONER LOS FILTROS BIEN
-             public static DataTable filtroAfiliados(String medico="",String especialidad="",String numeroTurno="",String numeroAfiliado = "",String hora="")
+             public static DataTable filtroAfiliados(DateTime hora,String medico="",String especialidad="",String numeroTurno="",String numeroAfiliado = "")
         {
             DataTable data = new DataTable();
             SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
@@ -112,6 +112,9 @@ namespace ClinicaFrba.DAO
 
             try
             {
+                parameter = new SqlParameter("@fecha", SqlDbType.DateTime);
+                parameter.Value = hora;
+                parameters.Add(parameter); 
 
                 if (medico != "") {
                     parameter = new SqlParameter("@medico", SqlDbType.NVarChar,255);
