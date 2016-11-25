@@ -32,8 +32,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.VolverBoton = new System.Windows.Forms.Button();
             this.CancelarTurnoBoton = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TipoCancelacionCB = new System.Windows.Forms.ComboBox();
+            this.RazonCancelacionTB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -52,8 +52,8 @@
             // 
             this.groupBox1.Controls.Add(this.VolverBoton);
             this.groupBox1.Controls.Add(this.CancelarTurnoBoton);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.TipoCancelacionCB);
+            this.groupBox1.Controls.Add(this.RazonCancelacionTB);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -83,22 +83,23 @@
             this.CancelarTurnoBoton.TabIndex = 5;
             this.CancelarTurnoBoton.Text = "Cancelar Turno";
             this.CancelarTurnoBoton.UseVisualStyleBackColor = true;
+            this.CancelarTurnoBoton.Click += new System.EventHandler(this.CancelarTurnoBoton_Click);
             // 
-            // comboBox1
+            // TipoCancelacionCB
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(170, 45);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(308, 24);
-            this.comboBox1.TabIndex = 4;
+            this.TipoCancelacionCB.FormattingEnabled = true;
+            this.TipoCancelacionCB.Location = new System.Drawing.Point(170, 45);
+            this.TipoCancelacionCB.Name = "TipoCancelacionCB";
+            this.TipoCancelacionCB.Size = new System.Drawing.Size(308, 24);
+            this.TipoCancelacionCB.TabIndex = 4;
             // 
-            // textBox2
+            // RazonCancelacionTB
             // 
-            this.textBox2.Location = new System.Drawing.Point(170, 85);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(308, 81);
-            this.textBox2.TabIndex = 3;
+            this.RazonCancelacionTB.Location = new System.Drawing.Point(170, 85);
+            this.RazonCancelacionTB.Multiline = true;
+            this.RazonCancelacionTB.Name = "RazonCancelacionTB";
+            this.RazonCancelacionTB.Size = new System.Drawing.Size(308, 81);
+            this.RazonCancelacionTB.TabIndex = 3;
             // 
             // label2
             // 
@@ -129,8 +130,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button CancelarTurnoBoton;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox TipoCancelacionCB;
+        private System.Windows.Forms.TextBox RazonCancelacionTB;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button VolverBoton;
     }
