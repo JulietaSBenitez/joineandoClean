@@ -10,15 +10,17 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 
 using ClinicaFrba.src;
+using ClinicaFrba.DAO;
 
 namespace ClinicaFrba.Cancelar_Atencion
 {
     public partial class CancelarTurnoAfiliado : Form
     {
 
-        private bool ClickearonLimpiar = true;
+        private bool ClickearonLimpiar;
+        int PersonaID;
 
-        public CancelarTurnoAfiliado()
+        public CancelarTurnoAfiliado(int id_persona)
         {
             InitializeComponent();
 
@@ -30,6 +32,8 @@ namespace ClinicaFrba.Cancelar_Atencion
             especialidades.Insert(0, new Especialidad("Todas", null));
             EspecialidadMedicaCB.DataSource = especialidades;
             EspecialidadMedicaCB.DisplayMember = "Nombre";
+
+            PersonaID = id_persona;
 
         }
 
@@ -69,18 +73,25 @@ namespace ClinicaFrba.Cancelar_Atencion
             }
 
         }
+        private int? IDEspecialidad() {
+            return ((Especialidad) EspecialidadMedicaCB.SelectedItem).ID;
+        }
 
         private void LimpiarDiaButton_Click(object sender, EventArgs e)
         {
             ClickearonLimpiar = true;
         }
 
-        private void CalendarioTurnos_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            ClickearonLimpiar = false;
-        }
 
-        private void Buscar() { 
+        private void Buscar() {
+
+            SqlParameter nombre = new SqlParameter("@Nombre", NombreProfesional());
+            SqlParameter apellido = new SqlParameter("@Apellido", ApellidoProfesional());
+            SqlParameter dia = new SqlParameter("@Dia", Dia());
+            SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", IDEspecialidad());
+            SqlParameter idPersona = new SqlParameter("@Persona_id", PersonaID);
+            QueryAdapterMaggie.ejecutarSP("PERSONATurnos", nombre, apellido, dia, idEspecialidad, idPersona);
+
         }
 
 
