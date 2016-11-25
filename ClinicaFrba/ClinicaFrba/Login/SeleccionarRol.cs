@@ -33,13 +33,9 @@ namespace ClinicaFrba.Login
                     
                  
             }
-            if (comboBox1.Items.Count == 1) {
-                DataRow[] row = roles.Select("Nombre='" + comboBox1.Text + "'");
-                new Acciones(int.Parse(row[0]["Rol_id"].ToString()),user_id).ShowDialog();
-                this.Hide();
-            
-            }
+     
 
+            
 
         }
 
@@ -55,14 +51,24 @@ namespace ClinicaFrba.Login
 
         private void SeleccionarRol_Load(object sender, EventArgs e)
         {
+            if (comboBox1.Items.Count == 1)
+            {
+                DataRow[] row = roles.Select("Nombre='" + comboBox1.Text + "'");
+                //  this.Hide();
+                var a = new Acciones(int.Parse(row[0]["Rol_id"].ToString()), user_id).ShowDialog();
 
+
+                      this.Close();
+
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             DataRow[] row = roles.Select("Nombre='" + comboBox1.Text + "'");
             new Acciones(int.Parse(row[0]["Rol_id"].ToString()),user_id).ShowDialog();
-            this.Hide();
+         //   this.Hide();
+        //    this.Close();
         }
     }
 }
