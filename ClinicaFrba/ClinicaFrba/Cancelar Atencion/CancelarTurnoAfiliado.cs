@@ -90,8 +90,16 @@ namespace ClinicaFrba.Cancelar_Atencion
             SqlParameter dia = new SqlParameter("@Dia", Dia());
             SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", IDEspecialidad());
             SqlParameter idPersona = new SqlParameter("@Persona_id", PersonaID);
-            QueryAdapterMaggie.ejecutarSP("PERSONATurnos", nombre, apellido, dia, idEspecialidad, idPersona);
+            List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("PERSONATurnos", nombre, apellido, dia, idEspecialidad, idPersona);
 
+            
+
+
+        }
+
+        private void CalendarioTurnos_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            ClickearonLimpiar = false;
         }
 
 
