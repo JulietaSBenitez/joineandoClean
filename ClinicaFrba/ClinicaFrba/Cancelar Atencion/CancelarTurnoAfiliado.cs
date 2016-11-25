@@ -35,6 +35,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
             PersonaID = id_persona;
 
+            ColumnasDGV();
             AgregarBoton();
 
         }
@@ -78,15 +79,6 @@ namespace ClinicaFrba.Cancelar_Atencion
             return ((Especialidad) EspecialidadMedicaCB.SelectedItem).ID;
         }
 
-        private void LimpiarDiaButton_Click(object sender, EventArgs e)
-        {
-            ClickearonLimpiar = true;
-        }
-        private void CalendarioTurnos_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            ClickearonLimpiar = false;
-        }
-
         private void Buscar()
         {
 
@@ -114,8 +106,48 @@ namespace ClinicaFrba.Cancelar_Atencion
             btnColum.Name = "Eliminar";
             btnColum.Text = "Eliminar";
             btnColum.UseColumnTextForButtonValue = true;
-            ListadoDGV.Columns.Insert(0, btnColum);
+            ListadoDGV.Columns.Insert(5, btnColum);
 
+        }
+        private void ColumnasDGV() {
+
+            ListadoDGV.AutoGenerateColumns = false;
+            ListadoDGV.ColumnCount = 6;
+
+            ListadoDGV.Columns[0].Name = "Nombre";
+            ListadoDGV.Columns[0].HeaderText = "Nombre";
+            ListadoDGV.Columns[0].DataPropertyName = "Nombre";
+
+            ListadoDGV.Columns[1].Name = "Apellido";
+            ListadoDGV.Columns[1].HeaderText = "Apellido";
+            ListadoDGV.Columns[1].DataPropertyName = "Apellido";
+
+            ListadoDGV.Columns[2].Name = "Especialidad";
+            ListadoDGV.Columns[2].HeaderText = "Especialidad";
+            ListadoDGV.Columns[2].DataPropertyName = "Especialidad";
+
+            ListadoDGV.Columns[3].Name = "Dia";
+            ListadoDGV.Columns[3].HeaderText = "Dia";
+            ListadoDGV.Columns[3].DataPropertyName = "Dia";
+
+            ListadoDGV.Columns[4].Name = "Horario";
+            ListadoDGV.Columns[4].HeaderText = "Horario";
+            ListadoDGV.Columns[4].DataPropertyName = "Horario";
+        }
+
+        private void LimpiarDiaButton_Click(object sender, EventArgs e)
+        {
+            ClickearonLimpiar = true;
+        }
+        private void CalendarioTurnos_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            ClickearonLimpiar = false;
+        }
+        private void ListadoDGV_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.Hide();
+            Form cancelarTurno = new CancelarTurnoTipoRazon();
+            cancelarTurno.ShowDialog();
         }
 
 
