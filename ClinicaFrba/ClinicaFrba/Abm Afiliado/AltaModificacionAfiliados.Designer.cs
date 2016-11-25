@@ -73,9 +73,11 @@
             // 
             this.numerodocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numerodocumento.Location = new System.Drawing.Point(341, 80);
+            this.numerodocumento.MaxLength = 250;
             this.numerodocumento.Name = "numerodocumento";
             this.numerodocumento.Size = new System.Drawing.Size(166, 22);
             this.numerodocumento.TabIndex = 24;
+            this.numerodocumento.TextChanged += new System.EventHandler(this.numerodocumento_TextChanged);
             // 
             // label5
             // 
@@ -111,6 +113,7 @@
             // 
             this.apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.apellido.Location = new System.Drawing.Point(315, 49);
+            this.apellido.MaxLength = 250;
             this.apellido.Name = "apellido";
             this.apellido.Size = new System.Drawing.Size(192, 22);
             this.apellido.TabIndex = 20;
@@ -160,6 +163,7 @@
             // 
             this.nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nombre.Location = new System.Drawing.Point(83, 46);
+            this.nombre.MaxLength = 250;
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(146, 22);
             this.nombre.TabIndex = 15;
@@ -178,6 +182,7 @@
             // 
             this.telefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.telefono.Location = new System.Drawing.Point(83, 150);
+            this.telefono.MaxLength = 250;
             this.telefono.Name = "telefono";
             this.telefono.Size = new System.Drawing.Size(148, 22);
             this.telefono.TabIndex = 28;
@@ -196,6 +201,7 @@
             // 
             this.direccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.direccion.Location = new System.Drawing.Point(83, 119);
+            this.direccion.MaxLength = 250;
             this.direccion.Name = "direccion";
             this.direccion.Size = new System.Drawing.Size(424, 22);
             this.direccion.TabIndex = 26;
@@ -204,6 +210,7 @@
             // 
             this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.email.Location = new System.Drawing.Point(315, 150);
+            this.email.MaxLength = 250;
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(192, 22);
             this.email.TabIndex = 30;
@@ -302,6 +309,7 @@
             "Concubinato",
             "Divorciado/a"});
             this.estadoCivil.Location = new System.Drawing.Point(95, 217);
+            this.estadoCivil.MaxLength = 250;
             this.estadoCivil.Name = "estadoCivil";
             this.estadoCivil.Size = new System.Drawing.Size(203, 21);
             this.estadoCivil.TabIndex = 41;
@@ -341,6 +349,7 @@
             // 
             this.razon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.razon.Location = new System.Drawing.Point(142, 279);
+            this.razon.MaxLength = 250;
             this.razon.Name = "razon";
             this.razon.Size = new System.Drawing.Size(365, 22);
             this.razon.TabIndex = 43;

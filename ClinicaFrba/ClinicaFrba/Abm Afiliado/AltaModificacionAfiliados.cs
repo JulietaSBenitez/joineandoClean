@@ -105,6 +105,34 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void BotonGuardarRol_Click(object sender, EventArgs e)
         {
+
+            if (numerodocumento.Text == "" || !IsNumeric(numerodocumento.Text))
+            {
+                MessageBox.Show("No puede dejar el campo Nuemero documento en blanco o con caracteres que no sean numericos", "Afiliado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (direccion.Text == "")
+            {
+                MessageBox.Show("No puede dejar el campo direccion en blanco", "Afiliado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (nombre.Text == "")
+            {
+                MessageBox.Show("No puede dejar el campo nombre en blanco", "Afiliado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (apellido.Text == "")
+            {
+                MessageBox.Show("No puede dejar el campo apellido en blanco", "Afiliado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+
+
             if (accion == Accion.Modificacion) {
 
             DAO.DAOAfiliados.actualizarAfiliado(direccion.Text,telefono.Text,email.Text,estadoCivil.Text,familiaresacargo.Text,plan.Text, numeroAfiliado,razon.Text);
@@ -170,5 +198,23 @@ namespace ClinicaFrba.Abm_Afiliado
             }
             else { razon.Visible = false; razont.Visible = false; }
         }
+
+        private void numerodocumento_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+        public static bool IsNumeric(object Expression)
+        {
+            double retNum;
+
+            bool isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            return isNum;
+        }
+    
+    
     }
 }
