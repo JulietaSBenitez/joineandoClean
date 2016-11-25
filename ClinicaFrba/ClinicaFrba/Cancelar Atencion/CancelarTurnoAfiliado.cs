@@ -17,6 +17,7 @@ namespace ClinicaFrba.Cancelar_Atencion
     public partial class CancelarTurnoAfiliado : Form
     {
 
+        private List<ValidacionBooleana<CancelarTurnoAfiliado>> validaciones = new List<ValidacionBooleana<CancelarTurnoAfiliado>>();
         private bool ClickearonLimpiar;
         int PersonaID;
 
@@ -37,6 +38,10 @@ namespace ClinicaFrba.Cancelar_Atencion
 
             ColumnasDGV();
             AgregarBoton();
+
+            validaciones.Add(new ValidacionBooleana<CancelarTurnoAfiliado>(
+            (controlador => controlador.FaltaMasDeUnDiaParaElTurno()),
+            "No se ha especificado una razón para cancelar el turno."));
 
         }
 
@@ -75,8 +80,9 @@ namespace ClinicaFrba.Cancelar_Atencion
             }
 
         }
-        private int? IDEspecialidad() {
-            return ((Especialidad) EspecialidadMedicaCB.SelectedItem).ID;
+        private int? IDEspecialidad()
+        {
+            return ((Especialidad)EspecialidadMedicaCB.SelectedItem).ID;
         }
 
         private void Buscar()
@@ -109,7 +115,8 @@ namespace ClinicaFrba.Cancelar_Atencion
             ListadoDGV.Columns.Insert(5, btnColum);
 
         }
-        private void ColumnasDGV() {
+        private void ColumnasDGV()
+        {
 
             ListadoDGV.AutoGenerateColumns = false;
             ListadoDGV.ColumnCount = 6;
@@ -135,6 +142,13 @@ namespace ClinicaFrba.Cancelar_Atencion
             ListadoDGV.Columns[4].DataPropertyName = "Horario";
         }
 
+        private bool FaltaMasDeUnDiaParaElTurno() {
+
+            return true;
+            //Como obtengo el id del turno que seleccione?
+        
+        }
+
         private void LimpiarDiaButton_Click(object sender, EventArgs e)
         {
             ClickearonLimpiar = true;
@@ -145,11 +159,22 @@ namespace ClinicaFrba.Cancelar_Atencion
         }
         private void ListadoDGV_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.Hide();
-            Form cancelarTurno = new CancelarTurnoTipoRazon(PersonaID);
-            cancelarTurno.ShowDialog();
+            if (validaciones.All(validacion => validacion.SeCumple(this)))
+            {
+                this.Hide();
+                Form cancelarTurno = new CancelarTurnoTipoRazon(PersonaID);
+                cancelarTurno.ShowDialog();
+            }
+            else
+            {
+                ValidacionBooleana<CancelarTurnoAfiliado> validacionQueNoSeCumple =
+                    validaciones.Find(validacion => validacion.NoSeCumple(this));
+                MessageBox.Show(validacionQueNoSeCumple.MensajeError(), "¡A wild error appeared!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+
         }
-
-
     }
 }
