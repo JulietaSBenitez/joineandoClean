@@ -16,5 +16,10 @@ namespace ClinicaFrba.Cancelar_Atencion
         {
             InitializeComponent();
         }
+
+        private void CancelarTurnosButton_Click(object sender, EventArgs e)
+        {
+                
+        }
     }
 }

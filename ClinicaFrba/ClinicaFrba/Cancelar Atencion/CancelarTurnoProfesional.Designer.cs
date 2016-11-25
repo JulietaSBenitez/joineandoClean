@@ -66,6 +66,7 @@
             this.CancelarTurnosButton.TabIndex = 1;
             this.CancelarTurnosButton.Text = "Cancelar Turno/s";
             this.CancelarTurnosButton.UseVisualStyleBackColor = true;
+            this.CancelarTurnosButton.Click += new System.EventHandler(this.CancelarTurnosButton_Click);
             // 
             // label4
             // 
@@ -83,13 +84,13 @@
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 7;
             // 
-            // CancelarTurnoProfesionalDia
+            // CancelarTurnoProfesional
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(357, 338);
             this.Controls.Add(this.groupBox1);
-            this.Name = "CancelarTurnoProfesionalDia";
+            this.Name = "CancelarTurnoProfesional";
             this.Text = "Cancelar Turno de un dia";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

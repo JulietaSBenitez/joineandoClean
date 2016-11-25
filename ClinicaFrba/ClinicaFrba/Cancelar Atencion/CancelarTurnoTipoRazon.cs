@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using ClinicaFrba.src;
+using ClinicaFrba;
 
 namespace ClinicaFrba.Cancelar_Atencion
 {
@@ -44,9 +45,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void VolverBoton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form cancelarTurno = new CancelarTurnoAfiliado(PersonaID);
-            cancelarTurno.ShowDialog();
+            this.Close();
         }
         private void CancelarTurnoBoton_Click(object sender, EventArgs e)
         {

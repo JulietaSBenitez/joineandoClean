@@ -41,6 +41,8 @@ namespace ClinicaFrba.Cancelar_Atencion
             ColumnasDGV();
             AgregarBoton();
 
+            ListadoDGV.AllowUserToAddRows = false;
+
             validaciones.Add(new ValidacionBooleana<CancelarTurnoAfiliado>(
             (controlador => controlador.FaltaMasDeUnDiaParaElTurno()),
             "Lo sentimos, no puede cancelar turnos a los que les falten menos de un día."));
@@ -167,10 +169,10 @@ namespace ClinicaFrba.Cancelar_Atencion
         {
             if (validaciones.All(validacion => validacion.SeCumple(this)))
             {
-
                 this.Hide();
                 Form cancelarTurno = new CancelarTurnoTipoRazon(PersonaID);
                 cancelarTurno.ShowDialog();
+                Buscar();
             }
             else
             {
