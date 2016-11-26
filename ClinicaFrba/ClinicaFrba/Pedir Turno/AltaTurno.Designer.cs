@@ -75,6 +75,7 @@ namespace ClinicaFrba.Pedir_Turno
             this.CancelarButton.TabIndex = 4;
             this.CancelarButton.Text = "Cancelar";
             this.CancelarButton.UseVisualStyleBackColor = false;
+            this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 
             // ProfesionalCB
             // 

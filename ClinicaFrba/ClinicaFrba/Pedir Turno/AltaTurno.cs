@@ -19,12 +19,16 @@ namespace ClinicaFrba.Pedir_Turno
         List<Especialidad> Especialidades = new List<Especialidad>();
         List<Medico> TodosLosMedicos = new List<Medico>();
         List<Medico> MedicosEspecialidadSeleccionada = new List<Medico>();
+        public int IDPersona;
         private List<ValidacionBooleana<AltaTurno>> validaciones = new List<ValidacionBooleana<AltaTurno>>();
 
         public AltaTurno(int persona_id)
         {
 
-            InitializeComponent();
+            InitializeComponent()
+
+            IDPersona = persona_id;
+
             Especialidades = Especialidad.All();
 
             EspecialidadMedicaCB.DataSource = Especialidades;
@@ -48,7 +52,8 @@ namespace ClinicaFrba.Pedir_Turno
             {
                 this.Hide();
                 Selección_de_Día_y_Horario seleccion = new Selección_de_Día_y_Horario((Especialidad) EspecialidadMedicaCB.SelectedItem,
-                                                                                      (Medico) ProfesionalCB.SelectedItem);
+                                                                                      (Medico) ProfesionalCB.SelectedItem,
+                                                                                      IDPersona);
                 seleccion.ShowDialog();
                 this.Show();
 
@@ -76,6 +81,11 @@ namespace ClinicaFrba.Pedir_Turno
         private bool ProfesionalSeleccionado()
         {
             return ProfesionalCB.SelectedItem != null;
+        }
+
+        private void CancelarButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
     }

@@ -19,15 +19,17 @@ namespace ClinicaFrba.Pedir_Turno
 
         public Medico ModelObjectM { get; set; }
         public Especialidad ModelObjectE { get; set; }
+        public int PacienteID;
         public List<TimeSpan> _Turnos = new List<TimeSpan>();
         private List<ValidacionBooleana<Selección_de_Día_y_Horario>> validaciones = new List<ValidacionBooleana<Selección_de_Día_y_Horario>>();
 
-        public Selección_de_Día_y_Horario(Especialidad especialidad, Medico medico)
+        public Selección_de_Día_y_Horario(Especialidad especialidad, Medico medico, int idPaciente)
         {
             InitializeComponent();
 
             ModelObjectE = especialidad;
             ModelObjectM = medico;
+            PacienteID = idPaciente;
 
             CalendarioTurnos.MaxSelectionCount = 1;
             CalendarioTurnos.TodayDate = Properties.Settings.Default.fecha;
@@ -37,7 +39,7 @@ namespace ClinicaFrba.Pedir_Turno
                                                 new TimeSpan(10, 30, 0) });
 
             validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
-            (controlador => controlador.DiaSeleccionado()),
+            (controlador => controlador.HayDiaSeleccionado()),
             "No se ha seleccionado ningún día."));
 
             validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
@@ -45,7 +47,7 @@ namespace ClinicaFrba.Pedir_Turno
             "El día seleccionado es menor al actual."));
 
             validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
-            (controlador => controlador.HorarioSeleccionado()),
+            (controlador => controlador.HayHorarioSeleccionado()),
             "No se ha seleccionado ningún horario."));
 
         }
@@ -119,12 +121,12 @@ namespace ClinicaFrba.Pedir_Turno
 
 
         }
-        private bool DiaSeleccionado(){
+        private bool HayDiaSeleccionado(){
 
             return CalendarioTurnos.SelectionRange.Start != null;
 
         }
-        private bool HorarioSeleccionado()
+        private bool HayHorarioSeleccionado()
         {
 
             return TurnosDisponiblesDGW.SelectedCells.Count != 0;
@@ -166,7 +168,11 @@ namespace ClinicaFrba.Pedir_Turno
         {
             if (validaciones.All(validacion => validacion.SeCumple(this)))
             {
-                //TODO: Se crea exitosamente.
+                SqlParameter idPersona = new SqlParameter("@Paciente_id", PacienteID);
+                SqlParameter fechaSeleccionada = new SqlParameter("@Fecha", CalendarioTurnos.SelectionStart);
+                SqlParameter horario = new SqlParameter("Horario", TurnosDisponiblesDGW.SelectedCells[0]);
+
+                QueryAdapterMaggie.ejecutarSP("TURNOInsertarNuevo", idPersona, fechaSeleccionada, horario);
 
             }
             else
