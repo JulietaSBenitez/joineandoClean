@@ -35,6 +35,9 @@ namespace ClinicaFrba.Pedir_Turno
             CalendarioTurnos.TodayDate = Properties.Settings.Default.fecha;
             CalendarioTurnos.SelectionStart = CalendarioTurnos.TodayDate;
 
+            TurnosDisponiblesDGW.AllowUserToAddRows = false;
+            TurnosDisponiblesDGW.ReadOnly = true;
+
             RefrescarDGV(new List<TimeSpan>() { new TimeSpan(10, 0, 0), 
                                                 new TimeSpan(10, 30, 0) });
 
@@ -170,7 +173,7 @@ namespace ClinicaFrba.Pedir_Turno
             {
                 SqlParameter idPersona = new SqlParameter("@Paciente_id", PacienteID);
                 SqlParameter fechaSeleccionada = new SqlParameter("@Fecha", CalendarioTurnos.SelectionStart);
-                SqlParameter horario = new SqlParameter("Horario", TurnosDisponiblesDGW.SelectedCells[0]);
+                SqlParameter horario = new SqlParameter("@Horario", HorarioTurno());
 
                 QueryAdapterMaggie.ejecutarSP("TURNOInsertarNuevo", idPersona, fechaSeleccionada, horario);
 
@@ -184,7 +187,11 @@ namespace ClinicaFrba.Pedir_Turno
             }
         }
 
-
+        private DateTime HorarioTurno()
+        {
+            dynamic obj = TurnosDisponiblesDGW.CurrentRow.DataBoundItem;
+            return DateTime.Parse(obj.Horarios);
+        }
 
     }
 }

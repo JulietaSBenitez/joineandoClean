@@ -25,7 +25,7 @@ namespace ClinicaFrba.Pedir_Turno
         public AltaTurno(int persona_id)
         {
 
-            InitializeComponent()
+            InitializeComponent();
 
             IDPersona = persona_id;
 
