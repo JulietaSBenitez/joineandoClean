@@ -33,11 +33,11 @@ namespace ClinicaFrba.Cancelar_Atencion
             cancelarTurnoTipoRazon.ShowDialog();
         }
 
-        private void ProfesionalCancelarTurno(int cancelacionID, string razon)
+        private void ProfesionalCancelarTurno(int tipoCancelacionID, string razon)
         {
 
             SqlParameter dia;
-            SqlParameter idCancelacion = new SqlParameter("@Cancelacion_id", cancelacionID);
+            SqlParameter idTipoCancelacion = new SqlParameter("@Tipo_Cancelacion_id", tipoCancelacionID);
             SqlParameter descripcion = new SqlParameter("@Descripcion", razon);
             SqlParameter idProfesional = new SqlParameter("@Medico_id", IDPersona);
 
@@ -45,7 +45,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             {
 
                 dia = new SqlParameter("@Dia", diaSeleccionado);
-                QueryAdapterMaggie.ejecutarSP("CANCELACIONEliminarTurnoProfesional", dia, idCancelacion, descripcion, idProfesional);
+                QueryAdapterMaggie.ejecutarSP("CANCELACIONEliminarTurnoProfesional", dia, idTipoCancelacion, descripcion, idProfesional);
             }
         }
 

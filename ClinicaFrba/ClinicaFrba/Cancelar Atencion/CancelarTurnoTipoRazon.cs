@@ -25,7 +25,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             InitializeComponent();
 
             TipoCancelacionCB.DataSource = TiposDeCancelacion();
-            TipoCancelacionCB.DisplayMember = "Tipo";
+            TipoCancelacionCB.DisplayMember = "Descripcion";
 
             AccionAEjecutar = accion;
 
@@ -40,7 +40,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private DataTable TiposDeCancelacion()
         {
-            return QueryAdapterMaggie.ejecutarSP("CANCELACIONTodosLosTipos").CopyToDataTable();
+            return QueryAdapterMaggie.ejecutarSP("TIPOCANCELACIONTodos").CopyToDataTable();
             
         }
         private bool ExisteRazonCancelación() { 
@@ -74,7 +74,7 @@ namespace ClinicaFrba.Cancelar_Atencion
         }
         private int IDTipoDeCancelacion() {
 
-            return (int) ((DataRow) TipoCancelacionCB.SelectedItem)["Cancelacion_id"];
+            return (int) ((DataRow) TipoCancelacionCB.SelectedItem)["Tipo_Cancelacion_Id"];
         
         }
         private string MotivoCancelacion()

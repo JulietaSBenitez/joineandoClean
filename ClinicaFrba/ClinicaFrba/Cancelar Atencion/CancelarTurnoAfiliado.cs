@@ -191,12 +191,12 @@ namespace ClinicaFrba.Cancelar_Atencion
             FilaSeleccionada = (DataRow) ListadoDGV.SelectedRows[0].DataBoundItem;
         }
 
-        private void AfiliadoCancelarTurno(int cancelacionID, string razon) { 
+        private void AfiliadoCancelarTurno(int tipoCancelacionID, string razon) { 
         
             SqlParameter idTurno = new SqlParameter("@Turno_id", ((DataRow)ListadoDGV.SelectedRows[0].DataBoundItem)["IDTurno"]);
-            SqlParameter idCancelacion = new SqlParameter("@Cancelacion_id", cancelacionID);
+            SqlParameter idTipoCancelacion = new SqlParameter("@Tipo_Cancelacion_id", tipoCancelacionID);
             SqlParameter descripcion = new SqlParameter("@Descripcion", razon);
-            QueryAdapterMaggie.ejecutarSP("CANCELACIONEliminarTurnoAfiliado", idTurno, idCancelacion, descripcion);
+            QueryAdapterMaggie.ejecutarSP("CANCELACIONEliminarTurnoAfiliado", idTurno, idTipoCancelacion, descripcion);
             
         }
 
