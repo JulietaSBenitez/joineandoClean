@@ -200,6 +200,11 @@ namespace ClinicaFrba.Cancelar_Atencion
             
         }
 
+        private void CancelarButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
 
     }
 }

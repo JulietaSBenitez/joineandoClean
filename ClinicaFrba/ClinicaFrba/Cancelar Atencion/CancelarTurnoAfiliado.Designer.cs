@@ -119,6 +119,7 @@
             this.CancelarButton.TabIndex = 11;
             this.CancelarButton.Text = "Volver";
             this.CancelarButton.UseVisualStyleBackColor = false;
+            this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 
             // ListadoDGV
             // 
