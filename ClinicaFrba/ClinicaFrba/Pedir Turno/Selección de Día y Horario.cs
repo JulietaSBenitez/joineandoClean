@@ -174,6 +174,8 @@ namespace ClinicaFrba.Pedir_Turno
                 SqlParameter idPersona = new SqlParameter("@Paciente_id", PacienteID);
                 SqlParameter fechaSeleccionada = new SqlParameter("@Fecha", CalendarioTurnos.SelectionStart);
                 SqlParameter horario = new SqlParameter("@Horario", HorarioTurno());
+                SqlParameter idMedico = new SqlParameter("@Medico_id", ModelObjectM.ID);
+                SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", ModelObjectE.ID);
 
                 QueryAdapterMaggie.ejecutarSP("TURNOInsertarNuevo", idPersona, fechaSeleccionada, horario);
 
