@@ -170,7 +170,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             if (validaciones.All(validacion => validacion.SeCumple(this)))
             {
                 this.Hide();
-                Form cancelarTurno = new CancelarTurnoTipoRazon(PersonaID);
+                Form cancelarTurno = new CancelarTurnoTipoRazon(AfiliadoCancelarTurno);
                 cancelarTurno.ShowDialog();
                 Buscar();
             }
@@ -190,5 +190,16 @@ namespace ClinicaFrba.Cancelar_Atencion
         {
             FilaSeleccionada = (DataRow) ListadoDGV.SelectedRows[0].DataBoundItem;
         }
+
+        private void AfiliadoCancelarTurno(int cancelacionID, string razon) { 
+        
+            SqlParameter idTurno = new SqlParameter("@Turno_id", ((DataRow)ListadoDGV.SelectedRows[0].DataBoundItem)["IDTurno"]);
+            SqlParameter idCancelacion = new SqlParameter("@Cancelacion_id", cancelacionID);
+            SqlParameter descripcion = new SqlParameter("@Descripcion", razon);
+            QueryAdapterMaggie.ejecutarSP("CANCELACIONEliminarTurnoAfiliado", idTurno, idCancelacion, descripcion);
+            
+        }
+
+
     }
 }

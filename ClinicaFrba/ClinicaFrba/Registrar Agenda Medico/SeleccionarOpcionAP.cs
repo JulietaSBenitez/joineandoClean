@@ -31,7 +31,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
            this.Hide();
            Form altaAgendaProfesional = new AltaAP(ModelObject);
            altaAgendaProfesional.ShowDialog();
-           Close();
         }
     }
 }

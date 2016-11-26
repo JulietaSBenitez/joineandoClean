@@ -8,22 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 using ClinicaFrba.src;
-using ClinicaFrba;
+using ClinicaFrba.DAO;
 
 namespace ClinicaFrba.Cancelar_Atencion
 {
     public partial class CancelarTurnoTipoRazon : Form
     {
 
-        int PersonaID;
+        Action<int, string> AccionAEjecutar;
         private List<ValidacionBooleana<CancelarTurnoTipoRazon>> validaciones = new List<ValidacionBooleana<CancelarTurnoTipoRazon>>();
 
-        public CancelarTurnoTipoRazon(int id_persona)
+        public CancelarTurnoTipoRazon(Action<int, string> accion)
         {
             InitializeComponent();
 
-            PersonaID = id_persona;
+            TipoCancelacionCB.DataSource = TiposDeCancelacion();
+            TipoCancelacionCB.DisplayMember = "Tipo";
+
+            AccionAEjecutar = accion;
 
             validaciones.Add(new ValidacionBooleana<CancelarTurnoTipoRazon>(
             (controlador => controlador.TipoDeCancelacionSeleccionada()),
@@ -34,6 +38,11 @@ namespace ClinicaFrba.Cancelar_Atencion
             "No se ha especificado una razón para cancelar el turno."));
         }
 
+        private DataTable TiposDeCancelacion()
+        {
+            return QueryAdapterMaggie.ejecutarSP("CANCELACIONTodosLosTipos").CopyToDataTable();
+            
+        }
         private bool ExisteRazonCancelación() { 
         
             return RazonCancelacionTB.TextLength > 0;
@@ -42,16 +51,17 @@ namespace ClinicaFrba.Cancelar_Atencion
 
             return TipoCancelacionCB.SelectedItem != null;
         }
-
         private void VolverBoton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            Close();
         }
         private void CancelarTurnoBoton_Click(object sender, EventArgs e)
         {
             if (validaciones.All(validacion => validacion.SeCumple(this)))
             {
-                //Está todo ok. Acá tengo que cargar una nueva agenda.
+                AccionAEjecutar(IDTipoDeCancelacion(),MotivoCancelacion());
+                DialogResult = System.Windows.Forms.DialogResult.OK;
             }
             else
             {
@@ -62,5 +72,15 @@ namespace ClinicaFrba.Cancelar_Atencion
 
             }
         }
+        private int IDTipoDeCancelacion() {
+
+            return (int) ((DataRow) TipoCancelacionCB.SelectedItem)["Cancelacion_id"];
+        
+        }
+        private string MotivoCancelacion()
+        {
+            return RazonCancelacionTB.Text;
+        }
+
     }
 }
