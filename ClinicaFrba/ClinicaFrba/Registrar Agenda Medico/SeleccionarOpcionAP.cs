@@ -28,9 +28,15 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         public void AgregarAgendaImagen_Click(object sender, EventArgs e)
         {
-           this.Hide();
+           Hide();
            Form altaAgendaProfesional = new AltaAP(ModelObject);
            altaAgendaProfesional.ShowDialog();
+           Show();
+        }
+
+        private void VolverAgendaBoton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

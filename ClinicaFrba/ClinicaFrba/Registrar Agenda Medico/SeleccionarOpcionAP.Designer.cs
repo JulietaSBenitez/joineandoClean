@@ -64,6 +64,7 @@
             this.VolverAgendaBoton.TabIndex = 17;
             this.VolverAgendaBoton.Text = "Volver";
             this.VolverAgendaBoton.UseVisualStyleBackColor = false;
+            this.VolverAgendaBoton.Click += new System.EventHandler(this.VolverAgendaBoton_Click);
             // 
             // label4
             // 
