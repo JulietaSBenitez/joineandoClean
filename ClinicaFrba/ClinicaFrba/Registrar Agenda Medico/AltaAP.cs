@@ -183,6 +183,8 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                         SqlParameter HorarioFin = new SqlParameter("@Inicio_Fin", horarioFin);
 
                         QueryAdapterMaggie.ejecutarSP("AGENDAInsertarNueva", IDMedico, IDEspecialidad, DiaID, HorarioInicio, HorarioFin);
+
+                        MessageBox.Show("Agenda creada con éxito");
                     }
                 
                 }
