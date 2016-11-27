@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 using ClinicaFrba.src;
+using ClinicaFrba.DAO;
 
 namespace ClinicaFrba.RegistrarAgendaMedico
 {
@@ -17,13 +19,13 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         private List<ValidacionBooleana<AltaAP>> validaciones = new List<ValidacionBooleana<AltaAP>>();
         private Dictionary<CheckBox, Tuple<ComboBox, ComboBox>> widgets = new Dictionary<CheckBox, Tuple<ComboBox, ComboBox>>();
-        public Medico ModelObject { get; set; }
+        public Medico ModelObjectMedico { get; set; }
 
         public AltaAP(Medico medico)
         {
             InitializeComponent();
 
-            ModelObject = medico;
+            ModelObjectMedico = medico;
 
             widgets.Add(lunesAgendaCB, new Tuple<ComboBox, ComboBox>(comboBoxInicioLunes, comboBoxFinLunes));
             widgets.Add(martesAgendaCB, new Tuple<ComboBox, ComboBox>(comboBoxInicioMartes, comboBoxFinMartes));
@@ -67,7 +69,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         private void botonVolverAgenda_Click(object sender, EventArgs e)
         {
-            SeleccionarOpcionAP seleccion = new SeleccionarOpcionAP(ModelObject);
+            SeleccionarOpcionAP seleccion = new SeleccionarOpcionAP(ModelObjectMedico);
             seleccion.ShowDialog();
             this.Close();
         }
@@ -163,7 +165,28 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         {
             if (validaciones.All(validacion => validacion.SeCumple(this)))
             {
-                //Está todo ok. Acá tengo que cargar una nueva agenda.
+
+                foreach(KeyValuePair<CheckBox, Tuple<ComboBox, ComboBox>> dia in widgets) {
+
+                    DateTime horarioInicio = DateTime.Parse(((TimeSpan) dia.Value.Item1.SelectedItem).ToString());
+                    DateTime horarioFin = DateTime.Parse(((TimeSpan)dia.Value.Item2.SelectedItem).ToString());
+
+                    if (dia.Key.Checked)
+                    {
+
+                        int diaID = IDDiaPara(dia.Key);
+
+                        SqlParameter IDMedico = new SqlParameter("@Medico_id", ModelObjectMedico.ID);
+                        SqlParameter IDEspecialidad = new SqlParameter("@Especialidad_id", Especialidad().ID);
+                        SqlParameter DiaID = new SqlParameter("@Dia_id", diaID);
+                        SqlParameter HorarioInicio = new SqlParameter("@Inicio_Horario", horarioInicio);
+                        SqlParameter HorarioFin = new SqlParameter("@Inicio_Fin", horarioFin);
+
+                        QueryAdapterMaggie.ejecutarSP("AGENDAInsertarNueva", IDMedico, IDEspecialidad, DiaID, HorarioInicio, HorarioFin);
+                    }
+                
+                }
+
             }
             else
             {
@@ -176,6 +199,11 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
             //validarQueNoExistanOtrasAgendasEnEseHorario.
 
+        }
+
+        private int IDDiaPara(CheckBox checkBox)
+        {
+            return widgets.Keys.ToList().IndexOf(checkBox) + 1;
         }
 
         public bool EspecialidadSeleccionada()
@@ -233,9 +261,10 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 .Aggregate((time, otherTime) => time + otherTime);
         }
 
+        private Especialidad Especialidad() {
 
-
-
-
+            return (Especialidad)especialidadesAgendaCB.SelectedItem;
+        }
+            
     }
 }
