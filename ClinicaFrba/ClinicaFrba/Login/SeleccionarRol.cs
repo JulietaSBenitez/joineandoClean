@@ -61,6 +61,15 @@ namespace ClinicaFrba.Login
                       this.Close();
 
             }
+            if (comboBox1.Items.Count == 0)
+            {
+                MessageBox.Show("Usted no posee un rol asignado", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+       
+
+                this.Close();
+
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
