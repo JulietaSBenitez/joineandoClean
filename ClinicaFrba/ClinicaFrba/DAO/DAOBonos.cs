@@ -16,7 +16,7 @@ namespace ClinicaFrba.DAO
         */
 
 
-        public static void compraBono(String numeroAfiliado, String cantidad)
+        public static void compraBono(String numeroAfiliado, String cantidad,DateTime fecha)
         {
 
             AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
@@ -28,7 +28,9 @@ namespace ClinicaFrba.DAO
             try
             {
 
-
+                parameter = new SqlParameter("@fecha", SqlDbType.DateTime);
+                parameter.Value = fecha;
+                parameters.Add(parameter);
 
                 parameter = new SqlParameter("@cantidad", SqlDbType.Int);
                 parameter.Value = int.Parse(cantidad);

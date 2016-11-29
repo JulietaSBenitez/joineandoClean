@@ -46,7 +46,7 @@ namespace ClinicaFrba.Compra_Bono
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DAO.DAOBonos.compraBono(numeroAfiliado, cantidad.Text);
+            DAO.DAOBonos.compraBono(numeroAfiliado, cantidad.Text, Properties.Settings.Default.fecha);
         }
     }
 }
