@@ -13,7 +13,7 @@ namespace ClinicaFrba.Login
     public partial class Acciones : Form
     {
         int user_id;
-        int rol_id
+        int rol_id;
         DataTable funcionabilidades;
         public Acciones()
         {
@@ -117,7 +117,7 @@ Select 'Listado Estadistico'
                     new Registro_Resultado.BusquedaResultado(user_id).ShowDialog();
                     break;
                 case "Listado Estadistico":
-                    //
+                    new Listados.ListadoEstadistico().ShowDialog();
                     break;
             
             
