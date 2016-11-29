@@ -114,7 +114,7 @@ Select 'Listado Estadistico'
                 case "Registo de resultados":
 
                     //new Registro_Resultado.BusquedaResultado(user_id).ShowDialog();
-                    new Registro_Resultado.BusquedaResultado(10011).ShowDialog();
+                    new Registro_Resultado.BusquedaResultado(user_id).ShowDialog();
                     break;
                 case "Listado Estadistico":
                     //
