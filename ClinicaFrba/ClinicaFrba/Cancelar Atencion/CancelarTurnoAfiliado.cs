@@ -19,7 +19,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private List<ValidacionBooleana<CancelarTurnoAfiliado>> validaciones = new List<ValidacionBooleana<CancelarTurnoAfiliado>>();
         private bool ClickearonLimpiar;
-        private DataRow FilaSeleccionada;
+        private dynamic FilaSeleccionada;
 
         int PersonaID;
 
@@ -42,6 +42,9 @@ namespace ClinicaFrba.Cancelar_Atencion
             AgregarBoton();
 
             ListadoDGV.AllowUserToAddRows = false;
+
+            ClickearonLimpiar = true;
+            Buscar();
 
             validaciones.Add(new ValidacionBooleana<CancelarTurnoAfiliado>(
             (controlador => controlador.FaltaMasDeUnDiaParaElTurno()),
@@ -97,7 +100,8 @@ namespace ClinicaFrba.Cancelar_Atencion
             SqlParameter dia = new SqlParameter("@Dia", Dia());
             SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", IDEspecialidad());
             SqlParameter idPersona = new SqlParameter("@Persona_id", PersonaID);
-            List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("PERSONATurnos", nombre, apellido, dia, idEspecialidad, idPersona);
+            SqlParameter diaActual = new SqlParameter("@FechaHoy", Properties.Settings.Default.fecha);
+            List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("PERSONATurnos", nombre, apellido, dia, idEspecialidad, idPersona, diaActual);
 
             DataTable dataTable = new DataTable();
 
@@ -106,8 +110,14 @@ namespace ClinicaFrba.Cancelar_Atencion
                 dataTable.ImportRow(fila);
             }
 
-            ListadoDGV.DataSource = dataTable;
-
+            ListadoDGV.DataSource = filas.Select(datarow => 
+                new { 
+                    Nombre = datarow["Nombre"], 
+                    Apellido = datarow["Apellido"],
+                    Especialidad = datarow["Especialidad"],
+                    Dia = ((DateTime) datarow["Dia"]).ToString("dd/MM/yyyy"),
+                    Horario = datarow["Horario"],
+                    IDTurno = datarow["IDTurno"]}).ToList();
 
         }
         private void AgregarBoton()
@@ -129,29 +139,29 @@ namespace ClinicaFrba.Cancelar_Atencion
             ListadoDGV.Columns[0].HeaderText = "Nombre";
             ListadoDGV.Columns[0].DataPropertyName = "Nombre";
 
-            ListadoDGV.Columns[1].Name = "Apellido";
+            //ListadoDGV.Columns[1].Name = "Apellido";
             ListadoDGV.Columns[1].HeaderText = "Apellido";
             ListadoDGV.Columns[1].DataPropertyName = "Apellido";
 
-            ListadoDGV.Columns[2].Name = "Especialidad";
+            //ListadoDGV.Columns[2].Name = "Especialidad";
             ListadoDGV.Columns[2].HeaderText = "Especialidad";
             ListadoDGV.Columns[2].DataPropertyName = "Especialidad";
 
-            ListadoDGV.Columns[3].Name = "Dia";
+            //ListadoDGV.Columns[3].Name = "Dia";
             ListadoDGV.Columns[3].HeaderText = "Dia";
             ListadoDGV.Columns[3].DataPropertyName = "Dia";
 
-            ListadoDGV.Columns[4].Name = "Horario";
+            //ListadoDGV.Columns[4].Name = "Horario";
             ListadoDGV.Columns[4].HeaderText = "Horario";
             ListadoDGV.Columns[4].DataPropertyName = "Horario";
         }
 
         private bool FaltaMasDeUnDiaParaElTurno() {
 
-            DateTime dia = (DateTime) FilaSeleccionada["Dia"];
-            DateTime horario = (DateTime)FilaSeleccionada["Horario"];
+            DateTime dia =  DateTime.Parse((string) FilaSeleccionada.Dia);
+            TimeSpan horario = FilaSeleccionada.Horario;
 
-            DateTime turno = dia + new TimeSpan(horario.Hour, horario.Minute, 0);
+            DateTime turno = dia + horario;
 
             return turno.Subtract(Properties.Settings.Default.fecha).TotalHours > 24;
         
@@ -160,18 +170,17 @@ namespace ClinicaFrba.Cancelar_Atencion
         private void LimpiarDiaButton_Click(object sender, EventArgs e)
         {
             ClickearonLimpiar = true;
+            Buscar();
         }
-        private void CalendarioTurnos_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            ClickearonLimpiar = false;
-        }
-        private void ListadoDGV_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+      
+        private void CancelarTurno() 
         {
             if (validaciones.All(validacion => validacion.SeCumple(this)))
             {
-                this.Hide();
+                Hide();
                 Form cancelarTurno = new CancelarTurnoTipoRazon(AfiliadoCancelarTurno);
                 cancelarTurno.ShowDialog();
+                Show();
                 Buscar();
             }
             else
@@ -182,18 +191,21 @@ namespace ClinicaFrba.Cancelar_Atencion
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-
-
         }
 
         private void ListadoDGV_SelectionChanged(object sender, EventArgs e)
         {
-            FilaSeleccionada = (DataRow) ListadoDGV.SelectedRows[0].DataBoundItem;
+            if (ListadoDGV.SelectedRows.Count != 0)
+            {
+                FilaSeleccionada = ListadoDGV.SelectedRows[0].DataBoundItem;
+            }
         }
 
-        private void AfiliadoCancelarTurno(int tipoCancelacionID, string razon) { 
-        
-            SqlParameter idTurno = new SqlParameter("@Turno_id", ((DataRow)ListadoDGV.SelectedRows[0].DataBoundItem)["IDTurno"]);
+        private void AfiliadoCancelarTurno(int tipoCancelacionID, string razon) {
+
+            dynamic turnoSeleccionado = ListadoDGV.CurrentRow.DataBoundItem;
+
+            SqlParameter idTurno = new SqlParameter("@Turno_id", turnoSeleccionado.IDTurno);
             SqlParameter idTipoCancelacion = new SqlParameter("@Tipo_Cancelacion_id", tipoCancelacionID);
             SqlParameter descripcion = new SqlParameter("@Descripcion", razon);
             QueryAdapterMaggie.ejecutarSP("CANCELACIONEliminarTurnoAfiliado", idTurno, idTipoCancelacion, descripcion);
@@ -203,6 +215,23 @@ namespace ClinicaFrba.Cancelar_Atencion
         private void CancelarButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void ListadoDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            FilaSeleccionada = ListadoDGV.Rows[e.RowIndex].DataBoundItem;
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+                CancelarTurno();
+            }
+        }
+
+        private void CalendarioTurnos_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            ClickearonLimpiar = false;            
         }
 
 

@@ -16,10 +16,10 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         public Medico ModelObject { get; set; }
 
-        public SeleccionarOpcionAP(Medico medico)
+        public SeleccionarOpcionAP(int medico_id)
         {
             InitializeComponent();
-            ModelObject = medico;
+            ModelObject = Medico.All().Where(medico => medico.ID.Equals(medico_id)).First();
         }
 
         private void SeleccionarOpcionAP_Load(object sender, EventArgs e)

@@ -41,13 +41,15 @@ namespace ClinicaFrba.Cancelar_Atencion
         private DataTable TiposDeCancelacion()
         {
             return QueryAdapterMaggie.ejecutarSP("TIPOCANCELACIONTodos").CopyToDataTable();
-            
+
         }
-        private bool ExisteRazonCancelación() { 
-        
+        private bool ExisteRazonCancelación()
+        {
+
             return RazonCancelacionTB.TextLength > 0;
         }
-        private bool TipoDeCancelacionSeleccionada() {
+        private bool TipoDeCancelacionSeleccionada()
+        {
 
             return TipoCancelacionCB.SelectedItem != null;
         }
@@ -60,8 +62,10 @@ namespace ClinicaFrba.Cancelar_Atencion
         {
             if (validaciones.All(validacion => validacion.SeCumple(this)))
             {
-                AccionAEjecutar(IDTipoDeCancelacion(),MotivoCancelacion());
+                AccionAEjecutar(IDTipoDeCancelacion(), MotivoCancelacion());
                 DialogResult = System.Windows.Forms.DialogResult.OK;
+
+                MessageBox.Show("Turno eliminado con éxito", "Cancelación de turno", MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
@@ -72,10 +76,11 @@ namespace ClinicaFrba.Cancelar_Atencion
 
             }
         }
-        private int IDTipoDeCancelacion() {
+        private int IDTipoDeCancelacion()
+        {
 
-            return (int) ((DataRow) TipoCancelacionCB.SelectedItem)["Tipo_Cancelacion_Id"];
-        
+            return (int)((DataRowView)TipoCancelacionCB.SelectedItem)["Tipo_Cancelacion_Id"];
+
         }
         private string MotivoCancelacion()
         {

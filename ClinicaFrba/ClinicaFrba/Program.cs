@@ -20,8 +20,8 @@ namespace ClinicaFrba
         static void Main()
         {
             Application.EnableVisualStyles();
-          //  Application.SetCompatibleTextRenderingDefault(false);
-//Application.Run(new Listados.ListadoEstadistico());
+          //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new Listados.ListadoEstadistico());
             //Application.Run(new Registro_Llegada.RegistroDeLlegada());
             Application.Run(new Login.Login());
             //Application.Run(new Abm_Afiliado.a);

@@ -134,7 +134,7 @@
             this.ListadoDGV.ReadOnly = true;
             this.ListadoDGV.Size = new System.Drawing.Size(545, 125);
             this.ListadoDGV.TabIndex = 10;
-            this.ListadoDGV.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadoDGV_CellContentDoubleClick);
+            this.ListadoDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadoDGV_CellContentClick);
             this.ListadoDGV.SelectionChanged += new System.EventHandler(this.ListadoDGV_SelectionChanged);
             // 
             // ListadoTurnosLabel
@@ -162,7 +162,7 @@
             this.CalendarioTurnos.Location = new System.Drawing.Point(64, 157);
             this.CalendarioTurnos.Name = "CalendarioTurnos";
             this.CalendarioTurnos.TabIndex = 5;
-            this.CalendarioTurnos.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.CalendarioTurnos_DateChanged);
+            this.CalendarioTurnos.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.CalendarioTurnos_DateSelected);
             // 
             // ApellidoProfesionalTB
             // 

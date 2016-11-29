@@ -20,19 +20,20 @@ namespace ClinicaFrba.Login
             InitializeComponent();
         }
 
-        public Acciones(int rol,int user )
-        {   rol_id = rol;
+        public Acciones(int rol, int user)
+        {
+            rol_id = rol;
             user_id = user;
             InitializeComponent();
-            funcionabilidades= DAO.DAORoles.funcionabilidadesHabilitadasXRol(rol_id);
+            funcionabilidades = DAO.DAORoles.funcionabilidadesHabilitadasXRol(rol_id);
 
-                foreach (DataRow row in funcionabilidades.Rows)
+            foreach (DataRow row in funcionabilidades.Rows)
             {
 
                 comboBox1.Items.Add(row["Nombre"].ToString());
                 comboBox1.SelectedIndex = 0;
-                    
-                 
+
+
             }
 
         }
@@ -45,22 +46,9 @@ namespace ClinicaFrba.Login
 
         private void button1_Click(object sender, EventArgs e)
         {
-            switch (comboBox1.Text) { 
-
-         /*           Select 'Alta Rol
-Select 'Modificacion Rol'
-Select 'Baja Rol'
-Select 'Alta Afiliado'
-Select 'Modificacion Afiliado'
-Select 'Baja Afiliado'
-Select 'Alta Agenda Profesional'
-Select 'Compra bonos'
-Select 'Pedido turnos'
-Select 'Cancerlar turnos'
-Select 'Registo de llegada'
-Select 'Registo de resultados'
-Select 'Listado Estadistico'
-    */
+            Hide();
+            switch (comboBox1.Text)
+            {
 
                 case "Alta Rol":
                     new AbmRol.AltaModificacionRol(Accion.Alta).ShowDialog();
@@ -71,7 +59,7 @@ Select 'Listado Estadistico'
                 case "Modificacion Rol":
                     new AbmRol.ListadoRoles(Accion.Modificacion).ShowDialog();
                     break;
-                
+
                 case "Alta Afiliado":
                     new Abm_Afiliado.AltaModificacionAfiliados(Accion.Alta).ShowDialog();
                     break;
@@ -85,27 +73,22 @@ Select 'Listado Estadistico'
                     new Abm_Afiliado.ListadoAfiliadosBaja().ShowDialog();
                     break;
 
-
                 case "Alta Agenda Profesional":
-                  //?
-                    break;
 
+                    new RegistrarAgendaMedico.SeleccionarOpcionAP(user_id).ShowDialog();
+                    break;
 
                 case "Compra bonos":
                     new Compra_Bono.BusquedaAfiliado().ShowDialog();
                     break;
 
 
-                case "Pedido turnos":
-                  //?
-                    //new Pedir_Turno.AltaTurno(
-                    
+                case "Pedido turnos":   
                     new Pedir_Turno.AltaTurno(user_id).ShowDialog();
-                   // GZC9D6
                     break;
 
                 case "Cancerlar turnos":
-                  //?
+                    new Cancelar_Atencion.CancelarTurnoAfiliado(user_id).ShowDialog();
                     break;
 
                 case "Registo de llegada":
@@ -120,11 +103,9 @@ Select 'Listado Estadistico'
                 case "Listado Estadistico":
                     new Listados.ListadoEstadistico().ShowDialog();
                     break;
-            
-            
-            
-            
+
             }
+            Show();
         }
     }
 }
