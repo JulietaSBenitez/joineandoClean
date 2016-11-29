@@ -135,7 +135,7 @@ namespace ClinicaFrba.Abm_Afiliado
 
             if (accion == Accion.Modificacion) {
 
-            DAO.DAOAfiliados.actualizarAfiliado(direccion.Text,telefono.Text,email.Text,estadoCivil.Text,familiaresacargo.Text,plan.Text, numeroAfiliado,razon.Text);
+                DAO.DAOAfiliados.actualizarAfiliado(Properties.Settings.Default.fecha,direccion.Text, telefono.Text, email.Text, estadoCivil.Text, familiaresacargo.Text, plan.Text, numeroAfiliado, razon.Text);
             }
             if (accion == Accion.Alta)
             {

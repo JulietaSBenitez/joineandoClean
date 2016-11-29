@@ -113,7 +113,7 @@ namespace ClinicaFrba.DAO
 
 
 
-        public static void actualizarAfiliado(String direccion, String telefono, String email, String estadoCivil, String familiaresACargo, String plan, String numeroAfiliado, String razon="")
+        public static void actualizarAfiliado(DateTime fecha,String direccion, String telefono, String email, String estadoCivil, String familiaresACargo, String plan, String numeroAfiliado, String razon="")
         {
 
             AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
@@ -124,6 +124,9 @@ namespace ClinicaFrba.DAO
 
             try
             {
+                parameter = new SqlParameter("@fecha", SqlDbType.DateTime);
+                parameter.Value = fecha;
+                parameters.Add(parameter);
 
                 parameter = new SqlParameter("@direccion", SqlDbType.NVarChar, 255);
                 parameter.Value = direccion;
