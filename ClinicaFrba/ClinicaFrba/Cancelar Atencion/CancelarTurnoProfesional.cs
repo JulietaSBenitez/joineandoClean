@@ -76,21 +76,10 @@ namespace ClinicaFrba.Cancelar_Atencion
             Close();
         }
 
-        private void ColumnasDGV()
+        private void CancelarTurnoProfesional_Load(object sender, EventArgs e)
         {
 
-            ListadoDGV.AutoGenerateColumns = false;
-            ListadoDGV.ColumnCount = 3;
-
-
-            ListadoDGV.Columns[0].HeaderText = "Nombre";
-            ListadoDGV.Columns[0].DataPropertyName = "Nombre"; 
-            
-            ListadoDGV.Columns[0].HeaderText = "Dia";
-            ListadoDGV.Columns[0].DataPropertyName = "Dia";
-
-            ListadoDGV.Columns[1].HeaderText = "Horario";
-            ListadoDGV.Columns[1].DataPropertyName = "Horario";
         }
+
     }
 }

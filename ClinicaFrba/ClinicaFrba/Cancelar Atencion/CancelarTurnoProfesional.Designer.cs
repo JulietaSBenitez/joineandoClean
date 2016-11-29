@@ -44,14 +44,14 @@
             this.groupBox1.Controls.Add(this.DiasACancelarCalendar);
             this.groupBox1.Location = new System.Drawing.Point(13, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(332, 312);
+            this.groupBox1.Size = new System.Drawing.Size(332, 294);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // VolverButton
             // 
             this.VolverButton.BackColor = System.Drawing.Color.IndianRed;
-            this.VolverButton.Location = new System.Drawing.Point(217, 271);
+            this.VolverButton.Location = new System.Drawing.Point(217, 249);
             this.VolverButton.Name = "VolverButton";
             this.VolverButton.Size = new System.Drawing.Size(105, 30);
             this.VolverButton.TabIndex = 9;
@@ -60,7 +60,7 @@
             // 
             // CancelarTurnosButton
             // 
-            this.CancelarTurnosButton.Location = new System.Drawing.Point(98, 271);
+            this.CancelarTurnosButton.Location = new System.Drawing.Point(98, 249);
             this.CancelarTurnosButton.Name = "CancelarTurnosButton";
             this.CancelarTurnosButton.Size = new System.Drawing.Size(105, 30);
             this.CancelarTurnosButton.TabIndex = 1;
@@ -88,10 +88,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 338);
+            this.ClientSize = new System.Drawing.Size(357, 314);
             this.Controls.Add(this.groupBox1);
             this.Name = "CancelarTurnoProfesional";
             this.Text = "Cancelar Turno de un dia";
+            this.Load += new System.EventHandler(this.CancelarTurnoProfesional_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
