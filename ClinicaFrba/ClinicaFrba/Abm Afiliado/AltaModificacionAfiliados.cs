@@ -139,7 +139,7 @@ namespace ClinicaFrba.Abm_Afiliado
             }
             if (accion == Accion.Alta)
             {
-                int numeroAfiliado = DAO.DAOAfiliados.crearAfiliado(nombre.Text, apellido.Text, tipo.Text, numerodocumento.Text, direccion.Text, sexo.Text, telefono.Text, email.Text, fechanac.Text, estadoCivil.Text, familiaresacargo.Text, plan.Text);
+                int numeroAfiliado = DAO.DAOAfiliados.crearAfiliado(Properties.Settings.Default.fecha,nombre.Text, apellido.Text, tipo.Text, numerodocumento.Text, direccion.Text, sexo.Text, telefono.Text, email.Text, fechanac.Text, estadoCivil.Text, familiaresacargo.Text, plan.Text);
 
 
                 //Ver que pregunte solo si es casado o bla
@@ -161,7 +161,7 @@ namespace ClinicaFrba.Abm_Afiliado
             }
             if (accion == Accion.AltaMin)
             {
-                int numeroAfiliado = DAO.DAOAfiliados.crearAfiliado(nombre.Text, apellido.Text, tipo.Text, numerodocumento.Text, direccion.Text, sexo.Text, telefono.Text, email.Text, fechanac.Text, estadoCivil.Text, familiaresacargo.Text, plan.Text,raiz,sub);
+                int numeroAfiliado = DAO.DAOAfiliados.crearAfiliado(Properties.Settings.Default.fecha,nombre.Text, apellido.Text, tipo.Text, numerodocumento.Text, direccion.Text, sexo.Text, telefono.Text, email.Text, fechanac.Text, estadoCivil.Text, familiaresacargo.Text, plan.Text,raiz,sub);
 
             }
             this.Close();
