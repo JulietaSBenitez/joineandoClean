@@ -38,8 +38,8 @@ namespace ClinicaFrba.Pedir_Turno
             TurnosDisponiblesDGW.AllowUserToAddRows = false;
             TurnosDisponiblesDGW.ReadOnly = true;
 
-            RefrescarDGV(new List<TimeSpan>() { new TimeSpan(10, 0, 0), 
-                                                new TimeSpan(10, 30, 0) });
+            /*RefrescarDGV(new List<TimeSpan>() { new TimeSpan(10, 0, 0), 
+                                                new TimeSpan(10, 30, 0) });*/
 
             validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
             (controlador => controlador.HayDiaSeleccionado()),
@@ -66,7 +66,7 @@ namespace ClinicaFrba.Pedir_Turno
             foreach (DataRow fila in filas)
             {
 
-                _Turnos = RangoHorario.Rango(TimeSpan.Parse((string)fila["Inicio_Horario"]), TimeSpan.Parse((string)fila["Fin_Horario"]));
+                _Turnos = RangoHorario.Rango((TimeSpan)fila["Inicio_Horario"], (TimeSpan)fila["Fin_Horario"]);
 
             }
 
@@ -153,7 +153,7 @@ namespace ClinicaFrba.Pedir_Turno
             else
             {
                 fila.DefaultCellStyle.BackColor = Color.Green;
-            }
+            } 
         }
         private void TurnosDisponiblesDGW_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -177,7 +177,7 @@ namespace ClinicaFrba.Pedir_Turno
                 SqlParameter idMedico = new SqlParameter("@Medico_id", ModelObjectM.ID);
                 SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", ModelObjectE.ID);
 
-                QueryAdapterMaggie.ejecutarSP("TURNOInsertarNuevo", idPersona, fechaSeleccionada, horario);
+                QueryAdapterMaggie.ejecutarSP("TURNOInsertarNuevo", idPersona, fechaSeleccionada, horario, idMedico, idEspecialidad);
 
             }
             else
