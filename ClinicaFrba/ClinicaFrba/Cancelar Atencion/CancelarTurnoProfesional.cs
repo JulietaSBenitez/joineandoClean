@@ -25,7 +25,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
             IDPersona = id_persona;
 
-            CalendarioProfesional.TodayDate = Properties.Settings.Default.fecha;
+            DiasACancelarCalendar.TodayDate = Properties.Settings.Default.fecha;
         }
 
         private void CancelarTurnosButton_Click(object sender, EventArgs e)
@@ -54,8 +54,8 @@ namespace ClinicaFrba.Cancelar_Atencion
         private List<DateTime> DiasSeleccionados()
         {
 
-            DateTime inicio = CalendarioProfesional.SelectionRange.Start;
-            DateTime fin = CalendarioProfesional.SelectionRange.End;
+            DateTime inicio = DiasACancelarCalendar.SelectionRange.Start;
+            DateTime fin = DiasACancelarCalendar.SelectionRange.End;
             DateTime fecha = inicio;
 
             List<DateTime> fechas = new List<DateTime>();
@@ -76,6 +76,21 @@ namespace ClinicaFrba.Cancelar_Atencion
             Close();
         }
 
+        private void ColumnasDGV()
+        {
 
+            ListadoDGV.AutoGenerateColumns = false;
+            ListadoDGV.ColumnCount = 3;
+
+
+            ListadoDGV.Columns[0].HeaderText = "Nombre";
+            ListadoDGV.Columns[0].DataPropertyName = "Nombre"; 
+            
+            ListadoDGV.Columns[0].HeaderText = "Dia";
+            ListadoDGV.Columns[0].DataPropertyName = "Dia";
+
+            ListadoDGV.Columns[1].HeaderText = "Horario";
+            ListadoDGV.Columns[1].DataPropertyName = "Horario";
+        }
     }
 }
