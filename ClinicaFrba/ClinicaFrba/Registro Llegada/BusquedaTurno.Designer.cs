@@ -95,6 +95,7 @@
             // 
             // especialidad
             // 
+            this.especialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.especialidad.FormattingEnabled = true;
             this.especialidad.Items.AddRange(new object[] {
             "Habilitado",

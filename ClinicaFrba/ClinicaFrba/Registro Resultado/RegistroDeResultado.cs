@@ -22,6 +22,7 @@ namespace ClinicaFrba.Registro_Resultado
             nnombre.Text = "Paciente: " + elnombre;
             paciente_id = paciente;
             horario.Format = DateTimePickerFormat.Custom;
+            horario.Value = Properties.Settings.Default.fecha;
             horario.CustomFormat = "dd/MM/yyyy hh:mm";
           
             

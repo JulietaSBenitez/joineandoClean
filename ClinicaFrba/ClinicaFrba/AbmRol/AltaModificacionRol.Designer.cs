@@ -59,6 +59,7 @@
             // 
             // habilitado
             // 
+            this.habilitado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.habilitado.FormattingEnabled = true;
             this.habilitado.Items.AddRange(new object[] {
             "Habilitado",

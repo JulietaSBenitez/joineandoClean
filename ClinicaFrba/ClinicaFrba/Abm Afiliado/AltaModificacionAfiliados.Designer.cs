@@ -255,6 +255,7 @@
             // 
             // sexo
             // 
+            this.sexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sexo.FormattingEnabled = true;
             this.sexo.Location = new System.Drawing.Point(349, 186);
             this.sexo.Name = "sexo";
@@ -263,6 +264,7 @@
             // 
             // plan
             // 
+            this.plan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.plan.FormattingEnabled = true;
             this.plan.Location = new System.Drawing.Point(55, 252);
             this.plan.Name = "plan";
@@ -300,6 +302,7 @@
             // 
             // estadoCivil
             // 
+            this.estadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.estadoCivil.FormattingEnabled = true;
             this.estadoCivil.Items.AddRange(new object[] {
             "No especificado",

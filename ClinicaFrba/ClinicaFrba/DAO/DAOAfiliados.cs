@@ -192,7 +192,7 @@ namespace ClinicaFrba.DAO
 
 
 
-        public static void bajaAfiliado(String numeroAfiliado)
+        public static void bajaAfiliado(String numeroAfiliado,DateTime fecha)
         {
 
             AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
@@ -203,6 +203,10 @@ namespace ClinicaFrba.DAO
 
             try
             {
+                parameter = new SqlParameter("@fecha", SqlDbType.DateTime);
+                parameter.Value = fecha;
+                parameters.Add(parameter);
+
 
                 parameter = new SqlParameter("@numeroAfiliado", SqlDbType.BigInt);
                 parameter.Value = long.Parse(numeroAfiliado);

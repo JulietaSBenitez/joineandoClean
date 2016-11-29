@@ -31,6 +31,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // tiposDeDocumentos
+            // 
+            this.tiposDeDocumentos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -50,10 +54,19 @@
             this.Name = "BusquedaAfiliado";
             this.Text = "Compra bonos";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.tiposDeDocumentos, 0);
+            this.Controls.SetChildIndex(this.btnfiltrar, 0);
+            this.Controls.SetChildIndex(this.btnlimpiar, 0);
+            this.Controls.SetChildIndex(this.nombre, 0);
+            this.Controls.SetChildIndex(this.apellido, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.numerodocumento, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.label5, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
-          
 
         }
 

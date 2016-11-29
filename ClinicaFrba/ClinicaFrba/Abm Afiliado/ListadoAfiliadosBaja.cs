@@ -32,7 +32,7 @@ namespace ClinicaFrba.Abm_Afiliado
                 DialogResult dialogResult = MessageBox.Show("Esta seguro?", "Esta seguro que quiere dar de baja este afiliado?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    DAO.DAOAfiliados.bajaAfiliado(tablaAfiliados.Rows[e.RowIndex].Cells["Numero de Afiliado"].Value.ToString());
+                    DAO.DAOAfiliados.bajaAfiliado(tablaAfiliados.Rows[e.RowIndex].Cells["Numero de Afiliado"].Value.ToString(),Properties.Settings.Default.fecha);
                 }
 
      

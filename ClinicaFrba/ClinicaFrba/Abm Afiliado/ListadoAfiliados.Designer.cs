@@ -107,6 +107,7 @@
             // 
             // tiposDeDocumentos
             // 
+            this.tiposDeDocumentos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tiposDeDocumentos.FormattingEnabled = true;
             this.tiposDeDocumentos.Items.AddRange(new object[] {
             "Habilitado",

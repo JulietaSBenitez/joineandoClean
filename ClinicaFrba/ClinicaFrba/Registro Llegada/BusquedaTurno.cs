@@ -15,6 +15,7 @@ namespace ClinicaFrba.Registro_Llegada
         public BusquedaTurno()
         {
             InitializeComponent();
+            horario.Value = Properties.Settings.Default.fecha;
             horario.Format = DateTimePickerFormat.Custom;
             horario.CustomFormat = "dd/MM/yyyy hh:mm";
             especialidad.DataSource = DAO.DAOTurnos.listadoEspecialidades();

@@ -130,7 +130,52 @@ namespace ClinicaFrba.Abm_Afiliado
                 return;
             }
 
+            if (telefono.Text == "")
+            {
+                MessageBox.Show("No puede dejar el campo telefono en blanco", "Afiliado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            if (IsNumeric(telefono.Text) == false)
+            {
+                MessageBox.Show("El numero de telefono tiene que ser un valor numerico", "Afiliado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            if (email.Text == "")
+            {
+                MessageBox.Show("No puede dejar el campo email en blanco", "Afiliado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            if (sexo.Text == "")
+            {
+                MessageBox.Show("No puede dejar el campo sexo en blanco", "Afiliado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            if (estadoCivil.Text == "")
+            {
+                MessageBox.Show("No puede dejar el campo estado Civil en blanco", "Afiliado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            if (familiaresacargo.Text == "")
+            {
+                MessageBox.Show("No puede dejar el campo familiares a cargo en blanco", "Afiliado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            if (IsNumeric(familiaresacargo.Text) == false)
+            {
+                MessageBox.Show("Familiares a cargo tiene que ser un valor numerico", "Afiliado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
 
             if (accion == Accion.Modificacion) {

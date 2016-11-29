@@ -37,7 +37,7 @@ namespace ClinicaFrba.Compra_Bono
             if (int.TryParse(cantidad.Text, out a))
             {
     preciofinal.Text = (Convert.ToInt32(preciobono.Text) * a).ToString();
-
+                
             }
 
             
