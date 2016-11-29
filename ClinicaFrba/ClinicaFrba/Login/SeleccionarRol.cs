@@ -53,12 +53,12 @@ namespace ClinicaFrba.Login
         {
             if (comboBox1.Items.Count == 1)
             {
-                DataRow[] row = roles.Select("Nombre='" + comboBox1.Text + "'");
+       //         DataRow[] row = roles.Select("Nombre='" + comboBox1.Text + "'");
                 //  this.Hide();
-                var a = new Acciones(int.Parse(row[0]["Rol_id"].ToString()), user_id).ShowDialog();
+        //        var a = new Acciones(int.Parse(row[0]["Rol_id"].ToString()), user_id).ShowDialog();
 
 
-                      this.Close();
+         //             this.Close();
 
             }
             if (comboBox1.Items.Count == 0)

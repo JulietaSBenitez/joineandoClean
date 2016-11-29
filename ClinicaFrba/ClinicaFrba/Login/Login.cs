@@ -27,7 +27,7 @@ namespace ClinicaFrba.Login
             int resultado;
 
             resultado  = DAO.DAOLogin.login(usuario.Text, pass.Text);
-          //  MessageBox.Show(resultado.ToString(), "Registro de resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(resultado.ToString(), "Registro de resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
             if (resultado > 0)
             {
@@ -69,7 +69,7 @@ namespace ClinicaFrba.Login
             //paciente 10028 PAMPA(nombre) Garrido
             //v[Medico_Nombre]+'.'+[Medico_Apellido]
             //123456
-            usuario.Text = "PAMPA.Garrido";
+            usuario.Text = "AARON.Sánchez";
             pass.Text = "123456";
 
         }
