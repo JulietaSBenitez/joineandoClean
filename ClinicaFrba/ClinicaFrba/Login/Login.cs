@@ -26,7 +26,7 @@ namespace ClinicaFrba.Login
         {
             int resultado;
 
-            resultado  = DAO.DAOLogin.login(textBox1.Text, textBox2.Text);
+            resultado  = DAO.DAOLogin.login(usuario.Text, pass.Text);
           //  MessageBox.Show(resultado.ToString(), "Registro de resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
             if (resultado > 0)
@@ -54,6 +54,30 @@ namespace ClinicaFrba.Login
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            usuario.Text = "admin";
+            pass.Text = "w23e";
+
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //paciente 10028 PAMPA(nombre) Garrido
+            //v[Medico_Nombre]+'.'+[Medico_Apellido]
+            //123456
+            usuario.Text = "PAMPA.Garrido";
+            pass.Text = "123456";
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            usuario.Text = "ABDO.Ortega";
+            pass.Text = "123456";
         }
     }
 }
