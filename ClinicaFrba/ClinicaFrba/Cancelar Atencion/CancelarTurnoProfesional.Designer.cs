@@ -95,11 +95,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ListadoDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.ListadoDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListadoDGV.Location = new System.Drawing.Point(29, 241);
+            this.ListadoDGV.Location = new System.Drawing.Point(21, 241);
             this.ListadoDGV.MultiSelect = false;
             this.ListadoDGV.Name = "ListadoDGV";
             this.ListadoDGV.ReadOnly = true;
-            this.ListadoDGV.Size = new System.Drawing.Size(442, 125);
+            this.ListadoDGV.Size = new System.Drawing.Size(450, 125);
             this.ListadoDGV.TabIndex = 11;
             // 
             // CancelarTurnoProfesional
