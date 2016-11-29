@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tablaListado = new System.Windows.Forms.DataGridView();
-            this.acciones = new System.Windows.Forms.ComboBox();
+            this.TablaListado = new System.Windows.Forms.DataGridView();
+            this.Acciones = new System.Windows.Forms.ComboBox();
             this.mostrar = new System.Windows.Forms.Button();
             this.semestre = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,32 +37,31 @@
             this.ano = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.especialidad = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaListado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaListado)).BeginInit();
             this.SuspendLayout();
             // 
-            // tablaListado
+            // TablaListado
             // 
-            this.tablaListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaListado.Location = new System.Drawing.Point(12, 112);
-            this.tablaListado.Name = "tablaListado";
-            this.tablaListado.Size = new System.Drawing.Size(684, 212);
-            this.tablaListado.TabIndex = 0;
-            this.tablaListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.TablaListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TablaListado.Location = new System.Drawing.Point(12, 112);
+            this.TablaListado.Name = "TablaListado";
+            this.TablaListado.Size = new System.Drawing.Size(684, 212);
+            this.TablaListado.TabIndex = 0;
+             // 
+            // Acciones
             // 
-            // acciones
-            // 
-            this.acciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.acciones.FormattingEnabled = true;
-            this.acciones.Items.AddRange(new object[] {
+            this.Acciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Acciones.FormattingEnabled = true;
+            this.Acciones.Items.AddRange(new object[] {
             "Top 5 de las especialidades con mas cancelaciones",
             "Top 5 de los profesionales más consultados por Plan",
             "Top 5 de los profesionales con menos horas trabajadas",
             "Top 5 de los afiliados con mayor cantidad de bonos comprados",
             "Top 5 de las especialidades con más bonos utilizados"});
-            this.acciones.Location = new System.Drawing.Point(12, 12);
-            this.acciones.Name = "acciones";
-            this.acciones.Size = new System.Drawing.Size(463, 28);
-            this.acciones.TabIndex = 1;
+            this.Acciones.Location = new System.Drawing.Point(12, 12);
+            this.Acciones.Name = "Acciones";
+            this.Acciones.Size = new System.Drawing.Size(463, 28);
+            this.Acciones.TabIndex = 1;
             // 
             // mostrar
             // 
@@ -150,12 +149,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.semestre);
             this.Controls.Add(this.mostrar);
-            this.Controls.Add(this.acciones);
-            this.Controls.Add(this.tablaListado);
+            this.Controls.Add(this.Acciones);
+            this.Controls.Add(this.TablaListado);
             this.Name = "ListadoEstadistico";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.ListadoEstadistico_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.tablaListado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaListado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,8 +161,8 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView tablaListado;
-        private System.Windows.Forms.ComboBox acciones;
+        private System.Windows.Forms.DataGridView TablaListado;
+        private System.Windows.Forms.ComboBox Acciones;
         private System.Windows.Forms.Button mostrar;
         private System.Windows.Forms.ComboBox semestre;
         private System.Windows.Forms.Label label1;
