@@ -55,6 +55,7 @@ namespace ClinicaFrba.Pedir_Turno
             this.SeleccionarEspecialidadGP.TabIndex = 0;
             this.SeleccionarEspecialidadGP.TabStop = false;
             this.SeleccionarEspecialidadGP.Text = "Complete los campos a continuación:";
+            this.SeleccionarEspecialidadGP.Enter += new System.EventHandler(this.SeleccionarEspecialidadGP_Enter);
             // 
             // ContinuarButton
             // 
@@ -123,6 +124,7 @@ namespace ClinicaFrba.Pedir_Turno
             this.MaximizeBox = false;
             this.Name = "AltaTurno";
             this.Text = "Selección de Médico y Especialidad";
+            this.Load += new System.EventHandler(this.AltaTurno_Load);
             this.SeleccionarEspecialidadGP.ResumeLayout(false);
             this.SeleccionarEspecialidadGP.PerformLayout();
             this.ResumeLayout(false);

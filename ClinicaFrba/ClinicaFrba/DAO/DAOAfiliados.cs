@@ -11,26 +11,9 @@ namespace ClinicaFrba.DAO
     class DAOAfiliados
     {
 
-        /*
- @nombre nvarchar(255) = '',
- @tipo nvarchar(255) = 'DNI',
- @numeroDocumento numeric(18,0) = 0,
- @apellido nvarchar(255) = '',
- @direccion nvarchar(255) = '',
- @sexo nvarchar(255) = '',
- @telefono numeric(18,0) = 0,
- @mail nvarchar(50)='',
- @fechaNac datetime = '5/5/5',
- @estadoCivil nvarchar(255) = '',
- @familiares int=0,
- @raiz int=0,
- @sub int=0,
- @plan nvarchar(255) = ''
-         * */
-
         
 
-        public static int crearAfiliado(String nombre, String apellido, String tipo, String numeroDocumento, String direccion, String sexo, String telefono, String email, String fechanac, String estadoCivil, String familiaresACargo,String plan,int raiz = 0, int sub = 0)
+        public static int crearAfiliado(DateTime fecha,String nombre, String apellido, String tipo, String numeroDocumento, String direccion, String sexo, String telefono, String email, String fechanac, String estadoCivil, String familiaresACargo,String plan,int raiz = 0, int sub = 0)
         {
 
             AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
@@ -104,6 +87,10 @@ namespace ClinicaFrba.DAO
                 parameter.Value = int.Parse(familiaresACargo);
                 parameters.Add(parameter);
 
+                parameter = new SqlParameter("@fecha", SqlDbType.DateTime);
+                parameter.Value = fecha;
+                parameters.Add(parameter);
+
                 return int.Parse(AdaptadorSQL.SQLHelper_ExecuteScalar("JOINEANDO_ANDO.crear_paciente", parameters).ToString());
 
 
@@ -126,7 +113,7 @@ namespace ClinicaFrba.DAO
 
 
 
-        public static void actualizarAfiliado(String direccion, String telefono, String email, String estadoCivil, String familiaresACargo, String plan, String numeroAfiliado, String razon="")
+        public static void actualizarAfiliado(DateTime fecha,String direccion, String telefono, String email, String estadoCivil, String familiaresACargo, String plan, String numeroAfiliado, String razon="")
         {
 
             AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
@@ -137,6 +124,9 @@ namespace ClinicaFrba.DAO
 
             try
             {
+                parameter = new SqlParameter("@fecha", SqlDbType.DateTime);
+                parameter.Value = fecha;
+                parameters.Add(parameter);
 
                 parameter = new SqlParameter("@direccion", SqlDbType.NVarChar, 255);
                 parameter.Value = direccion;
