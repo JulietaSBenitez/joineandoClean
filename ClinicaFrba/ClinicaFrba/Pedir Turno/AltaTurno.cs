@@ -88,5 +88,15 @@ namespace ClinicaFrba.Pedir_Turno
             Close();
         }
 
+        private void SeleccionarEspecialidadGP_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AltaTurno_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

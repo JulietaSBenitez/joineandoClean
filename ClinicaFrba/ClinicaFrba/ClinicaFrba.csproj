@@ -206,7 +206,7 @@
     <Compile Include="Funcionalidad.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="DAO\DAORoles.cs" />
-    <Compile Include="DAO\SQLConnector.cs" />
+    <Compile Include="DAO\AdaptadorSQL.cs" />
     <Compile Include="Listados\ListadoEstadistico.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -99,7 +99,8 @@ Select 'Listado Estadistico'
                 case "Pedido turnos":
                   //?
                     //new Pedir_Turno.AltaTurno(
-                    new Pedir_Turno.AltaTurno(user_id);
+                    
+                    new Pedir_Turno.AltaTurno(user_id).ShowDialog();
                    // GZC9D6
                     break;
 
