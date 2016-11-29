@@ -24,6 +24,8 @@ namespace ClinicaFrba.Cancelar_Atencion
             InitializeComponent();
 
             IDPersona = id_persona;
+
+            CalendarioProfesional.TodayDate = Properties.Settings.Default.fecha;
         }
 
         private void CancelarTurnosButton_Click(object sender, EventArgs e)
@@ -52,8 +54,8 @@ namespace ClinicaFrba.Cancelar_Atencion
         private List<DateTime> DiasSeleccionados()
         {
 
-            DateTime inicio = DiasACancelarCalendar.SelectionRange.Start;
-            DateTime fin = DiasACancelarCalendar.SelectionRange.End;
+            DateTime inicio = CalendarioProfesional.SelectionRange.Start;
+            DateTime fin = CalendarioProfesional.SelectionRange.End;
             DateTime fecha = inicio;
 
             List<DateTime> fechas = new List<DateTime>();
@@ -67,6 +69,11 @@ namespace ClinicaFrba.Cancelar_Atencion
             }
 
             return fechas;
+        }
+
+        private void VolverButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
 

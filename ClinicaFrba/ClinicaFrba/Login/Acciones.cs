@@ -53,9 +53,11 @@ namespace ClinicaFrba.Login
                 case "Alta Rol":
                     new AbmRol.AltaModificacionRol(Accion.Alta).ShowDialog();
                     break;
+
                 case "Baja Rol":
                     new AbmRol.ListadoRoles(Accion.Baja).ShowDialog();
                     break;
+
                 case "Modificacion Rol":
                     new AbmRol.ListadoRoles(Accion.Modificacion).ShowDialog();
                     break;
@@ -82,13 +84,17 @@ namespace ClinicaFrba.Login
                     new Compra_Bono.BusquedaAfiliado().ShowDialog();
                     break;
 
-
                 case "Pedido turnos":   
                     new Pedir_Turno.AltaTurno(user_id).ShowDialog();
                     break;
 
                 case "Cancerlar turnos":
-                    new Cancelar_Atencion.CancelarTurnoAfiliado(user_id).ShowDialog();
+                    if (rol_id == 2)
+                    {
+                        new Cancelar_Atencion.CancelarTurnoAfiliado(user_id).ShowDialog();
+                    }
+                    else
+                        new Cancelar_Atencion.CancelarTurnoProfesional(user_id).ShowDialog();
                     break;
 
                 case "Registo de llegada":
@@ -100,6 +106,7 @@ namespace ClinicaFrba.Login
                     //new Registro_Resultado.BusquedaResultado(user_id).ShowDialog();
                     new Registro_Resultado.BusquedaResultado(user_id).ShowDialog();
                     break;
+
                 case "Listado Estadistico":
                     new Listados.ListadoEstadistico().ShowDialog();
                     break;
