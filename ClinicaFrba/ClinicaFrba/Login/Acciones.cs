@@ -13,14 +13,15 @@ namespace ClinicaFrba.Login
     public partial class Acciones : Form
     {
         int user_id;
+        int rol_id
         DataTable funcionabilidades;
         public Acciones()
         {
             InitializeComponent();
         }
 
-        public Acciones(int rol_id,int user )
-        {
+        public Acciones(int rol,int user )
+        {   rol_id = rol;
             user_id = user;
             InitializeComponent();
             funcionabilidades= DAO.DAORoles.funcionabilidadesHabilitadasXRol(rol_id);
