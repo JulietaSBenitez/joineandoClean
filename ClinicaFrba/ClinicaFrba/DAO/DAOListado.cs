@@ -14,27 +14,27 @@ namespace ClinicaFrba.DAO
         {
 
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
             try
             {
              
-                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.lista_especialidades", parameters);
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.lista_especialidades", parameters);
                 return data;
 
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
 
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
 
@@ -45,8 +45,8 @@ namespace ClinicaFrba.DAO
         {
 
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -58,19 +58,19 @@ namespace ClinicaFrba.DAO
                 parameter = new SqlParameter("@semestre", SqlDbType.Int);
                 parameter.Value = semestre;
                 parameters.Add(parameter);
-                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.ListadoProfesionalesMasConsultadosPorPlan", parameters);
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.ListadoProfesionalesMasConsultadosPorPlan", parameters);
                 return data;
 
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
 
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
 
@@ -79,8 +79,8 @@ namespace ClinicaFrba.DAO
         {
 
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -92,19 +92,19 @@ namespace ClinicaFrba.DAO
                 parameter = new SqlParameter("@semestre", SqlDbType.Int);
                 parameter.Value = semestre;
                 parameters.Add(parameter);
-                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.ListadoAfiliadosConMayorBonosComprados", parameters);
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.ListadoAfiliadosConMayorBonosComprados", parameters);
                 return data;
 
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
 
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
 
@@ -114,8 +114,8 @@ namespace ClinicaFrba.DAO
         {
 
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -127,19 +127,19 @@ namespace ClinicaFrba.DAO
                 parameter = new SqlParameter("@semestre", SqlDbType.Int);
                 parameter.Value = semestre;
                 parameters.Add(parameter);
-                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.ListadoEspecialidadesConMasBonosUtilizados", parameters);
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.ListadoEspecialidadesConMasBonosUtilizados", parameters);
                 return data;
 
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
 
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
 
@@ -149,8 +149,8 @@ namespace ClinicaFrba.DAO
         {
 
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -162,19 +162,19 @@ namespace ClinicaFrba.DAO
                 parameter = new SqlParameter("@semestre", SqlDbType.Int);
                 parameter.Value = semestre;
                 parameters.Add(parameter);
-                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.ListadoProfesionalesConMenosHorasTrabajadas", parameters);
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.ListadoProfesionalesConMenosHorasTrabajadas", parameters);
                 return data;
 
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
 
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
 
@@ -184,8 +184,8 @@ namespace ClinicaFrba.DAO
         {
 
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -197,19 +197,19 @@ namespace ClinicaFrba.DAO
                 parameter = new SqlParameter("@semestre", SqlDbType.Int);
                 parameter.Value = semestre;
                 parameters.Add(parameter);
-                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.ListadoEspecialidadesConMasCancelaciones", parameters);
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.ListadoEspecialidadesConMasCancelaciones", parameters);
                 return data;
 
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
 
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
 

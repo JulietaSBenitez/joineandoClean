@@ -301,6 +301,11 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             return (Especialidad)especialidadesAgendaCB.SelectedItem;
         }
 
+        private void AltaAP_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
 
     }

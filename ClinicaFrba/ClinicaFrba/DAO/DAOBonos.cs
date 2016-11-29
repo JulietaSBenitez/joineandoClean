@@ -19,8 +19,8 @@ namespace ClinicaFrba.DAO
         public static void compraBono(String numeroAfiliado, String cantidad)
         {
 
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -40,19 +40,19 @@ namespace ClinicaFrba.DAO
                 parameters.Add(parameter);
 
 
-                SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.compra_bono", parameters);
+                AdaptadorSQL.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.compra_bono", parameters);
 
 
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
-                SQLHelper.CommitTransction();
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.CommitTransction();
+                AdaptadorSQL.ClearObjects();
             }
 
         }
@@ -62,8 +62,8 @@ namespace ClinicaFrba.DAO
         public static string precioBono(String nombre)
         {
 
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -78,19 +78,19 @@ namespace ClinicaFrba.DAO
                 parameters.Add(parameter);
 
 
-                return (SQLHelper.SQLHelper_ExecuteScalar("JOINEANDO_ANDO.precio_bono", parameters).ToString());
+                return (AdaptadorSQL.SQLHelper_ExecuteScalar("JOINEANDO_ANDO.precio_bono", parameters).ToString());
 
 
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
-                SQLHelper.CommitTransction();
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.CommitTransction();
+                AdaptadorSQL.ClearObjects();
             }
 
         }

@@ -19,22 +19,22 @@ namespace ClinicaFrba.DAO
 
 
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
 
             try
             {
-                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.listarRoles");
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.listarRoles");
                 return data;
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
 
@@ -50,8 +50,8 @@ namespace ClinicaFrba.DAO
         {
 
 
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -71,7 +71,7 @@ namespace ClinicaFrba.DAO
                 parameter.Value = !habilitado;
                 parameters.Add(parameter);
 
-                SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.actualizar_Rol", parameters);
+                AdaptadorSQL.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.actualizar_Rol", parameters);
 
                 // Como barro un map?
                 foreach (KeyValuePair<int, bool> funcionabilidad in funciones)
@@ -88,8 +88,8 @@ namespace ClinicaFrba.DAO
                     parameter.Value = funcionabilidad.Key;
                     parameters.Add(parameter);
 
-                    if (funcionabilidad.Value == true) SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.alta_funcionabiliad_x_rol", parameters);
-                    else SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.baja_funcionablilida_x_rol", parameters);
+                    if (funcionabilidad.Value == true) AdaptadorSQL.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.alta_funcionabiliad_x_rol", parameters);
+                    else AdaptadorSQL.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.baja_funcionablilida_x_rol", parameters);
 
                 }
 
@@ -99,13 +99,13 @@ namespace ClinicaFrba.DAO
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
-                SQLHelper.CommitTransction();
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.CommitTransction();
+                AdaptadorSQL.ClearObjects();
             }
 
 
@@ -118,8 +118,8 @@ namespace ClinicaFrba.DAO
         {
 
 
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -138,7 +138,7 @@ namespace ClinicaFrba.DAO
                 parameters.Add(parameter);
                 int id;
 
-                id = int.Parse((SQLHelper.SQLHelper_ExecuteScalar("JOINEANDO_ANDO.alta_Rol", parameters)).ToString());
+                id = int.Parse((AdaptadorSQL.SQLHelper_ExecuteScalar("JOINEANDO_ANDO.alta_Rol", parameters)).ToString());
 
                 // Como barro un map?
                 foreach (KeyValuePair<int, bool> funcionabilidad in funciones)
@@ -155,8 +155,8 @@ namespace ClinicaFrba.DAO
                     parameter.Value = funcionabilidad.Key;
                     parameters.Add(parameter);
 
-                    if (funcionabilidad.Value == true) SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.alta_funcionabiliad_x_rol", parameters);
-                    else SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.baja_funcionablilida_x_rol", parameters);
+                    if (funcionabilidad.Value == true) AdaptadorSQL.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.alta_funcionabiliad_x_rol", parameters);
+                    else AdaptadorSQL.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.baja_funcionablilida_x_rol", parameters);
 
                 }
 
@@ -166,13 +166,13 @@ namespace ClinicaFrba.DAO
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
-                SQLHelper.CommitTransction();
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.CommitTransction();
+                AdaptadorSQL.ClearObjects();
             }
 
 
@@ -186,8 +186,8 @@ namespace ClinicaFrba.DAO
         {
 
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -201,18 +201,18 @@ namespace ClinicaFrba.DAO
 
             try
             {
-                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.Seleccionar_Propiedades_Rol", parameters);
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.Seleccionar_Propiedades_Rol", parameters);
 
                 return data;
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
         }
@@ -223,8 +223,8 @@ namespace ClinicaFrba.DAO
 
 
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -238,18 +238,18 @@ namespace ClinicaFrba.DAO
 
             try
             {
-                SQLHelper.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.inHabilitar_Rol", parameters);
-                SQLHelper.CommitTransction();
+                AdaptadorSQL.SQLHelper_ExecuteNonQuery("JOINEANDO_ANDO.inHabilitar_Rol", parameters);
+                AdaptadorSQL.CommitTransction();
 
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
         }
@@ -260,8 +260,8 @@ namespace ClinicaFrba.DAO
 
 
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -275,18 +275,18 @@ namespace ClinicaFrba.DAO
 
             try
             {
-                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.Seleccionar_Funcionabilidades_x_Rol", parameters);
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.Seleccionar_Funcionabilidades_x_Rol", parameters);
 
                 return data;
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
         }
@@ -297,22 +297,22 @@ namespace ClinicaFrba.DAO
 
 
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
 
             try
             {
-                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.seleccionar_funcionabilidades");
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.seleccionar_funcionabilidades");
                 return data;
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
 
@@ -329,8 +329,8 @@ namespace ClinicaFrba.DAO
 
             //Se podria mejorar con un union
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
 
 
 
@@ -371,18 +371,18 @@ namespace ClinicaFrba.DAO
 
             try
             {
-                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.filtro_rol", parameters);
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.filtro_rol", parameters);
 
                 return data;
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
 

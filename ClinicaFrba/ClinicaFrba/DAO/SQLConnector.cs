@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace ClinicaFrba.DAO
 {
-    public sealed class SQLHelper
+    public sealed class AdaptadorSQL
     {
 
         #region Class Variables
@@ -168,7 +168,7 @@ namespace ClinicaFrba.DAO
 
         public static void CreateObjects(Boolean istransaction)
         {
-            _sqlcon = new SqlConnection(SQLHelper.ConnectionValue);
+            _sqlcon = new SqlConnection(AdaptadorSQL.ConnectionValue);
             _sqlcon.Open();
 
             if (istransaction)
@@ -248,9 +248,9 @@ namespace ClinicaFrba.DAO
             {
                 _result = false;
                 _sqlcom.CommandText = Procedure_Name;
-                SQLHelper.CreateParameters(parameters);
+                AdaptadorSQL.CreateParameters(parameters);
                 _sqlcom.ExecuteNonQuery();
-                SQLHelper.FillTable();
+                AdaptadorSQL.FillTable();
                 _result = true;
             }
             catch (Exception ex)
@@ -282,9 +282,9 @@ namespace ClinicaFrba.DAO
             {
                 _value = null;
                 _sqlcom.CommandText = Procedure_Name;
-                SQLHelper.CreateParameters(parameters);
+                AdaptadorSQL.CreateParameters(parameters);
                 _value = _sqlcom.ExecuteScalar();
-                SQLHelper.FillTable();
+                AdaptadorSQL.FillTable();
             }
             catch (Exception ex)
             {
@@ -320,12 +320,12 @@ namespace ClinicaFrba.DAO
             {
                 _data = null;
                 _sqlcom.CommandText = Procedure_Name;
-                SQLHelper.CreateParameters(parameters);
+                AdaptadorSQL.CreateParameters(parameters);
                 SqlDataAdapter _adapter = new SqlDataAdapter(_sqlcom);
                 DataSet dataset = new DataSet("SQLHelper");
                 _adapter.Fill(dataset);
                 _data = dataset.Tables[0];
-                SQLHelper.FillTable();
+                AdaptadorSQL.FillTable();
                 _sqltrn.Commit();
             }
             catch (Exception ex)

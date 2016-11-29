@@ -15,8 +15,8 @@ namespace ClinicaFrba.DAO
         public static DataTable roles_x_usuario(int userId) {
 
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -30,7 +30,7 @@ namespace ClinicaFrba.DAO
 
               
 
-                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.roles_x_usuario", parameters);
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.roles_x_usuario", parameters);
 
                 return data;
 
@@ -40,13 +40,13 @@ namespace ClinicaFrba.DAO
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
 
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
 
@@ -60,8 +60,8 @@ namespace ClinicaFrba.DAO
         {
 
             DataTable data = new DataTable();
-            SQLHelper.ConnectionValue = Properties.Settings.Default.conector;
-            SQLHelper.CreateObjects(true);
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Clear();
             SqlParameter parameter;
@@ -77,7 +77,7 @@ namespace ClinicaFrba.DAO
                 parameter.Value = password;
                 parameters.Add(parameter);
 
-                data = SQLHelper.SQLHelper_ExecuteReader("JOINEANDO_ANDO.validar_usuario", parameters);
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.validar_usuario", parameters);
 
                 return int.Parse(data.Rows[0][1].ToString());
 
@@ -87,13 +87,13 @@ namespace ClinicaFrba.DAO
             }
             catch (Exception ex)
             {
-                SQLHelper.RollBackTransction();
+                AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
             finally
             {
                
-                SQLHelper.ClearObjects();
+                AdaptadorSQL.ClearObjects();
             }
 
 

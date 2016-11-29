@@ -356,6 +356,7 @@
             this.Controls.Add(this.asd);
             this.Name = "AltaAP";
             this.Text = "Crear Agenda Profesional";
+            this.Load += new System.EventHandler(this.AltaAP_Load);
             this.asd.ResumeLayout(false);
             this.asd.PerformLayout();
             this.ResumeLayout(false);
