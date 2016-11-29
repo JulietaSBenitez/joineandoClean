@@ -47,7 +47,7 @@
             this.TablaListado.Name = "TablaListado";
             this.TablaListado.Size = new System.Drawing.Size(684, 212);
             this.TablaListado.TabIndex = 0;
-             // 
+            // 
             // Acciones
             // 
             this.Acciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -153,6 +153,7 @@
             this.Controls.Add(this.TablaListado);
             this.Name = "ListadoEstadistico";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.ListadoEstadistico_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.TablaListado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

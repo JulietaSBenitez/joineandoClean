@@ -56,35 +56,35 @@ namespace ClinicaFrba.Listados
             int ssemestre=2;
             if(semestre.Text=="Primero") ssemestre=1;
 
-            switch (acciones.Text) { 
+            switch (Acciones.Text) { 
          
                 case "":
                     MessageBox.Show("Seleccione un listado estadistico","Listado Estadistico",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
      
                     break;
                 case "Top 5 de las especialidades con mas cancelaciones":
-                  tablaListado.DataSource=  DAO.DAOListado.ListadoEspecialidadesConMasCancelaciones( anio, ssemestre );
+                  TablaListado.DataSource=  DAO.DAOListado.ListadoEspecialidadesConMasCancelaciones( anio, ssemestre );
                 break;
 
                 case "Top 5 de los profesionales más consultados por Plan":
 
-                tablaListado.DataSource = DAO.DAOListado.ListadoProfesionalesMasConsultadosPorPlan(anio, ssemestre);
+                TablaListado.DataSource = DAO.DAOListado.ListadoProfesionalesMasConsultadosPorPlan(anio, ssemestre);
                    
                 break;
 
                 case "Top 5 de los profesionales con menos horas trabajadas":
-                     tablaListado.DataSource=  DAO.DAOListado.ListadoProfesionalesConMenosHorasTrabajadas( anio, ssemestre );
+                     TablaListado.DataSource=  DAO.DAOListado.ListadoProfesionalesConMenosHorasTrabajadas( anio, ssemestre );
                     
                 break;
 
                 case "Top 5 de los afiliados con mayor cantidad de bonos comprados":
 
-                tablaListado.DataSource = DAO.DAOListado.ListadoAfiliadosConMayorBonosComprados(anio, ssemestre);
+                TablaListado.DataSource = DAO.DAOListado.ListadoAfiliadosConMayorBonosComprados(anio, ssemestre);
                    
                 break;
 
                 case "Top 5 de las especialidades con más bonos utilizados":
-                tablaListado.DataSource = DAO.DAOListado.ListadoEspecialidadesConMasBonosUtilizados(anio, ssemestre);
+                TablaListado.DataSource = DAO.DAOListado.ListadoEspecialidadesConMasBonosUtilizados(anio, ssemestre);
                    
                     
                 break;
@@ -93,6 +93,11 @@ namespace ClinicaFrba.Listados
         }
 
         private void ListadoEstadistico_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListadoEstadistico_Load_1(object sender, EventArgs e)
         {
 
         }

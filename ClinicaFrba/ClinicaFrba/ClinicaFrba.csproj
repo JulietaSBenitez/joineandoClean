@@ -130,13 +130,13 @@
     <Compile Include="Compra Bono\PantallaDosCompraBono.Designer.cs">
       <DependentUpon>PantallaDosCompraBono.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\DAO\DAOListado.cs" />
-    <Compile Include="src\DAO\DAOResultados.cs" />
-    <Compile Include="src\DAO\DAOTurnos.cs" />
-    <Compile Include="src\DAO\DAOAfiliados.cs" />
-    <Compile Include="src\DAO\DAOBonos.cs" />
-    <Compile Include="src\DAO\DAOLogin.cs" />
-    <Compile Include="src\DAO\QueryAdapterMaggie.cs" />
+    <Compile Include="DAO\DAOListado.cs" />
+    <Compile Include="DAO\DAOResultados.cs" />
+    <Compile Include="DAO\DAOTurnos.cs" />
+    <Compile Include="DAO\DAOAfiliados.cs" />
+    <Compile Include="DAO\DAOBonos.cs" />
+    <Compile Include="DAO\DAOLogin.cs" />
+    <Compile Include="DAO\QueryAdapterMaggie.cs" />
     <Compile Include="Login\Acciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,8 +205,8 @@
     </Compile>
     <Compile Include="Funcionalidad.cs" />
     <Compile Include="Enum.cs" />
-    <Compile Include="src\DAO\DAORoles.cs" />
-    <Compile Include="src\DAO\SQLConnector.cs" />
+    <Compile Include="DAO\DAORoles.cs" />
+    <Compile Include="DAO\SQLConnector.cs" />
     <Compile Include="Listados\ListadoEstadistico.cs">
       <SubType>Form</SubType>
     </Compile>
