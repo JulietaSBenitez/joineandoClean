@@ -37,19 +37,26 @@
             this.ano = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.especialidad = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.planes = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.TablaListado)).BeginInit();
             this.SuspendLayout();
             // 
             // TablaListado
             // 
+            this.TablaListado.AllowUserToAddRows = false;
+            this.TablaListado.AllowUserToDeleteRows = false;
+            this.TablaListado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TablaListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablaListado.Location = new System.Drawing.Point(12, 112);
             this.TablaListado.Name = "TablaListado";
+            this.TablaListado.ReadOnly = true;
             this.TablaListado.Size = new System.Drawing.Size(684, 212);
             this.TablaListado.TabIndex = 0;
             // 
             // Acciones
             // 
+            this.Acciones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Acciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Acciones.FormattingEnabled = true;
             this.Acciones.Items.AddRange(new object[] {
@@ -62,6 +69,7 @@
             this.Acciones.Name = "Acciones";
             this.Acciones.Size = new System.Drawing.Size(463, 28);
             this.Acciones.TabIndex = 1;
+            this.Acciones.SelectedIndexChanged += new System.EventHandler(this.Acciones_SelectedIndexChanged);
             // 
             // mostrar
             // 
@@ -76,6 +84,7 @@
             // 
             // semestre
             // 
+            this.semestre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.semestre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.semestre.FormattingEnabled = true;
             this.semestre.Items.AddRange(new object[] {
@@ -119,7 +128,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(365, 49);
+            this.label3.Location = new System.Drawing.Point(364, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 20);
             this.label3.TabIndex = 9;
@@ -127,21 +136,49 @@
             // 
             // especialidad
             // 
+            this.especialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.especialidad.Enabled = false;
             this.especialidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.especialidad.FormattingEnabled = true;
             this.especialidad.Items.AddRange(new object[] {
             "Primero",
             "Segundo"});
-            this.especialidad.Location = new System.Drawing.Point(470, 46);
+            this.especialidad.Location = new System.Drawing.Point(469, 76);
             this.especialidad.Name = "especialidad";
             this.especialidad.Size = new System.Drawing.Size(226, 28);
             this.especialidad.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 80);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 20);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Planes";
+            // 
+            // planes
+            // 
+            this.planes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.planes.Enabled = false;
+            this.planes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.planes.FormattingEnabled = true;
+            this.planes.Items.AddRange(new object[] {
+            "Primero",
+            "Segundo"});
+            this.planes.Location = new System.Drawing.Point(75, 77);
+            this.planes.Name = "planes";
+            this.planes.Size = new System.Drawing.Size(280, 28);
+            this.planes.TabIndex = 10;
             // 
             // ListadoEstadistico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(706, 336);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.planes);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.especialidad);
             this.Controls.Add(this.ano);
@@ -171,5 +208,7 @@
         private System.Windows.Forms.TextBox ano;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox especialidad;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox planes;
     }
 }
