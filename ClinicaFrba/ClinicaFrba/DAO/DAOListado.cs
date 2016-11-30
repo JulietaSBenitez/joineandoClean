@@ -10,6 +10,38 @@ namespace ClinicaFrba.DAO
 {
     class DAOListado
     {
+        public static DataTable planes()
+        {
+
+            DataTable data = new DataTable();
+            AdaptadorSQL.ConnectionValue = Properties.Settings.Default.conector;
+            AdaptadorSQL.CreateObjects(true);
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Clear();
+            SqlParameter parameter;
+            try
+            {
+
+                data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.lista_planes", parameters);
+                return data;
+
+            }
+            catch (Exception ex)
+            {
+                AdaptadorSQL.RollBackTransction();
+                throw ex;
+            }
+            finally
+            {
+
+                AdaptadorSQL.ClearObjects();
+            }
+
+
+
+        }
+
+
         public static DataTable especialidades()
         {
 
@@ -41,7 +73,7 @@ namespace ClinicaFrba.DAO
 
         }
 
-        public static DataTable ListadoProfesionalesMasConsultadosPorPlan(int ano, int semestre)
+        public static DataTable ListadoProfesionalesMasConsultadosPorPlan(int ano, int semestre, int planid)
         {
 
             DataTable data = new DataTable();
@@ -58,6 +90,12 @@ namespace ClinicaFrba.DAO
                 parameter = new SqlParameter("@semestre", SqlDbType.Int);
                 parameter.Value = semestre;
                 parameters.Add(parameter);
+
+                parameter = new SqlParameter("@planid", SqlDbType.Int);
+                parameter.Value = planid;
+                parameters.Add(parameter);
+
+
                 data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.ListadoProfesionalesMasConsultadosPorPlan", parameters);
                 return data;
 
@@ -145,7 +183,7 @@ namespace ClinicaFrba.DAO
 
 
         }
-        public static DataTable ListadoProfesionalesConMenosHorasTrabajadas(int ano, int semestre)
+        public static DataTable ListadoProfesionalesConMenosHorasTrabajadas(int ano, int semestre,int planid, int especialidadid)
         {
 
             DataTable data = new DataTable();
@@ -162,6 +200,14 @@ namespace ClinicaFrba.DAO
                 parameter = new SqlParameter("@semestre", SqlDbType.Int);
                 parameter.Value = semestre;
                 parameters.Add(parameter);
+
+                parameter = new SqlParameter("@planid", SqlDbType.Int);
+                parameter.Value = planid;
+                parameters.Add(parameter);
+                parameter = new SqlParameter("@especialidadid", SqlDbType.Int);
+                parameter.Value = especialidadid;
+                parameters.Add(parameter);
+
                 data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.ListadoProfesionalesConMenosHorasTrabajadas", parameters);
                 return data;
 

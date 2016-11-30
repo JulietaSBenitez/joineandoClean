@@ -196,9 +196,11 @@ namespace ClinicaFrba.Abm_Afiliado
 
                 //Ver que pregunte solo si es casado o bla
                 DialogResult dialogResult2 = MessageBox.Show("Desea asociar a sus familiares a cargo?", "Pregunta", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+                if (dialogResult2== DialogResult.Yes)
                 {int i;
                    for(i=0;i<int.Parse(familiaresacargo.Text);i++){
+                     //  DialogResult dialogResult3 = MessageBox.Show("sssDesea asociar a sus familiares a cargo?", "Pregunta", MessageBoxButtons.YesNo);
+               
                        new Abm_Afiliado.AltaModificacionAfiliados(Accion.AltaMin, numeroAfiliado - 1, 3 + i).ShowDialog();
                    }
                 }
