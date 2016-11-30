@@ -64,12 +64,12 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private string NombreProfesional()
         {
-            return NombreProfesionalTB.SelectedText.NullIfEmpty();
+            return NombreProfesionalTB.Text.NullIfEmpty();
         }
         private string ApellidoProfesional()
         {
 
-            return ApellidoProfesionalTB.SelectedText.NullIfEmpty();
+            return ApellidoProfesionalTB.Text.NullIfEmpty();
         }
         private DateTime? Dia()
         {
