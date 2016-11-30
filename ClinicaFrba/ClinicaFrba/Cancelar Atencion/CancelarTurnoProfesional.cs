@@ -26,6 +26,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             IDPersona = id_persona;
 
             DiasACancelarCalendar.TodayDate = Properties.Settings.Default.fecha;
+            DiasACancelarCalendar.SelectionStart = DiasACancelarCalendar.TodayDate;
         }
 
         private void CancelarTurnosButton_Click(object sender, EventArgs e)
@@ -76,9 +77,9 @@ namespace ClinicaFrba.Cancelar_Atencion
             Close();
         }
 
-        private void CancelarTurnoProfesional_Load(object sender, EventArgs e)
+        private void VolverButton_Click_1(object sender, EventArgs e)
         {
-
+            Close();
         }
 
     }

@@ -57,6 +57,7 @@
             this.VolverButton.TabIndex = 9;
             this.VolverButton.Text = "Volver";
             this.VolverButton.UseVisualStyleBackColor = false;
+            this.VolverButton.Click += new System.EventHandler(this.VolverButton_Click_1);
             // 
             // CancelarTurnosButton
             // 
@@ -92,7 +93,6 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "CancelarTurnoProfesional";
             this.Text = "Cancelar Turno de un dia";
-            this.Load += new System.EventHandler(this.CancelarTurnoProfesional_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
