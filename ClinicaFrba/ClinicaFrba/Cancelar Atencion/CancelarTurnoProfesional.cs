@@ -38,16 +38,12 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void ProfesionalCancelarTurno(int tipoCancelacionID, string razon)
         {
-
-            SqlParameter dia;
-            SqlParameter idTipoCancelacion = new SqlParameter("@Tipo_Cancelacion_id", tipoCancelacionID);
-            SqlParameter descripcion = new SqlParameter("@Descripcion", razon);
-            SqlParameter idProfesional = new SqlParameter("@Medico_id", IDPersona);
-
             foreach (DateTime diaSeleccionado in DiasSeleccionados())
             {
-
-                dia = new SqlParameter("@Dia", diaSeleccionado);
+                SqlParameter idTipoCancelacion = new SqlParameter("@Tipo_Cancelacion_id", tipoCancelacionID);
+                SqlParameter descripcion = new SqlParameter("@Descripcion", razon);
+                SqlParameter idProfesional = new SqlParameter("@Medico_id", IDPersona);
+                SqlParameter dia = new SqlParameter("@Dia", diaSeleccionado);
                 QueryAdapterMaggie.ejecutarSP("CANCELACIONEliminarTurnoProfesional", dia, idTipoCancelacion, descripcion, idProfesional);
             }
         }
