@@ -44,6 +44,9 @@ namespace ClinicaFrba.Registro_Llegada
               //  medico.Text = horario.Text;
                 DAO.DAOTurnos.confirmarPresencia(tablaTurnos.Rows[e.RowIndex].Cells["Numero de Turno"].Value.ToString(), tablaTurnos.Rows[e.RowIndex].Cells["Numero Afiliado"].Value.ToString(), horario.Value);
                 horario.CustomFormat = "dd/MM/yyyy hh:mm";
+                tablaTurnos.DataSource = DAO.DAOTurnos.filtroAfiliados(horario.Value, medico.Text, especialidad.Text, numeroTurno.Text, numeroAfiliado.Text);
+       
+
             }
      
         
