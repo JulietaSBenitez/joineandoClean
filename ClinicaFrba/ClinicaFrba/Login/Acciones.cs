@@ -89,7 +89,7 @@ namespace ClinicaFrba.Login
                     break;
 
                 case "Cancerlar turnos":
-                    if (rol_id == 2)
+                    if (rol_id == 1)
                     {
                         new Cancelar_Atencion.CancelarTurnoAfiliado(user_id).ShowDialog();
                     }
