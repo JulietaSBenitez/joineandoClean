@@ -56,11 +56,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.especialidadesAgendaCB = new System.Windows.Forms.ComboBox();
             this.EspecialidadLabel = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.asd.SuspendLayout();
             this.SuspendLayout();
             // 
             // asd
             // 
+            this.asd.Controls.Add(this.comboBox2);
+            this.asd.Controls.Add(this.comboBox1);
+            this.asd.Controls.Add(this.label6);
+            this.asd.Controls.Add(this.label9);
+            this.asd.Controls.Add(this.label7);
+            this.asd.Controls.Add(this.label8);
             this.asd.Controls.Add(this.label5);
             this.asd.Controls.Add(this.label4);
             this.asd.Controls.Add(this.botonVolverAgenda);
@@ -90,7 +102,7 @@
             this.asd.Controls.Add(this.EspecialidadLabel);
             this.asd.Location = new System.Drawing.Point(13, 13);
             this.asd.Name = "asd";
-            this.asd.Size = new System.Drawing.Size(449, 352);
+            this.asd.Size = new System.Drawing.Size(449, 425);
             this.asd.TabIndex = 0;
             this.asd.TabStop = false;
             this.asd.Text = "Complete los campos para crear un nueva agenda:";
@@ -120,7 +132,7 @@
             // botonVolverAgenda
             // 
             this.botonVolverAgenda.BackColor = System.Drawing.Color.IndianRed;
-            this.botonVolverAgenda.Location = new System.Drawing.Point(368, 318);
+            this.botonVolverAgenda.Location = new System.Drawing.Point(367, 388);
             this.botonVolverAgenda.Name = "botonVolverAgenda";
             this.botonVolverAgenda.Size = new System.Drawing.Size(75, 23);
             this.botonVolverAgenda.TabIndex = 24;
@@ -130,7 +142,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(274, 318);
+            this.button1.Location = new System.Drawing.Point(273, 388);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 23;
@@ -142,7 +154,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(316, 103);
+            this.label3.Location = new System.Drawing.Point(315, 173);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 17);
             this.label3.TabIndex = 22;
@@ -152,7 +164,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(188, 103);
+            this.label2.Location = new System.Drawing.Point(187, 173);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 17);
             this.label2.TabIndex = 21;
@@ -161,7 +173,7 @@
             // sabadoAgendaCB
             // 
             this.sabadoAgendaCB.AutoSize = true;
-            this.sabadoAgendaCB.Location = new System.Drawing.Point(28, 273);
+            this.sabadoAgendaCB.Location = new System.Drawing.Point(27, 343);
             this.sabadoAgendaCB.Name = "sabadoAgendaCB";
             this.sabadoAgendaCB.Size = new System.Drawing.Size(63, 17);
             this.sabadoAgendaCB.TabIndex = 20;
@@ -172,7 +184,7 @@
             // viernesAgendaCB
             // 
             this.viernesAgendaCB.AutoSize = true;
-            this.viernesAgendaCB.Location = new System.Drawing.Point(28, 246);
+            this.viernesAgendaCB.Location = new System.Drawing.Point(27, 316);
             this.viernesAgendaCB.Name = "viernesAgendaCB";
             this.viernesAgendaCB.Size = new System.Drawing.Size(61, 17);
             this.viernesAgendaCB.TabIndex = 19;
@@ -183,7 +195,7 @@
             // juevesAgendaCB
             // 
             this.juevesAgendaCB.AutoSize = true;
-            this.juevesAgendaCB.Location = new System.Drawing.Point(28, 219);
+            this.juevesAgendaCB.Location = new System.Drawing.Point(27, 289);
             this.juevesAgendaCB.Name = "juevesAgendaCB";
             this.juevesAgendaCB.Size = new System.Drawing.Size(60, 17);
             this.juevesAgendaCB.TabIndex = 18;
@@ -194,7 +206,7 @@
             // miercolesAgendaCB
             // 
             this.miercolesAgendaCB.AutoSize = true;
-            this.miercolesAgendaCB.Location = new System.Drawing.Point(28, 192);
+            this.miercolesAgendaCB.Location = new System.Drawing.Point(27, 262);
             this.miercolesAgendaCB.Name = "miercolesAgendaCB";
             this.miercolesAgendaCB.Size = new System.Drawing.Size(71, 17);
             this.miercolesAgendaCB.TabIndex = 17;
@@ -205,7 +217,7 @@
             // martesAgendaCB
             // 
             this.martesAgendaCB.AutoSize = true;
-            this.martesAgendaCB.Location = new System.Drawing.Point(28, 165);
+            this.martesAgendaCB.Location = new System.Drawing.Point(27, 235);
             this.martesAgendaCB.Name = "martesAgendaCB";
             this.martesAgendaCB.Size = new System.Drawing.Size(58, 17);
             this.martesAgendaCB.TabIndex = 16;
@@ -216,7 +228,7 @@
             // lunesAgendaCB
             // 
             this.lunesAgendaCB.AutoSize = true;
-            this.lunesAgendaCB.Location = new System.Drawing.Point(28, 137);
+            this.lunesAgendaCB.Location = new System.Drawing.Point(27, 207);
             this.lunesAgendaCB.Name = "lunesAgendaCB";
             this.lunesAgendaCB.Size = new System.Drawing.Size(55, 17);
             this.lunesAgendaCB.TabIndex = 15;
@@ -227,7 +239,7 @@
             // comboBoxFinSabado
             // 
             this.comboBoxFinSabado.FormattingEnabled = true;
-            this.comboBoxFinSabado.Location = new System.Drawing.Point(322, 269);
+            this.comboBoxFinSabado.Location = new System.Drawing.Point(321, 339);
             this.comboBoxFinSabado.Name = "comboBoxFinSabado";
             this.comboBoxFinSabado.Size = new System.Drawing.Size(64, 21);
             this.comboBoxFinSabado.TabIndex = 14;
@@ -235,7 +247,7 @@
             // comboBoxInicioSabado
             // 
             this.comboBoxInicioSabado.FormattingEnabled = true;
-            this.comboBoxInicioSabado.Location = new System.Drawing.Point(197, 269);
+            this.comboBoxInicioSabado.Location = new System.Drawing.Point(196, 339);
             this.comboBoxInicioSabado.Name = "comboBoxInicioSabado";
             this.comboBoxInicioSabado.Size = new System.Drawing.Size(64, 21);
             this.comboBoxInicioSabado.TabIndex = 13;
@@ -243,7 +255,7 @@
             // comboBoxInicioViernes
             // 
             this.comboBoxInicioViernes.FormattingEnabled = true;
-            this.comboBoxInicioViernes.Location = new System.Drawing.Point(197, 242);
+            this.comboBoxInicioViernes.Location = new System.Drawing.Point(196, 312);
             this.comboBoxInicioViernes.Name = "comboBoxInicioViernes";
             this.comboBoxInicioViernes.Size = new System.Drawing.Size(64, 21);
             this.comboBoxInicioViernes.TabIndex = 12;
@@ -251,7 +263,7 @@
             // comboBoxInicioJueves
             // 
             this.comboBoxInicioJueves.FormattingEnabled = true;
-            this.comboBoxInicioJueves.Location = new System.Drawing.Point(197, 215);
+            this.comboBoxInicioJueves.Location = new System.Drawing.Point(196, 285);
             this.comboBoxInicioJueves.Name = "comboBoxInicioJueves";
             this.comboBoxInicioJueves.Size = new System.Drawing.Size(64, 21);
             this.comboBoxInicioJueves.TabIndex = 11;
@@ -259,7 +271,7 @@
             // comboBoxFinLunes
             // 
             this.comboBoxFinLunes.FormattingEnabled = true;
-            this.comboBoxFinLunes.Location = new System.Drawing.Point(322, 134);
+            this.comboBoxFinLunes.Location = new System.Drawing.Point(321, 204);
             this.comboBoxFinLunes.Name = "comboBoxFinLunes";
             this.comboBoxFinLunes.Size = new System.Drawing.Size(64, 21);
             this.comboBoxFinLunes.TabIndex = 10;
@@ -267,7 +279,7 @@
             // comboBoxInicioMartes
             // 
             this.comboBoxInicioMartes.FormattingEnabled = true;
-            this.comboBoxInicioMartes.Location = new System.Drawing.Point(197, 161);
+            this.comboBoxInicioMartes.Location = new System.Drawing.Point(196, 231);
             this.comboBoxInicioMartes.Name = "comboBoxInicioMartes";
             this.comboBoxInicioMartes.Size = new System.Drawing.Size(64, 21);
             this.comboBoxInicioMartes.TabIndex = 9;
@@ -275,7 +287,7 @@
             // comboBoxFinMartes
             // 
             this.comboBoxFinMartes.FormattingEnabled = true;
-            this.comboBoxFinMartes.Location = new System.Drawing.Point(322, 161);
+            this.comboBoxFinMartes.Location = new System.Drawing.Point(321, 231);
             this.comboBoxFinMartes.Name = "comboBoxFinMartes";
             this.comboBoxFinMartes.Size = new System.Drawing.Size(64, 21);
             this.comboBoxFinMartes.TabIndex = 8;
@@ -283,7 +295,7 @@
             // comboBoxFinJueves
             // 
             this.comboBoxFinJueves.FormattingEnabled = true;
-            this.comboBoxFinJueves.Location = new System.Drawing.Point(322, 215);
+            this.comboBoxFinJueves.Location = new System.Drawing.Point(321, 285);
             this.comboBoxFinJueves.Name = "comboBoxFinJueves";
             this.comboBoxFinJueves.Size = new System.Drawing.Size(64, 21);
             this.comboBoxFinJueves.TabIndex = 7;
@@ -291,7 +303,7 @@
             // comboBoxFinViernes
             // 
             this.comboBoxFinViernes.FormattingEnabled = true;
-            this.comboBoxFinViernes.Location = new System.Drawing.Point(322, 242);
+            this.comboBoxFinViernes.Location = new System.Drawing.Point(321, 312);
             this.comboBoxFinViernes.Name = "comboBoxFinViernes";
             this.comboBoxFinViernes.Size = new System.Drawing.Size(64, 21);
             this.comboBoxFinViernes.TabIndex = 6;
@@ -299,7 +311,7 @@
             // comboBoxInicioMiercoles
             // 
             this.comboBoxInicioMiercoles.FormattingEnabled = true;
-            this.comboBoxInicioMiercoles.Location = new System.Drawing.Point(197, 188);
+            this.comboBoxInicioMiercoles.Location = new System.Drawing.Point(196, 258);
             this.comboBoxInicioMiercoles.Name = "comboBoxInicioMiercoles";
             this.comboBoxInicioMiercoles.Size = new System.Drawing.Size(64, 21);
             this.comboBoxInicioMiercoles.TabIndex = 5;
@@ -307,7 +319,7 @@
             // comboBoxFinMiercoles
             // 
             this.comboBoxFinMiercoles.FormattingEnabled = true;
-            this.comboBoxFinMiercoles.Location = new System.Drawing.Point(322, 188);
+            this.comboBoxFinMiercoles.Location = new System.Drawing.Point(321, 258);
             this.comboBoxFinMiercoles.Name = "comboBoxFinMiercoles";
             this.comboBoxFinMiercoles.Size = new System.Drawing.Size(64, 21);
             this.comboBoxFinMiercoles.TabIndex = 4;
@@ -315,7 +327,7 @@
             // comboBoxInicioLunes
             // 
             this.comboBoxInicioLunes.FormattingEnabled = true;
-            this.comboBoxInicioLunes.Location = new System.Drawing.Point(197, 134);
+            this.comboBoxInicioLunes.Location = new System.Drawing.Point(196, 204);
             this.comboBoxInicioLunes.Name = "comboBoxInicioLunes";
             this.comboBoxInicioLunes.Size = new System.Drawing.Size(64, 21);
             this.comboBoxInicioLunes.TabIndex = 3;
@@ -324,7 +336,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(25, 103);
+            this.label1.Location = new System.Drawing.Point(24, 173);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 17);
             this.label1.TabIndex = 2;
@@ -348,11 +360,67 @@
             this.EspecialidadLabel.TabIndex = 0;
             this.EspecialidadLabel.Text = "Especialidad:";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(25, 117);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(123, 17);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Seleccione Rango";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(336, 103);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 17);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "Fin Rango";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(191, 102);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(86, 17);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "Inicio Rango";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(116, 131);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "de días:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(318, 123);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(110, 21);
+            this.comboBox1.TabIndex = 33;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(178, 123);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(110, 21);
+            this.comboBox2.TabIndex = 34;
+            // 
             // AltaAP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 377);
+            this.ClientSize = new System.Drawing.Size(474, 450);
             this.Controls.Add(this.asd);
             this.Name = "AltaAP";
             this.Text = "Crear Agenda Profesional";
@@ -393,5 +461,11 @@
         private System.Windows.Forms.ComboBox comboBoxFinMiercoles;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
