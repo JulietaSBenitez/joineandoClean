@@ -45,6 +45,18 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                "No se ha seleccionado ninguna especialidad."));
 
             validaciones.Add(new ValidacionBooleana<AltaAP>(
+                (controlador => controlador.DiaInicioSelecionado()),
+                "No se ha seleccionado un día de Inicio"));
+
+            validaciones.Add(new ValidacionBooleana<AltaAP>(
+                (controlador => controlador.DiaFinSelecionado()),
+                "No se ha seleccionado un día de Fin"));
+
+            validaciones.Add(new ValidacionBooleana<AltaAP>(
+               (controlador => controlador.DiaDeInicioMenorADiaFin()),
+               "El día de inicio es mayor o igual al día de fin"));
+
+            validaciones.Add(new ValidacionBooleana<AltaAP>(
                 (controlador => controlador.AlgunDiaSeleccionado()),
                 "No se ha seleccionado ningun día."));
 
@@ -59,6 +71,22 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             validaciones.Add(new ValidacionBooleana<AltaAP>(
                 (controlador => controlador.NoColisiona()),
                 "Alguna de las combinaciones seleccionadas ya esta presente total o parcialmente en otra agenda"));
+
+        }
+
+        private bool DiaDeInicioMenorADiaFin()
+        {
+            return true;
+        }
+
+        private bool DiaFinSelecionado()
+        {
+            return FinRangoCB.SelectedItem != null;
+        }
+
+        private bool DiaInicioSelecionado()
+        {
+            return InicioRangoCB.SelectedItem != null;
         }
 
 
