@@ -53,16 +53,16 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 "No se ha seleccionado un día de Fin"));
 
             validaciones.Add(new ValidacionBooleana<AltaAP>(
-               (controlador => controlador.DiaDeInicioMenorADiaFin()),
-               "El día de inicio es mayor o igual al día de fin"));
-
-            validaciones.Add(new ValidacionBooleana<AltaAP>(
                 (controlador => controlador.AlgunDiaSeleccionado()),
                 "No se ha seleccionado ningun día."));
 
             validaciones.Add(new ValidacionBooleana<AltaAP>(
                 (controlador => controlador.HoraInicioEsMenorQuehoraFin()),
                 "El horario de inicio es mayor o igual al horario de fin."));
+
+            validaciones.Add(new ValidacionBooleana<AltaAP>(
+                (controlador => controlador.DiaDeInicioMenorADiaFin()),
+                "El día de inicio es mayor o igual al día de fin"));
 
             validaciones.Add(new ValidacionBooleana<AltaAP>(
                 (controlador => medico.CantidadDeHorasTrabajadas().Add(controlador.TiempoDeLaAgenda()) <= new TimeSpan(48, 0, 0)),
@@ -72,21 +72,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 (controlador => controlador.NoColisiona()),
                 "Alguna de las combinaciones seleccionadas ya esta presente total o parcialmente en otra agenda"));
 
-        }
-
-        private bool DiaDeInicioMenorADiaFin()
-        {
-            return true;
-        }
-
-        private bool DiaFinSelecionado()
-        {
-            return FinRangoCB.SelectedItem != null;
-        }
-
-        private bool DiaInicioSelecionado()
-        {
-            return InicioRangoCB.SelectedItem != null;
         }
 
 
@@ -248,6 +233,19 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         private int IDDiaPara(CheckBox checkBox)
         {
             return widgets.Keys.ToList().IndexOf(checkBox) + 1;
+        }
+
+        private bool DiaDeInicioMenorADiaFin()
+        {
+            return true;
+        }
+        private bool DiaFinSelecionado()
+        {
+            return FinRangoCB.SelectedItem != null;
+        }
+        private bool DiaInicioSelecionado()
+        {
+            return InicioRangoCB.SelectedItem != null;
         }
 
         public bool EspecialidadSeleccionada()
