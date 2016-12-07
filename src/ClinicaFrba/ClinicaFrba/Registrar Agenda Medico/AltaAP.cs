@@ -282,8 +282,10 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             SqlParameter idDia = new SqlParameter("@Dia_id",IDDiaPara(par.Key));
             SqlParameter horarioInicio = new SqlParameter("@Inicio_Horario", _horarioInicio);
             SqlParameter horarioFin = new SqlParameter("@Fin_Horario", _horarioFin);
+            SqlParameter diaInicio = new SqlParameter("@Inicio_Dia", InicioRangoDP.Value);
+            SqlParameter diaFin = new SqlParameter("@Fin_Dia", FinRangoDP.Value);
 
-            return !QueryAdapterMaggie.ejecutarSPBooleano("AGENDARangoColisionaConAgendaExistente", idDia, idMedico, horarioInicio, horarioFin);
+            return !QueryAdapterMaggie.ejecutarSPBooleano("AGENDARangoColisionaConAgendaExistente", idDia, idMedico, horarioInicio, horarioFin, diaInicio, diaFin);
         }
 
         private List<Tuple<TimeSpan, TimeSpan>> HorasDeCheckboxSeleccionados()
