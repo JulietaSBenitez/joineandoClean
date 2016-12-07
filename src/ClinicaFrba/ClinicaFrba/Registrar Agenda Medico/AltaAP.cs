@@ -217,23 +217,21 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         {
             DateTime horarioInicio = DateTime.Parse(((TimeSpan)par.Value.Item1.SelectedItem).ToString());
             DateTime horarioFin = DateTime.Parse(((TimeSpan)par.Value.Item2.SelectedItem).ToString());
-            //DateTime diaInicio = (DateTime).Parse(InicioRangoCB.SelectedItem.ToString());
-            //DateTime diaFin = (DateTime).Parse(FinRangoCB.SelectedItem.ToString());
 
             int diaID = IDDiaPara(par.Key);
 
             SqlParameter IDMedico = new SqlParameter("@Medico_id", ModelObjectMedico.ID);
             SqlParameter IDEspecialidad = new SqlParameter("@Especialidad_id", Especialidad().ID);
-            //SqlParameter DiaInicio = new SqlParameter("@Dia_inicio", diaInicio);
-            //SqlParameter DiaFin = new SqlParameter("@Dia_Fin", diaFin);
+            SqlParameter DiaInicio = new SqlParameter("@Dia_inicio", InicioRangoDP.Value);
+            SqlParameter DiaFin = new SqlParameter("@Dia_Fin", FinRangoDP.Value);
             SqlParameter DiaID = new SqlParameter("@Dia_id", diaID);
             SqlParameter HorarioInicio = new SqlParameter("@Inicio_Horario", horarioInicio);
             SqlParameter HorarioFin = new SqlParameter("@Fin_Horario", horarioFin);
 
             QueryAdapterMaggie.ejecutarSP("AGENDAInsertarNueva", IDMedico, 
                                                                  IDEspecialidad, 
-                                                                 //DiaInicio, 
-                                                                 //DiaFin,
+                                                                 DiaInicio, 
+                                                                 DiaFin,
                                                                  DiaID, 
                                                                  HorarioInicio, 
                                                                  HorarioFin);
@@ -253,9 +251,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         {
             return InicioRangoDP.Value > Properties.Settings.Default.fecha;
         }
-
-
-
         public bool EspecialidadSeleccionada()
         {
             return especialidadesAgendaCB.SelectedItem != null;
