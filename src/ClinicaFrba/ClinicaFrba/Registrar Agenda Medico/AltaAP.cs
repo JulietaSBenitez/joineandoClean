@@ -35,8 +35,11 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             widgets.Add(sabadoAgendaCB, new Tuple<ComboBox, ComboBox>(comboBoxInicioSabado, comboBoxFinSabado));
 
 
-            especialidadesAgendaCB.DataSource = medico.EspecialidadesSinAgenda();
+            especialidadesAgendaCB.DataSource = medico.Especialidades();
             especialidadesAgendaCB.DisplayMember = "Nombre";
+
+            InicioRangoDP.Value = Properties.Settings.Default.fecha;
+            FinRangoDP.Value = Properties.Settings.Default.fecha;
 
             InicializarComboboxes();
 
@@ -45,12 +48,12 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                "No se ha seleccionado ninguna especialidad."));
 
             validaciones.Add(new ValidacionBooleana<AltaAP>(
-                (controlador => controlador.DiaInicioSelecionado()),
-                "No se ha seleccionado un día de Inicio"));
+               (controlador => controlador.DiaInicioMayorAHoy()),
+               "El día de inicio debe ser mayor al día de hoy."));
 
             validaciones.Add(new ValidacionBooleana<AltaAP>(
-                (controlador => controlador.DiaFinSelecionado()),
-                "No se ha seleccionado un día de Fin"));
+               (controlador => controlador.DiaDeInicioMenorADiaFin()),
+                "El día de inicio debe ser mayor o igual al día de fin"));
 
             validaciones.Add(new ValidacionBooleana<AltaAP>(
                 (controlador => controlador.AlgunDiaSeleccionado()),
@@ -59,10 +62,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             validaciones.Add(new ValidacionBooleana<AltaAP>(
                 (controlador => controlador.HoraInicioEsMenorQuehoraFin()),
                 "El horario de inicio es mayor o igual al horario de fin."));
-
-            validaciones.Add(new ValidacionBooleana<AltaAP>(
-                (controlador => controlador.DiaDeInicioMenorADiaFin()),
-                "El día de inicio es mayor o igual al día de fin"));
 
             validaciones.Add(new ValidacionBooleana<AltaAP>(
                 (controlador => medico.CantidadDeHorasTrabajadas().Add(controlador.TiempoDeLaAgenda()) <= new TimeSpan(48, 0, 0)),
@@ -199,14 +198,15 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         private void LimpiarWidget(KeyValuePair<CheckBox, Tuple<ComboBox, ComboBox>> par)
         {
             especialidadesAgendaCB.Text = "";
-            especialidadesAgendaCB.DataSource = ModelObjectMedico.EspecialidadesSinAgenda();
+            especialidadesAgendaCB.DataSource = ModelObjectMedico.Especialidades();
 
             par.Key.Checked = false;
             par.Value.Item1.SelectedIndex = 0;
             par.Value.Item2.SelectedIndex = 0;
-        }
 
-      
+            InicioRangoDP.Value = Properties.Settings.Default.fecha;
+            FinRangoDP.Value = Properties.Settings.Default.fecha;
+        }
 
         private List<KeyValuePair<CheckBox, Tuple<ComboBox, ComboBox>>> WidgetsSeleccionados()
         {
@@ -217,16 +217,26 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         {
             DateTime horarioInicio = DateTime.Parse(((TimeSpan)par.Value.Item1.SelectedItem).ToString());
             DateTime horarioFin = DateTime.Parse(((TimeSpan)par.Value.Item2.SelectedItem).ToString());
+            //DateTime diaInicio = (DateTime).Parse(InicioRangoCB.SelectedItem.ToString());
+            //DateTime diaFin = (DateTime).Parse(FinRangoCB.SelectedItem.ToString());
 
             int diaID = IDDiaPara(par.Key);
 
             SqlParameter IDMedico = new SqlParameter("@Medico_id", ModelObjectMedico.ID);
             SqlParameter IDEspecialidad = new SqlParameter("@Especialidad_id", Especialidad().ID);
+            //SqlParameter DiaInicio = new SqlParameter("@Dia_inicio", diaInicio);
+            //SqlParameter DiaFin = new SqlParameter("@Dia_Fin", diaFin);
             SqlParameter DiaID = new SqlParameter("@Dia_id", diaID);
             SqlParameter HorarioInicio = new SqlParameter("@Inicio_Horario", horarioInicio);
             SqlParameter HorarioFin = new SqlParameter("@Fin_Horario", horarioFin);
 
-            QueryAdapterMaggie.ejecutarSP("AGENDAInsertarNueva", IDMedico, IDEspecialidad, DiaID, HorarioInicio, HorarioFin);
+            QueryAdapterMaggie.ejecutarSP("AGENDAInsertarNueva", IDMedico, 
+                                                                 IDEspecialidad, 
+                                                                 //DiaInicio, 
+                                                                 //DiaFin,
+                                                                 DiaID, 
+                                                                 HorarioInicio, 
+                                                                 HorarioFin);
 
         }
 
@@ -237,16 +247,14 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
         private bool DiaDeInicioMenorADiaFin()
         {
-            return true;
+            return InicioRangoDP.Value < FinRangoDP.Value;
         }
-        private bool DiaFinSelecionado()
+        private bool DiaInicioMayorAHoy()
         {
-            return FinRangoCB.SelectedItem != null;
+            return InicioRangoDP.Value > Properties.Settings.Default.fecha;
         }
-        private bool DiaInicioSelecionado()
-        {
-            return InicioRangoCB.SelectedItem != null;
-        }
+
+
 
         public bool EspecialidadSeleccionada()
         {
@@ -277,8 +285,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
             return !QueryAdapterMaggie.ejecutarSPBooleano("AGENDARangoColisionaConAgendaExistente", idDia, idMedico, horarioInicio, horarioFin);
         }
-
-
 
         private List<Tuple<TimeSpan, TimeSpan>> HorasDeCheckboxSeleccionados()
         {
@@ -328,6 +334,11 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         }
 
         private void AltaAP_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
         {
 
         }

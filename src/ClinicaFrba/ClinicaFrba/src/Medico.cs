@@ -20,10 +20,10 @@ namespace ClinicaFrba.src
             ID = id;
         }
 
-        public List<Especialidad> EspecialidadesSinAgenda()
+        /*public List<Especialidad> EspecialidadesSinAgenda()
         {
             return Especialidades().FindAll(especialidad => !especialidad.YaTieneAgenda(this));
-        }
+        }*/
 
         public static List<Medico> All()
         {
