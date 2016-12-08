@@ -39,6 +39,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             especialidadesAgendaCB.DisplayMember = "Nombre";
 
             InicioRangoDP.Value = Properties.Settings.Default.fecha;
+            
             FinRangoDP.Value = Properties.Settings.Default.fecha;
 
             InicializarComboboxes();
@@ -64,10 +65,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 "El horario de inicio es mayor o igual al horario de fin."));
 
             validaciones.Add(new ValidacionBooleana<AltaAP>(
-                (controlador => medico.CantidadDeHorasTrabajadas().Add(controlador.TiempoDeLaAgenda()) <= new TimeSpan(48, 0, 0)),
-                "Lo lamentamos, pero con estas horas usted ya estaría trabajando 48hs. ¡Vaya a descansar! Sus pacientes se lo agradecerán."));
-
-            validaciones.Add(new ValidacionBooleana<AltaAP>(
                 (controlador => controlador.NoColisiona()),
                 "Alguna de las combinaciones seleccionadas ya esta presente total o parcialmente en otra agenda"));
 
@@ -83,7 +80,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         }
 
         private void botonVolverAgenda_Click(object sender, EventArgs e)
-        {           
+        {
             this.Close();
         }
 
@@ -178,21 +175,56 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         {
             if (validaciones.All(validacion => validacion.SeCumple(this)))
             {
-                WidgetsSeleccionados().ForEach(par => RegistrarHorario(par));
-                MessageBox.Show("Agenda creada con éxito");
 
-                WidgetsSeleccionados().ForEach(par => LimpiarWidget(par));
-                
+                bool resultado_exitoso = RegistrarAgenda();
+                if (resultado_exitoso)
+                {
+                    MessageBox.Show("Agenda creada con éxito");
+                    WidgetsSeleccionados().ForEach(par => LimpiarWidget(par));
+                }
+                else
+                {
+                    MessageBox.Show("No se puede trabajar más de 48 horas por semana.", "Ocurrió un error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
                 ValidacionBooleana<AltaAP> validacionQueNoSeCumple =
                     validaciones.Find(validacion => validacion.NoSeCumple(this));
-                MessageBox.Show(validacionQueNoSeCumple.MensajeError(), "¡A wild error appeared!",
+                MessageBox.Show(validacionQueNoSeCumple.MensajeError(), "Ocurrió un error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 
+        }
+
+        private bool RegistrarAgenda()
+        {
+           
+            DataTable dias = new DataTable();
+
+            dias.Columns.Add(new DataColumn("ID",typeof(int)));
+            dias.Columns.Add(new DataColumn("INICIO",typeof(TimeSpan)));
+            dias.Columns.Add(new DataColumn("FIN",typeof(TimeSpan)));
+
+            foreach (Tuple<int, TimeSpan, TimeSpan> dia in DiasAtencionSeleccionados())
+            {
+                DataRow row = dias.NewRow();
+                row["ID"] = dia.Item1;
+                row["INICIO"] = dia.Item2;
+                row["FIN"] = dia.Item3;
+                dias.Rows.Add(row);
+            }
+
+            SqlParameter idMedico = new SqlParameter("@Medico_id", ModelObjectMedico.ID);
+            SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", Especialidad().ID);
+            SqlParameter diaInicio = new SqlParameter("@Dia_inicio", InicioRangoDP.Value);
+            SqlParameter diaFin = new SqlParameter("@Dia_Fin", FinRangoDP.Value);
+            SqlParameter diasAtencion = new SqlParameter("@Dias_Atencion", dias);
+
+            
+            return QueryAdapterMaggie.ejecutarSPBooleano("Agendainsertarnueva",idMedico,idEspecialidad,diaInicio,diaFin,diasAtencion);
         }
 
         private void LimpiarWidget(KeyValuePair<CheckBox, Tuple<ComboBox, ComboBox>> par)
@@ -213,36 +245,22 @@ namespace ClinicaFrba.RegistrarAgendaMedico
             return widgets.Where(widget => widget.Key.Checked).ToList();
         }
 
-        private void RegistrarHorario(KeyValuePair<CheckBox, Tuple<ComboBox, ComboBox>> par)
+        private List<Tuple<int, TimeSpan, TimeSpan>> DiasAtencionSeleccionados()
         {
-            DateTime horarioInicio = DateTime.Parse(((TimeSpan)par.Value.Item1.SelectedItem).ToString());
-            DateTime horarioFin = DateTime.Parse(((TimeSpan)par.Value.Item2.SelectedItem).ToString());
-
-            int diaID = IDDiaPara(par.Key);
-
-            SqlParameter IDMedico = new SqlParameter("@Medico_id", ModelObjectMedico.ID);
-            SqlParameter IDEspecialidad = new SqlParameter("@Especialidad_id", Especialidad().ID);
-            SqlParameter DiaInicio = new SqlParameter("@Dia_inicio", InicioRangoDP.Value);
-            SqlParameter DiaFin = new SqlParameter("@Dia_Fin", FinRangoDP.Value);
-            SqlParameter DiaID = new SqlParameter("@Dia_id", diaID);
-            SqlParameter HorarioInicio = new SqlParameter("@Inicio_Horario", horarioInicio);
-            SqlParameter HorarioFin = new SqlParameter("@Fin_Horario", horarioFin);
-
-            QueryAdapterMaggie.ejecutarSP("AGENDAInsertarNueva", IDMedico, 
-                                                                 IDEspecialidad, 
-                                                                 DiaInicio, 
-                                                                 DiaFin,
-                                                                 DiaID, 
-                                                                 HorarioInicio, 
-                                                                 HorarioFin);
-
+            return WidgetsSeleccionados()
+                .Select(par =>
+                    new Tuple<int, TimeSpan, TimeSpan>(IDDiaPara(par.Key),
+                        Horario(par.Value.Item1),
+                        Horario(par.Value.Item2))).ToList();
         }
-
+        private TimeSpan Horario(ComboBox comboHorario) 
+        {
+            return (TimeSpan)comboHorario.SelectedItem;
+        }       
         private int IDDiaPara(CheckBox checkBox)
         {
             return widgets.Keys.ToList().IndexOf(checkBox) + 1;
         }
-
         private bool DiaDeInicioMenorADiaFin()
         {
             return InicioRangoDP.Value < FinRangoDP.Value;
@@ -267,14 +285,13 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         {
             return WidgetsSeleccionados().All(par => NoColisiona(par));
         }
-
         private bool NoColisiona(KeyValuePair<CheckBox, Tuple<ComboBox, ComboBox>> par)
         {
             DateTime _horarioInicio = DateTime.Parse(((TimeSpan)par.Value.Item1.SelectedItem).ToString());
             DateTime _horarioFin = DateTime.Parse(((TimeSpan)par.Value.Item2.SelectedItem).ToString());
 
             SqlParameter idMedico = new SqlParameter("@Medico_id", ModelObjectMedico.ID);
-            SqlParameter idDia = new SqlParameter("@Dia_id",IDDiaPara(par.Key));
+            SqlParameter idDia = new SqlParameter("@Dia_id", IDDiaPara(par.Key));
             SqlParameter horarioInicio = new SqlParameter("@Inicio_Horario", _horarioInicio);
             SqlParameter horarioFin = new SqlParameter("@Fin_Horario", _horarioFin);
             SqlParameter diaInicio = new SqlParameter("@Inicio_Dia", InicioRangoDP.Value);
@@ -282,7 +299,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
 
             return !QueryAdapterMaggie.ejecutarSPBooleano("AGENDARangoColisionaConAgendaExistente", idDia, idMedico, horarioInicio, horarioFin, diaInicio, diaFin);
         }
-
         private List<Tuple<TimeSpan, TimeSpan>> HorasDeCheckboxSeleccionados()
         {
             return WidgetsSeleccionados()
@@ -290,7 +306,6 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                 .Select(tupla => new Tuple<TimeSpan, TimeSpan>((TimeSpan)tupla.Item1.SelectedItem, (TimeSpan)tupla.Item2.SelectedItem))
                 .ToList();
         }
-
         private List<ComboBox> Comboboxes()
         {
             return widgets
@@ -315,32 +330,18 @@ namespace ClinicaFrba.RegistrarAgendaMedico
                   .Select(tupla => new List<ComboBox>() { tupla.Item1, tupla.Item2 })
                   .Last();
         }
-
-        private TimeSpan TiempoDeLaAgenda()
-        {
-            return
-                HorasDeCheckboxSeleccionados()
-                .Select(tupla => tupla.Item2 - tupla.Item1)
-                .Aggregate((time, otherTime) => time + otherTime);
-        }
-
         private Especialidad Especialidad()
         {
 
             return (Especialidad)especialidadesAgendaCB.SelectedItem;
         }
-
         private void AltaAP_Load(object sender, EventArgs e)
         {
 
         }
-
         private void label8_Click(object sender, EventArgs e)
         {
 
         }
-
-
-
     }
 }

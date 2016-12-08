@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.asd = new System.Windows.Forms.GroupBox();
+            this.FinRangoDP = new System.Windows.Forms.DateTimePicker();
+            this.InicioRangoDP = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.botonVolverAgenda = new System.Windows.Forms.Button();
@@ -56,10 +60,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.especialidadesAgendaCB = new System.Windows.Forms.ComboBox();
             this.EspecialidadLabel = new System.Windows.Forms.Label();
-            this.InicioRangoDP = new System.Windows.Forms.DateTimePicker();
-            this.FinRangoDP = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.asd.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,6 +102,42 @@
             this.asd.TabIndex = 0;
             this.asd.TabStop = false;
             this.asd.Text = "Complete los campos para crear un nueva agenda:";
+            // 
+            // FinRangoDP
+            // 
+            this.FinRangoDP.Location = new System.Drawing.Point(159, 131);
+            this.FinRangoDP.Name = "FinRangoDP";
+            this.FinRangoDP.Size = new System.Drawing.Size(200, 20);
+            this.FinRangoDP.TabIndex = 36;
+            // 
+            // InicioRangoDP
+            // 
+            this.InicioRangoDP.Location = new System.Drawing.Point(159, 99);
+            this.InicioRangoDP.Name = "InicioRangoDP";
+            this.InicioRangoDP.Size = new System.Drawing.Size(200, 20);
+            this.InicioRangoDP.TabIndex = 35;
+            this.InicioRangoDP.Value = new System.DateTime(2016, 5, 10, 0, 0, 0, 0);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(27, 135);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 17);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "Dia de Fin:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(28, 103);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 17);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "Dia de Inicio:";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label5
             // 
@@ -355,41 +391,6 @@
             this.EspecialidadLabel.Size = new System.Drawing.Size(92, 17);
             this.EspecialidadLabel.TabIndex = 0;
             this.EspecialidadLabel.Text = "Especialidad:";
-            // 
-            // InicioRangoDP
-            // 
-            this.InicioRangoDP.Location = new System.Drawing.Point(159, 99);
-            this.InicioRangoDP.Name = "InicioRangoDP";
-            this.InicioRangoDP.Size = new System.Drawing.Size(200, 20);
-            this.InicioRangoDP.TabIndex = 35;
-            // 
-            // FinRangoDP
-            // 
-            this.FinRangoDP.Location = new System.Drawing.Point(159, 131);
-            this.FinRangoDP.Name = "FinRangoDP";
-            this.FinRangoDP.Size = new System.Drawing.Size(200, 20);
-            this.FinRangoDP.TabIndex = 36;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(28, 103);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 17);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "Dia de Inicio:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(27, 135);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 17);
-            this.label7.TabIndex = 31;
-            this.label7.Text = "Dia de Fin:";
             // 
             // AltaAP
             // 

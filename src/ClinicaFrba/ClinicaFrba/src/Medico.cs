@@ -48,15 +48,7 @@ namespace ClinicaFrba.src
         public bool EsEspecialistaEn(Especialidad especialidad)
         {
             return Especialidades().Any(especialidadMedico => especialidadMedico.ID == especialidad.ID);
-        }
-
-        public TimeSpan CantidadDeHorasTrabajadas()
-        {
-            SqlParameter idMedico = new SqlParameter("@Medico_id", ID);
-            DataRow fila = QueryAdapterMaggie.ejecutarSP("MEDICOHorasSemanales", idMedico).First();
-            return new TimeSpan(Convert.ToInt32(fila["Horas"]), Convert.ToInt32(fila["Minutos"]), 0);
-
-        }
+        }     
 
         public List<Especialidad> Especialidades()
         {
