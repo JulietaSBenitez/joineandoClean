@@ -20,10 +20,9 @@ namespace ClinicaFrba
         static void Main()
         {
             Application.EnableVisualStyles();
-            //Application.Run(new Login.Login());
-
-            Medico medico = Medico.All().First();
-            Application.Run(new RegistrarAgendaMedico.AltaAP(medico));
+            Application.Run(new Login.Login());
+            //Medico medico = Medico.All().First();
+            //Application.Run(new RegistrarAgendaMedico.AltaAP(medico));
             //Application.Run(new Pedir_Turno.AltaTurno(medico.ID));
 
 

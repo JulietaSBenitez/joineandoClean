@@ -24,7 +24,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             InitializeComponent();
 
             IDPersona = id_persona;
-
+            DiasACancelarCalendar.MinDate = Properties.Settings.Default.fecha;
             DiasACancelarCalendar.TodayDate = Properties.Settings.Default.fecha;
             DiasACancelarCalendar.SelectionStart = DiasACancelarCalendar.TodayDate;
         }

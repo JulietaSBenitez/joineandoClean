@@ -32,14 +32,12 @@ namespace ClinicaFrba.Pedir_Turno
             PacienteID = idPaciente;
 
             CalendarioTurnos.MaxSelectionCount = 1;
+            CalendarioTurnos.MinDate = Properties.Settings.Default.fecha;
             CalendarioTurnos.TodayDate = Properties.Settings.Default.fecha;
             CalendarioTurnos.SelectionStart = CalendarioTurnos.TodayDate;
 
             TurnosDisponiblesDGW.AllowUserToAddRows = false;
-            TurnosDisponiblesDGW.ReadOnly = true;
-
-            /*RefrescarDGV(new List<TimeSpan>() { new TimeSpan(10, 0, 0), 
-                                                new TimeSpan(10, 30, 0) });*/
+            TurnosDisponiblesDGW.ReadOnly = true;           
 
             validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
             (controlador => controlador.HayDiaSeleccionado()),
@@ -64,7 +62,8 @@ namespace ClinicaFrba.Pedir_Turno
             SqlParameter idMedico = new SqlParameter("@Medico_id", ModelObjectM.ID);
             SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", ModelObjectE.ID);
             SqlParameter diaSemana = new SqlParameter("@Dia_Semana", DiaDeLaSemana());
-            List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("TURNOHorarios", idMedico, idEspecialidad, diaSemana);
+            SqlParameter fecha = new SqlParameter("@Fecha", DiaTurno());
+            List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("TURNOHorarios", idMedico, idEspecialidad, diaSemana, fecha);
             _Turnos.Clear();
 
             foreach (DataRow fila in filas)
@@ -79,10 +78,15 @@ namespace ClinicaFrba.Pedir_Turno
             TurnosDisponiblesDGW.DataSource = valoresNuevos.Select(timespan => new { Horarios = timespan.ToString() }).ToList();
         }
 
+        private DateTime DiaTurno()
+        {
+            return CalendarioTurnos.SelectionStart;
+        }
+
         private int DiaDeLaSemana()
         {
 
-            switch (CalendarioTurnos.SelectionRange.Start.DayOfWeek)
+            switch (CalendarioTurnos.SelectionStart.DayOfWeek)
             {
 
                 case DayOfWeek.Monday:
@@ -121,7 +125,8 @@ namespace ClinicaFrba.Pedir_Turno
             return QueryAdapterMaggie.ejecutarSPBooleano("TURNOEstaOcupado", horarioTurno, idMedico, idEspecialidad, diaSeleccionado);
         }
 
-        private bool HayDiaSeleccionado(){
+        private bool HayDiaSeleccionado()
+        {
             return CalendarioTurnos.SelectionRange.Start != null;
         }
 
@@ -130,7 +135,7 @@ namespace ClinicaFrba.Pedir_Turno
             return TurnosDisponiblesDGW.SelectedCells.Count != 0;
         }
 
-        private bool TurnoValido() 
+        private bool TurnoValido()
         {
             return !EstaOcupado(TurnosDisponiblesDGW.CurrentRow);
         }
@@ -152,7 +157,7 @@ namespace ClinicaFrba.Pedir_Turno
             else
             {
                 fila.DefaultCellStyle.BackColor = Color.Green;
-            } 
+            }
         }
         private void TurnosDisponiblesDGW_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {

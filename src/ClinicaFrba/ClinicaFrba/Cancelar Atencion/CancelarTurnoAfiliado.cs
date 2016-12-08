@@ -28,6 +28,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             InitializeComponent();
 
             CalendarioTurnos.MaxSelectionCount = 1;
+            CalendarioTurnos.MinDate = Properties.Settings.Default.fecha;
             CalendarioTurnos.TodayDate = Properties.Settings.Default.fecha;
             CalendarioTurnos.SelectionStart = CalendarioTurnos.TodayDate;
 
