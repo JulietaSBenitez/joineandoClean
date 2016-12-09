@@ -37,7 +37,7 @@ namespace ClinicaFrba.Pedir_Turno
             CalendarioTurnos.SelectionStart = CalendarioTurnos.TodayDate;
 
             TurnosDisponiblesDGW.AllowUserToAddRows = false;
-            TurnosDisponiblesDGW.ReadOnly = true;           
+            TurnosDisponiblesDGW.ReadOnly = true;
 
             validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
             (controlador => controlador.HayDiaSeleccionado()),
@@ -53,23 +53,30 @@ namespace ClinicaFrba.Pedir_Turno
 
             validaciones.Add(new ValidacionBooleana<Selección_de_Día_y_Horario>(
             (controlador => controlador.TurnoValido()),
-            "El turno seleccionado está ocupado"));
+            "El turno seleccionado no está disponible."));
 
         }
 
         private void Turnos()
-        {
-            SqlParameter idMedico = new SqlParameter("@Medico_id", ModelObjectM.ID);
-            SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", ModelObjectE.ID);
-            SqlParameter diaSemana = new SqlParameter("@Dia_Semana", DiaDeLaSemana());
-            SqlParameter fecha = new SqlParameter("@Fecha", DiaTurno());
-            List<DataRow> filas = QueryAdapterMaggie.ejecutarSP("TURNOHorarios", idMedico, idEspecialidad, diaSemana, fecha);
-            _Turnos.Clear();
+        {            
+            TimeSpan inicio;
+            TimeSpan fin;
 
-            foreach (DataRow fila in filas)
+            if (DiaDeLaSemana() == 6)
             {
-                _Turnos = RangoHorario.Rango((TimeSpan)fila["Inicio_Horario"], (TimeSpan)fila["Fin_Horario"]);
+                inicio = new TimeSpan(10, 0, 0);
+                fin = new TimeSpan(15, 0, 0);
+
             }
+            else
+            {
+
+                inicio = new TimeSpan(7, 0, 0);
+                fin = new TimeSpan(20, 0, 0);
+
+            }
+
+            _Turnos = RangoHorario.Rango(inicio, fin);
             RefrescarDGV(_Turnos);
         }
 
@@ -121,8 +128,10 @@ namespace ClinicaFrba.Pedir_Turno
             SqlParameter horarioTurno = new SqlParameter("@Horario", horario.Horarios);
             SqlParameter idMedico = new SqlParameter("@Medico_id", ModelObjectM.ID);
             SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", ModelObjectE.ID);
-            SqlParameter diaSeleccionado = new SqlParameter("@Dia_seleccionado", CalendarioTurnos.SelectionRange.Start.Date);
-            return QueryAdapterMaggie.ejecutarSPBooleano("TURNOEstaOcupado", horarioTurno, idMedico, idEspecialidad, diaSeleccionado);
+            SqlParameter diaSeleccionado = new SqlParameter("@Dia_seleccionado", CalendarioTurnos.SelectionRange.Start.Date);            
+            SqlParameter fecha = new SqlParameter("@Dia_id", DiaDeLaSemana());
+
+            return QueryAdapterMaggie.ejecutarSPBooleano("TURNOEstaOcupado", horarioTurno, idMedico, idEspecialidad, diaSeleccionado, fecha);
         }
 
         private bool HayDiaSeleccionado()
@@ -180,8 +189,9 @@ namespace ClinicaFrba.Pedir_Turno
                 SqlParameter horario = new SqlParameter("@Horario", HorarioTurno());
                 SqlParameter idMedico = new SqlParameter("@Medico_id", ModelObjectM.ID);
                 SqlParameter idEspecialidad = new SqlParameter("@Especialidad_id", ModelObjectE.ID);
+                SqlParameter idDia = new SqlParameter("@Dia_id", DiaDeLaSemana());
 
-                QueryAdapterMaggie.ejecutarSP("TURNOInsertarNuevo", idPersona, fechaSeleccionada, horario, idMedico, idEspecialidad);
+                QueryAdapterMaggie.ejecutarSP("TURNOInsertarNuevo", idPersona, fechaSeleccionada, horario, idMedico, idEspecialidad, idDia);
 
                 MessageBox.Show("El turno fue creado con éxito");
                 TurnosDisponiblesDGW.ClearSelection();
