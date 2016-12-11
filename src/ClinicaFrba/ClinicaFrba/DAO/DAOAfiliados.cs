@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ClinicaFrba.DAO
 {
@@ -97,6 +98,8 @@ namespace ClinicaFrba.DAO
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Error: El paciente que usted intenta insertar ya ha sido insertado", "Error",
+    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 AdaptadorSQL.RollBackTransction();
                 throw ex;
             }
@@ -332,9 +335,7 @@ namespace ClinicaFrba.DAO
 
             try
             {
-                // parameter = new SqlParameter("@UserId", SqlDbType.Int);
-                //  parameter.Value = userId;
-                //  parameters.Add(parameter);
+     
                 data = AdaptadorSQL.SQLHelper_ExecuteReader("JOINEANDO_ANDO.listado_tipo_documentos", parameters);
                 return data;
             }
