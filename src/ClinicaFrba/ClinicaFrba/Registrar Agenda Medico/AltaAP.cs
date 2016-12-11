@@ -267,7 +267,7 @@ namespace ClinicaFrba.RegistrarAgendaMedico
         }
         private bool DiaInicioMayorAHoy()
         {
-            return InicioRangoDP.Value > Properties.Settings.Default.fecha;
+            return InicioRangoDP.Value >= Properties.Settings.Default.fecha;
         }
         public bool EspecialidadSeleccionada()
         {

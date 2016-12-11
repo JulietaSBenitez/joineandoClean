@@ -34,6 +34,8 @@ namespace ClinicaFrba.Pedir_Turno
             EspecialidadMedicaCB.DataSource = Especialidades;
             EspecialidadMedicaCB.DisplayMember = "Nombre";
 
+          
+
             TodosLosMedicos = Medico.All();
 
             ProfesionalCB.Enabled = false;
@@ -43,6 +45,16 @@ namespace ClinicaFrba.Pedir_Turno
             validaciones.Add(new ValidacionBooleana<AltaTurno>(
                (controlador => controlador.ProfesionalSeleccionado()),
                "No se ha seleccionado ningun profesional."));
+
+
+                  Especialidad especialidadSeleccionada = (Especialidad)EspecialidadMedicaCB.SelectedItem;
+
+            MedicosEspecialidadSeleccionada = TodosLosMedicos
+                .Where(medico => medico.EsEspecialistaEn(especialidadSeleccionada)).ToList();
+
+            ProfesionalCB.DataSource = MedicosEspecialidadSeleccionada;
+            ProfesionalCB.Enabled = true;
+
         }
 
         private void ContinuarButton_Click(object sender, EventArgs e)
